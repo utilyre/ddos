@@ -1,0 +1,15 @@
+#!/bin/sh
+
+xrdb "$XDG_CONFIG_HOME/x11/xresources"
+
+xset r rate "200" "30"
+xsetroot -cursor_name "left_ptr"
+xrandr --output "HDMI-1" --mode "1920x1080" --rate "75"
+
+wali &
+sxhkd &
+picom &
+lxsession &
+lemonblocks &
+
+exec bspwm

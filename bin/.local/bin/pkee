@@ -1,0 +1,18 @@
+#!/bin/sh
+
+mkdir --parents "$PASSWORDS_DIR"
+
+case "$1" in
+	"init") echo "$2" > "$PASSWORDS_DIR/.gpg-id" ;;
+	"add") gpg --recipient="$(cat "$PASSWORDS_DIR/.gpg-id")" --armor --encrypt "-" < "/dev/stdin" > "$PASSWORDS_DIR/$2" ;;
+	"gen") tr --delete --complement "a-zA-Z0-9" < "/dev/urandom" | head --bytes="32" | pkee add "$2" ;;
+	"menu")
+		name="$(find "$PASSWORDS_DIR/" -type "f" -not -name ".*" -printf "%f\n" | dmenu -p " ")"
+		[ "$?" -ne "0" ] && exit 1
+		password="$(gpg --decrypt "$PASSWORDS_DIR/$name")"
+		[ "$?" -ne "0" ] && exit 1
+
+		herbe " Pkee" "Copied \"$name\" password to clipboard." &
+		printf "%s" "$password" | xsel --clipboard
+		;;
+esac

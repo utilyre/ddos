@@ -1,0 +1,24 @@
+#!/bin/sh
+
+options="$(getopt --name="huma" --options="a,b,d" --longoptions="component::" -- "$@")"
+[ "$?" -ne "0" ] && exit 1
+
+component="all"
+eval set -- "$options"
+while true; do
+	[ "$1" = "--" ] && { shift; break; }
+
+	case "$1" in
+		"-a") component="all"; shift ;;
+		"-b") component="basename"; shift ;;
+		"-d") component="dirname"; shift ;;
+		"--component") component="$2"; shift 2 ;;
+	esac
+done
+
+name="$(echo "$*" | sed "s|^$HOME|~|")"
+case "$component" in
+	"all") echo "$name" ;;
+	"basename") basename "$name" ;;
+	"dirname") dirname "$name" ;;
+esac

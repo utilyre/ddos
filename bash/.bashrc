@@ -1,0 +1,43 @@
+#!/bin/bash
+
+export LESS_TERMCAP_md="$(tput bold setaf 1)"
+export LESS_TERMCAP_me="$(tput sgr0)"
+export LESS_TERMCAP_us="$(tput sitm setaf 2)"
+export LESS_TERMCAP_ue="$(tput sgr0)"
+export LESS_TERMCAP_so="$(tput setab 3 setaf 0)"
+export LESS_TERMCAP_se="$(tput sgr0)"
+
+shopt -s "autocd" "histverify"
+
+alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-readable"
+alias grep="grep --color=\"auto\" --ignore-case"
+alias diff="diff --color=\"auto\""
+
+alias ll="ls --format=\"long\""
+alias la="ls --almost-all"
+alias al="ls --format=\"long\" --almost-all"
+alias gr="git reset"
+alias gR="git reset --hard"
+alias ga="git add"
+alias gA="git add --all"
+alias gc="git commit"
+alias gC="git commit --amend"
+alias gb="git branch"
+alias gB="git branch --delete"
+alias gm="git merge"
+alias gM="git merge --squash"
+alias gl="git adog"
+alias gk="git checkout"
+alias gs="git statue"
+alias gd="git diff"
+
+bind "set editing-mode vi"
+bind "set keyseq-timeout 100"
+bind "set show-mode-in-prompt on"
+bind "set vi-cmd-mode-string \1\e[2 q\2"
+bind "set vi-ins-mode-string \1\e[6 q\2"
+bind "\"jk\": vi-movement-mode"
+bind "\"kj\": vi-movement-mode"
+bind "\c-l:clear-screen"
+
+eval "$(soni init)"

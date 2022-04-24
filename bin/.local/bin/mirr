@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ -z "$*" ] && exit 1
+for arg in "$@"; do
+	curl "https://archlinux.org/mirrorlist/?protocol=https&ip_version=4&country=$arg" |
+		sed --regexp-extended "s/^#([^#].*)/\1/"
+done

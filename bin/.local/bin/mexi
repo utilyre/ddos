@@ -1,0 +1,11 @@
+#!/bin/sh
+
+action="$(printf "%s\n" "logout" "sleep" "restart" "shutdown" | dmenu -p " ")"
+[ "$?" -ne "0" ] && exit 1
+
+case "$action" in
+	"logout") bspc quit ;;
+	"sleep") systemctl suspend ;;
+	"restart") systemctl reboot ;;
+	"shutdown") systemctl poweroff ;;
+esac

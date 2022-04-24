@@ -1,0 +1,56 @@
+#define BLACK #282c34
+#define RED #e06c75
+#define GREEN #98c379
+#define YELLOW #e5c07b
+#define BLUE #61afef
+#define MAGENTA #c678dd
+#define CYAN #56b6c2
+#define WHITE #abb2bf
+
+bspwm.padding: 4
+bspwm.gap: 8
+bspwm.border: 2
+bspwm.border_nrm: BLACK
+bspwm.border_sel: WHITE
+
+flexblocks.font: monospace:size=10
+flexblocks.height: 30
+flexblocks.underline: 4
+flexblocks.background: BLACK
+flexblocks.foreground: WHITE
+flexblocks.date: BLUE
+flexblocks.wttr: GREEN
+flexblocks.uptm: YELLOW
+flexblocks.desk: CYAN
+flexblocks.volt: YELLOW
+flexblocks.memo: GREEN
+flexblocks.temp: BLUE
+
+herbe.font_pattern: monospace:size=10
+herbe.background_color: BLACK
+herbe.font_color: CYAN
+herbe.border_color: CYAN
+herbe.pos_x: 24
+herbe.pos_y: 64
+
+dmenu.font: monospace:size=10
+dmenu.background_nrm: BLACK
+dmenu.foreground_nrm: WHITE
+dmenu.background_sel: BLUE
+dmenu.foreground_sel: BLACK
+
+st.font: monospace:size=10
+st.background: BLACK
+st.foreground: WHITE
+st.black: BLACK
+st.red: RED
+st.green: GREEN
+st.yellow: YELLOW
+st.blue: BLUE
+st.magenta: MAGENTA
+st.cyan: CYAN
+st.white: WHITE
+
+Sxiv.font: monospace:size=10
+Sxiv.background: BLACK
+Sxiv.foreground: WHITE

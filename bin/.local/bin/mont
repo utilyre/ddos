@@ -1,0 +1,30 @@
+#!/bin/sh
+
+disks="$(lsblk --raw --path --output="type,name,fstype,size,mountpoint" | awk "(\$1 == \"part\") { print \$2 \" \" \$3 \" \" \$4 \" \" \$5 }")"
+disk="$(echo "$disks" | column --table | dmenu -p " ")"
+[ "$?" -ne "0" ] && exit 1
+
+case "$(echo "$disk" | awk "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
+	"mount")
+		source="${disk%% *}"
+		target="$XDG_PUBLIC_HOME/${source##*/}"
+
+		(
+			mkdir --parents "$target"
+			pkexec mount "$source" "$target"
+		)
+
+		[ "$?" -eq "0" ] && herbe " Mont" "Mounted \"$source\" at \"$(huma "$target")\"." &
+		;;
+	"umount")
+		source="${disk%% *}"
+		target="$XDG_PUBLIC_HOME/${source##*/}"
+
+		(
+			pkexec umount "$source"
+			rmdir "$target"
+		)
+
+		[ "$?" -eq "0" ] && herbe " Mont" "Unmounted \"$source\"." &
+		;;
+esac

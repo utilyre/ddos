@@ -1,0 +1,53 @@
+#!/bin/sh
+
+exitcode="$?"
+
+[ "$1" = "init" ] && {
+	exec cat <<- 'EOF'
+		: ${SARR:="|-> >-> ->> |=> >=> =>> ~~> ||>"}
+		: ${SEND:="\001$(tput sgr0)\002"}
+		: ${SPRE_OK:="\001$(tput setaf 2)\002"}
+		: ${SPRE_ER:="\001$(tput setaf 1)\002"}
+		: ${SPRE_DI:="\001$(tput bold setaf 4)\002"}
+		: ${SPRE_LN:="\001$(tput bold setaf 6)\002"}
+		: ${SPRE_GI:="\001$(tput bold setaf 5)\002"}
+
+		: ${SICO_HM:=" "}
+		: ${SICO_DI:=" "}
+		: ${SICO_EM:=" "}
+		: ${SICO_LN:=" "}
+		: ${SICO_HU:=" "}
+		: ${SICO_LA:=" "}
+		: ${SICO_GI:=" "}
+
+		PROMPT_COMMAND=". soni"
+	EOF
+}
+
+[ "$exitcode" -eq "0" ] && __arrow="$SPRE_OK" || __arrow="$SPRE_ER"
+__arrow="${__arrow}$(echo "$SARR" | tr " " "\n" | shuf --head-count="1")"
+__arrow="${__arrow}$SEND"
+
+__wd=""
+[ -L "$PWD" ] && __wd="${__wd}$SPRE_LN" || __wd="${__wd}$SPRE_DI"
+[ "$PWD" = "$HOME" ] && __wd="${__wd}$SICO_HM" || {
+	[ -L "$PWD" ] && __wd="${__wd}$SICO_LN" || {
+		[ -z "$(ls --almost-all "$PWD")" ] && __wd="${__wd}$SICO_EM" || __wd="${__wd}$SICO_DI"
+	}
+}
+__wd="${__wd}$(huma --component="basename" "$PWD")"
+__wd="${__wd}$SEND"
+
+__git=""
+git rev-parse 2> "/dev/null" && {
+	__git="${__git}$SPRE_GI"
+	case "$(git remote --verbose)" in
+		*"github.com"*) __git="${__git}$SICO_HU" ;;
+		*"gitlab.com"*) __git="${__git}$SICO_LA" ;;
+		*) __git="${__git}$SICO_GI" ;;
+	esac
+	__git="${__git}$(git branch --show-current | grep --extended-regexp "^.+$" || git rev-parse --short "HEAD")"
+	__git="${__git}$SEND "
+}
+
+PS1="\n$__arrow $__wd $__git"

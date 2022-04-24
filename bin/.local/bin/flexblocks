@@ -1,0 +1,54 @@
+#!/bin/sh
+
+trap "unset desk" "10"
+trap "unset volt" "12"
+
+date_color="$(xrdb -get "flexblocks.date")"
+wttr_color="$(xrdb -get "flexblocks.wttr")"
+uptm_color="$(xrdb -get "flexblocks.uptm")"
+desk_color="$(xrdb -get "flexblocks.desk")"
+volt_color="$(xrdb -get "flexblocks.volt")"
+memo_color="$(xrdb -get "flexblocks.memo")"
+temp_color="$(xrdb -get "flexblocks.temp")"
+
+while true; do
+	sleep "1s" & wait "$!"
+	timestamp="$(date "+%s")"
+
+	[ -z "$date" ] || [ "$(($timestamp % 60))" -eq "0" ] && {
+		date="$(date "+%H:%M %a, %b %d")"
+	}
+	[ -z "$wttr" ] || [ "$(($timestamp % 1800))" -eq "0" ] && {
+		wttr="$(curl "https://wttr.in/Hamadan?m&format=%l,+%C+%t")"
+	}
+	[ -z "$uptm" ] || [ "$(($timestamp % 60))" -eq "0" ] && {
+		uptm="$(uptime --pretty | sed --regexp-extended "s/^(.)/\U\1/")"
+	}
+
+	[ -z "$desk" ] && {
+		desk_current="$(bspc query --desktops --desktop --names)"
+		while read -r line; do
+			[ "$line" = "$desk_current" ] &&
+				desk="${desk}%{F:{current}}%{U:{current}}%{+u} $line %{-u}%{U-}%{F-}" ||
+				desk="${desk} $line "
+		done <<- EOF
+			$(bspc query --desktops --names)
+		EOF
+		unset desk_current
+	}
+
+	[ -z "$volt" ] && {
+		volt="$(volt --device="sink" get) <> $(volt --device="source" get)"
+	}
+	[ -z "$memo" ] || [ "$(($timestamp % 30))" -eq "0" ] && {
+		memo="$(free --human | awk "(\$0 ~ /^Mem:/) { print \$3 \"/\" \$2 }")"
+	}
+	[ -z "$temp" ] || [ "$(($timestamp % 10))" -eq "0" ] && {
+		temp="$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")°C (High: $(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_max")°C)"
+	}
+
+	printf "%s%s%s\n" \
+		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$uptm_color}%{U$uptm_color}%{+u}  $uptm %{-u}%{U-}%{F-} " \
+		"%{c} $(echo "$desk" | sed "s/:{current}/$desk_color/g") " \
+		"%{r} %{F$volt_color}%{U$volt_color}%{+u}  $volt %{-u}%{U-}%{F-} %{F$memo_color}%{U$memo_color}%{+u}  $memo %{-u}%{U-}%{F-} %{F$temp_color}%{U$temp_color}%{+u}  $temp %{-u}%{U-}%{F-} "
+done

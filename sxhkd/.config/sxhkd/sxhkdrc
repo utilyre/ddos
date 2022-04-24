@@ -1,0 +1,30 @@
+super + {_,shift} + q
+  bspc node {--close,--kill}
+super + {space,t,f}
+  bspc node --state "{floating,tiled,fullscreen}"
+super + {_,shift} + {j,k}
+  bspc node {--focus,--swap} '{next,prev}.local.!hidden.window'
+super + {_,shift} + {h,l}
+  bspc {desktop --focus,node --to-desktop} "{prev,next}"
+
+super + {_,shift} + {1,2,3,4,5,6,7,8,9,0}
+  volt --device="{sink,source}" switch "{0,1,2,3,4,5,6,7,8,9}"
+super + {_,shift} + {backslash,minus,equal}
+  volt --device="{sink,source}" {toggle,down,up}
+
+super + i
+  dmenu_run -p " "
+super + {Return,b,p}
+  gtk-launch "{terminal,browser,explorer}.desktop"
+super + o
+  pkee menu
+super + m
+  mont
+super + u
+  unic
+super + y
+  yank
+super + n
+  nani
+super + x
+  mexi

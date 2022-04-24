@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case "$(xdg-mime query filetype "$1")" in
+	"text/"*) cat "$1" ;;
+	"image/"* | "audio/"* | "video/"*)
+		thumbnail="$XDG_CACHE_HOME/lf/$(echo "$1:$(date --reference="$1" "+%G%m%d-%H%M%S")" | shasum | head --bytes="40").png"
+		mkdir --parents "$(dirname "$thumbnail")"
+
+		[ ! -f "$thumbnail" ] && { ffmpeg -i "$1" -vf "scale=512:-1" -vframes "1" "$thumbnail" || exec mediainfo "$1" ;}
+		echo "{ \"action\": \"add\", \"identifier\": \"PREVIEW\", \"scaler\": \"contain\", \"path\": \"$thumbnail\", \"width\": \"$(($2 - 2))\", \"height\": \"$3\", \"x\": \"$(($4 + 1))\", \"y\": \"$5\" }" > "$FIFO_UEBERZUG"
+		exit 1
+		;;
+	*) mediainfo "$1" ;;
+esac

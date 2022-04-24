@@ -1,0 +1,24 @@
+set drawbox true
+set icons true
+set incsearch true
+set scrolloff 2
+set previewer "lfpv"
+set cleaner "lfcl"
+
+map r :reload
+map d :delete
+map c :rename
+map y :copy
+map p :paste
+map a push :create<space>
+map gw &wali "$f"
+map gd &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact --and-exit
+map gD &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact
+
+cmd create %{{
+f="$(realpath --canonicalize-missing "$*")"
+[ "$(printf "%s" "$*" | tail --bytes="1")" = "/" ] && exec mkdir --parents "$f"
+
+mkdir --parents "$(dirname "$f")"
+touch "$f"
+}}
