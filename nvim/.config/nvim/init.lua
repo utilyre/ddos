@@ -1,6 +1,6 @@
-require("after.general.settings")
+require("after.general.options")
 require("after.general.autocmds")
-require("after.general.mappings")
+require("after.general.keymaps")
 require("after.general.plugins")
 
 require("after.plugins.onedark")
