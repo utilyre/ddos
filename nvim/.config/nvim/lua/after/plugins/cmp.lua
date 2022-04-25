@@ -32,7 +32,7 @@ local kinds = {
 cmp.setup({
   window = {
     documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
     },
   },
   formatting = {

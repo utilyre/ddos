@@ -51,14 +51,14 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 vim.diagnostic.config({
   virtual_text = false,
   signs = { active = signs },
   update_in_insert = true,
   severity_sort = true,
   float = {
-    border = "rounded",
+    border = "single",
     source = "always",
     header = "",
     prefix = "",
