@@ -1,6 +1,34 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+local kinds = {
+  Text = " ",
+  Method = "m ",
+  Function = " ",
+  Constructor = " ",
+  Field = " ",
+  Variable = " ",
+  Class = " ",
+  Interface = " ",
+  Module = " ",
+  Property = " ",
+  Unit = " ",
+  Value = " ",
+  Enum = " ",
+  Keyword = " ",
+  Snippet = " ",
+  Color = " ",
+  File = " ",
+  Reference = " ",
+  Folder = " ",
+  EnumMember = " ",
+  Constant = " ",
+  Struct = " ",
+  Event = " ",
+  Operator = " ",
+  TypeParameter = " ",
+}
+
 cmp.setup({
   window = {
     documentation = {
@@ -10,34 +38,6 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr" },
     format = function(entry, item)
-      local kinds = {
-        Text = " ",
-        Method = "m ",
-        Function = " ",
-        Constructor = " ",
-        Field = " ",
-        Variable = " ",
-        Class = " ",
-        Interface = " ",
-        Module = " ",
-        Property = " ",
-        Unit = " ",
-        Value = " ",
-        Enum = " ",
-        Keyword = " ",
-        Snippet = " ",
-        Color = " ",
-        File = " ",
-        Reference = " ",
-        Folder = " ",
-        EnumMember = " ",
-        Constant = " ",
-        Struct = " ",
-        Event = " ",
-        Operator = " ",
-        TypeParameter = " ",
-      }
-
       item.kind = kinds[item.kind] or ""
       return item
     end,

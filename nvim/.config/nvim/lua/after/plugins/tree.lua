@@ -1,3 +1,5 @@
+local tree = require("nvim-tree")
+
 vim.g.nvim_tree_group_empty = 1
 vim.g.nvim_tree_symlink_arrow = " -> "
 vim.g.nvim_tree_icons = {
@@ -23,7 +25,6 @@ vim.g.nvim_tree_icons = {
   }
 }
 
-local tree = require("nvim-tree")
 tree.setup({
   diagnostics = { enable = true },
   git = { ignore = false },

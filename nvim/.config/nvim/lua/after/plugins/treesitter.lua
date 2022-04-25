@@ -1,4 +1,5 @@
 local treesitter = require("nvim-treesitter.configs")
+
 treesitter.setup({
   ensure_installed = "all",
   ignore_install = { "fusion", "jsonc" },

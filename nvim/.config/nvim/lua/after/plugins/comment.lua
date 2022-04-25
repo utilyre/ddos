@@ -1,4 +1,5 @@
 local comment = require("Comment")
+
 comment.setup({
   pre_hook = function(ctx)
     local utils = require("Comment.utils")

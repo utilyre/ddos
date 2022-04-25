@@ -1,4 +1,5 @@
 local zenmode = require("zen-mode")
+
 zenmode.setup({
   window = {
     backdrop = 1,
