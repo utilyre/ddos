@@ -19,5 +19,8 @@ export LESSHISTFILE="$XDG_STATE_HOME/less"
 export WALI_RESTORE="$XDG_STATE_HOME/wali"
 export XAUTHORITY="$XDG_RUNTIME_DIR/xauthority"
 
+export TERMINAL="/bin/st"
+export EDITOR="/bin/nvim"
+
 printenv | awk --field-separator="=" "(\$0 ~ /^XDG_.+_HOME/) { print \$2 }" | xargs --delimiter="\n" mkdir --parents
 startx "$XDG_CONFIG_HOME/x11/xinitrc"
