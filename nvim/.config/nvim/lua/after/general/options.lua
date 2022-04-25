@@ -32,6 +32,7 @@ vim.opt.pumheight = 10
 
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 
 vim.opt.list = true
 vim.opt.listchars:append("trail:·")
