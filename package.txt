@@ -3,6 +3,7 @@ bspwm
 dragon-drop
 git
 jq
+lazygit
 lemonbar-xft-git
 lf-bin
 lxsession-gtk3
