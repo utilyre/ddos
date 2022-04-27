@@ -2,6 +2,7 @@ local onedark = require("onedark")
 
 onedark.setup({
   style = "dark",
+  toggle_style_key = "<nop>",
   colors = {
     dark_grey = "#474d59",
   },
