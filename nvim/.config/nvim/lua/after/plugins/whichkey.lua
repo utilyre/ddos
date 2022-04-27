@@ -1,7 +1,7 @@
 local whichkey = require("which-key")
 
 whichkey.setup({
-  ignore_missing = false,
+  ignore_missing = true,
   window = {
     border = "single",
   },
