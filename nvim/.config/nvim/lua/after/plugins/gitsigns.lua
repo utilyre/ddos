@@ -1,18 +1,23 @@
 local gitsigns = require("gitsigns")
 local Terminal = require("toggleterm.terminal").Terminal
+local whichkey = require("which-key")
 
 gitsigns.setup({
   current_line_blame = true,
   current_line_blame_formatter = "<author> - <summary> (<author_time:%R>)",
   on_attach = function(buffnr)
-    local opts = { buffer = buffnr }
-    vim.keymap.set("n", "<leader>gp", gitsigns.preview_hunk, opts)
-    vim.keymap.set("n", "<leader>gr", gitsigns.reset_hunk, opts)
-    vim.keymap.set("n", "<leader>gR", gitsigns.reset_buffer, opts)
-    vim.keymap.set("n", "<leader>ga", gitsigns.stage_hunk, opts)
-    vim.keymap.set("n", "<leader>gA", gitsigns.stage_buffer, opts)
-    vim.keymap.set("n", "<leader>gk", gitsigns.prev_hunk, opts)
-    vim.keymap.set("n", "<leader>gj", gitsigns.next_hunk, opts)
-    vim.keymap.set("n", "<leader>gg", function() Terminal:new({ cmd = "lazygit", direction = "float" }):toggle() end, opts)
+    whichkey.register({
+      g = {
+        name = "Git",
+        p = { gitsigns.prev_hunk, "Preview" },
+        r = { gitsigns.reset_hunk, "Reset" },
+        R = { gitsigns.reset_buffer, "Reset all" },
+        a = { gitsigns.stage_hunk, "Stage" },
+        A = { gitsigns.stage_buffer, "Stage all" },
+        k = { gitsigns.prev_hunk, "Previous" },
+        j = { gitsigns.prev_hunk, "Next" },
+        g = { function() Terminal:new({ cmd = "lazygit", direction = "float" }):toggle() end, "Lazygit" },
+      },
+    }, { prefix = "<leader>", buffer = buffnr })
   end,
 })

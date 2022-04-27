@@ -1,6 +1,7 @@
 local config = require("lspconfig")
 local installer = require("nvim-lsp-installer")
 local luasnip = require("luasnip")
+local whichkey = require("which-key")
 
 installer.on_server_ready(function(server)
   server:setup({
@@ -29,14 +30,18 @@ installer.on_server_ready(function(server)
         })
       end
 
-      local opts = { buffer = buffnr }
-      vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, opts)
-      vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
-      vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
-      vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, opts)
-      vim.keymap.set("n", "<leader>ll", vim.diagnostic.open_float, opts)
-      vim.keymap.set("n", "<leader>lk", vim.diagnostic.goto_prev, opts)
-      vim.keymap.set("n", "<leader>lj", vim.diagnostic.goto_next, opts)
+      whichkey.register({
+        i = {
+          name = "Intellisense",
+          d = { vim.lsp.buf.definition, "Definition" },
+          a = { vim.lsp.buf.code_action, "Code actions" },
+          r = { vim.lsp.buf.rename, "Rename" },
+          h = { vim.lsp.buf.hover, "Hover" },
+          l = { vim.diagnostic.open_float, "Diagnostics" },
+          k = { vim.diagnostic.goto_prev, "Previous" },
+          j = { vim.diagnostic.goto_next, "Next" },
+        },
+      }, { prefix = "<leader>", buffer = buffnr })
     end,
   })
 end)

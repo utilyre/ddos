@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
-vim.opt.timeout = false
 vim.opt.timeoutlen = 100
 vim.opt.updatetime = 500
 
@@ -37,3 +36,13 @@ vim.opt.tabstop = 2
 vim.opt.list = true
 vim.opt.listchars:append("trail:·")
 vim.opt.iskeyword:append("-")
+
+local gOptions = vim.api.nvim_create_augroup("Options", {})
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = gOptions,
+  command = "set formatoptions-=cro",
+})
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = gOptions,
+  callback = function() vim.highlight.on_yank({ higroup = "Visual", on_visual = false }) end,
+})

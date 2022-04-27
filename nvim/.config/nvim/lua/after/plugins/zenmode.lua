@@ -1,4 +1,5 @@
 local zenmode = require("zen-mode")
+local whichkey = require("which-key")
 
 zenmode.setup({
   window = {
@@ -6,4 +7,6 @@ zenmode.setup({
   },
 })
 
-vim.keymap.set("n", "<leader>z", zenmode.toggle)
+whichkey.register({
+  z = { zenmode.toggle, "Zen mode" },
+}, { prefix = "<leader>" })

@@ -1,5 +1,6 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local whichkey = require("which-key")
 
 telescope.setup({
   pickers = {
@@ -9,6 +10,11 @@ telescope.setup({
   },
 })
 
-vim.keymap.set("n", "<leader>ff", builtin.find_files)
-vim.keymap.set("n", "<leader>fr", builtin.oldfiles)
-vim.keymap.set("n", "<leader>fw", builtin.live_grep)
+whichkey.register({
+  f = {
+    name = "Find",
+    f = { builtin.find_files, "File" },
+    r = { builtin.oldfiles, "Recent" },
+    w = { builtin.live_grep, "Word" },
+  },
+}, { prefix = "<leader>" })
