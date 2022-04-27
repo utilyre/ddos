@@ -16,7 +16,7 @@ gitsigns.setup({
         A = { gitsigns.stage_buffer, "Stage all" },
         k = { gitsigns.prev_hunk, "Previous" },
         j = { gitsigns.prev_hunk, "Next" },
-        g = { function() Terminal:new({ cmd = "lazygit", direction = "float" }):toggle() end, "Lazygit" },
+        g = { function() Terminal:new({ cmd = "lazygit" }):toggle() end, "Lazygit" },
       },
     }, { prefix = "<leader>", buffer = buffnr })
   end,

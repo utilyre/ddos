@@ -1,6 +1,6 @@
 local toggleterm = require("toggleterm")
 
 toggleterm.setup({
-  size = 15,
+  direction = "float",
   open_mapping = "<c-_>",
 })
