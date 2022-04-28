@@ -1,9 +1,8 @@
 local comment = require("Comment")
+local utils = require("Comment.utils")
 
 comment.setup({
   pre_hook = function(ctx)
-    local utils = require("Comment.utils")
-
     local location
     if ctx.ctype == utils.ctype.block then
       location = require("ts_context_commentstring.utils").get_cursor_location()
