@@ -35,13 +35,10 @@ packer.startup({
     use("akinsho/toggleterm.nvim")
     use("folke/which-key.nvim")
     use("akinsho/bufferline.nvim")
-    use("petertriho/nvim-scrollbar")
     use("nvim-lualine/lualine.nvim")
     use("lewis6991/gitsigns.nvim")
     use("lukas-reineke/indent-blankline.nvim")
-    use("norcalli/nvim-colorizer.lua")
     use("folke/zen-mode.nvim")
-    use("folke/twilight.nvim")
     use("windwp/nvim-autopairs")
     use("numtostr/comment.nvim")
   end,
