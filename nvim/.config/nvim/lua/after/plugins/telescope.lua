@@ -4,17 +4,21 @@ local whichkey = require("which-key")
 
 telescope.setup({
   pickers = {
-    find_files = { theme = "dropdown" },
     oldfiles = { theme = "dropdown" },
+    find_files = { theme = "dropdown" },
+    buffers = { theme = "dropdown" },
     live_grep = { theme = "dropdown" },
+    builtin = { theme = "dropdown" },
   },
 })
 
 whichkey.register({
   f = {
     name = "Find",
-    f = { builtin.find_files, "File" },
     r = { builtin.oldfiles, "Recent" },
+    f = { builtin.find_files, "File" },
+    b = { builtin.buffers, "Buffer" },
     w = { builtin.live_grep, "Word" },
+    o = { builtin.builtin, "Other" },
   },
 }, { prefix = "<leader>" })
