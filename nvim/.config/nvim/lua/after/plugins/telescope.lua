@@ -19,6 +19,6 @@ whichkey.register({
     f = { builtin.find_files, "File" },
     b = { builtin.buffers, "Buffer" },
     w = { builtin.live_grep, "Word" },
-    o = { builtin.builtin, "Other" },
+    m = { builtin.builtin, "More" },
   },
 }, { prefix = "<leader>" })
