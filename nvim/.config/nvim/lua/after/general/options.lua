@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
-vim.opt.timeoutlen = 100
+vim.opt.timeoutlen = 500
 vim.opt.updatetime = 500
 
 vim.opt.encoding = "utf-8"
