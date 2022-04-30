@@ -8,6 +8,7 @@ set cleaner "lfcl"
 map r :reload
 map d :delete
 map c :rename
+map m :cut
 map y :copy
 map p :paste
 map a push :create<space>
