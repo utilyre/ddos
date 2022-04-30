@@ -6,11 +6,11 @@ set previewer "lfpv"
 set cleaner "lfcl"
 
 map r :reload
-map d :delete
-map c :rename
-map m :cut
+map d :cut
 map y :copy
 map p :paste
+map c :rename
+map D :delete
 map a push :create<space>
 map gw &wali "$f"
 map gd &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact --and-exit
