@@ -13,18 +13,18 @@ bspwm.border: 2
 bspwm.border_nrm: BLACK
 bspwm.border_sel: WHITE
 
-flexblocks.font: monospace:size=10
-flexblocks.height: 30
-flexblocks.underline: 4
-flexblocks.background: BLACK
-flexblocks.foreground: WHITE
-flexblocks.date: BLUE
-flexblocks.wttr: GREEN
-flexblocks.uptm: YELLOW
-flexblocks.desk: CYAN
-flexblocks.volt: YELLOW
-flexblocks.memo: GREEN
-flexblocks.temp: BLUE
+fblk.font: monospace:size=10
+fblk.height: 30
+fblk.underline: 4
+fblk.background: BLACK
+fblk.foreground: WHITE
+fblk.date: BLUE
+fblk.wttr: GREEN
+fblk.uptm: YELLOW
+fblk.desk: CYAN
+fblk.volt: YELLOW
+fblk.memo: GREEN
+fblk.temp: BLUE
 
 herbe.font_pattern: monospace:size=10
 herbe.background_color: BLACK

@@ -33,4 +33,4 @@ case "$1" in
 	"up") pactl set-"$device"-volume "$default" "+2%" ;;
 esac
 
-killall -12 "flexblocks"
+killall -12 "fblk"

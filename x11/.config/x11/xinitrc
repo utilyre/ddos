@@ -10,6 +10,6 @@ lxsession &
 sxhkd &
 wali &
 picom &
-lemonblocks &
+lblk &
 
 exec bspwm

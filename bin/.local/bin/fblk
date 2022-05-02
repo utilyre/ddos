@@ -3,13 +3,13 @@
 trap "unset desk" "10"
 trap "unset volt" "12"
 
-date_color="$(xrdb -get "flexblocks.date")"
-wttr_color="$(xrdb -get "flexblocks.wttr")"
-uptm_color="$(xrdb -get "flexblocks.uptm")"
-desk_color="$(xrdb -get "flexblocks.desk")"
-volt_color="$(xrdb -get "flexblocks.volt")"
-memo_color="$(xrdb -get "flexblocks.memo")"
-temp_color="$(xrdb -get "flexblocks.temp")"
+date_color="$(xrdb -get "fblk.date")"
+wttr_color="$(xrdb -get "fblk.wttr")"
+uptm_color="$(xrdb -get "fblk.uptm")"
+desk_color="$(xrdb -get "fblk.desk")"
+volt_color="$(xrdb -get "fblk.volt")"
+memo_color="$(xrdb -get "fblk.memo")"
+temp_color="$(xrdb -get "fblk.temp")"
 
 while true; do
 	sleep "1s" & wait "$!"
