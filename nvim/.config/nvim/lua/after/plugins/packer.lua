@@ -1,5 +1,6 @@
 local packer = require("packer")
 local util = require("packer.util")
+local whichkey = require("which-key")
 
 packer.init({
   display = {
@@ -12,3 +13,13 @@ packer.startup(function()
     packer.use(plugin)
   end
 end)
+
+whichkey.register({
+  p = {
+    name = "Plugin",
+    s = { packer.sync, "Sync" },
+    i = { packer.install, "Install" },
+    u = { packer.update, "Update" },
+    c = { packer.clean, "Clean" },
+  },
+}, { prefix = "<leader>" })

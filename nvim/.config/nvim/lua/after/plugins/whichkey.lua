@@ -6,6 +6,9 @@ whichkey.setup({
     border = "single",
     winblend = 10,
   },
+  layout = {
+    align = "center",
+  },
   icons = {
     breadcrumb = "=>",
     separator = ":",

@@ -11,12 +11,10 @@ gitsigns.setup({
         name = "Git",
         p = { gitsigns.prev_hunk, "Preview" },
         r = { gitsigns.reset_hunk, "Reset" },
-        R = { gitsigns.reset_buffer, "Reset all" },
         a = { gitsigns.stage_hunk, "Stage" },
-        A = { gitsigns.stage_buffer, "Stage all" },
         k = { gitsigns.prev_hunk, "Previous" },
         j = { gitsigns.next_hunk, "Next" },
-        l = { function() Terminal:new({ cmd = "lazygit", dir = vim.api.nvim_buf_get_name(buffnr):match("^(.*/)") }):toggle() end, "Lazygit" },
+        c = { function() Terminal:new({ cmd = "lazygit" }):toggle() end, "Control" },
       },
     }, { prefix = "<leader>", buffer = buffnr })
   end,
