@@ -2,6 +2,7 @@ require("after.general.options")
 require("after.general.keymaps")
 require("after.general.plugins")
 
+require("after.plugins.packer")
 require("after.plugins.onedark")
 require("after.plugins.lsp")
 require("after.plugins.cmp")

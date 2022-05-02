@@ -3,49 +3,38 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.system({ "git", "clone", "--depth=1", "https://github.com/wbthomason/packer.nvim.git", install_path })
 end
 
-local packer = require("packer")
-local util = require("packer.util")
+_G.plugins = {
+  "wbthomason/packer.nvim",
 
-packer.init({
-  display = {
-    open_fn = function()
-      return util.float({ border = "single" })
-    end,
-  },
-})
+  "famiu/bufdelete.nvim",
+  "nvim-lua/plenary.nvim",
+  "kyazdani42/nvim-web-devicons",
+  "navarasu/onedark.nvim",
 
-packer.startup(function(use)
-  use("wbthomason/packer.nvim")
+  "neovim/nvim-lspconfig",
+  "williamboman/nvim-lsp-installer",
+  "l3mon4d3/luasnip",
+  "rafamadriz/friendly-snippets",
 
-  use("famiu/bufdelete.nvim")
-  use("nvim-lua/plenary.nvim")
-  use("kyazdani42/nvim-web-devicons")
-  use("navarasu/onedark.nvim")
+  "hrsh7th/nvim-cmp",
+  "saadparwaiz1/cmp_luasnip",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
 
-  use("neovim/nvim-lspconfig")
-  use("williamboman/nvim-lsp-installer")
-  use("l3mon4d3/luasnip")
-  use("rafamadriz/friendly-snippets")
+  "nvim-treesitter/nvim-treesitter",
+  "p00f/nvim-ts-rainbow",
+  "windwp/nvim-ts-autotag",
+  "joosepalviste/nvim-ts-context-commentstring",
 
-  use("hrsh7th/nvim-cmp")
-  use("saadparwaiz1/cmp_luasnip")
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-buffer")
-
-  use("nvim-treesitter/nvim-treesitter")
-  use("p00f/nvim-ts-rainbow")
-  use("windwp/nvim-ts-autotag")
-  use("joosepalviste/nvim-ts-context-commentstring")
-
-  use("nvim-telescope/telescope.nvim")
-  use("kyazdani42/nvim-tree.lua")
-  use("akinsho/toggleterm.nvim")
-  use("folke/which-key.nvim")
-  use("akinsho/bufferline.nvim")
-  use("nvim-lualine/lualine.nvim")
-  use("lewis6991/gitsigns.nvim")
-  use("lukas-reineke/indent-blankline.nvim")
-  use("folke/zen-mode.nvim")
-  use("windwp/nvim-autopairs")
-  use("numtostr/comment.nvim")
-end)
+  "nvim-telescope/telescope.nvim",
+  "kyazdani42/nvim-tree.lua",
+  "akinsho/toggleterm.nvim",
+  "folke/which-key.nvim",
+  "akinsho/bufferline.nvim",
+  "nvim-lualine/lualine.nvim",
+  "lewis6991/gitsigns.nvim",
+  "lukas-reineke/indent-blankline.nvim",
+  "folke/zen-mode.nvim",
+  "windwp/nvim-autopairs",
+  "numtostr/comment.nvim",
+}
