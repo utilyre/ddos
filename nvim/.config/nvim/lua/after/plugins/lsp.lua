@@ -53,15 +53,21 @@ local signs = {
   { name = "DiagnosticSignInfo", text = "" },
 }
 for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  vim.fn.sign_define(sign.name, {
+    texthl = sign.name,
+    numhl = sign.name,
+    text = sign.text,
+  })
 end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 vim.diagnostic.config({
-  virtual_text = false,
-  signs = { active = signs },
   update_in_insert = true,
   severity_sort = true,
+  virtual_text = false,
+  signs = {
+    active = signs,
+  },
   float = {
     border = "single",
     source = "always",
