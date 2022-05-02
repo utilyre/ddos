@@ -35,14 +35,15 @@ prompt_wd() {
 	printf "\001%s\002" "$([ -h "$PWD" ] && tput bold setaf 6 || tput bold setaf 4)"
 
 	if [ "$PWD" = "$HOME" ]; then
-		printf "%s" " "
+		printf "%s" ""
 	elif [ -h "$PWD" ]; then
-		printf "%s" " "
+		printf "%s" ""
 	elif [ -z "$(ls --almost-all)" ]; then
-		printf "%s" " "
+		printf "%s" ""
 	else
-		printf "%s" " "
+		printf "%s" ""
 	fi
+	printf " "
 	printf "%s" "$(huma --component="basename" "$PWD")"
 
 	printf "\001%s\002" "$(tput sgr0)"
@@ -53,13 +54,15 @@ prompt_git() {
 	printf "\001%s\002" "$(tput bold setaf 5)"
 
 	case "$(git remote --verbose)" in
-		*"github.com"*) printf "%s" " " ;;
-		*"gitlab.com"*) printf "%s" " " ;;
-		*) printf "%s" " " ;;
+		*"github.com"*) printf "%s" "" ;;
+		*"gitlab.com"*) printf "%s" "" ;;
+		*) printf "%s" "" ;;
 	esac
+	printf " "
 	printf "%s" "$(git branch --show-current | grep --extended-regexp "^.+$" || git rev-parse --short "HEAD")"
 
-	printf "\001%s\002 " "$(tput sgr0)"
+	printf "\001%s\002" "$(tput sgr0)"
+	printf " "
 }
 
 PS1="\n\$(prompt_arrow) \$(prompt_wd) \$(prompt_git)"
