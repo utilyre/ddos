@@ -28,7 +28,7 @@ bind "\c-l:clear-screen"
 prompt_arrow() {
 	printf "\001%s\002" "$([ "$?" -eq "0" ] && tput setaf 2 || tput setaf 1)"
 	printf "%s" "$(echo "|-> >-> ->> |=> >=> =>> ~~> ||>" | tr " " "\n" | shuf --head-count="1")"
-	tput sgr0
+	printf "\001%s\002" "$(tput sgr0)"
 }
 
 prompt_wd() {
@@ -45,7 +45,7 @@ prompt_wd() {
 	fi
 	printf "%s" "$(huma --component="basename" "$PWD")"
 
-	tput sgr0
+	printf "\001%s\002" "$(tput sgr0)"
 }
 
 prompt_git() {
@@ -58,9 +58,8 @@ prompt_git() {
 		*) printf "%s" " " ;;
 	esac
 	printf "%s" "$(git branch --show-current | grep --extended-regexp "^.+$" || git rev-parse --short "HEAD")"
-	printf " "
 
-	tput sgr0
+	printf "\001%s\002 " "$(tput sgr0)"
 }
 
 PS1="\n\$(prompt_arrow) \$(prompt_wd) \$(prompt_git)"
