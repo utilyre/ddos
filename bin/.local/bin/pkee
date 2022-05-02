@@ -12,7 +12,7 @@ case "$1" in
 		password="$(gpg --decrypt "$PASSWORDS_DIR/$name")"
 		[ "$?" -ne "0" ] && exit 1
 
-		herbe " Pkee" "Copied \"$name\" password to clipboard for 45s." &
-		printf "%s" "$password" | xsel --clipboard --selectionTimeout "45000"
+		herbe " Pkee" "Copied \"$name\" password to clipboard for 10s." &
+		printf "%s" "$password" | xsel --clipboard --selectionTimeout "10000"
 		;;
 esac
