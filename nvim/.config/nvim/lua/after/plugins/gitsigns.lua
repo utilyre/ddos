@@ -9,7 +9,7 @@ gitsigns.setup({
     whichkey.register({
       g = {
         name = "Git",
-        p = { gitsigns.prev_hunk, "Preview" },
+        p = { gitsigns.preview_hunk, "Preview" },
         r = { gitsigns.reset_hunk, "Reset" },
         a = { gitsigns.stage_hunk, "Stage" },
         k = { gitsigns.prev_hunk, "Previous" },
