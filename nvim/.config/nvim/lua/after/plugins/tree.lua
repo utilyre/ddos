@@ -41,7 +41,7 @@ tree.setup({
         { key = "y", action = "copy" },
         { key = "p", action = "paste" },
         { key = "c", action = "rename" },
-        { key = "D", action = "remove" },
+        { key = "x", action = "remove" },
         { key = "a", action = "create" },
       },
     },
