@@ -26,6 +26,7 @@ _G.plugins = {
   "windwp/nvim-ts-autotag",
   "joosepalviste/nvim-ts-context-commentstring",
 
+  "ahmedkhalf/project.nvim",
   "nvim-telescope/telescope.nvim",
   "kyazdani42/nvim-tree.lua",
   "akinsho/toggleterm.nvim",
