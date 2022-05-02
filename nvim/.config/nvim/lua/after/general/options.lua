@@ -28,6 +28,7 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.cursorline = true
 vim.opt.pumheight = 10
+vim.opt.completeopt = {}
 
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
