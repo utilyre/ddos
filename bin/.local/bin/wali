@@ -1,7 +1,7 @@
 #!/bin/sh
 
-[ -z "$*" ] && exec xwallpaper --zoom "$WALI_RESTORE"
+[ -z "$1" ] && exec xwallpaper --zoom "$WALIRESFILE"
 
-xdg-mime query filetype "$*" | grep --quiet "^image/" || exit 1
-ln --force --symbolic "$(realpath --canonicalize-missing "$*")" "$WALI_RESTORE"
-xwallpaper --zoom "$WALI_RESTORE"
+xdg-mime query filetype "$1" | grep --quiet "^image/" || exit 1
+ln --force --symbolic "$(realpath --canonicalize-missing "$1")" "$WALIRESFILE"
+xwallpaper --zoom "$WALIRESFILE"
