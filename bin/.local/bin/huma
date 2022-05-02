@@ -16,7 +16,7 @@ while true; do
 	esac
 done
 
-name="$(echo "$*" | sed "s|^$HOME|~|")"
+name="$(echo "$1" | sed "s|^$HOME|~|")"
 case "$component" in
 	"all") echo "$name" ;;
 	"basename") basename "$name" ;;
