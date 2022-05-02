@@ -1,7 +1,7 @@
 #!/bin/sh
 
-out() { echo "$(tput bold setaf 2)===>$(tput sgr0) $*"; }
-err() { echo "$(tput bold setaf 1)===> ERROR:$(tput sgr0) $*" >&2 && exit 1; }
+out() { echo "$(tput bold setaf 2)===>$(tput sgr0) $1"; }
+err() { echo "$(tput bold setaf 1)===> ERROR:$(tput sgr0) $1" >&2 && exit 1; }
 
 install_yay() {
 	git clone "https://aur.archlinux.org/yay.git"

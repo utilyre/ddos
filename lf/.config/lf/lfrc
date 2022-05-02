@@ -17,8 +17,8 @@ map gd &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact -
 map gD &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact
 
 cmd create %{{
-f="$(realpath --canonicalize-missing "$*")"
-[ "$(printf "%s" "$*" | tail --bytes="1")" = "/" ] && exec mkdir --parents "$f"
+f="$(realpath --canonicalize-missing "$1")"
+[ "$(printf "%s" "$1" | tail --bytes="1")" = "/" ] && exec mkdir --parents "$f"
 
 mkdir --parents "$(dirname "$f")"
 touch "$f"
