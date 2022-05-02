@@ -15,7 +15,7 @@ gitsigns.setup({
         a = { gitsigns.stage_hunk, "Stage" },
         A = { gitsigns.stage_buffer, "Stage all" },
         k = { gitsigns.prev_hunk, "Previous" },
-        j = { gitsigns.prev_hunk, "Next" },
+        j = { gitsigns.next_hunk, "Next" },
         l = { function() Terminal:new({ cmd = "lazygit", dir = vim.api.nvim_buf_get_name(buffnr):match("^(.*/)") }):toggle() end, "Lazygit" },
       },
     }, { prefix = "<leader>", buffer = buffnr })
