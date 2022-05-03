@@ -5,7 +5,7 @@ bufferline.setup({
     show_close_icon = false,
     show_buffer_close_icons = false,
     offsets = { {
-      text = "Tree",
+      text = "Explorer",
       filetype = "NvimTree",
     } },
   },
