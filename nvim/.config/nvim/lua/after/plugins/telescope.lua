@@ -8,7 +8,6 @@ telescope.setup({
     find_files = { theme = "dropdown" },
     buffers = { theme = "dropdown" },
     live_grep = { theme = "dropdown" },
-    builtin = { theme = "dropdown" },
   },
 })
 
@@ -19,6 +18,5 @@ whichkey.register({
     f = { builtin.find_files, "File" },
     b = { builtin.buffers, "Buffer" },
     w = { builtin.live_grep, "Word" },
-    m = { builtin.builtin, "More" },
   },
 }, { prefix = "<leader>" })

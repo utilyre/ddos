@@ -9,9 +9,11 @@ gitsigns.setup({
     whichkey.register({
       g = {
         name = "Git",
+        d = { gitsigns.diffthis, "Diff" },
         p = { gitsigns.preview_hunk, "Preview" },
         r = { gitsigns.reset_hunk, "Reset" },
         a = { gitsigns.stage_hunk, "Stage" },
+        u = { gitsigns.undo_stage_hunk, "Undo" },
         k = { gitsigns.prev_hunk, "Previous" },
         j = { gitsigns.next_hunk, "Next" },
         c = { function() Terminal:new({ cmd = "lazygit" }):toggle() end, "Control" },

@@ -8,5 +8,5 @@ zenmode.setup({
 })
 
 whichkey.register({
-  z = { zenmode.toggle, "Zen mode" },
+  z = { zenmode.toggle, "Zen" },
 }, { prefix = "<leader>" })

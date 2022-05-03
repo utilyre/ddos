@@ -5,6 +5,8 @@ dressing.setup({
   input = {
     enabled = true,
     insert_only = false,
+    border = "single",
+    winblend = 0,
   },
   select = {
     enabled = true,
