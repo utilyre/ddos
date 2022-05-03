@@ -30,7 +30,7 @@ while true; do
 		while read -r line; do
 			[ "$line" = "$desk_current" ] &&
 				desk="${desk}%{F:{current}}%{U:{current}}%{+u} $line %{-u}%{U-}%{F-}" ||
-				desk="${desk} $line "
+				desk="${desk}%{A:bspc desktop --focus \"$line\":} $line %{A}"
 		done <<- EOF
 			$(bspc query --desktops --names)
 		EOF

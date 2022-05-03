@@ -9,4 +9,4 @@ fblk | lemonbar \
 	-f "$(xrdb -get "fblk.font")" \
 	-u "$(xrdb -get "fblk.underline")" \
 	-B "$(xrdb -get "fblk.background")" \
-	-F "$(xrdb -get "fblk.foreground")"
+	-F "$(xrdb -get "fblk.foreground")" | sh
