@@ -34,8 +34,9 @@ installer.on_server_ready(function(server)
         i = {
           name = "Intellisense",
           d = { vim.lsp.buf.definition, "Definition" },
+          r = { vim.lsp.buf.references, "References" },
           a = { vim.lsp.buf.code_action, "Actions" },
-          r = { vim.lsp.buf.rename, "Rename" },
+          c = { vim.lsp.buf.rename, "Rename" },
           h = { vim.lsp.buf.hover, "Hover" },
           l = { vim.diagnostic.open_float, "Diagnostics" },
           k = { vim.diagnostic.goto_prev, "Previous" },
