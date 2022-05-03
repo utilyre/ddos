@@ -17,7 +17,7 @@ alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
 
 bind "set editing-mode vi"
-bind "set keyseq-timeout 100"
+bind "set keyseq-timeout 50"
 bind "set show-mode-in-prompt on"
 bind "set vi-cmd-mode-string \1\e[2 q\2"
 bind "set vi-ins-mode-string \1\e[6 q\2"
