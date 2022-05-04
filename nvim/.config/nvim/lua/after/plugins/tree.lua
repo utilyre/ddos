@@ -34,9 +34,9 @@ tree.setup({
     mappings = {
       custom_only = true,
       list = {
-        { key = "r", action = "refresh" },
         { key = "h", action = "close_node" },
-        { key = "l", action = "edit" },
+        { key = { "l", "<2-leftmouse>" }, action = "edit" },
+        { key = "r", action = "refresh" },
         { key = "d", action = "cut" },
         { key = "y", action = "copy" },
         { key = "p", action = "paste" },

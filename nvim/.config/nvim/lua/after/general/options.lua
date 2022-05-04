@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 vim.opt.clipboard = "unnamedplus"
+vim.opt.mouse = "a"
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 50
 vim.opt.updatetime = 500
