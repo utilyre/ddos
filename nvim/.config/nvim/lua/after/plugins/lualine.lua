@@ -10,7 +10,14 @@ lualine.setup({
     lualine_b = {
       { "branch" },
       { "diff" },
-      { "diagnostics", update_in_insert = true, symbols = { error = " ", warn = " ", hint = " ", info = " " } },
+      { "diagnostics",
+        update_in_insert = true,
+        symbols = {
+          error = " ",
+          warn = " ",
+          hint = " ",
+          info = " ",
+        } },
     },
   },
 })
