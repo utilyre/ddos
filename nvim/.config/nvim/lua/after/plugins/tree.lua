@@ -29,7 +29,7 @@ tree.setup({
   diagnostics = { enable = true },
   git = { ignore = false },
   view = {
-    width = 35,
+    width = 40,
     hide_root_folder = true,
     mappings = {
       custom_only = true,
