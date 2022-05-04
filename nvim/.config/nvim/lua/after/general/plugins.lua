@@ -29,7 +29,6 @@ _G.plugins = {
 
   "ahmedkhalf/project.nvim",
   "nvim-telescope/telescope.nvim",
-  "stevearc/dressing.nvim",
   "kyazdani42/nvim-tree.lua",
   "akinsho/toggleterm.nvim",
   "folke/which-key.nvim",

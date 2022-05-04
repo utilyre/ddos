@@ -9,7 +9,7 @@ toggleterm.setup({
 
 whichkey.register({
   t = { function()
-    vim.ui.input({ prompt = "Shell:" }, function(input)
+    vim.ui.input({ prompt = "Command: " }, function(input)
       if input == nil then return end
       Terminal:new({ cmd = input }):toggle()
     end)
