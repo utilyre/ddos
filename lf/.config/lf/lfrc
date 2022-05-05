@@ -1,3 +1,4 @@
+set mouse true
 set drawbox true
 set icons true
 set incsearch true
@@ -5,6 +6,10 @@ set scrolloff 2
 set previewer "lfpv"
 set cleaner "lfcl"
 
+map <m-1> :open
+map <m-2> :updir
+map <m-down> :down
+map <m-up> :up
 map r :reload
 map d :cut
 map y :copy
