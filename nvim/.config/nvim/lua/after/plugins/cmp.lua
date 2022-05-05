@@ -38,7 +38,7 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr" },
     format = function(_, item)
-      item.kind = kinds[item.kind] .. " "
+      item.kind = kinds[item.kind]
       return item
     end,
   },

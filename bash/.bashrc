@@ -43,8 +43,7 @@ prompt_wd() {
 	else
 		printf "%s" ""
 	fi
-	printf " "
-	printf "%s" "$(huma --component="basename" "$PWD")"
+	printf " %s" "$(huma --component="basename" "$PWD")"
 
 	printf "\001%s\002" "$(tput sgr0)"
 }
@@ -58,11 +57,9 @@ prompt_git() {
 		*"gitlab.com"*) printf "%s" "" ;;
 		*) printf "%s" "" ;;
 	esac
-	printf " "
-	printf "%s" "$(git branch --show-current | grep --extended-regexp "^.+$" || git rev-parse --short "HEAD")"
+	printf " %s" "$(git branch --show-current | grep --extended-regexp "^.+$" || git rev-parse --short "HEAD")"
 
-	printf "\001%s\002" "$(tput sgr0)"
-	printf " "
+	printf "\001%s\002 " "$(tput sgr0)"
 }
 
 PS1="\n\$(prompt_arrow) \$(prompt_wd) \$(prompt_git)"
