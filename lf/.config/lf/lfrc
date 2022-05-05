@@ -6,8 +6,8 @@ set scrolloff 2
 set previewer "lfpv"
 set cleaner "lfcl"
 
-map <m-1> :open
-map <m-2> :updir
+map <m-1> :updir
+map <m-2> :open
 map <m-down> :down
 map <m-up> :up
 map r :reload
