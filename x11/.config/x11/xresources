@@ -40,6 +40,7 @@ dmenu.background_sel: BLUE
 dmenu.foreground_sel: BLACK
 
 st.font: monospace:size=10
+st.alpha: 0.98
 st.background: BLACK
 st.foreground: WHITE
 st.black: BLACK
