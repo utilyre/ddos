@@ -76,7 +76,7 @@ cmp.setup({
     expand = function(args) luasnip.lsp_expand(args.body) end,
   },
   sources = {
-    { name = "luasnip", max_item_count = 5 },
+    { name = "luasnip", max_item_count = 2 },
     { name = "nvim_lsp" },
     { name = "buffer" },
   },
