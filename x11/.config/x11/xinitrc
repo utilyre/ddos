@@ -9,7 +9,7 @@ xrandr --output "HDMI-1" --mode "1920x1080" --rate "75"
 lxsession &
 sxhkd &
 wali &
-picom &
+picom --experimental-backends &
 lblk &
 
 exec bspwm
