@@ -52,7 +52,7 @@ ps_git() {
 	git rev-parse 2> "/dev/null" || return
 	printf "\001%s\002" "$(tput bold setaf 5)"
 
-  [ -n "$(git status --porcelain)" ] && printf "%s " ""
+  [ -n "$(git status --porcelain)" ] && printf "%s " ""
 	case "$(git remote --verbose)" in
 		*"github.com"*) printf "%s" "" ;;
 		*"gitlab.com"*) printf "%s" "" ;;
