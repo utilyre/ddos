@@ -8,7 +8,7 @@ export LESS_TERMCAP_ue="$(tput sgr0)"
 export LESS_TERMCAP_so="$(tput setab 3 setaf 0)"
 export LESS_TERMCAP_se="$(tput sgr0)"
 
-shopt -s "autocd" "histverify"
+shopt -s "histverify"
 alias grep="grep --color=\"auto\" --ignore-case"
 alias diff="diff --color=\"auto\""
 alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-readable"
