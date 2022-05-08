@@ -12,6 +12,10 @@ _G.plugins = {
   "kyazdani42/nvim-web-devicons",
   "navarasu/onedark.nvim",
 
+  "nvim-treesitter/nvim-treesitter",
+  "p00f/nvim-ts-rainbow",
+  "windwp/nvim-ts-autotag",
+
   "neovim/nvim-lspconfig",
   "williamboman/nvim-lsp-installer",
   "l3mon4d3/luasnip",
@@ -21,10 +25,6 @@ _G.plugins = {
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
-
-  "nvim-treesitter/nvim-treesitter",
-  "p00f/nvim-ts-rainbow",
-  "windwp/nvim-ts-autotag",
 
   "ahmedkhalf/project.nvim",
   "nvim-telescope/telescope.nvim",
