@@ -9,6 +9,7 @@ vim.opt.updatetime = 500
 
 vim.opt.mouse = "a"
 vim.opt.termguicolors = true
+vim.opt.showmode = false
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.scrolloff = 2
