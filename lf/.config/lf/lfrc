@@ -6,6 +6,8 @@ set scrolloff 2
 set previewer "lfpv"
 set cleaner "lfcl"
 
+cmd create %mkto "$@"
+
 map <m-1> :updir
 map <m-2> :open
 map <m-down> :down
@@ -20,16 +22,3 @@ map a push :create<space>
 map gw &wali "$f"
 map gd &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact --and-exit
 map gD &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact
-
-cmd create %{{
-for arg in "$@"; do
-	file="$(realpath --canonicalize-missing "$arg")"
-	[ "$(printf "%s" "$arg" | tail --bytes="1")" = "/" ] && {
-		mkdir --parents "$file"
-		continue
-	}
-
-	mkdir --parents "$(dirname "$file")"
-	touch "$file"
-done
-}}
