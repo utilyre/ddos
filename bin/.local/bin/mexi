@@ -1,11 +1,11 @@
 #!/bin/sh
 
-action="$(printf "%s\n" "logout" "sleep" "restart" "shutdown" | dmenu -p " ")"
+action="$(printf "%s\n" "Logout" "Sleep" "Restart" "Shutdown" | dmenu -p " ")"
 [ "$?" -ne "0" ] && exit 1
 
 case "$action" in
-	"logout") bspc quit ;;
-	"sleep") systemctl suspend ;;
-	"restart") systemctl reboot ;;
-	"shutdown") systemctl poweroff ;;
+	"Logout") bspc quit ;;
+	"Sleep") systemctl suspend ;;
+	"Restart") systemctl reboot ;;
+	"Shutdown") systemctl poweroff ;;
 esac
