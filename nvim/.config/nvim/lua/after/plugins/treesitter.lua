@@ -6,5 +6,4 @@ configs.setup({
   indent = { enable = true },
   rainbow = { enable = true },
   autotag = { enable = true },
-  context_commentstring = { enable = true },
 })

@@ -25,7 +25,6 @@ _G.plugins = {
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "windwp/nvim-ts-autotag",
-  "joosepalviste/nvim-ts-context-commentstring",
 
   "ahmedkhalf/project.nvim",
   "nvim-telescope/telescope.nvim",
