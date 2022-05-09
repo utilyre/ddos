@@ -6,7 +6,7 @@ set scrolloff 2
 set previewer "lfpv"
 set cleaner "lfcl"
 
-cmd create %mkto "$@"
+cmd create %difi "$@"
 
 map <m-1> :updir
 map <m-2> :open
