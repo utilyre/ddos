@@ -4,15 +4,10 @@ url="$(xsel --clipboard --output)"
 herbe " Nani" "Fething data for \"$url\"." &
 
 formats="$(youtube-dl --list-formats "$url")"
-[ "$?" -ne "0" ] && {
-	herbe " Nani" "Couldn't find the video." &
-	exit 1
-}
+[ "$?" -ne "0" ] && { herbe " Nani" "Couldn't find the video." & exit 1; }
 
 format="$(echo "$formats" | awk "(\$0 !~ /\[.+\]/) { print \$1 \" \" \$2 \" \" \$3 }" | column --table | dmenu -p " ")"
 [ "$?" -ne "0" ] && exit 1
 
-mpv --ytdl-format="${format%% *}" "$url" || {
-	herbe " Nani" "Failed to play the video." &
-	exit 1
-}
+mpv --ytdl-format="${format%% *}" "$url"
+[ "$?" -ne "0" ] && { herbe " Nani" "Failed to play the video." & exit 1; }
