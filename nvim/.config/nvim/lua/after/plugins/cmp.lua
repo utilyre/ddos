@@ -50,8 +50,8 @@ cmp.setup({
         cmp.complete()
       end
     end, { "i" }),
-    ["<c-d>"] = cmp.mapping.scroll_docs(4),
-    ["<c-u>"] = cmp.mapping.scroll_docs(-4),
+    ["<c-d>"] = cmp.mapping.scroll_docs(3),
+    ["<c-u>"] = cmp.mapping.scroll_docs(-3),
     ["<cr>"] = cmp.mapping.confirm({ select = true }),
     ["<tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
