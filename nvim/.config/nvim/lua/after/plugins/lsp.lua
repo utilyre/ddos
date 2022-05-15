@@ -24,21 +24,12 @@ installer.on_server_ready(function(server)
         })
       end
 
-      if client.resolved_capabilities.document_formatting then
-        local gLspFormat = vim.api.nvim_create_augroup("LspFormat", { clear = false })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = gLspFormat,
-          buffer = buffnr,
-          callback = vim.lsp.buf.formatting_sync,
-        })
-      end
-
       whichkey.register({
         i = {
           name = "Intellisense",
           d = { vim.lsp.buf.definition, "Definition" },
-          r = { vim.lsp.buf.references, "References" },
           a = { vim.lsp.buf.code_action, "Actions" },
+          f = { vim.lsp.buf.formatting, "Format" },
           c = { vim.lsp.buf.rename, "Rename" },
           h = { vim.lsp.buf.hover, "Hover" },
           l = { vim.diagnostic.open_float, "Diagnostics" },
