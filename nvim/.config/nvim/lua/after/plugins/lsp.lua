@@ -1,10 +1,7 @@
+local config = require("lspconfig")
 local installer = require("nvim-lsp-installer")
-local luasnip = require("luasnip")
 local cmp = require("cmp_nvim_lsp")
 local whichkey = require("which-key")
-
-require("lspconfig")
-require("luasnip.loaders.from_vscode").lazy_load()
 
 installer.on_server_ready(function(server)
   server:setup({
@@ -66,7 +63,3 @@ vim.diagnostic.config({
   },
 })
 
-luasnip.config.setup({
-  update_events = "TextChanged,TextChangedI",
-  region_check_events = "CursorMoved,CursorMovedI",
-})

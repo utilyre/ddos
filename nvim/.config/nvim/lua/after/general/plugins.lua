@@ -18,6 +18,7 @@ _G.plugins = {
 
   "neovim/nvim-lspconfig",
   "williamboman/nvim-lsp-installer",
+
   "l3mon4d3/luasnip",
   "rafamadriz/friendly-snippets",
 
