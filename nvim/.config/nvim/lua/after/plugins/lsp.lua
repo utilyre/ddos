@@ -1,7 +1,24 @@
 local config = require("lspconfig")
 local installer = require("nvim-lsp-installer")
+local null = require("null-ls")
 local cmp = require("cmp_nvim_lsp")
 local whichkey = require("which-key")
+
+local keymaps = function(buffnr)
+  whichkey.register({
+    i = {
+      name = "Intellisense",
+      d = { vim.lsp.buf.definition, "Definition" },
+      a = { vim.lsp.buf.code_action, "Actions" },
+      f = { vim.lsp.buf.formatting, "Format" },
+      c = { vim.lsp.buf.rename, "Rename" },
+      h = { vim.lsp.buf.hover, "Hover" },
+      l = { vim.diagnostic.open_float, "Diagnostics" },
+      k = { vim.diagnostic.goto_prev, "Previous" },
+      j = { vim.diagnostic.goto_next, "Next" },
+    },
+  }, { prefix = "<leader>", buffer = buffnr })
+end
 
 installer.on_server_ready(function(server)
   server:setup({
@@ -21,19 +38,7 @@ installer.on_server_ready(function(server)
         })
       end
 
-      whichkey.register({
-        i = {
-          name = "Intellisense",
-          d = { vim.lsp.buf.definition, "Definition" },
-          a = { vim.lsp.buf.code_action, "Actions" },
-          f = { vim.lsp.buf.formatting, "Format" },
-          c = { vim.lsp.buf.rename, "Rename" },
-          h = { vim.lsp.buf.hover, "Hover" },
-          l = { vim.diagnostic.open_float, "Diagnostics" },
-          k = { vim.diagnostic.goto_prev, "Previous" },
-          j = { vim.diagnostic.goto_next, "Next" },
-        },
-      }, { prefix = "<leader>", buffer = buffnr })
+      keymaps(buffnr)
     end,
   })
 end)
@@ -63,3 +68,14 @@ vim.diagnostic.config({
   },
 })
 
+null.setup({
+  on_attach = function(client, buffnr)
+    keymaps(buffnr)
+  end,
+  sources = {
+    null.builtins.diagnostics.shellcheck,
+    null.builtins.formatting.prettier.with({
+      prefer_local = "node_modules/.bin",
+    }),
+  },
+})
