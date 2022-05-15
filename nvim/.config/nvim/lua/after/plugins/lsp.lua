@@ -20,6 +20,18 @@ local keymaps = function(buffnr)
   }, { prefix = "<leader>", buffer = buffnr })
 end
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+vim.diagnostic.config({
+  update_in_insert = true,
+  virtual_text = false,
+  signs = {
+    active = signs,
+  },
+  float = {
+    border = "single",
+  },
+})
+
 installer.on_server_ready(function(server)
   server:setup({
     capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -35,6 +47,15 @@ installer.on_server_ready(function(server)
           group = gLspHighlight,
           buffer = buffnr,
           callback = vim.lsp.buf.clear_references,
+        })
+      end
+
+      if client.resolved_capabilities.code_lens then
+        local gLspLens = vim.api.nvim_create_augroup("LspLens", { clear = false })
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+          group = gLspLens,
+          buffer = buffnr,
+          callback = vim.lsp.codelens.refresh,
         })
       end
 
@@ -55,18 +76,6 @@ for _, sign in ipairs(signs) do
     text = sign.text,
   })
 end
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-vim.diagnostic.config({
-  update_in_insert = true,
-  virtual_text = false,
-  signs = {
-    active = signs,
-  },
-  float = {
-    border = "single",
-  },
-})
 
 null.setup({
   on_attach = function(client, buffnr)

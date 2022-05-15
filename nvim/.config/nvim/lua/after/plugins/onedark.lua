@@ -7,6 +7,8 @@ onedark.setup({
     keywords = "italic",
   },
   highlights = {
+    LspCodeLens = { fg = "$grey" },
+    LspCodeLensSeparator = { fg = "$grey" },
     NvimTreeNormal = { bg = "$bg_d" },
     BufferLineFill = { bg = "$bg0" },
     BufferLineBackground = { bg = "$bg0" },
