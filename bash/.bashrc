@@ -1,9 +1,9 @@
 #!/bin/bash
 
 export EDITOR="/bin/nvim"
-export LESS_TERMCAP_md="$(tput bold setaf 1)"
+export LESS_TERMCAP_md="$(tput bold setaf 4)"
 export LESS_TERMCAP_me="$(tput sgr0)"
-export LESS_TERMCAP_us="$(tput sitm setaf 2)"
+export LESS_TERMCAP_us="$(tput sitm setaf 5)"
 export LESS_TERMCAP_ue="$(tput sgr0)"
 export LESS_TERMCAP_so="$(tput setab 3 setaf 0)"
 export LESS_TERMCAP_se="$(tput sgr0)"
