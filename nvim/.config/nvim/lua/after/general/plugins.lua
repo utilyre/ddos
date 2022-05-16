@@ -33,6 +33,7 @@ _G.plugins = {
   "kyazdani42/nvim-tree.lua",
   "akinsho/toggleterm.nvim",
   "folke/which-key.nvim",
+  "stevearc/dressing.nvim",
   "akinsho/bufferline.nvim",
   "nvim-lualine/lualine.nvim",
   "lewis6991/gitsigns.nvim",
