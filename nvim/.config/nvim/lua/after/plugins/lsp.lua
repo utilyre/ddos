@@ -4,7 +4,30 @@ local null = require("null-ls")
 local cmp = require("cmp_nvim_lsp")
 local whichkey = require("which-key")
 
-local keymaps = function(buffnr)
+local on_attach = function(client, buffnr)
+  local gLsp = vim.api.nvim_create_augroup("Lsp", { clear = false })
+
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      group = gLsp,
+      buffer = buffnr,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+      group = gLsp,
+      buffer = buffnr,
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
+
+  if client.resolved_capabilities.code_lens then
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      group = gLsp,
+      buffer = buffnr,
+      callback = vim.lsp.codelens.refresh,
+    })
+  end
+
   whichkey.register({
     i = {
       name = "Intellisense",
@@ -35,32 +58,7 @@ vim.diagnostic.config({
 installer.on_server_ready(function(server)
   server:setup({
     capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = function(client, buffnr)
-      if client.resolved_capabilities.document_highlight then
-        local gLspHighlight = vim.api.nvim_create_augroup("LspHighlight", { clear = false })
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-          group = gLspHighlight,
-          buffer = buffnr,
-          callback = vim.lsp.buf.document_highlight,
-        })
-        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-          group = gLspHighlight,
-          buffer = buffnr,
-          callback = vim.lsp.buf.clear_references,
-        })
-      end
-
-      if client.resolved_capabilities.code_lens then
-        local gLspLens = vim.api.nvim_create_augroup("LspLens", { clear = false })
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-          group = gLspLens,
-          buffer = buffnr,
-          callback = vim.lsp.codelens.refresh,
-        })
-      end
-
-      keymaps(buffnr)
-    end,
+    on_attach = on_attach,
   })
 end)
 
@@ -78,9 +76,7 @@ for _, sign in ipairs(signs) do
 end
 
 null.setup({
-  on_attach = function(client, buffnr)
-    keymaps(buffnr)
-  end,
+  on_attach = on_attach,
   sources = {
     null.builtins.diagnostics.shellcheck,
     null.builtins.formatting.prettier.with({
