@@ -35,6 +35,7 @@ local on_attach = function(client, buffnr)
     })
   end
 
+  vim.keymap.set("i", "<c-j>", vim.lsp.buf.signature_help)
   whichkey.register({
     i = {
       name = "Intellisense",
@@ -67,6 +68,9 @@ vim.diagnostic.config({
   },
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "single",
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = "single",
 })
 
