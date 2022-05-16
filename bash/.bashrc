@@ -15,6 +15,7 @@ alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-reada
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
+alias vi="\$EDITOR"
 
 bind "set editing-mode vi"
 bind "set keyseq-timeout 50"
