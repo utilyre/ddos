@@ -4,6 +4,13 @@ local null = require("null-ls")
 local cmp = require("cmp_nvim_lsp")
 local whichkey = require("which-key")
 
+local signs = {
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
+}
+
 local on_attach = function(client, buffnr)
   local gLsp = vim.api.nvim_create_augroup("Lsp", { clear = false })
 
@@ -43,7 +50,12 @@ local on_attach = function(client, buffnr)
   }, { prefix = "<leader>", buffer = buffnr })
 end
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, {
+    texthl = sign.name,
+    text = sign.text,
+  })
+end
 vim.diagnostic.config({
   update_in_insert = true,
   virtual_text = false,
@@ -54,6 +66,9 @@ vim.diagnostic.config({
     border = "single",
   },
 })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "single",
+})
 
 installer.on_server_ready(function(server)
   server:setup({
@@ -61,19 +76,6 @@ installer.on_server_ready(function(server)
     on_attach = on_attach,
   })
 end)
-
-local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-}
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, {
-    texthl = sign.name,
-    text = sign.text,
-  })
-end
 
 null.setup({
   on_attach = on_attach,
