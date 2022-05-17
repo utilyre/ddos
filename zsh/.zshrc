@@ -47,6 +47,5 @@ zstyle ":completion:*" "menu" "select"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
 
-zinstall "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
+zinstall "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
 setopt "interactive_comments"
-ZSH_HIGHLIGHT_STYLES[comment]="fg=#5c6370"
