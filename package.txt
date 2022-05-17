@@ -30,3 +30,4 @@ xorg-xsetroot
 xsel
 xwallpaper
 youtube-dl
+zsh
