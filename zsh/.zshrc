@@ -8,7 +8,7 @@ alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
 
 setopt "appendhistory"
-SAVEHIST="1000"
+SAVEHIST="4096"
 
 ZVM_KEYTIMEOUT="0.05"
 zvm_after_init() {
