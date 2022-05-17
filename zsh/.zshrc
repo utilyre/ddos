@@ -30,7 +30,7 @@ zstyle ":completion:*" "menu" "select"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
 
-zplug() {
+zinstall() {
 	mkdir --parents "$ZPLUG_DIR"
 	plugin="$ZPLUG_DIR/${1##*/}"
 
@@ -38,7 +38,14 @@ zplug() {
 	source "$plugin/$2"
 }
 
-zplug "jeffreytse/zsh-vi-mode" "zsh-vi-mode.zsh"
-zplug "spaceship-prompt/spaceship-prompt" "spaceship.zsh"
-zplug "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-zplug "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
+zupdate() {
+	for d in "$ZPLUG_DIR"/*; do
+		[ ! -d "$d" ] && continue
+		(cd "$d" && git pull --quiet)
+	done
+}
+
+zinstall "jeffreytse/zsh-vi-mode" "zsh-vi-mode.zsh"
+zinstall "spaceship-prompt/spaceship-prompt" "spaceship.zsh"
+zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
+zinstall "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
