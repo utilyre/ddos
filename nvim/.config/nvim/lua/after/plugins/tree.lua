@@ -26,6 +26,7 @@ vim.g.nvim_tree_icons = {
 }
 
 tree.setup({
+  update_cwd = true,
   diagnostics = { enable = true },
   git = { ignore = false },
   view = {
