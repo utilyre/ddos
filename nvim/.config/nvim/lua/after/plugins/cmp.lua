@@ -53,24 +53,38 @@ cmp.setup({
     ["<c-d>"] = cmp.mapping.scroll_docs(3),
     ["<c-u>"] = cmp.mapping.scroll_docs(-3),
     ["<cr>"] = cmp.mapping.confirm({ select = true }),
-    ["<tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<s-tab>"] = cmp.mapping(function()
+    ["<s-tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
+      else
+        fallback()
       end
     end, { "i", "s" }),
+    ["<tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<c-k>"] = cmp.mapping(function(fallback)
+      if luasnip.choice_active(-1) then
+        luasnip.change_choice(-1)
+      else
+        fallback()
+      end
+    end),
+    ["<c-j>"] = cmp.mapping(function(fallback)
+      if luasnip.choice_active(1) then
+        luasnip.change_choice(1)
+      else
+        fallback()
+      end
+    end),
   },
   snippet = {
     expand = function(args) luasnip.lsp_expand(args.body) end,
