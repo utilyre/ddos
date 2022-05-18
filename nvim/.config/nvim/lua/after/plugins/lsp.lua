@@ -85,6 +85,8 @@ null.setup({
   on_attach = on_attach,
   sources = {
     null.builtins.diagnostics.shellcheck,
+    null.builtins.diagnostics.luacheck,
+    null.builtins.formatting.stylua,
     null.builtins.formatting.prettier.with({
       prefer_local = "node_modules/.bin",
     }),
