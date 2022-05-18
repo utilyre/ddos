@@ -47,5 +47,6 @@ setopt "interactive_comments"
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 autoload "compinit" && compinit
 zstyle ":completion:*" "menu" "select"
+zstyle ":completion:*" "matcher-list" "m:{a-z}={A-Za-z}"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
