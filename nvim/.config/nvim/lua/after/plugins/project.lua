@@ -28,7 +28,6 @@ telescope.setup({
   pickers = {
     oldfiles = { theme = "dropdown" },
     find_files = { theme = "dropdown" },
-    buffers = { theme = "dropdown" },
     live_grep = { theme = "dropdown" },
   },
   extensions = {
@@ -40,8 +39,8 @@ whichkey.register({
   f = {
     name = "Find",
     p = { telescope.extensions.projects.projects, "Project" },
+    r = { builtin.oldfiles, "Recent" },
     f = { builtin.find_files, "File" },
-    b = { builtin.buffers, "Buffer" },
     w = { builtin.live_grep, "Word" },
   },
 }, { prefix = "<leader>" })

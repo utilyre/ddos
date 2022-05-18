@@ -6,7 +6,6 @@ end
 _G.plugins = {
   "wbthomason/packer.nvim",
 
-  "famiu/bufdelete.nvim",
   "nvim-lua/plenary.nvim",
   "nvim-lua/popup.nvim",
   "kyazdani42/nvim-web-devicons",
@@ -36,7 +35,7 @@ _G.plugins = {
   "akinsho/toggleterm.nvim",
   "folke/which-key.nvim",
 
-  "akinsho/bufferline.nvim",
+  "romgrk/barbar.nvim",
   "petertriho/nvim-scrollbar",
   "nvim-lualine/lualine.nvim",
   "lewis6991/gitsigns.nvim",

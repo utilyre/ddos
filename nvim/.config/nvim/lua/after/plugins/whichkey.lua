@@ -14,3 +14,7 @@ whichkey.setup({
     group = "~",
   },
 })
+
+whichkey.register({
+  u = { "<cmd>nohlsearch<cr>", "Unselect" }
+}, { prefix = "<leader>" })
