@@ -25,7 +25,9 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
 })
 
 whichkey.register({
+  n = { "<cmd>enew<cr>", "New" },
   w = { "<cmd>write<cr>", "Save" },
+  q = { "<cmd>quitall<cr>", "Quit" },
   c = { "<cmd>BufferClose<cr>", "Close" },
   m = { "<cmd>BufferPin<cr>", "Mount" },
   s = { "<cmd>BufferPick<cr>", "Select" },
