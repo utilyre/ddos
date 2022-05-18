@@ -1,5 +1,13 @@
 #!/bin/zsh
 
+export EDITOR="/bin/nvim"
+export LESS_TERMCAP_md="$(tput bold setaf 4)"
+export LESS_TERMCAP_me="$(tput sgr0)"
+export LESS_TERMCAP_us="$(tput sitm setaf 5)"
+export LESS_TERMCAP_ue="$(tput sgr0)"
+export LESS_TERMCAP_so="$(tput setab 3 setaf 0)"
+export LESS_TERMCAP_se="$(tput sgr0)"
+
 alias grep="grep --color=\"auto\" --ignore-case"
 alias diff="diff --color=\"auto\""
 alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-readable"
@@ -46,12 +54,12 @@ SPACESHIP_GIT_STATUS_AHEAD=">"
 SPACESHIP_GIT_STATUS_BEHIND="<"
 SPACESHIP_GIT_STATUS_DIVERGED="<>"
 
-zinstall "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
-setopt "interactive_comments"
-
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 autoload "compinit" && compinit
 zstyle ":completion:*" "menu" "select"
 zstyle ":completion:*" "matcher-list" "m:{a-z}={A-Za-z}"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
+
+zinstall "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
+setopt "interactive_comments"
