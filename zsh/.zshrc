@@ -41,11 +41,11 @@ SPACESHIP_GIT_STATUS_DIVERGED="<>"
 SPACESHIP_CHAR_SYMBOL="||>"
 SPACESHIP_CHAR_SUFFIX=" "
 
+zinstall "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
+setopt "interactive_comments"
+
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 autoload "compinit" && compinit
 zstyle ":completion:*" "menu" "select"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
-
-zinstall "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
-setopt "interactive_comments"
