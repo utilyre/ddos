@@ -2,7 +2,6 @@ local state = require("bufferline.state")
 local whichkey = require("which-key")
 
 vim.g.bufferline = {
-  semantic_letters = false,
   icon_pinned = "",
   icon_separator_active = "",
   icon_separator_inactive = "",
@@ -26,11 +25,16 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
 
 whichkey.register({
   n = { "<cmd>enew<cr>", "New" },
-  w = { "<cmd>write<cr>", "Save" },
+  w = { "<cmd>write<cr>", "Write" },
   q = { "<cmd>quitall<cr>", "Quit" },
   c = { "<cmd>BufferClose<cr>", "Close" },
-  m = { "<cmd>BufferPin<cr>", "Mount" },
-  s = { "<cmd>BufferPick<cr>", "Select" },
   h = { "<cmd>BufferPrevious<cr>", "Previous" },
   l = { "<cmd>BufferNext<cr>", "Next" },
+  b = {
+    name = "Buffer",
+    p = { "<cmd>BufferPin<cr>", "Pin" },
+    s = { "<cmd>BufferPick<cr>", "Select" },
+    o = { "<cmd>BufferOrderByDirectory<CR><cr>", "Order" },
+    c = { "<cmd>BufferCloseAllButCurrentOrPinned<cr>", "Clean" },
+  },
 }, { prefix = "<leader>" })
