@@ -4,12 +4,23 @@ local null = require("null-ls")
 local cmp = require("cmp_nvim_lsp")
 local whichkey = require("which-key")
 
-local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-}
+local get_signs = function()
+  local signs = {
+    { name = "DiagnosticSignError", text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
+  }
+
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, {
+      texthl = sign.name,
+      text = sign.text,
+    })
+  end
+
+  return signs
+end
 
 local on_attach = function(client, buffnr)
   local gLsp = vim.api.nvim_create_augroup("Lsp", { clear = false })
@@ -50,17 +61,24 @@ local on_attach = function(client, buffnr)
   }, { prefix = "<leader>", buffer = buffnr })
 end
 
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, {
-    texthl = sign.name,
-    text = sign.text,
-  })
+local get_sources = function()
+  local config_path = vim.fn.expand("~/.null-ls")
+  if vim.fn.filereadable(config_path) == 0 then return {} end
+
+  local sources = {}
+  for _, line in pairs(vim.fn.readfile(config_path)) do
+    local parts = vim.split(line, ".", { plain = true })
+    table.insert(sources, null.builtins[parts[1]][parts[2]])
+  end
+
+  return sources
 end
+
 vim.diagnostic.config({
   update_in_insert = true,
   virtual_text = false,
   signs = {
-    active = signs,
+    active = get_signs(),
   },
   float = {
     border = "single",
@@ -79,12 +97,5 @@ end)
 
 null.setup({
   on_attach = on_attach,
-  sources = {
-    null.builtins.diagnostics.shellcheck,
-    null.builtins.diagnostics.luacheck,
-    null.builtins.formatting.stylua,
-    null.builtins.formatting.prettier.with({
-      prefer_local = "node_modules/.bin",
-    }),
-  },
+  sources = get_sources(),
 })
