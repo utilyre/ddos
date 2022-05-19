@@ -67,8 +67,8 @@ local get_sources = function()
 
   local sources = {}
   for _, line in pairs(vim.fn.readfile(config_path)) do
-    local parts = vim.split(line, ".", { plain = true })
-    table.insert(sources, null.builtins[parts[1]][parts[2]])
+    local parts = vim.split(line, "#")
+    table.insert(sources, null.builtins[parts[2]][parts[1]])
   end
 
   return sources
