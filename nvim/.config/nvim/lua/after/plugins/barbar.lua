@@ -24,6 +24,7 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
 })
 
 whichkey.register({
+  r = { "<cmd>edit<cr>", "Reload" },
   n = { "<cmd>enew<cr>", "New" },
   w = { "<cmd>write<cr>", "Write" },
   q = { "<cmd>quitall<cr>", "Quit" },
