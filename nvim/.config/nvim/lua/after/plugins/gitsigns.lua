@@ -4,7 +4,7 @@ local whichkey = require("which-key")
 
 gitsigns.setup({
   current_line_blame = true,
-  current_line_blame_formatter = "<author> - <summary> (<author_time:%R>)",
+  current_line_blame_formatter = "  ● <author> - <summary> (<author_time:%R>)",
   on_attach = function(buffnr)
     whichkey.register({
       g = {
