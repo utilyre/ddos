@@ -67,7 +67,7 @@ while true; do
 	[ -z "$temp" ] || [ "$(($timestamp % 10))" -eq "0" ] && temp="$(m_temp)"
 
 	printf "%s%s%s\n" \
-		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$uptm_color}%{U$uptm_color}%{+u}  $uptm %{-u}%{U-}%{F-} " \
+		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$uptm_color}%{U$uptm_color}%{+u}  $uptm %{-u}%{U-}%{F-} " \
 		"%{c} $(echo "$desk" | sed "s/:{current}/$desk_color/g") " \
 		"%{r} %{F$volt_color}%{U$volt_color}%{+u}  $volt %{-u}%{U-}%{F-} %{F$memo_color}%{U$memo_color}%{+u}  $memo %{-u}%{U-}%{F-} %{F$temp_color}%{U$temp_color}%{+u}  $temp %{-u}%{U-}%{F-} "
 done
