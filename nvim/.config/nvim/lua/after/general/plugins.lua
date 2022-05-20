@@ -26,6 +26,7 @@ _G.plugins = {
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lsp",
+  "petertriho/cmp-git",
   "hrsh7th/cmp-buffer",
   "windwp/nvim-autopairs",
 

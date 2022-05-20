@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local git = require("cmp_git")
 local autopairs = require("nvim-autopairs")
 local completion = require("nvim-autopairs.completion.cmp")
 
@@ -105,11 +106,17 @@ cmp.setup({
       group_index = 1,
     },
     {
+      name = "git",
+      group_index = 2,
+    },
+    {
       name = "buffer",
       group_index = 2,
     },
   },
 })
+
+git.setup()
 
 cmp.event:on("confirm_done", completion.on_confirm_done({ map_char = { tex = "" } }))
 autopairs.setup({

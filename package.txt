@@ -2,6 +2,7 @@ brave-bin
 bspwm
 dragon-drop
 git
+github-cli
 jq
 lazygit
 lemonbar-xft-git
