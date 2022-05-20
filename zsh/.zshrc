@@ -18,7 +18,7 @@ zinstall() {
 	mkdir --parents "$ZPLUG_DIR"
 	plugin="$ZPLUG_DIR/${1##*/}"
 
-	[ ! -d "$plugin" ] && git clone --quiet --depth="1" "https://github.com/$1.git" "$plugin"
+	[ ! -d "$plugin" ] && git clone --depth="1" "https://github.com/$1.git" "$plugin"
 	[ -n "$2" ] && source "$plugin/$2"
 	fpath+="$plugin"
 }
@@ -26,7 +26,7 @@ zinstall() {
 zupdate() {
 	for d in "$ZPLUG_DIR"/*; do
 		[ ! -d "$d" ] && continue
-		(cd "$d" && git pull --quiet)
+		(cd "$d" && git pull)
 	done
 }
 
