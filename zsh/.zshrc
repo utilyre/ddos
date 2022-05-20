@@ -32,6 +32,7 @@ zupdate() {
 }
 
 setopt "appendhistory"
+HISTSIZE="4096"
 SAVEHIST="4096"
 
 zinstall "jeffreytse/zsh-vi-mode" "zsh-vi-mode.zsh"
