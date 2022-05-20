@@ -37,6 +37,9 @@ cmp.setup({
       border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
     },
   },
+  experimental = {
+    ghost_text = true,
+  },
   formatting = {
     fields = { "kind", "abbr" },
     format = function(_, item)
