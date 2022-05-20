@@ -25,14 +25,7 @@ dressing.setup({
 
 telescope.load_extension("projects")
 telescope.setup({
-  pickers = {
-    oldfiles = { theme = "dropdown" },
-    find_files = { theme = "dropdown" },
-    live_grep = { theme = "dropdown" },
-  },
-  extensions = {
-    projects = { theme = "dropdown" },
-  },
+  defaults = themes.get_dropdown(),
 })
 
 whichkey.register({
