@@ -14,6 +14,7 @@ _G.plugins = {
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "windwp/nvim-ts-autotag",
+  "numtostr/comment.nvim",
 
   "neovim/nvim-lspconfig",
   "williamboman/nvim-lsp-installer",
@@ -26,6 +27,7 @@ _G.plugins = {
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
+  "windwp/nvim-autopairs",
 
   "ahmedkhalf/project.nvim",
   "stevearc/dressing.nvim",
@@ -40,7 +42,4 @@ _G.plugins = {
   "nvim-lualine/lualine.nvim",
   "lewis6991/gitsigns.nvim",
   "lukas-reineke/indent-blankline.nvim",
-
-  "windwp/nvim-autopairs",
-  "numtostr/comment.nvim",
 }

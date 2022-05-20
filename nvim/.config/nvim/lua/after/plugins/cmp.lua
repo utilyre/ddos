@@ -1,5 +1,7 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local autopairs = require("nvim-autopairs")
+local completion = require("nvim-autopairs.completion.cmp")
 
 local kinds = {
   Text = "",
@@ -94,4 +96,9 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "buffer" },
   },
+})
+
+cmp.event:on("confirm_done", completion.on_confirm_done({ map_char = { tex = "" } }))
+autopairs.setup({
+  check_ts = true,
 })
