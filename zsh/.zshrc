@@ -59,7 +59,7 @@ zstyle ":completion:*" "menu" "select"
 zstyle ":completion:*" "matcher-list" "m:{a-z}={A-Za-z}"
 bindkey -M menuselect "^[[Z" "reverse-menu-complete"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
 zinstall "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
 setopt "interactive_comments"
