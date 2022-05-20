@@ -17,7 +17,7 @@ gitsigns.setup({
         u = { gitsigns.undo_stage_hunk, "Undo" },
         k = { gitsigns.prev_hunk, "Previous" },
         j = { gitsigns.next_hunk, "Next" },
-        c = { function() Terminal:new({ cmd = "lazygit" }):toggle() end, "Control" },
+        l = { function() Terminal:new({ cmd = "lazygit" }):toggle() end, "Lazygit" },
       },
     }, { prefix = "<leader>", buffer = buffnr })
   end,
