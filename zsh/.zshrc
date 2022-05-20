@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-export EDITOR="/bin/nvim"
 export LESS_TERMCAP_md="$(tput bold setaf 4)"
 export LESS_TERMCAP_me="$(tput sgr0)"
 export LESS_TERMCAP_us="$(tput sitm setaf 5)"
