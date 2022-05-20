@@ -45,7 +45,7 @@ m_memo() {
 }
 
 m_temp() {
-  printf "%s°C (High: %s°C)" \
+	printf "%s°C (High: %s°C)" \
 		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")" \
 		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_max")"
 }
