@@ -62,6 +62,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
 zinstall "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 setopt "interactive_comments"
+ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
 zinstall "softmoth/zsh-vim-mode" "zsh-vim-mode.plugin.zsh"
 bindkey -M "viins" "jk" "vi-cmd-mode"
