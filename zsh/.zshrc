@@ -67,5 +67,5 @@ bindkey -M menuselect "^[[Z" "reverse-menu-complete"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
-zinstall "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
+zinstall "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 setopt "interactive_comments"
