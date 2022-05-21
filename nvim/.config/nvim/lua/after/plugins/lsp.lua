@@ -39,7 +39,7 @@ local on_attach = function(client, buffnr)
   end
 
   if client.resolved_capabilities.code_lens then
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+    vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
       group = gLsp,
       buffer = buffnr,
       callback = vim.lsp.codelens.refresh,
