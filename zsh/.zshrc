@@ -34,13 +34,6 @@ setopt "appendhistory"
 HISTSIZE="4096"
 SAVEHIST="4096"
 
-zinstall "jeffreytse/zsh-vi-mode" "zsh-vi-mode.zsh"
-zvm_after_init() {
-	zvm_bindkey "viins" "jk" "zvm_exit_insert_mode"
-	zvm_bindkey "viins" "kj" "zvm_exit_insert_mode"
-}
-ZVM_KEYTIMEOUT="0.05"
-
 zinstall "sindresorhus/pure"
 autoload "promptinit" && promptinit
 prompt "pure"
@@ -69,3 +62,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
 zinstall "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 setopt "interactive_comments"
+
+zinstall "softmoth/zsh-vim-mode" "zsh-vim-mode.plugin.zsh"
+bindkey -sM "viins" "jk" "^["
+bindkey -sM "viins" "kj" "^["
+RPS1=""
+KEYTIMEOUT="5"
+MODE_CURSOR_VIINS="bar"
