@@ -35,10 +35,10 @@ _G.plugins = {
   "nvim-telescope/telescope.nvim",
 
   "kyazdani42/nvim-tree.lua",
+  "matbme/jabs.nvim",
   "akinsho/toggleterm.nvim",
   "folke/which-key.nvim",
 
-  "romgrk/barbar.nvim",
   "petertriho/nvim-scrollbar",
   "nvim-lualine/lualine.nvim",
   "lewis6991/gitsigns.nvim",
