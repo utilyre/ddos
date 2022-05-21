@@ -21,7 +21,7 @@ _G.plugins = {
   "jose-elias-alvarez/null-ls.nvim",
 
   "l3mon4d3/luasnip",
-  "rafamadriz/friendly-snippets",
+  "utilyre/spoon.nvim",
 
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",
