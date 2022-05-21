@@ -6,4 +6,6 @@ luasnip.config.setup({
   region_check_events = "CursorMoved,CursorMovedI",
 })
 
-spoon.setup()
+spoon.setup({
+  preferSingleQuotes = false,
+})
