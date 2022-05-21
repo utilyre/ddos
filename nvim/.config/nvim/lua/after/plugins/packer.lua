@@ -3,9 +3,9 @@ local util = require("packer.util")
 local whichkey = require("which-key")
 
 packer.startup({
-  function()
+  function(use)
     for _, plugin in pairs(_G.plugins) do
-      packer.use(plugin)
+      use(plugin)
     end
   end,
   config = {
