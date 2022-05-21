@@ -14,7 +14,7 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/config.ini"
 export LF_CACHE_DIR="$XDG_CACHE_HOME/lf"
-export ZPLUG_DIR="$XDG_DATA_HOME/zsh"
+export ZDIR="$XDG_DATA_HOME/zsh"
 export PASSWORDS_DIR="$XDG_DATA_HOME/passwords"
 export HISTFILE="$XDG_STATE_HOME/shell"
 export LESSHISTFILE="$XDG_STATE_HOME/less"

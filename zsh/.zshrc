@@ -15,8 +15,8 @@ alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
 
 zinstall() {
-	mkdir --parents "$ZPLUG_DIR"
-	plugin="$ZPLUG_DIR/${1##*/}"
+	mkdir --parents "$ZDIR"
+	plugin="$ZDIR/${1##*/}"
 
 	[ ! -d "$plugin" ] && git clone --depth="1" "https://github.com/$1.git" "$plugin"
 	[ -n "$2" ] && source "$plugin/$2"
@@ -24,7 +24,7 @@ zinstall() {
 }
 
 zupdate() {
-	for d in "$ZPLUG_DIR"/*; do
+	for d in "$ZDIR"/*; do
 		[ ! -d "$d" ] && continue
 		(cd "$d" && git pull)
 	done
