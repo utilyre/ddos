@@ -3,8 +3,11 @@ local Terminal = require("toggleterm.terminal").Terminal
 local whichkey = require("which-key")
 
 toggleterm.setup({
-  direction = "float",
   open_mapping = "<c-_>",
+  direction = "float",
+  float_opts = {
+    border = "curved",
+  },
 })
 
 whichkey.register({

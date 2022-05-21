@@ -13,7 +13,7 @@ dressing.setup({
   input = {
     enabled = true,
     relative = "editor",
-    border = "single",
+    border = "rounded",
     winblend = 0,
     insert_only = false,
   },

@@ -10,7 +10,7 @@ packer.startup({
   end,
   config = {
     display = {
-      open_fn = function() return util.float({ border = "single" }) end,
+      open_fn = function() return util.float({ border = "rounded" }) end,
     },
   },
 })

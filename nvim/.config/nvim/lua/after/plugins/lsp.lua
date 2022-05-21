@@ -81,11 +81,11 @@ vim.diagnostic.config({
     active = get_signs(),
   },
   float = {
-    border = "single",
+    border = "rounded",
   },
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single",
+  border = "rounded",
 })
 
 installer.on_server_ready(function(server)
