@@ -35,7 +35,7 @@ vim.g.plugins = {
   "nvim-telescope/telescope.nvim",
 
   "kyazdani42/nvim-tree.lua",
-  "matbme/jabs.nvim",
+  "toppair/reach.nvim",
   "akinsho/toggleterm.nvim",
   "folke/which-key.nvim",
 
