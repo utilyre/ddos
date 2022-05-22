@@ -4,7 +4,7 @@ local whichkey = require("which-key")
 
 packer.startup({
   function(use)
-    for _, plugin in pairs(_G.plugins) do
+    for _, plugin in pairs(vim.g.plugins) do
       use(plugin)
     end
   end,
