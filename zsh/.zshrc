@@ -34,29 +34,21 @@ setopt "appendhistory"
 HISTSIZE="4096"
 SAVEHIST="4096"
 
-zinstall "sindresorhus/pure"
-autoload "promptinit" && promptinit
-prompt "pure"
-zstyle ":prompt:pure:path" "color" "blue"
-zstyle ":prompt:pure:git:stash" "show" "yes"
-zstyle ":prompt:pure:git:*" "color" "red"
-zstyle ":prompt:pure:git:branch*" "color" "magenta"
-zstyle ":prompt:pure:execution_time" "color" "yellow"
-zstyle ":prompt:pure:prompt:continuation" "color" "cyan"
-zstyle ":prompt:pure:prompt:failure" "color" "red"
-zstyle ":prompt:pure:prompt:success" "color" "green"
-PURE_PROMPT_SYMBOL="||>"
-PURE_PROMPT_VICMD_SYMBOL="<||"
-PURE_GIT_DOWN_ARROW="<"
-PURE_GIT_UP_ARROW=">"
-PURE_GIT_STASH_SYMBOL="$"
+setopt "prompt_subst"
+autoload "colors" && colors
+autoload "vcs_info" && precmd() { vcs_info; }
+zstyle ":vcs_info:*" enable "git"
+zstyle ":vcs_info:*" check-for-changes "true"
+zstyle ":vcs_info:git:*" formats "on %{$fg_bold[magenta]%}%b%{$reset_color%} "
+PROMPT=$'\n'"in %{$fg_bold[blue]%}%c%{$reset_color%} \$vcs_info_msg_0_"
+PROMPT+=$'\n'"%(?:%{$fg[green]%}:%{$fg[red]%})~~>%{$reset_color%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 autoload "compinit" && compinit
 zmodload "zsh/complist"
-zstyle ":completion:*" "menu" "select"
-zstyle ":completion:*" "matcher-list" "m:{a-z}={A-Za-z}"
-bindkey -M menuselect "^[[Z" "reverse-menu-complete"
+zstyle ":completion:*" menu "select"
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
+bindkey -M "menuselect" "^[[Z" "reverse-menu-complete"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
