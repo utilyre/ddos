@@ -1,4 +1,5 @@
 local configs = require("nvim-treesitter.configs")
+local spell = require("spellsitter")
 local comment = require("Comment")
 
 configs.setup({
@@ -7,6 +8,10 @@ configs.setup({
   indent = { enable = true },
   rainbow = { enable = true },
   autotag = { enable = true },
+})
+
+spell.setup({
+  enable = true,
 })
 
 comment.setup({

@@ -112,6 +112,10 @@ cmp.setup({
       group_index = 2,
       name = "buffer",
     },
+    {
+      group_index = 2,
+      name = "spell",
+    },
   },
 })
 

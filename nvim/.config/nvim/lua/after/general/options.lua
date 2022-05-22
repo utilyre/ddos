@@ -34,6 +34,8 @@ vim.opt.tabstop = 2
 
 vim.opt.list = true
 vim.opt.listchars:append("tab:  ,trail:·")
+
+vim.opt.spell = true
 vim.opt.iskeyword:append("-")
 
 local gOptions = vim.api.nvim_create_augroup("Options", {})
