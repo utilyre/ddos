@@ -16,5 +16,7 @@ whichkey.setup({
 })
 
 whichkey.register({
+  q = { "<cmd>quitall<cr>", "Quit" },
+  w = { "<cmd>write<cr>", "Write" },
   u = { "<cmd>nohlsearch<cr>", "Unselect" }
 }, { prefix = "<leader>" })
