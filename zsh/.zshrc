@@ -35,13 +35,12 @@ HISTSIZE="4096"
 SAVEHIST="4096"
 
 setopt "prompt_subst"
-autoload "colors" && colors
 autoload "vcs_info" && precmd() { vcs_info; }
 zstyle ":vcs_info:*" enable "git"
 zstyle ":vcs_info:*" check-for-changes "true"
-zstyle ":vcs_info:git:*" formats "on %{$fg_bold[magenta]%}%b%{$reset_color%} "
-PROMPT=$'\n'"in %{$fg_bold[blue]%}%c%{$reset_color%} \$vcs_info_msg_0_"
-PROMPT+=$'\n'"%(?:%{$fg[green]%}:%{$fg[red]%})~~>%{$reset_color%} "
+zstyle ":vcs_info:git:*" formats "on %{$(tput bold setaf 5)%} %b%{$(tput sgr0)%} "
+PROMPT=$'\n'"in %{$(tput bold setaf 4)%} %c%{$(tput sgr0)%} \$vcs_info_msg_0_"
+PROMPT+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})~~>%{$(tput sgr0)%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 autoload "compinit" && compinit
