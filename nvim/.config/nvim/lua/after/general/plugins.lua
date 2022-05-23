@@ -41,6 +41,7 @@ vim.g.plugins = {
   "akinsho/toggleterm.nvim",
   "folke/which-key.nvim",
 
+  "smiteshp/nvim-gps",
   "petertriho/nvim-scrollbar",
   "nvim-lualine/lualine.nvim",
   "lewis6991/gitsigns.nvim",
