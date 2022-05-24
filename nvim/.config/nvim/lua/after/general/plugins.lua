@@ -14,7 +14,6 @@ vim.g.plugins = {
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "windwp/nvim-ts-autotag",
-  "lewis6991/spellsitter.nvim",
   "numtostr/comment.nvim",
 
   "neovim/nvim-lspconfig",

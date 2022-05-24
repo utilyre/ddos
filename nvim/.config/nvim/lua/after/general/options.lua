@@ -34,14 +34,16 @@ vim.opt.tabstop = 2
 
 vim.opt.list = true
 vim.opt.listchars:append("tab:  ,trail:·")
-
-vim.opt.spell = true
 vim.opt.iskeyword:append("-")
 
 local gOptions = vim.api.nvim_create_augroup("Options", {})
 vim.api.nvim_create_autocmd("BufEnter", {
   group = gOptions,
   command = "set formatoptions-=cro",
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit", "markdown" },
+  callback = function() vim.opt_local.spell = true end,
 })
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = gOptions,
