@@ -8,19 +8,19 @@ volt_color="$(xrdb -get "fblk.volt")"
 memo_color="$(xrdb -get "fblk.memo")"
 temp_color="$(xrdb -get "fblk.temp")"
 
-m_date() {
+_date() {
 	date "+%H:%M %a, %b %d"
 }
 
-m_wttr() {
+_wttr() {
 	curl "https://wttr.in/Hamadan?m&format=%l,+%C+%t"
 }
 
-m_uptm() {
+_uptm() {
 	uptime --pretty | sed --regexp-extended "s/^(.)/\U\1/"
 }
 
-m_desk() {
+_desk() {
 	while read -r line; do
 		printf "%s" "%{A:bspc desktop --focus \"$line\":}"
 		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf "%s" "%{F:current}"
@@ -36,17 +36,17 @@ m_desk() {
 	EOF
 }
 
-m_volt() {
+_volt() {
 	printf "%s <> %s" \
 		"$(volt --device="sink" get)" \
 		"$(volt --device="source" get)"
 }
 
-m_memo() {
+_memo() {
 	free --human | awk "(\$0 ~ /^Mem:/) { print \$3 \"/\" \$2 }"
 }
 
-m_temp() {
+_temp() {
 	printf "%s°C (High: %s°C)" \
 		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")" \
 		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_max")"
@@ -58,15 +58,15 @@ while true; do
 	sleep "1s" & wait "$!"
 	timestamp="$(date "+%s")"
 
-	[ -z "$date" ] || [ "$(($timestamp % 60))" -eq "0" ] && date="$(m_date)"
-	[ -z "$wttr" ] || [ "$(($timestamp % 1800))" -eq "0" ] && wttr="$(m_wttr)"
-	[ -z "$uptm" ] || [ "$(($timestamp % 60))" -eq "0" ] && uptm="$(m_uptm)"
+	[ -z "$date" ] || [ "$(($timestamp % 60))" -eq "0" ] && date="$(_date)"
+	[ -z "$wttr" ] || [ "$(($timestamp % 1800))" -eq "0" ] && wttr="$(_wttr)"
+	[ -z "$uptm" ] || [ "$(($timestamp % 60))" -eq "0" ] && uptm="$(_uptm)"
 
-	[ -z "$desk" ] && desk="$(m_desk)"
+	[ -z "$desk" ] && desk="$(_desk)"
 
-	[ -z "$volt" ] && volt="$(m_volt)"
-	[ -z "$memo" ] || [ "$(($timestamp % 30))" -eq "0" ] && memo="$(m_memo)"
-	[ -z "$temp" ] || [ "$(($timestamp % 10))" -eq "0" ] && temp="$(m_temp)"
+	[ -z "$volt" ] && volt="$(_volt)"
+	[ -z "$memo" ] || [ "$(($timestamp % 30))" -eq "0" ] && memo="$(_memo)"
+	[ -z "$temp" ] || [ "$(($timestamp % 10))" -eq "0" ] && temp="$(_temp)"
 
 	printf "%s%s%s\n" \
 		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$uptm_color}%{U$uptm_color}%{+u}  $uptm %{-u}%{U-}%{F-} " \
