@@ -50,7 +50,10 @@ local gGps = vim.api.nvim_create_augroup("Gps", {})
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorMoved", "CursorMovedI" }, {
   group = gGps,
   callback = function()
-    if vim.bo.buftype ~= "" then return end
+    if vim.bo.buftype ~= "" then
+      vim.opt_local.winbar = nil
+      return
+    end
 
     local filename = vim.fn.expand("%:t")
     local extension = vim.fn.expand("%:e")
