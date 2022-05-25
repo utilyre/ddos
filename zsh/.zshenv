@@ -12,6 +12,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin"
 
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/config.ini"
 export LF_CACHE_DIR="$XDG_CACHE_HOME/lf"
 export ZDIR="$XDG_DATA_HOME/zsh"
@@ -22,6 +23,3 @@ export WALIRESFILE="$XDG_STATE_HOME/wali"
 export XAUTHORITY="$XDG_RUNTIME_DIR/xauthority"
 
 export EDITOR="/bin/nvim"
-
-printenv | awk --field-separator="=" "(\$1 ~ /^XDG_.+_HOME\$/) { print \$2 }" | xargs --delimiter="\n" mkdir --parents
-startx "$XDG_CONFIG_HOME/x11/xinitrc"

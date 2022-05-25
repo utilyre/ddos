@@ -43,7 +43,7 @@ PROMPT=$'\n'"in %{$(tput bold setaf 4)%} %c%{$(tput sgr0)%} \$vcs_info_msg_0_
 PROMPT+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})~~>%{$(tput sgr0)%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-autoload "compinit" && compinit
+autoload "compinit" && compinit -D
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
