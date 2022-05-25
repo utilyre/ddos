@@ -63,7 +63,7 @@ local on_attach = function(client, buffnr)
 end
 
 local get_sources = function()
-  local config_path = vim.fn.expand("~/.null-ls")
+  local config_path = vim.fn.expand("$XDG_CONFIG_HOME/nvim/protocol.conf")
   if vim.fn.filereadable(config_path) == 0 then return {} end
 
   local sources = {}
