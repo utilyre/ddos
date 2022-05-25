@@ -1,5 +1,5 @@
 require("after.general.options")
-require("after.general.keymaps")
+require("after.general.symbols")
 require("after.general.plugins")
 
 require("after.plugins.packer")

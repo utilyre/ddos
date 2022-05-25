@@ -3,8 +3,8 @@ local lualine = require("lualine")
 lualine.setup({
   options = {
     globalstatus = true,
-    section_separators = { left = "", right = "" },
-    component_separators = { left = "", right = "" },
+    section_separators = { left = vim.g.symbols.ui.SectionLeft, right = vim.g.symbols.ui.SectionRight },
+    component_separators = { left = vim.g.symbols.ui.ComponentLeft, right = vim.g.symbols.ui.ComponentRight },
   },
   sections = {
     lualine_b = {
@@ -13,10 +13,10 @@ lualine.setup({
       { "diagnostics",
         update_in_insert = true,
         symbols = {
-          error = " ",
-          warn = " ",
-          hint = " ",
-          info = " ",
+          error = vim.g.symbols.diagnostics.Error .. " ",
+          warn = vim.g.symbols.diagnostics.Warn .. " ",
+          hint = vim.g.symbols.diagnostics.Hint .. " ",
+          info = vim.g.symbols.diagnostics.Info .. " ",
         } },
     },
   },

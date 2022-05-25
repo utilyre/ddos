@@ -4,34 +4,6 @@ local git = require("cmp_git")
 local autopairs = require("nvim-autopairs")
 local completion = require("nvim-autopairs.completion.cmp")
 
-local kinds = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
-}
-
 cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
@@ -43,7 +15,7 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr" },
     format = function(_, item)
-      item.kind = kinds[item.kind]
+      item.kind = vim.g.symbols.kinds[item.kind]
       return item
     end,
   },

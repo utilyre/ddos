@@ -6,10 +6,10 @@ local whichkey = require("which-key")
 
 local get_signs = function()
   local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignError", text = vim.g.symbols.diagnostics.Error },
+    { name = "DiagnosticSignWarn", text = vim.g.symbols.diagnostics.Warn },
+    { name = "DiagnosticSignHint", text = vim.g.symbols.diagnostics.Hint },
+    { name = "DiagnosticSignInfo", text = vim.g.symbols.diagnostics.Info },
   }
 
   for _, sign in ipairs(signs) do

@@ -2,28 +2,22 @@ local gps = require("nvim-gps")
 local devicons = require("nvim-web-devicons")
 
 gps.setup({
+  separator = " %#LineNr#" .. vim.g.symbols.ui.Chevron .. "%* ",
   icons = {
-    ["class-name"] = "%#CmpItemKindClass#" .. " " .. "%*",
-    ["function-name"] = "%#CmpItemKindFunction#" .. " " .. "%*",
-    ["method-name"] = "%#CmpItemKindMethod#" .. " " .. "%*",
-    ["container-name"] = "%#CmpItemKindProperty#" .. " " .. "%*",
-    ["tag-name"] = "%#CmpItemKindKeyword#" .. " " .. "%*",
-    ["mapping-name"] = "%#CmpItemKindProperty#" .. " " .. "%*",
-    ["sequence-name"] = "%CmpItemKindProperty#" .. " " .. "%*",
-    ["null-name"] = "%CmpItemKindField#" .. " " .. "%*",
-    ["boolean-name"] = "%CmpItemKindValue#" .. " " .. "%*",
-    ["integer-name"] = "%CmpItemKindValue#" .. " " .. "%*",
-    ["float-name"] = "%CmpItemKindValue#" .. " " .. "%*",
-    ["string-name"] = "%CmpItemKindValue#" .. " " .. "%*",
-    ["array-name"] = "%CmpItemKindProperty#" .. " " .. "%*",
-    ["object-name"] = "%CmpItemKindProperty#" .. " " .. "%*",
-    ["number-name"] = "%CmpItemKindValue#" .. " " .. "%*",
-    ["table-name"] = "%CmpItemKindProperty#" .. " " .. "%*",
-    ["date-name"] = "%CmpItemKindValue#" .. " " .. "%*",
-    ["date-time-name"] = "%CmpItemKindValue#" .. " " .. "%*",
-    ["inline-table-name"] = "%CmpItemKindProperty#" .. " " .. "%*",
-    ["time-name"] = "%CmpItemKindValue#" .. " " .. "%*",
-    ["module-name"] = "%CmpItemKindModule#" .. " " .. "%*",
+    ["module-name"] = "%CmpItemKindModule#" .. vim.g.symbols.kinds.Module .. "%* ",
+    ["class-name"] = "%#CmpItemKindClass#" .. vim.g.symbols.kinds.Class .. "%* ",
+    ["tag-name"] = "%#CmpItemKindProperty#" .. vim.g.symbols.kinds.Property .. "%* ",
+    ["method-name"] = "%#CmpItemKindMethod#" .. vim.g.symbols.kinds.Method .. "%* ",
+    ["container-name"] = "%#CmpItemKindStruct#" .. vim.g.symbols.kinds.Struct .. "%* ",
+    ["null-name"] = "%CmpItemKindValue#" .. vim.g.symbols.type.Null .. "%* ",
+    ["boolean-name"] = "%CmpItemKindValue#" .. vim.g.symbols.type.Boolean .. "%* ",
+    ["number-name"] = "%CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
+    ["integer-name"] = "%CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
+    ["float-name"] = "%CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
+    ["string-name"] = "%CmpItemKindValue#" .. vim.g.symbols.type.String .. "%* ",
+    ["array-name"] = "%CmpItemKindStruct#" .. vim.g.symbols.type.Array .. "%* ",
+    ["object-name"] = "%CmpItemKindStruct#" .. vim.g.symbols.type.Object .. "%* ",
+    ["function-name"] = "%#CmpItemKindFunction#" .. vim.g.symbols.kinds.Function .. "%* ",
   },
 })
 
@@ -35,14 +29,12 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorMoved", "CursorMovedI" }, {
 
     local filename = vim.fn.expand("%:t")
     local extension = vim.fn.expand("%:e")
-    local icon = devicons.get_icon_color(filename, extension)
-
-    vim.opt_local.winbar = "     %#DevIcon" .. extension .. "#" .. icon .. "%* " .. filename
+    local icon = devicons.get_icon_color(filename, extension, { default = true })
+    vim.opt_local.winbar = " %#DevIcon" .. extension .. "#" .. icon .. "%* " .. filename
 
     if not gps.is_available() then return end
     local location = gps.get_location()
     if location == "" then return end
-
-    vim.opt_local.winbar:append(" > " .. location)
+    vim.opt_local.winbar:append(" %#LineNr#" .. vim.g.symbols.ui.Chevron .. "%* " .. location)
   end,
 })

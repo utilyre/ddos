@@ -3,26 +3,26 @@ local tree = require("nvim-tree")
 vim.g.nvim_tree_group_empty = 1
 vim.g.nvim_tree_symlink_arrow = " -> "
 vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
+  default = vim.g.symbols.documents.File,
+  symlink = vim.g.symbols.documents.Link,
   git = {
-    untracked = "?",
-    staged = "+",
-    unstaged = "!",
-    renamed = "~",
-    deleted = "-",
-    unmerged = "=",
-    ignored = "o",
+    untracked = vim.g.symbols.git.Untracked,
+    staged = vim.g.symbols.git.Added,
+    unstaged = vim.g.symbols.git.Modified,
+    renamed = vim.g.symbols.git.Renamed,
+    deleted = vim.g.symbols.git.Deleted,
+    unmerged = vim.g.symbols.git.Unmerged,
+    ignored = vim.g.symbols.git.Ignored,
   },
   folder = {
-    arrow_open = "",
-    arrow_closed = "",
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-    symlink_open = "",
+    arrow_open = vim.g.symbols.ui.Opened,
+    arrow_closed = vim.g.symbols.ui.Closed,
+    default = vim.g.symbols.documents.Folder,
+    open = vim.g.symbols.documents.Open,
+    empty = vim.g.symbols.documents.Empty,
+    empty_open = vim.g.symbols.documents.EmptyOpen,
+    symlink = vim.g.symbols.documents.Link,
+    symlink_open = vim.g.symbols.documents.Open,
   }
 }
 
