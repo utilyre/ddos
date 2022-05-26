@@ -19,8 +19,7 @@ zinstall() {
 	plugin="$ZDIR/${1##*/}"
 
 	[ ! -d "$plugin" ] && git clone --depth="1" "https://github.com/$1.git" "$plugin"
-	[ -n "$2" ] && source "$plugin/$2"
-	fpath+="$plugin"
+	source "$plugin/$2"
 }
 
 zupdate() {
