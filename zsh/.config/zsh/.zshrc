@@ -39,8 +39,7 @@ autoload "vcs_info" && precmd() { vcs_info; }
 zstyle ":vcs_info:*" enable "git"
 zstyle ":vcs_info:*" check-for-changes "true"
 zstyle ":vcs_info:git:*" formats "on %{$(tput bold setaf 5)%} %b%{$(tput sgr0)%} "
-PROMPT=$'\n'"in %{$(tput bold setaf 4)%} %c%{$(tput sgr0)%} \$vcs_info_msg_0_"
-PROMPT+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})~~>%{$(tput sgr0)%} "
+PROMPT="%{$(tput bold setaf 3)%} %n%{$(tput sgr0)%} in %{$(tput bold setaf 4)%} %c%{$(tput sgr0)%} \$vcs_info_msg_0_%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})%{$(tput sgr0)%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 autoload "compinit" && compinit -D
