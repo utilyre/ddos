@@ -2,9 +2,7 @@ brave-bin
 bspwm
 dragon-drop
 git
-github-cli
 jq
-lazygit
 lemonbar-xft-git
 lf-bin
 lxsession-gtk3
