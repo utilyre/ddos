@@ -25,7 +25,7 @@ vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<cr>")
 vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<cr>")
 vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<cr>")
 vim.keymap.set("n", "<s-y>", "y$")
-vim.keymap.set("t", "<c-_>", "<c-\\><c-n>")
+vim.keymap.set("t", "<c-\\>", "<c-\\><c-n>")
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "kj", "<esc>")
 
@@ -33,9 +33,9 @@ whichkey.register({
   q = { "<cmd>quitall<cr>", "Quit" },
   c = { "<cmd>quit<cr>", "Close" },
   w = { "<cmd>write<cr>", "Write" },
-  h = { "<cmd>split<cr>", "Horizontal" },
-  v = { "<cmd>vsplit<cr>", "Vertical" },
+  n = { "<cmd>enew<cr>", "New" },
   t = { "<cmd>terminal<cr>", "Terminal" },
+  s = { "<cmd>split<cr>", "Split" },
+  v = { "<cmd>vsplit<cr>", "VSplit" },
   u = { "<cmd>nohlsearch<cr>", "Unselect" },
-  s = { "<cmd>setlocal spell!<cr>", "Spell" },
 }, { prefix = "<leader>" })

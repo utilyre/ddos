@@ -37,23 +37,15 @@ vim.opt.listchars:append("tab:  ,trail:·")
 vim.opt.iskeyword:append("-")
 
 local gOptions = vim.api.nvim_create_augroup("Options", {})
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = gOptions,
-  callback = function() vim.highlight.on_yank({ higroup = "Visual", on_visual = false }) end,
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit", "markdown" },
+  callback = function() vim.opt_local.spell = true end,
 })
 vim.api.nvim_create_autocmd("BufEnter", {
   group = gOptions,
   command = "set formatoptions-=cro",
 })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitcommit", "markdown" },
-  callback = function() vim.opt_local.spell = true end,
-})
-vim.api.nvim_create_autocmd("TermOpen", {
+vim.api.nvim_create_autocmd("TextYankPost", {
   group = gOptions,
-  callback = function()
-    vim.opt_local.signcolumn = "no"
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-  end,
+  callback = function() vim.highlight.on_yank({ higroup = "Visual", on_visual = false }) end,
 })
