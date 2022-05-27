@@ -6,7 +6,7 @@ local themes = require("telescope.themes")
 local whichkey = require("which-key")
 
 project.setup({
-  silent_chdir = false,
+  manual_mode = true,
 })
 
 dressing.setup({
