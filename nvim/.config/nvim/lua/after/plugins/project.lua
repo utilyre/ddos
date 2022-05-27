@@ -44,8 +44,12 @@ whichkey.register({
   f = {
     name = "Find",
     p = { telescope.extensions.projects.projects, "Project" },
+    b = { builtin.git_branches, "Branch" },
     r = { builtin.oldfiles, "Recent" },
     f = { builtin.find_files, "File" },
+    a = { builtin.filetypes, "Association" },
     w = { builtin.live_grep, "Word" },
+    t = { "<cmd>TodoTelescope<cr>", "Todo" },
+    h = { builtin.help_tags, "Help" },
   },
 }, { prefix = "<leader>" })
