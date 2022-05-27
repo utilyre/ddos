@@ -30,11 +30,14 @@ zupdate() {
 	done
 }
 
-setopt "appendhistory"
+setopt appendhistory
+setopt globdots
+setopt interactive_comments
+setopt prompt_subst
+
 HISTSIZE="4096"
 SAVEHIST="4096"
 
-setopt "prompt_subst"
 autoload "vcs_info" && precmd() { vcs_info; }
 zstyle ":vcs_info:*" enable "git"
 zstyle ":vcs_info:*" check-for-changes "true"
@@ -43,7 +46,6 @@ PS1=$'\n'"You're %{$(tput bold setaf 3)%} %n%{$(tput sgr0)%} in %{$(tput bold
 PS1+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})%{$(tput sgr0)%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-setopt "globdots"
 autoload "compinit" && compinit -D
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
@@ -53,7 +55,6 @@ ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
 zinstall "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
-setopt "interactive_comments"
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
 zinstall "softmoth/zsh-vim-mode" "zsh-vim-mode.plugin.zsh"
