@@ -1,16 +1,15 @@
 vim.g.symbols = {
   ui = {
-    Modified = "[+]",
-    Opened = "",
-    Closed = "",
-    Group = "~",
     Separator = ":",
+    Group = "~",
     Chevron = "",
+    Closed = "",
+    Opened = "",
+    Note = "●",
     SectionLeft = "",
     SectionRight = "",
     ComponentLeft = "",
     ComponentRight = "",
-    Note = "●",
   },
   documents = {
     Link = "",
