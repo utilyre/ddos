@@ -47,7 +47,7 @@ gps.setup({
 })
 
 local gGps = vim.api.nvim_create_augroup("Gps", {})
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorMoved", "CursorMovedI" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "CursorMoved", "CursorMovedI" }, {
   group = gGps,
   callback = function()
     if vim.bo.buftype ~= "" and vim.bo.buftype ~= "terminal" then
@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorMoved", "CursorMovedI" }, {
     local filename = vim.fn.expand("%:t")
     local extension = vim.fn.expand("%:e")
     local icon = devicons.get_icon_color(filename, extension, { default = true })
-    vim.opt_local.winbar = " %#DevIcon" .. extension .. "#" .. icon .. "%* " .. filename
+    vim.opt_local.winbar = " %#DevIcon" .. extension .. "#" .. icon .. "%* %#" .. (vim.bo.modified and "BufferCurrentMod" or "Winbar") .. "#" .. filename .. "%*"
 
     if not gps.is_available() then return end
     local location = gps.get_location()
