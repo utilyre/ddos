@@ -43,6 +43,7 @@ PS1=$'\n'"You're %{$(tput bold setaf 3)%} %n%{$(tput sgr0)%} in %{$(tput bold
 PS1+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})%{$(tput sgr0)%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
+setopt "globdots"
 autoload "compinit" && compinit -D
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
