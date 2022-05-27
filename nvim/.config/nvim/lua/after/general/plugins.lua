@@ -34,6 +34,7 @@ vim.g.plugins = {
   "ahmedkhalf/project.nvim",
   "stevearc/dressing.nvim",
   "nvim-telescope/telescope.nvim",
+  "folke/todo-comments.nvim",
 
   "kyazdani42/nvim-tree.lua",
   "toppair/reach.nvim",

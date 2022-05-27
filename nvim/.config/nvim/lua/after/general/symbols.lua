@@ -68,5 +68,10 @@ vim.g.symbols = {
     Warn = "",
     Hint = "",
     Info = "",
+    Fix = "",
+    Todo = "",
+    Hack = "",
+    Perf = "",
+    Note = "",
   },
 }

@@ -3,6 +3,7 @@ local dressing = require("dressing")
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")
+local todo = require("todo-comments")
 local whichkey = require("which-key")
 
 project.setup({
@@ -26,6 +27,17 @@ dressing.setup({
 telescope.load_extension("projects")
 telescope.setup({
   defaults = themes.get_dropdown(),
+})
+
+todo.setup({
+  keywords = {
+    FIX = { icon = vim.g.symbols.diagnostics.Fix },
+    TODO = { icon = vim.g.symbols.diagnostics.Todo },
+    HACK = { icon = vim.g.symbols.diagnostics.Hack },
+    WARN = { icon = vim.g.symbols.diagnostics.Warn },
+    PERF = { icon = vim.g.symbols.diagnostics.Perf },
+    NOTE = { icon = vim.g.symbols.diagnostics.Note },
+  },
 })
 
 whichkey.register({
