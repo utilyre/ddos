@@ -14,7 +14,7 @@ case "$(echo "$disk" | awk "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
 			pkexec mount "$source" "$target"
 		)
 
-		[ "$?" -eq "0" ] && herbe " Mont" "Mounted \"$source\" at \"$(huma "$target")\"." &
+		[ "$?" -eq "0" ] && herbe " Mont" "Mounted \"$source\" on \"$(huma "$target")\"." &
 		;;
 	"umount")
 		source="${disk%% *}"
