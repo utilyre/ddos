@@ -31,12 +31,12 @@ telescope.setup({
 
 todo.setup({
   keywords = {
-    FIX = { icon = vim.g.symbols.diagnostics.Fix },
-    TODO = { icon = vim.g.symbols.diagnostics.Todo },
-    HACK = { icon = vim.g.symbols.diagnostics.Hack },
-    WARN = { icon = vim.g.symbols.diagnostics.Warn },
-    PERF = { icon = vim.g.symbols.diagnostics.Perf },
-    NOTE = { icon = vim.g.symbols.diagnostics.Note },
+    FIX = { icon = vim.g.symbols.diagnostic.Fix },
+    TODO = { icon = vim.g.symbols.diagnostic.Todo },
+    HACK = { icon = vim.g.symbols.diagnostic.Hack },
+    WARN = { icon = vim.g.symbols.diagnostic.Warn },
+    PERF = { icon = vim.g.symbols.diagnostic.Perf },
+    NOTE = { icon = vim.g.symbols.diagnostic.Note },
   },
 })
 

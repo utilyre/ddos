@@ -1,35 +1,9 @@
 local tree = require("nvim-tree")
 
-vim.g.nvim_tree_group_empty = 1
-vim.g.nvim_tree_symlink_arrow = " -> "
-vim.g.nvim_tree_icons = {
-  default = vim.g.symbols.documents.File,
-  symlink = vim.g.symbols.documents.Link,
-  git = {
-    untracked = vim.g.symbols.git.Untracked,
-    staged = vim.g.symbols.git.Added,
-    unstaged = vim.g.symbols.git.Modified,
-    renamed = vim.g.symbols.git.Renamed,
-    deleted = vim.g.symbols.git.Deleted,
-    unmerged = vim.g.symbols.git.Unmerged,
-    ignored = vim.g.symbols.git.Ignored,
-  },
-  folder = {
-    arrow_open = vim.g.symbols.ui.Opened,
-    arrow_closed = vim.g.symbols.ui.Closed,
-    default = vim.g.symbols.documents.Folder,
-    open = vim.g.symbols.documents.Open,
-    empty = vim.g.symbols.documents.Empty,
-    empty_open = vim.g.symbols.documents.EmptyOpen,
-    symlink = vim.g.symbols.documents.Link,
-    symlink_open = vim.g.symbols.documents.Open,
-  }
-}
-
 tree.setup({
   update_cwd = true,
-  diagnostics = { enable = true },
   git = { ignore = false },
+  diagnostics = { enable = true },
   view = {
     width = 40,
     hide_root_folder = true,
@@ -45,6 +19,35 @@ tree.setup({
         { key = "c", action = "rename" },
         { key = "x", action = "remove" },
         { key = "a", action = "create" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+    icons = {
+      symlink_arrow = " -> ",
+      glyphs = {
+        symlink = vim.g.symbols.document.Link,
+        default = vim.g.symbols.document.File,
+        folder = {
+          arrow_closed = vim.g.symbols.ui.Closed,
+          arrow_open = vim.g.symbols.ui.Opened,
+          symlink = vim.g.symbols.document.Link,
+          default = vim.g.symbols.document.Folder,
+          open = vim.g.symbols.document.Open,
+          symlink_open = vim.g.symbols.document.Open,
+          empty = vim.g.symbols.document.Empty,
+          empty_open = vim.g.symbols.document.EmptyOpen,
+        },
+        git = {
+          untracked = vim.g.symbols.git.Untracked,
+          staged = vim.g.symbols.git.Added,
+          unstaged = vim.g.symbols.git.Modified,
+          renamed = vim.g.symbols.git.Renamed,
+          deleted = vim.g.symbols.git.Deleted,
+          unmerged = vim.g.symbols.git.Unmerged,
+          ignored = vim.g.symbols.git.Ignored,
+        },
       },
     },
   },

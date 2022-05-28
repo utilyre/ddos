@@ -11,7 +11,7 @@ vim.g.symbols = {
     ComponentLeft = "",
     ComponentRight = "",
   },
-  documents = {
+  document = {
     Link = "",
     File = "",
     Folder = "",
@@ -28,7 +28,18 @@ vim.g.symbols = {
     Unmerged = "=",
     Ignored = "#",
   },
-  kinds = {
+  diagnostic = {
+    Error = "",
+    Warn = "",
+    Hint = "",
+    Info = "",
+    Fix = "",
+    Todo = "",
+    Hack = "",
+    Perf = "",
+    Note = "",
+  },
+  kind = {
     File = "",
     Folder = "",
     Module = "",
@@ -62,16 +73,5 @@ vim.g.symbols = {
     String = "",
     Array = "",
     Object = "",
-  },
-  diagnostics = {
-    Error = "",
-    Warn = "",
-    Hint = "",
-    Info = "",
-    Fix = "",
-    Todo = "",
-    Hack = "",
-    Perf = "",
-    Note = "",
   },
 }

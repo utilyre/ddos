@@ -4,6 +4,7 @@ onedark.setup({
   style = "dark",
   transparent = true,
   code_style = {
+    comments = "italic",
     keywords = "italic",
   },
   highlights = {

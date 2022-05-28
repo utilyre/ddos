@@ -6,10 +6,10 @@ local whichkey = require("which-key")
 
 local get_signs = function()
   local signs = {
-    { name = "DiagnosticSignError", text = vim.g.symbols.diagnostics.Error },
-    { name = "DiagnosticSignWarn", text = vim.g.symbols.diagnostics.Warn },
-    { name = "DiagnosticSignHint", text = vim.g.symbols.diagnostics.Hint },
-    { name = "DiagnosticSignInfo", text = vim.g.symbols.diagnostics.Info },
+    { name = "DiagnosticSignError", text = vim.g.symbols.diagnostic.Error },
+    { name = "DiagnosticSignWarn", text = vim.g.symbols.diagnostic.Warn },
+    { name = "DiagnosticSignHint", text = vim.g.symbols.diagnostic.Hint },
+    { name = "DiagnosticSignInfo", text = vim.g.symbols.diagnostic.Info },
   }
 
   for _, sign in ipairs(signs) do
@@ -20,6 +20,19 @@ local get_signs = function()
   end
 
   return signs
+end
+
+local get_sources = function()
+  local config_path = vim.fn.expand("$XDG_CONFIG_HOME/nvim/sources.conf")
+  if vim.fn.filereadable(config_path) == 0 then return {} end
+
+  local sources = {}
+  for _, line in pairs(vim.fn.readfile(config_path)) do
+    local parts = vim.split(line, "#")
+    table.insert(sources, null.builtins[parts[2]][parts[1]])
+  end
+
+  return sources
 end
 
 local on_attach = function(client, buffnr)
@@ -62,28 +75,11 @@ local on_attach = function(client, buffnr)
   }, { prefix = "<leader>", buffer = buffnr })
 end
 
-local get_sources = function()
-  local config_path = vim.fn.expand("$XDG_CONFIG_HOME/nvim/protocol.conf")
-  if vim.fn.filereadable(config_path) == 0 then return {} end
-
-  local sources = {}
-  for _, line in pairs(vim.fn.readfile(config_path)) do
-    local parts = vim.split(line, "#")
-    table.insert(sources, null.builtins[parts[2]][parts[1]])
-  end
-
-  return sources
-end
-
 vim.diagnostic.config({
   update_in_insert = true,
   virtual_text = false,
-  signs = {
-    active = get_signs(),
-  },
-  float = {
-    border = "rounded",
-  },
+  signs = { active = get_signs() },
+  float = { border = "rounded" },
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",

@@ -9,15 +9,37 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-  experimental = {
-    ghost_text = true,
-  },
   formatting = {
     fields = { "kind", "abbr" },
     format = function(_, item)
-      item.kind = vim.g.symbols.kinds[item.kind]
+      item.kind = vim.g.symbols.kind[item.kind]
       return item
     end,
+  },
+  snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
+  experimental = { ghost_text = true },
+  sources = {
+    {
+      group_index = 1,
+      name = "luasnip",
+      max_item_count = 2,
+    },
+    {
+      group_index = 1,
+      name = "nvim_lsp",
+    },
+    {
+      group_index = 1,
+      name = "git",
+    },
+    {
+      group_index = 2,
+      name = "buffer",
+    },
+    {
+      group_index = 2,
+      name = "spell",
+    },
   },
   mapping = {
     ["<c-space>"] = cmp.mapping(function()
@@ -62,32 +84,6 @@ cmp.setup({
         fallback()
       end
     end),
-  },
-  snippet = {
-    expand = function(args) luasnip.lsp_expand(args.body) end,
-  },
-  sources = {
-    {
-      group_index = 1,
-      name = "luasnip",
-      max_item_count = 2,
-    },
-    {
-      group_index = 1,
-      name = "nvim_lsp",
-    },
-    {
-      group_index = 1,
-      name = "git",
-    },
-    {
-      group_index = 2,
-      name = "buffer",
-    },
-    {
-      group_index = 2,
-      name = "spell",
-    },
   },
 })
 

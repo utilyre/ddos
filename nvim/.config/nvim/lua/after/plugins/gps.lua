@@ -2,23 +2,6 @@ local gps = require("nvim-gps")
 local devicons = require("nvim-web-devicons")
 
 gps.setup({
-  separator = " %#LineNr#" .. vim.g.symbols.ui.Chevron .. "%* ",
-  icons = {
-    ["module-name"] = "%CmpItemKindModule#" .. vim.g.symbols.kinds.Module .. "%* ",
-    ["class-name"] = "%#CmpItemKindClass#" .. vim.g.symbols.kinds.Class .. "%* ",
-    ["tag-name"] = "%#CmpItemKindProperty#" .. vim.g.symbols.kinds.Property .. "%* ",
-    ["method-name"] = "%#CmpItemKindMethod#" .. vim.g.symbols.kinds.Method .. "%* ",
-    ["container-name"] = "%#CmpItemKindStruct#" .. vim.g.symbols.kinds.Struct .. "%* ",
-    ["null-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Null .. "%* ",
-    ["boolean-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Boolean .. "%* ",
-    ["number-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
-    ["integer-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
-    ["float-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
-    ["string-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.String .. "%* ",
-    ["array-name"] = "%#CmpItemKindStruct#" .. vim.g.symbols.type.Array .. "%* ",
-    ["object-name"] = "%#CmpItemKindStruct#" .. vim.g.symbols.type.Object .. "%* ",
-    ["function-name"] = "%#CmpItemKindFunction#" .. vim.g.symbols.kinds.Function .. "%* ",
-  },
   languages = {
     bash = true,
     c = true,
@@ -44,10 +27,27 @@ gps.setup({
     yang = true,
     zig = true,
   },
+  separator = " %#LineNr#" .. vim.g.symbols.ui.Chevron .. "%* ",
+  icons = {
+    ["module-name"] = "%CmpItemKindModule#" .. vim.g.symbols.kind.Module .. "%* ",
+    ["class-name"] = "%#CmpItemKindClass#" .. vim.g.symbols.kind.Class .. "%* ",
+    ["tag-name"] = "%#CmpItemKindProperty#" .. vim.g.symbols.kind.Property .. "%* ",
+    ["method-name"] = "%#CmpItemKindMethod#" .. vim.g.symbols.kind.Method .. "%* ",
+    ["container-name"] = "%#CmpItemKindStruct#" .. vim.g.symbols.kind.Struct .. "%* ",
+    ["null-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Null .. "%* ",
+    ["boolean-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Boolean .. "%* ",
+    ["number-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
+    ["integer-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
+    ["float-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.Number .. "%* ",
+    ["string-name"] = "%#CmpItemKindValue#" .. vim.g.symbols.type.String .. "%* ",
+    ["array-name"] = "%#CmpItemKindStruct#" .. vim.g.symbols.type.Array .. "%* ",
+    ["object-name"] = "%#CmpItemKindStruct#" .. vim.g.symbols.type.Object .. "%* ",
+    ["function-name"] = "%#CmpItemKindFunction#" .. vim.g.symbols.kind.Function .. "%* ",
+  },
 })
 
 local gGps = vim.api.nvim_create_augroup("Gps", {})
-vim.api.nvim_create_autocmd({ "BufNew", "BufWritePost", "CursorMoved", "CursorMovedI", "TextChanged", "TextChangedI" }, {
+vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "CursorMovedI", "TextChanged", "TextChangedI" }, {
   group = gGps,
   callback = function()
     if not vim.tbl_contains({ "terminal", "" }, vim.bo.buftype) then
