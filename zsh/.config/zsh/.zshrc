@@ -46,7 +46,7 @@ PS1=$'\n'"You're %{$(tput bold setaf 3)%} %n%{$(tput sgr0)%} in %{$(tput bold
 PS1+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})%{$(tput sgr0)%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-autoload "compinit" && compinit -D
+autoload "compinit" && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
