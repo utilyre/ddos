@@ -1,20 +1,5 @@
 #!/bin/zsh
 
-export LESS_TERMCAP_md="$(tput bold setaf 4)"
-export LESS_TERMCAP_me="$(tput sgr0)"
-export LESS_TERMCAP_us="$(tput sitm setaf 5)"
-export LESS_TERMCAP_ue="$(tput sgr0)"
-export LESS_TERMCAP_so="$(tput setab 3 setaf 0)"
-export LESS_TERMCAP_se="$(tput sgr0)"
-
-alias grep="grep --color=\"auto\" --ignore-case"
-alias diff="diff --color=\"auto\""
-alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-readable"
-alias ll="ls --format=\"long\""
-alias la="ls --almost-all"
-alias al="ls --format=\"long\" --almost-all"
-alias g="git"
-
 zinstall() {
 	mkdir --parents "$ZDIR"
 	plugin="$ZDIR/${1##*/}"
@@ -30,10 +15,32 @@ zupdate() {
 	done
 }
 
+lfcd() {
+	tmp="$(mktemp)"
+	lfub -last-dir-path="$tmp" "$@"
+	cd "$(cat "$tmp")"
+}
+
+export LESS_TERMCAP_md="$(tput bold setaf 4)"
+export LESS_TERMCAP_me="$(tput sgr0)"
+export LESS_TERMCAP_us="$(tput sitm setaf 5)"
+export LESS_TERMCAP_ue="$(tput sgr0)"
+export LESS_TERMCAP_so="$(tput setab 3 setaf 0)"
+export LESS_TERMCAP_se="$(tput sgr0)"
+
+alias grep="grep --color=\"auto\" --ignore-case"
+alias diff="diff --color=\"auto\""
+alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-readable"
+alias ll="ls --format=\"long\""
+alias la="ls --almost-all"
+alias al="ls --format=\"long\" --almost-all"
+alias g="git"
+alias v="nvrs"
+alias l="lfcd"
+
 setopt appendhistory
-setopt globdots
-setopt interactive_comments
 setopt prompt_subst
+setopt interactive_comments
 
 HISTSIZE="4096"
 SAVEHIST="4096"
@@ -46,7 +53,7 @@ PS1=$'\n'"You're %{$(tput bold setaf 3)%} %n%{$(tput sgr0)%} in %{$(tput bold
 PS1+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})%{$(tput sgr0)%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-autoload "compinit" && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+autoload "compinit" && compinit -d "$ZCOMPDUMP"
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"

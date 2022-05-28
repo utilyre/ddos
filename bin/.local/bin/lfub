@@ -1,10 +1,5 @@
 #!/bin/sh
 
-cleanup() {
-	exec 3>&-
-	rm "$FIFO_UEBERZUG"
-}
-
 export FIFO_UEBERZUG="/tmp/ueberzug-$$"
 mkfifo "$FIFO_UEBERZUG"
 
@@ -12,5 +7,7 @@ ueberzug layer --silent < "$FIFO_UEBERZUG" &
 exec 3> "$FIFO_UEBERZUG"
 
 export LF_ICONS="tw=:st=:ow=:dt=:di=:fi=:ln=:or=:ex="
-trap "cleanup" "0"
 lf "$@" 3>&-
+
+exec 3>&-
+rm "$FIFO_UEBERZUG"

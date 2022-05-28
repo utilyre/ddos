@@ -14,6 +14,7 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/config.ini"
+export ZCOMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
 export LF_CACHE_DIR="$XDG_CACHE_HOME/lf"
 export ZDIR="$XDG_DATA_HOME/zsh"
 export PASSWORDS_DIR="$XDG_DATA_HOME/passwords"
@@ -21,5 +22,3 @@ export HISTFILE="$XDG_STATE_HOME/shell"
 export LESSHISTFILE="$XDG_STATE_HOME/less"
 export WALIRESFILE="$XDG_STATE_HOME/wali"
 export XAUTHORITY="$XDG_RUNTIME_DIR/xauthority"
-
-export EDITOR="/bin/nvim"

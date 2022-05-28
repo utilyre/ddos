@@ -9,6 +9,7 @@ lxsession-gtk3
 mediainfo
 mpv
 neovim
+neovim-remote
 picom
 polkit
 pulseaudio
