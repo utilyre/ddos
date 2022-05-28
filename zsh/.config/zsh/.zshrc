@@ -41,8 +41,8 @@ SAVEHIST="4096"
 autoload "vcs_info" && precmd() { vcs_info; }
 zstyle ":vcs_info:*" enable "git"
 zstyle ":vcs_info:*" check-for-changes "true"
-zstyle ":vcs_info:git:*" formats "on %{$(tput bold setaf 5)%} %b%{$(tput sgr0)%} "
-PS1=$'\n'"You're %{$(tput bold setaf 3)%} %n%{$(tput sgr0)%} in %{$(tput bold setaf 4)%} %c%{$(tput sgr0)%} \$vcs_info_msg_0_"
+zstyle ":vcs_info:git:*" formats " on %{$(tput bold setaf 5)%} %b%{$(tput sgr0)%}"
+PS1=$'\n'"You're %{$(tput bold setaf 3)%} %n%{$(tput sgr0)%} in %{$(tput bold setaf 4)%} %c%{$(tput sgr0)%}\$vcs_info_msg_0_"
 PS1+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})%{$(tput sgr0)%} "
 
 zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
