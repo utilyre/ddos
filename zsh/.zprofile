@@ -22,3 +22,13 @@ export HISTFILE="$XDG_STATE_HOME/shell"
 export LESSHISTFILE="$XDG_STATE_HOME/less"
 export WALIRESFILE="$XDG_STATE_HOME/wali"
 export XAUTHORITY="$XDG_RUNTIME_DIR/xauthority"
+
+export LESS_TERMCAP_md="$(tput bold setaf 4)"
+export LESS_TERMCAP_me="$(tput sgr0)"
+export LESS_TERMCAP_us="$(tput sitm setaf 5)"
+export LESS_TERMCAP_ue="$(tput sgr0)"
+export LESS_TERMCAP_so="$(tput setab 3 setaf 0)"
+export LESS_TERMCAP_se="$(tput sgr0)"
+
+printenv | awk --field-separator="=" "(\$1 ~ /^XDG_.+_HOME\$/) { print \$2 }" | xargs --delimiter="\n" mkdir --parents
+startx "$XDG_CONFIG_HOME/x11/xinitrc"
