@@ -6,6 +6,6 @@ function F(fn, ...)
 end
 
 function P(object)
-  vim.pretty_print(object)
-  return object
+  local stringified = vim.inspect(object)
+  print(stringified)
 end
