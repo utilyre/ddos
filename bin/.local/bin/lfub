@@ -5,8 +5,6 @@ mkfifo "$FIFO_UEBERZUG"
 
 ueberzug layer --silent < "$FIFO_UEBERZUG" &
 exec 3> "$FIFO_UEBERZUG"
-
-export LF_ICONS="tw=:st=:ow=:dt=:di=:fi=:ln=:or=:ex="
 lf "$@" 3>&-
 
 exec 3>&-
