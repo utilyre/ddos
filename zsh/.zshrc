@@ -33,8 +33,9 @@ alias v="nvrs"
 alias l="lfcd"
 
 setopt appendhistory
-setopt prompt_subst
-setopt interactive_comments
+setopt promptsubst
+setopt nolisttypes
+setopt interactivecomments
 
 HISTSIZE="4096"
 SAVEHIST="4096"
@@ -51,7 +52,7 @@ autoload "compinit" && compinit -d "$ZCOMPDUMP"
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
-zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
+zstyle ":completion:*" list-colors "$LS_COLORS"
 bindkey -M "menuselect" "^[[Z" "reverse-menu-complete"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
