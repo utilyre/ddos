@@ -1,5 +1,6 @@
 brave-bin
 bspwm
+capitaine-cursors
 dragon-drop
 git
 jq
