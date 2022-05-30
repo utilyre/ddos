@@ -1,3 +1,4 @@
+require("after.general.helpers")
 require("after.general.options")
 require("after.general.symbols")
 require("after.general.plugins")

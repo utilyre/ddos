@@ -43,13 +43,13 @@ todo.setup({
 whichkey.register({
   f = {
     name = "Find",
-    p = { telescope.extensions.projects.projects, "Project" },
-    b = { builtin.git_branches, "Branch" },
-    r = { builtin.oldfiles, "Recent" },
-    f = { builtin.find_files, "File" },
-    a = { builtin.filetypes, "Association" },
-    w = { builtin.live_grep, "Word" },
-    t = { "<cmd>TodoTelescope<cr>", "Todo" },
-    h = { builtin.help_tags, "Help" },
+    p = { F(telescope.extensions.projects.projects), "Project" },
+    b = { F(builtin.git_branches), "Branch" },
+    r = { F(builtin.oldfiles), "Recent" },
+    f = { F(builtin.find_files), "File" },
+    a = { F(builtin.filetypes), "Association" },
+    w = { F(builtin.live_grep), "Word" },
+    t = { F(vim.cmd, "TodoTelescope"), "Todo" },
+    h = { F(builtin.help_tags), "Help" },
   },
 }, { prefix = "<leader>" })

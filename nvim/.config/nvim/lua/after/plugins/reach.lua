@@ -4,9 +4,4 @@ reach.setup({
   notifications = false,
 })
 
-vim.keymap.set("n", "<tab>", function()
-  reach.buffers({
-    handle = "dynamic",
-    show_current = true,
-  })
-end)
+vim.keymap.set("n", "<tab>", F(reach.buffers, { handle = "dynamic", show_current = true, }))

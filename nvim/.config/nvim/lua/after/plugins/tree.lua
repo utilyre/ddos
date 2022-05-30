@@ -53,4 +53,4 @@ tree.setup({
   },
 })
 
-vim.keymap.set("n", "<c-p>", tree.toggle)
+vim.keymap.set("n", "<c-p>", F(tree.toggle))

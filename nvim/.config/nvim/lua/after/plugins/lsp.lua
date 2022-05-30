@@ -63,14 +63,14 @@ local on_attach = function(client, buffnr)
   whichkey.register({
     i = {
       name = "Intellisense",
-      d = { vim.lsp.buf.definition, "Definition" },
-      a = { vim.lsp.buf.code_action, "Actions" },
-      f = { vim.lsp.buf.formatting, "Format" },
-      c = { vim.lsp.buf.rename, "Rename" },
-      h = { vim.lsp.buf.hover, "Hover" },
-      l = { vim.diagnostic.open_float, "Diagnostics" },
-      k = { vim.diagnostic.goto_prev, "Previous" },
-      j = { vim.diagnostic.goto_next, "Next" },
+      d = { F(vim.lsp.buf.definition), "Definition" },
+      a = { F(vim.lsp.buf.code_action), "Actions" },
+      f = { F(vim.lsp.buf.format, { async = true }), "Format" },
+      c = { F(vim.lsp.buf.rename), "Change" },
+      h = { F(vim.lsp.buf.hover), "Hover" },
+      l = { F(vim.diagnostic.open_float), "Diagnostics" },
+      k = { F(vim.diagnostic.goto_prev), "Previous" },
+      j = { F(vim.diagnostic.goto_next), "Next" },
     },
   }, { prefix = "<leader>", buffer = buffnr })
 end

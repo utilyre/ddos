@@ -4,7 +4,7 @@ local whichkey = require("which-key")
 
 packer.init({
   display = {
-    open_fn = function() return util.float({ border = "rounded" }) end,
+    open_fn = F(util.float, { border = "rounded" }),
   },
 })
 
@@ -19,9 +19,9 @@ packer.startup({
 whichkey.register({
   p = {
     name = "Plugin",
-    s = { packer.sync, "Sync" },
-    i = { packer.install, "Install" },
-    u = { packer.update, "Update" },
-    c = { packer.clean, "Clean" },
+    s = { F(packer.sync), "Sync" },
+    i = { F(packer.install), "Install" },
+    u = { F(packer.update), "Update" },
+    c = { F(packer.clean), "Clean" },
   },
 }, { prefix = "<leader>" })
