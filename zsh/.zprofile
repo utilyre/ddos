@@ -12,7 +12,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin"
 
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/config.ini"
 export ZCOMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
 export LF_CACHE_DIR="$XDG_CACHE_HOME/lf"
