@@ -1,5 +1,4 @@
 [Default Applications]
-
 text/english=visual.desktop
 text/plain=visual.desktop
 text/x-c++=visual.desktop
@@ -15,7 +14,6 @@ text/x-pascal=visual.desktop
 text/x-shellscript=visual.desktop
 text/x-tcl=visual.desktop
 text/x-tex=visual.desktop
-
 application/pdf=browser.desktop
 application/rdf+xml=browser.desktop
 application/rss+xml=browser.desktop
@@ -28,9 +26,7 @@ x-scheme-handler/http=browser.desktop
 x-scheme-handler/https=browser.desktop
 x-scheme-handler/ipfs=browser.desktop
 x-scheme-handler/ipns=browser.desktop
-
 inode/directory=explorer.desktop
-
 image/bmp=viewer.desktop
 image/gif=viewer.desktop
 image/jpeg=viewer.desktop
@@ -43,7 +39,6 @@ image/x-portable-bitmap=viewer.desktop
 image/x-portable-graymap=viewer.desktop
 image/x-tga=viewer.desktop
 image/x-xpixmap=viewer.desktop
-
 application/mxf=player.desktop
 application/ogg=player.desktop
 application/sdp=player.desktop
