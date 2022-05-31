@@ -6,7 +6,6 @@ configs.setup({
   highlight = { enable = true },
   indent = { enable = true },
   rainbow = { enable = true },
-  autotag = { enable = true },
 })
 
 comment.setup({

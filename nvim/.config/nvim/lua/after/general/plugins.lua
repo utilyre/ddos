@@ -13,7 +13,6 @@ vim.g.plugins = {
 
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
-  "windwp/nvim-ts-autotag",
   "numtostr/comment.nvim",
 
   "neovim/nvim-lspconfig",
@@ -29,7 +28,6 @@ vim.g.plugins = {
   "petertriho/cmp-git",
   "hrsh7th/cmp-buffer",
   "f3fora/cmp-spell",
-  "windwp/nvim-autopairs",
 
   "ahmedkhalf/project.nvim",
   "stevearc/dressing.nvim",

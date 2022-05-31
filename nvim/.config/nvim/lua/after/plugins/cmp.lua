@@ -1,9 +1,8 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local git = require("cmp_git")
-local autopairs = require("nvim-autopairs")
-local completion = require("nvim-autopairs.completion.cmp")
 
+git.setup()
 cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
@@ -85,11 +84,4 @@ cmp.setup({
       end
     end),
   },
-})
-
-git.setup()
-
-cmp.event:on("confirm_done", completion.on_confirm_done({ map_char = { tex = "" } }))
-autopairs.setup({
-  check_ts = true,
 })
