@@ -1,25 +1,12 @@
 #!/bin/zsh
 
-zinstall() {
+zuse() {
 	mkdir --parents "$ZDIR"
-	plugin="$ZDIR/${1##*/}"
+	repo="${1%:*}"
+	dest="$ZDIR/${repo##*/}"
 
-	[ ! -d "$plugin" ] && git clone --depth="1" "https://github.com/$1.git" "$plugin"
-	source "$plugin/$2"
-}
-
-zupdate() {
-	for d in "$ZDIR"/*; do
-		[ ! -d "$d" ] && continue
-		(cd "$d" && git pull)
-	done
-}
-
-lfcd() {
-	tmp="$(mktemp)"
-	lfub -last-dir-path="$tmp" "$@"
-	cd "$(cat "$tmp")"
-	rm "$tmp"
+	[ ! -d "$dest" ] && git clone --depth="1" "https://github.com/$repo.git" "$dest"
+	source "$dest/${1##*:}"
 }
 
 alias grep="grep --color=\"auto\" --ignore-case"
@@ -28,9 +15,9 @@ alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-reada
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
+alias lf="cd \"\$(lfcd)\""
 alias g="git"
 alias v="nvrs"
-alias l="lfcd"
 
 setopt appendhistory
 setopt promptsubst
@@ -40,14 +27,17 @@ setopt interactivecomments
 HISTSIZE="4096"
 SAVEHIST="4096"
 
+autoload "colors" && colors
 autoload "vcs_info" && precmd() { vcs_info; }
-zstyle ":vcs_info:*" enable "git"
 zstyle ":vcs_info:*" check-for-changes "true"
-zstyle ":vcs_info:git:*" formats " on %{$(tput bold setaf 5)%} %b%{$(tput sgr0)%}"
-PS1=$'\n'"You're %{$(tput bold setaf 3)%} %n%{$(tput sgr0)%} in %{$(tput bold setaf 4)%} %c%{$(tput sgr0)%}\$vcs_info_msg_0_"
-PS1+=$'\n'"%(?:%{$(tput setaf 2)%}:%{$(tput setaf 1)%})%{$(tput sgr0)%} "
+zstyle ":vcs_info:*" stagedstr "+"
+zstyle ":vcs_info:*" unstagedstr "!"
+zstyle ":vcs_info:git:*" formats " on %{$fg_bold[magenta]%} %b%{$reset_color%}%{$fg[red]%}%c%u%{$reset_color%}"
+zstyle ":vcs_info:git:*" actionformats " on %{$fg_bold[magenta]%} %b%{$reset_color%}%{$fg[red]%}%c%u%{$reset_color%} doing %{$fg_bold[cyan]%} %a%{$reset_color%}"
+PS1=$'\n'"You're %{$fg_bold[yellow]%} %n%{$reset_color%} in %{$fg_bold[blue]%} %c%{$reset_color%}\$vcs_info_msg_0_ %(?:%{$fg[green]%}:%{$fg[red]%})%{$reset_color%} "
+RPS1=""
 
-zinstall "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
+zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
 autoload "compinit" && compinit -d "$ZCOMPDUMP"
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
@@ -57,12 +47,11 @@ bindkey -M "menuselect" "^[[Z" "reverse-menu-complete"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
-zinstall "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
+zuse "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
-zinstall "softmoth/zsh-vim-mode" "zsh-vim-mode.plugin.zsh"
+zuse "softmoth/zsh-vim-mode:zsh-vim-mode.plugin.zsh"
 bindkey -M "viins" "jk" "vi-cmd-mode"
 bindkey -M "viins" "kj" "vi-cmd-mode"
-RPS1=""
 KEYTIMEOUT="5"
 MODE_CURSOR_VIINS="bar"
