@@ -3,8 +3,8 @@ local whichkey = require("which-key")
 
 gitsigns.setup({
   current_line_blame = true,
-  current_line_blame_formatter = "  " .. vim.g.symbols.ui.Note .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
-  current_line_blame_formatter_nc = "  " .. vim.g.symbols.ui.Note .. " <author>",
+  current_line_blame_formatter = "  " .. vim.g.symbols.ui.Circle .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
+  current_line_blame_formatter_nc = "  " .. vim.g.symbols.ui.Circle .. " <author>",
   on_attach = function(buffnr)
     whichkey.register({
       g = {

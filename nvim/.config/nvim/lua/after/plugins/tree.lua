@@ -27,11 +27,11 @@ tree.setup({
     icons = {
       symlink_arrow = " -> ",
       glyphs = {
-        symlink = vim.g.symbols.document.Link,
         default = vim.g.symbols.document.File,
+        symlink = vim.g.symbols.document.Link,
         folder = {
           arrow_closed = vim.g.symbols.ui.Closed,
-          arrow_open = vim.g.symbols.ui.Opened,
+          arrow_open = vim.g.symbols.ui.Open,
           symlink = vim.g.symbols.document.Link,
           default = vim.g.symbols.document.Folder,
           open = vim.g.symbols.document.Open,
