@@ -1,7 +1,7 @@
 #!/bin/sh
 
 get_unics() {
-	cat <<- 'EOF'
+	cat -- <<- 'EOF'
 		😀 grinning face
 		😃 grinning face with big eyes
 		😄 grinning face with smiling eyes
@@ -1600,4 +1600,4 @@ get_unics() {
 unic="$(get_unics | dmenu -p " ")"
 [ "$?" -ne "0" ] && exit 1
 
-xdotool type "${unic%% *}"
+xdotool type -- "${unic%% *}"

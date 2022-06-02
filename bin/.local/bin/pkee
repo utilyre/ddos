@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir --parents "$PASSWORDS_DIR"
+mkdir --parents -- "$PASSWORDS_DIR"
 
 case "$1" in
 	"init") echo "$2" > "$PASSWORDS_DIR/.gpg-id" ;;
@@ -9,10 +9,10 @@ case "$1" in
 	"menu")
 		name="$(find "$PASSWORDS_DIR/" -type "f" -not -name ".*" -printf "%f\n" | dmenu -p " ")"
 		[ "$?" -ne "0" ] && exit 1
-		password="$(gpg --decrypt "$PASSWORDS_DIR/$name")"
+		password="$(gpg --decrypt -- "$PASSWORDS_DIR/$name")"
 		[ "$?" -ne "0" ] && exit 1
 
 		herbe " Pkee" "Copied \"$name\" password to clipboard for 10s." &
-		printf "%s" "$password" | xsel --clipboard --selectionTimeout "10000"
+		printf -- "%s" "$password" | xsel --clipboard --selectionTimeout "10000"
 		;;
 esac

@@ -9,45 +9,45 @@ memo_color="$(xrdb -get "fblk.memo")"
 temp_color="$(xrdb -get "fblk.temp")"
 
 _date() {
-	date "+%H:%M %a, %b %d"
+	date -- "+%H:%M %a, %b %d"
 }
 
 _wttr() {
-	curl "https://wttr.in/Hamadan?m&format=%l,+%C+%t"
+	curl -- "https://wttr.in/Hamadan?m&format=%l,+%C+%t"
 }
 
 _uptm() {
-	uptime --pretty | sed --regexp-extended "s/^(.)/\U\1/"
+	uptime --pretty | sed --regexp-extended -- "s/^(.)/\U\1/"
 }
 
 _desk() {
 	while read -r line; do
-		printf "%s" "%{A:bspc desktop --focus \"$line\":}"
-		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf "%s" "%{F:current}"
-		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf "%s" "%{U:current}%{+u}"
+		printf -- "%s" "%{A:bspc desktop --focus \"$line\":}"
+		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%s" "%{F:current}"
+		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%s" "%{U:current}%{+u}"
 
-		printf " %s " "$line"
+		printf -- " %s " "$line"
 
-		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf "%s" "%{-u}%{U-}"
-		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf "%s" "%{F-}"
-		printf "%s" "%{A}"
+		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%s" "%{-u}%{U-}"
+		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%s" "%{F-}"
+		printf -- "%s" "%{A}"
 	done <<- EOF
 		$(bspc query --desktops --names)
 	EOF
 }
 
 _volt() {
-	printf "%s <> %s" \
+	printf -- "%s <> %s" \
 		"$(volt --device="sink" get)" \
 		"$(volt --device="source" get)"
 }
 
 _memo() {
-	free --human | awk "(\$0 ~ /^Mem:/) { print \$3 \"/\" \$2 }"
+	free --human | awk -- "(\$0 ~ /^Mem:/) { print \$3 \"/\" \$2 }"
 }
 
 _temp() {
-	printf "%s°C (High: %s°C)" \
+	printf -- "%s°C (High: %s°C)" \
 		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")" \
 		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_max")"
 }
@@ -55,8 +55,8 @@ _temp() {
 trap "unset desk" "10"
 trap "unset volt" "12"
 while true; do
-	sleep "1s" & wait "$!"
-	timestamp="$(date "+%s")"
+	sleep -- "1s" & wait -- "$!"
+	timestamp="$(date -- "+%s")"
 
 	[ -z "$date" ] || [ "$(($timestamp % 60))" -eq "0" ] && date="$(_date)"
 	[ -z "$wttr" ] || [ "$(($timestamp % 1800))" -eq "0" ] && wttr="$(_wttr)"
@@ -70,6 +70,6 @@ while true; do
 
 	printf "%s%s%s\n" \
 		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$uptm_color}%{U$uptm_color}%{+u}  $uptm %{-u}%{U-}%{F-} " \
-		"%{c} $(echo "$desk" | sed "s/:current/$desk_color/g") " \
+		"%{c} $(echo "$desk" | sed -- "s/:current/$desk_color/g") " \
 		"%{r} %{F$volt_color}%{U$volt_color}%{+u}  $volt %{-u}%{U-}%{F-} %{F$memo_color}%{U$memo_color}%{+u}  $memo %{-u}%{U-}%{F-} %{F$temp_color}%{U$temp_color}%{+u}  $temp %{-u}%{U-}%{F-} "
 done

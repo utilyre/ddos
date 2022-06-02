@@ -3,5 +3,5 @@
 tmp="$(mktemp)"
 lfub -last-dir-path="$tmp" "$@"
 
-cat "$tmp"
-rm "$tmp"
+cd -- "$(cat -- "$tmp")"
+rm -- "$tmp"

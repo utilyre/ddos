@@ -1,10 +1,9 @@
 #!/bin/sh
 
-action="$(printf "%s\n" "Logout" "Sleep" "Restart" "Shutdown" | dmenu -p " ")"
+action="$(printf "%s\n" "Sleep" "Restart" "Shutdown" | dmenu -p " ")"
 [ "$?" -ne "0" ] && exit 1
 
 case "$action" in
-	"Logout") bspc quit ;;
 	"Sleep") systemctl suspend ;;
 	"Restart") systemctl reboot ;;
 	"Shutdown") systemctl poweroff ;;

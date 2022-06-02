@@ -8,4 +8,4 @@ exec 3> "$FIFO_UEBERZUG"
 lf "$@" 3>&-
 
 exec 3>&-
-rm "$FIFO_UEBERZUG"
+rm -- "$FIFO_UEBERZUG"

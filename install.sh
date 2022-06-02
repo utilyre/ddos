@@ -4,8 +4,8 @@ out() { echo "$(tput bold setaf 2)===>$(tput sgr0) $1"; }
 err() { echo "$(tput bold setaf 1)===> ERROR:$(tput sgr0) $1" >&2 && exit 1; }
 
 install_yay() {
-	git clone "https://aur.archlinux.org/yay.git"
-	(cd "yay" && makepkg --noconfirm --syncdeps --rmdeps --install)
+	git clone --depth="1" -- "https://aur.archlinux.org/yay.git"
+	(cd -- "yay" && makepkg --noconfirm --syncdeps --rmdeps --install)
 }
 
 install_deps() {
@@ -15,7 +15,7 @@ install_deps() {
 }
 
 download_repo() {
-	git clone "https://github.com/utilyre/dotfiles.git"
+	git clone --depth="1" -- "https://github.com/utilyre/dotfiles.git"
 	(cd "dotfiles" && stow --target="$HOME" */)
 }
 

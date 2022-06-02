@@ -1,12 +1,12 @@
 #!/bin/sh
 
 for arg in "$@"; do
-	file="$(realpath --canonicalize-missing "$arg")"
-	[ "$(printf "%s" "$arg" | tail --bytes="1")" = "/" ] && {
-		mkdir --parents "$file"
+	file="$(realpath --canonicalize-missing -- "$arg")"
+	[ "$(printf -- "%s" "$arg" | tail --bytes="1")" = "/" ] && {
+		mkdir --parents -- "$file"
 		continue
 	}
 
-	mkdir --parents "$(dirname "$file")"
-	touch "$file"
+	mkdir --parents -- "$(dirname "$file")"
+	touch -- "$file"
 done

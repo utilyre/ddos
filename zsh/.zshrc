@@ -1,12 +1,12 @@
 #!/bin/zsh
 
 zuse() {
-	mkdir --parents "$ZDIR"
+	mkdir --parents -- "$ZDIR"
 	repo="${1%:*}"
 	dest="$ZDIR/${repo##*/}"
 
-	[ ! -d "$dest" ] && git clone --depth="1" "https://github.com/$repo.git" "$dest"
-	source "$dest/${1##*:}"
+	[ ! -d "$dest" ] && git clone --depth="1" -- "https://github.com/$repo.git" "$dest"
+	source -- "$dest/${1##*:}"
 }
 
 alias grep="grep --color=\"auto\" --ignore-case"
@@ -15,7 +15,7 @@ alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-reada
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
-alias lf="cd \"\$(lfcd)\""
+alias lf=". lfcd"
 alias g="git"
 alias v="nvrs"
 
