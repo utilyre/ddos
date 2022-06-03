@@ -34,7 +34,7 @@ cmp.setup({
       group_index = 2,
       name = "buffer",
       option = {
-        get_bufnrs = vim.hof(vim.api.nvim_list_bufs),
+        get_bufnrs = vim.fun_create_hof(vim.api.nvim_list_bufs),
       },
     },
     {

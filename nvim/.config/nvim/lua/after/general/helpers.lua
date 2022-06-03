@@ -1,10 +1,10 @@
-vim.str_isempty = function(value)
-  return value == nil or value == ""
+vim.str_isempty = function(str)
+  return str == nil or str == ""
 end
 
-vim.hof = function(f, ...)
+vim.fun_create_hof = function(fun, ...)
   local params = { ... }
   return function()
-    return f(unpack(params))
+    return fun(unpack(params))
   end
 end

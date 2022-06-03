@@ -43,13 +43,13 @@ todo.setup({
 whichkey.register({
   f = {
     name = "Find",
-    p = { vim.hof(telescope.extensions.projects.projects), "Project" },
-    b = { vim.hof(builtin.git_branches), "Branch" },
-    r = { vim.hof(builtin.oldfiles), "Recent" },
-    f = { vim.hof(builtin.find_files), "File" },
-    a = { vim.hof(builtin.filetypes), "Association" },
-    w = { vim.hof(builtin.live_grep), "Word" },
-    t = { vim.hof(vim.cmd, "TodoTelescope"), "Todo" },
-    h = { vim.hof(builtin.help_tags), "Help" },
+    p = { vim.fun_create_hof(telescope.extensions.projects.projects), "Project" },
+    b = { vim.fun_create_hof(builtin.git_branches), "Branch" },
+    r = { vim.fun_create_hof(builtin.oldfiles), "Recent" },
+    f = { vim.fun_create_hof(builtin.find_files), "File" },
+    a = { vim.fun_create_hof(builtin.filetypes), "Association" },
+    w = { vim.fun_create_hof(builtin.live_grep), "Word" },
+    t = { vim.fun_create_hof(vim.cmd, "TodoTelescope"), "Todo" },
+    h = { vim.fun_create_hof(builtin.help_tags), "Help" },
   },
 }, { prefix = "<leader>" })
