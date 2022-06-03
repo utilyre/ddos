@@ -59,6 +59,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "Cur
     local icon, highlight = devicons.get_icon_by_filetype(vim.bo.filetype, { default = true })
     vim.opt_local.winbar = " %#" .. highlight .. "#" .. icon .. "%* %#" .. (vim.bo.modified and "BufferCurrentMod" or "BufferCurrent") .. "#" .. (vim.str_isempty(filename) and "[No Name]" or filename) .. "%*"
 
+    if not gps.is_available() then return end
     local location = gps.get_location()
     if not vim.str_isempty(location) then
       vim.opt_local.winbar:append(" %#LineNr#" .. vim.g.symbols.ui.Chevron .. "%* " .. location)
