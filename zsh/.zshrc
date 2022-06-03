@@ -36,7 +36,7 @@ zstyle ":vcs_info:git:*" formats " on %{$fg_bold[magenta]%} %b%{$reset_color%
 zstyle ":vcs_info:git:*" actionformats " on %{$fg_bold[magenta]%} %b%{$reset_color%}%c%u doing %{$fg_bold[cyan]%} %a%{$reset_color%}"
 PS1=$'\n'"You're %{$fg_bold[yellow]%} %n%{$reset_color%} in %{$fg_bold[blue]%} %c%{$reset_color%}\$vcs_info_msg_0_"
 PS1+=$'\n'"%(?:%{$fg[green]%}:%{$fg[red]%})%{$reset_color%} "
-RPS1="%(?:%{$fg[green]%}:%{$fg[red]%})%{$reset_color%}"
+RPS1=""
 
 zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
 autoload "compinit" && compinit -d "$ZCOMPDUMP"
