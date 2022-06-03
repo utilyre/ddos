@@ -26,4 +26,4 @@ export LS_COLORS="no=0;37:fi=0;37:ex=0;32:so=0;35:do=0;35:pi=0;33:ln=0;36:or=0;3
 export LF_ICONS="no=:fi=:ex=:so=:do=:pi=:ln=:or=:mi=:di=:tw=:ow=:st=:cd=:bd="
 
 printenv | awk --field-separator="=" -- "(\$1 ~ /^XDG_.+_HOME\$/) { print \$2 }" | xargs --delimiter="\n" mkdir --parents --
-startx -- "$XDG_CONFIG_HOME/x11/xinitrc"
+startx "$XDG_CONFIG_HOME/x11/xinitrc"

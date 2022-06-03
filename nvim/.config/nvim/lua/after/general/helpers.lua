@@ -1,11 +1,10 @@
-function F(fn, ...)
-  local params = ...
-  return function()
-    return fn(params)
-  end
+vim.str_isempty = function(value)
+  return value == nil or value == ""
 end
 
-function P(object)
-  local stringified = vim.inspect(object)
-  print(stringified)
+vim.hof = function(f, ...)
+  local params = { ... }
+  return function()
+    return f(unpack(params))
+  end
 end

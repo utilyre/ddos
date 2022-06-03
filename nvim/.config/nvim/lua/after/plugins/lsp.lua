@@ -23,7 +23,7 @@ local get_signs = function()
 end
 
 local get_sources = function()
-  local config_path = vim.fn.expand("$XDG_CONFIG_HOME/nvim/sources.conf")
+  local config_path = vim.fn.expand("$XDG_CONFIG_HOME/nvim/null.conf")
   if vim.fn.filereadable(config_path) == 0 then return {} end
 
   local sources = {}
@@ -63,14 +63,14 @@ local on_attach = function(client, buffnr)
   whichkey.register({
     i = {
       name = "Intellisense",
-      d = { F(vim.lsp.buf.definition), "Definition" },
-      a = { F(vim.lsp.buf.code_action), "Actions" },
-      f = { F(vim.lsp.buf.format, { async = true }), "Format" },
-      c = { F(vim.lsp.buf.rename), "Change" },
-      h = { F(vim.lsp.buf.hover), "Hover" },
-      l = { F(vim.diagnostic.open_float), "Diagnostics" },
-      k = { F(vim.diagnostic.goto_prev), "Previous" },
-      j = { F(vim.diagnostic.goto_next), "Next" },
+      d = { vim.hof(vim.lsp.buf.definition), "Definition" },
+      a = { vim.hof(vim.lsp.buf.code_action), "Actions" },
+      f = { vim.hof(vim.lsp.buf.format, { async = true }), "Format" },
+      c = { vim.hof(vim.lsp.buf.rename), "Change" },
+      h = { vim.hof(vim.lsp.buf.hover), "Hover" },
+      l = { vim.hof(vim.diagnostic.open_float), "Diagnostics" },
+      k = { vim.hof(vim.diagnostic.goto_prev), "Previous" },
+      j = { vim.hof(vim.diagnostic.goto_next), "Next" },
     },
   }, { prefix = "<leader>", buffer = buffnr })
 end

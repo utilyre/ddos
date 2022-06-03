@@ -9,14 +9,14 @@ gitsigns.setup({
     whichkey.register({
       g = {
         name = "Git",
-        d = { F(gitsigns.diffthis), "Diff" },
-        p = { F(gitsigns.preview_hunk), "Preview" },
-        s = { F(gitsigns.select_hunk), "Select" },
-        r = { F(gitsigns.reset_hunk), "Reset" },
-        a = { F(gitsigns.stage_hunk), "Stage" },
-        u = { F(gitsigns.undo_stage_hunk), "Undo" },
-        k = { F(gitsigns.prev_hunk), "Previous" },
-        j = { F(gitsigns.next_hunk), "Next" },
+        d = { vim.hof(gitsigns.diffthis), "Diff" },
+        p = { vim.hof(gitsigns.preview_hunk), "Preview" },
+        s = { vim.hof(gitsigns.select_hunk), "Select" },
+        r = { vim.hof(gitsigns.reset_hunk), "Reset" },
+        a = { vim.hof(gitsigns.stage_hunk), "Stage" },
+        u = { vim.hof(gitsigns.undo_stage_hunk), "Undo" },
+        k = { vim.hof(gitsigns.prev_hunk), "Previous" },
+        j = { vim.hof(gitsigns.next_hunk), "Next" },
       },
     }, { prefix = "<leader>", buffer = buffnr })
   end,

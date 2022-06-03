@@ -2,7 +2,6 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local git = require("cmp_git")
 
-git.setup()
 cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
@@ -34,6 +33,9 @@ cmp.setup({
     {
       group_index = 2,
       name = "buffer",
+      option = {
+        get_bufnrs = vim.hof(vim.api.nvim_list_bufs),
+      },
     },
     {
       group_index = 2,
@@ -85,3 +87,5 @@ cmp.setup({
     end),
   },
 })
+
+git.setup()
