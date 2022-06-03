@@ -51,15 +51,6 @@ local on_attach = function(client, buffnr)
     })
   end
 
-  if client.server_capabilities.codeLensProvider then
-    vim.lsp.codelens.refresh()
-    vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
-      group = gLsp,
-      buffer = buffnr,
-      callback = vim.lsp.codelens.refresh,
-    })
-  end
-
   whichkey.register({
     i = {
       name = "Intellisense",
