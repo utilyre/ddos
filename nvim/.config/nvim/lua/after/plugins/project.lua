@@ -49,7 +49,7 @@ whichkey.register({
     f = { vim.fun_create_hof(builtin.find_files), "File" },
     a = { vim.fun_create_hof(builtin.filetypes), "Association" },
     w = { vim.fun_create_hof(builtin.live_grep), "Word" },
-    t = { vim.fun_create_hof(vim.cmd, "TodoTelescope"), "Todo" },
+    t = { "<cmd>TodoTelescope<cr>", "Todo" },
     h = { vim.fun_create_hof(builtin.help_tags), "Help" },
   },
 }, { prefix = "<leader>" })

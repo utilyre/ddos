@@ -25,12 +25,12 @@ vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "kj", "<esc>")
 
 whichkey.register({
-  w = { vim.fun_create_hof(vim.cmd, "write"), "Write" },
-  q = { vim.fun_create_hof(vim.cmd, "quit"), "Quit" },
-  c = { vim.fun_create_hof(vim.cmd, "bdelete"), "Close" },
-  n = { vim.fun_create_hof(vim.cmd, "enew"), "New" },
-  t = { vim.fun_create_hof(vim.cmd, "terminal"), "Terminal" },
-  s = { vim.fun_create_hof(vim.cmd, "split"), "Split" },
-  v = { vim.fun_create_hof(vim.cmd, "vsplit"), "VSplit" },
-  u = { vim.fun_create_hof(vim.cmd, "nohlsearch"), "Unselect" },
+  w = { "<cmd>write<cr>", "Write" },
+  q = { "<cmd>quit<cr>", "Quit" },
+  c = { "<cmd>bdelete<cr>", "Close" },
+  n = { "<cmd>enew<cr>", "New" },
+  t = { "<cmd>terminal<cr>", "Terminal" },
+  s = { "<cmd>split<cr>", "Split" },
+  v = { "<cmd>vsplit<cr>", "VSplit" },
+  u = { "<cmd>nohlsearch<cr>", "Unselect" },
 }, { prefix = "<leader>" })
