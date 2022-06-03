@@ -13,6 +13,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin"
 
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/config.ini"
+export NVIM_NULL="$XDG_CONFIG_HOME/nvim/null.conf"
 export ZCOMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
 export LF_CACHE_DIR="$XDG_CACHE_HOME/lf"
 export ZDIR="$XDG_DATA_HOME/zsh"

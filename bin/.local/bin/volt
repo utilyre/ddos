@@ -2,9 +2,9 @@
 
 options="$(getopt --name="volt" --options="i,o" --longoptions="device::" -- "$@")"
 [ "$?" -ne "0" ] && exit 1
+eval set -- "$options"
 
 device="source"
-eval set -- "$options"
 while true; do
 	[ "$1" = "--" ] && { shift; break; }
 

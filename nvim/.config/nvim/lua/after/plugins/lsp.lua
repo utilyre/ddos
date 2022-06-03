@@ -23,7 +23,7 @@ local get_signs = function()
 end
 
 local get_sources = function()
-  local config_path = vim.fn.expand("$XDG_CONFIG_HOME/nvim/null.conf")
+  local config_path = vim.fn.expand("$NVIM_NULL")
   if vim.fn.filereadable(config_path) == 0 then return {} end
 
   local sources = {}

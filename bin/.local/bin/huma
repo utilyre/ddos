@@ -2,9 +2,9 @@
 
 options="$(getopt --name="huma" --options="a,b,d" --longoptions="component::" -- "$@")"
 [ "$?" -ne "0" ] && exit 1
+eval set -- "$options"
 
 component="all"
-eval set -- "$options"
 while true; do
 	[ "$1" = "--" ] && { shift; break; }
 
