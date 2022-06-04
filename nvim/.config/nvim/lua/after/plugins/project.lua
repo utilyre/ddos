@@ -25,6 +25,7 @@ dressing.setup({
 })
 
 telescope.load_extension("projects")
+telescope.load_extension("todo-comments")
 telescope.setup({
   defaults = themes.get_dropdown(),
 })
@@ -49,7 +50,7 @@ whichkey.register({
     f = { vim.fun_create_hof(builtin.find_files), "File" },
     a = { vim.fun_create_hof(builtin.filetypes), "Association" },
     w = { vim.fun_create_hof(builtin.live_grep), "Word" },
-    t = { "<cmd>TodoTelescope<cr>", "Todo" },
+    t = { vim.fun_create_hof(telescope.extensions["todo-comments"].todo), "Todo" },
     h = { vim.fun_create_hof(builtin.help_tags), "Help" },
   },
 }, { prefix = "<leader>" })
