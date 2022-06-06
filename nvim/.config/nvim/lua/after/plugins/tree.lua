@@ -53,4 +53,4 @@ tree.setup({
   },
 })
 
-vim.keymap.set("n", "<c-p>", vim.fun_create_hof(tree.toggle))
+vim.keymap.set("n", "<c-p>", vim.api.nvim_create_hof(tree.toggle))

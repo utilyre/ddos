@@ -4,26 +4,8 @@ local null = require("null-ls")
 local cmp = require("cmp_nvim_lsp")
 local whichkey = require("which-key")
 
-local get_signs = function()
-  local signs = {
-    { name = "DiagnosticSignError", text = vim.g.symbols.diagnostic.Error },
-    { name = "DiagnosticSignWarn", text = vim.g.symbols.diagnostic.Warn },
-    { name = "DiagnosticSignHint", text = vim.g.symbols.diagnostic.Hint },
-    { name = "DiagnosticSignInfo", text = vim.g.symbols.diagnostic.Info },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, {
-      texthl = sign.name,
-      text = sign.text,
-    })
-  end
-
-  return signs
-end
-
 local get_sources = function()
-  local config_path = vim.fn.expand("$NVIM_NULL")
+  local config_path = vim.fn.expand("$HOME/.null")
   if vim.fn.filereadable(config_path) == 0 then return {} end
 
   local sources = {}
@@ -54,14 +36,14 @@ local on_attach = function(client, buffnr)
   whichkey.register({
     i = {
       name = "Intellisense",
-      d = { vim.fun_create_hof(vim.lsp.buf.definition), "Definition" },
-      a = { vim.fun_create_hof(vim.lsp.buf.code_action), "Actions" },
-      f = { vim.fun_create_hof(vim.lsp.buf.format, { async = true }), "Format" },
-      c = { vim.fun_create_hof(vim.lsp.buf.rename), "Change" },
-      h = { vim.fun_create_hof(vim.lsp.buf.hover), "Hover" },
-      l = { vim.fun_create_hof(vim.diagnostic.open_float), "Diagnostics" },
-      k = { vim.fun_create_hof(vim.diagnostic.goto_prev), "Previous" },
-      j = { vim.fun_create_hof(vim.diagnostic.goto_next), "Next" },
+      d = { vim.api.nvim_create_hof(vim.lsp.buf.definition), "Definition" },
+      a = { vim.api.nvim_create_hof(vim.lsp.buf.code_action), "Actions" },
+      f = { vim.api.nvim_create_hof(vim.lsp.buf.format, { async = true }), "Format" },
+      c = { vim.api.nvim_create_hof(vim.lsp.buf.rename), "Change" },
+      h = { vim.api.nvim_create_hof(vim.lsp.buf.hover), "Hover" },
+      l = { vim.api.nvim_create_hof(vim.diagnostic.open_float), "Diagnostics" },
+      k = { vim.api.nvim_create_hof(vim.diagnostic.goto_prev), "Previous" },
+      j = { vim.api.nvim_create_hof(vim.diagnostic.goto_next), "Next" },
     },
   }, { prefix = "<leader>", buffer = buffnr })
 end
@@ -69,8 +51,15 @@ end
 vim.diagnostic.config({
   update_in_insert = true,
   virtual_text = false,
-  signs = { active = get_signs() },
   float = { border = "rounded" },
+  signs = {
+    active = {
+      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.symbols.diagnostic.Error),
+      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.symbols.diagnostic.Warn),
+      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.symbols.diagnostic.Hint),
+      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.symbols.diagnostic.Info),
+    },
+  },
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",

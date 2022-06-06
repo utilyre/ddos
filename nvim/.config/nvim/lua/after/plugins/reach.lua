@@ -4,4 +4,4 @@ reach.setup({
   notifications = false,
 })
 
-vim.keymap.set("n", "<tab>", vim.fun_create_hof(reach.buffers, { handle = "dynamic", show_current = true, }))
+vim.keymap.set("n", "<tab>", vim.api.nvim_create_hof(reach.buffers, { handle = "dynamic", show_current = true, }))

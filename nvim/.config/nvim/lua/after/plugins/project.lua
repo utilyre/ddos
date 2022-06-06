@@ -44,13 +44,13 @@ todo.setup({
 whichkey.register({
   f = {
     name = "Find",
-    p = { vim.fun_create_hof(telescope.extensions.projects.projects), "Project" },
-    b = { vim.fun_create_hof(builtin.git_branches), "Branch" },
-    r = { vim.fun_create_hof(builtin.oldfiles), "Recent" },
-    f = { vim.fun_create_hof(builtin.find_files), "File" },
-    a = { vim.fun_create_hof(builtin.filetypes), "Association" },
-    w = { vim.fun_create_hof(builtin.live_grep), "Word" },
-    t = { vim.fun_create_hof(telescope.extensions["todo-comments"].todo), "Todo" },
-    h = { vim.fun_create_hof(builtin.help_tags), "Help" },
+    p = { vim.api.nvim_create_hof(telescope.extensions.projects.projects), "Project" },
+    b = { vim.api.nvim_create_hof(builtin.git_branches), "Branch" },
+    r = { vim.api.nvim_create_hof(builtin.oldfiles), "Recent" },
+    f = { vim.api.nvim_create_hof(builtin.find_files), "File" },
+    a = { vim.api.nvim_create_hof(builtin.filetypes), "Association" },
+    w = { vim.api.nvim_create_hof(builtin.live_grep), "Word" },
+    t = { vim.api.nvim_create_hof(telescope.extensions["todo-comments"].todo), "Todo" },
+    h = { vim.api.nvim_create_hof(builtin.help_tags), "Help" },
   },
 }, { prefix = "<leader>" })

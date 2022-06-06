@@ -4,7 +4,7 @@ local whichkey = require("which-key")
 
 packer.init({
   display = {
-    open_fn = vim.fun_create_hof(util.float, { border = "rounded" }),
+    open_fn = vim.api.nvim_create_hof(util.float, { border = "rounded" }),
   },
 })
 
@@ -19,9 +19,9 @@ packer.startup({
 whichkey.register({
   p = {
     name = "Plugin",
-    s = { vim.fun_create_hof(packer.sync), "Sync" },
-    i = { vim.fun_create_hof(packer.install), "Install" },
-    u = { vim.fun_create_hof(packer.update), "Update" },
-    c = { vim.fun_create_hof(packer.clean), "Clean" },
+    s = { vim.api.nvim_create_hof(packer.sync), "Sync" },
+    i = { vim.api.nvim_create_hof(packer.install), "Install" },
+    u = { vim.api.nvim_create_hof(packer.update), "Update" },
+    c = { vim.api.nvim_create_hof(packer.clean), "Clean" },
   },
 }, { prefix = "<leader>" })
