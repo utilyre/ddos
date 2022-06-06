@@ -5,12 +5,12 @@ local cmp = require("cmp_nvim_lsp")
 local whichkey = require("which-key")
 
 local get_sources = function()
-  local config_path = vim.fn.expand("$HOME/.null")
+  local config_path = vim.fn.expand("$HOME/.nullrc")
   if vim.fn.filereadable(config_path) == 0 then return {} end
 
   local sources = {}
   for _, line in pairs(vim.fn.readfile(config_path)) do
-    local parts = vim.split(line, "#")
+    local parts = vim.split(line, "->")
     table.insert(sources, null.builtins[parts[2]][parts[1]])
   end
 
