@@ -26,8 +26,8 @@ setopt promptsubst
 setopt nolisttypes
 setopt interactivecomments
 
-HISTSIZE="4096"
-SAVEHIST="4096"
+HISTSIZE="1024"
+SAVEHIST="1024"
 
 autoload "colors" && colors
 autoload "vcs_info" && precmd() { vcs_info; }
