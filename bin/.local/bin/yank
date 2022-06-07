@@ -3,4 +3,4 @@
 output="$XDG_PICTURES_HOME/$(date "+%G%m%d-%H%M%S").png"
 ffmpeg -f "x11grab" -i "$DISPLAY" -frames:v "1" -- "$output"
 
-[ "$?" -eq "0" ] && herbe " Yank" "Saved to \"$(huma "$output")\"." &
+[ "$?" -eq "0" ] && herbe " Yank" "Saved to \"$(echo "$output" | sed -- "s|^$HOME|~|")\"." &
