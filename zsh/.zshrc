@@ -20,7 +20,6 @@ alias g="git"
 alias v="nvrs"
 
 setopt appendhistory
-setopt extendedhistory
 setopt histignorealldups
 setopt promptsubst
 setopt nolisttypes
