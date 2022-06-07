@@ -38,6 +38,7 @@ vim.opt.iskeyword:append("-")
 
 local gOptions = vim.api.nvim_create_augroup("Options", {})
 vim.api.nvim_create_autocmd("FileType", {
+  group = gOptions,
   pattern = { "gitcommit", "markdown" },
   callback = function() vim.opt_local.spell = true end,
 })
