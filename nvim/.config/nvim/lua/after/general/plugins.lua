@@ -34,6 +34,9 @@ vim.g.plugins = {
   "nvim-telescope/telescope.nvim",
   "folke/todo-comments.nvim",
 
+  "lewis6991/gitsigns.nvim",
+  "akinsho/git-conflict.nvim",
+
   "kyazdani42/nvim-tree.lua",
   "toppair/reach.nvim",
   "folke/which-key.nvim",
@@ -41,6 +44,5 @@ vim.g.plugins = {
   "smiteshp/nvim-gps",
   "petertriho/nvim-scrollbar",
   "nvim-lualine/lualine.nvim",
-  "lewis6991/gitsigns.nvim",
   "lukas-reineke/indent-blankline.nvim",
 }
