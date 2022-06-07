@@ -2,7 +2,7 @@
 
 disks="$(lsblk --raw --path --output="type,name,fstype,size,mountpoint" | awk -- "(\$1 == \"part\") { print \$2 \" \" \$3 \" \" \$4 \" \" \$5 }")"
 disk="$(echo "$disks" | column --table | dmenu -p " ")"
-[ "$?" -ne "0" ] && exit 1
+[ "$?" -ne "0" ] && exit "130"
 
 case "$(echo "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
 	"mount")

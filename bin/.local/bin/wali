@@ -2,6 +2,6 @@
 
 [ -z "$1" ] && exec xwallpaper --zoom "$WALIRESFILE"
 
-file --brief --mime-type -- "$1" | grep --quiet -- "^image/" || exit 1
+file --brief --mime-type -- "$1" | grep --quiet -- "^image/" || exit "1"
 ln --force --symbolic -- "$(realpath --canonicalize-missing -- "$1")" "$WALIRESFILE"
 xwallpaper --zoom "$WALIRESFILE"

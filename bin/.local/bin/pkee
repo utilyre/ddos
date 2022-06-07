@@ -8,9 +8,9 @@ case "$1" in
 	"generate") tr --delete --complement "A-Za-z0-9" < "/dev/urandom" | head --bytes="32" | pkee add "$2" ;;
 	"menu")
 		name="$(find "$PASSWORDS_DIR/" -type "f" -not -name ".*" -printf "%f\n" | dmenu -p " ")"
-		[ "$?" -ne "0" ] && exit 1
+		[ "$?" -ne "0" ] && exit "130"
 		password="$(gpg --decrypt -- "$PASSWORDS_DIR/$name")"
-		[ "$?" -ne "0" ] && exit 1
+		[ "$?" -ne "0" ] && exit "130"
 
 		herbe " Pkee" "Copied \"$name\" password to clipboard for 10s." &
 		printf -- "%s" "$password" | xsel --clipboard --selectionTimeout "10000"

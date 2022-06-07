@@ -9,7 +9,7 @@ case "$(file --brief --mime-type -- "$1")" in
 		[ ! -f "$thumbnail" ] && { ffmpeg -i "$1" -frames:v "1" -filter:v "scale=512:-1" -- "$thumbnail" || exec mediainfo "$1" ;}
 
 		echo "{ \"action\": \"add\", \"identifier\": \"PREVIEW\", \"scaler\": \"contain\", \"path\": \"$thumbnail\", \"width\": \"$(($2 - 2))\", \"height\": \"$3\", \"x\": \"$(($4 + 1))\", \"y\": \"$5\" }" > "$FIFO_UEBERZUG"
-		exit 1
+		exit "1"
 		;;
 	*) mediainfo -- "$1" ;;
 esac

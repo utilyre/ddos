@@ -1598,6 +1598,6 @@ get_unics() {
 	EOF
 }
 unic="$(get_unics | dmenu -p " ")"
-[ "$?" -ne "0" ] && exit 1
+[ "$?" -ne "0" ] && exit "130"
 
 xdotool type -- "${unic%% *}"
