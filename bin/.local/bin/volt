@@ -24,12 +24,12 @@ case "$1" in
 		exit
 		;;
 	"switch")
-		pactl set-default-"$device" "$2"
-		[ "$?" -eq "0" ] && herbe " Volt" "Set default \"$device\" to \"$2\"." &
+		pactl set-default-"$device" "$2" || exit "1"
+		herbe " Volt" "Set default \"$device\" to \"$2\"." &
 		;;
 	"toggle")
-		pactl set-"$device"-mute "$default" "toggle"
-		[ "$?" -eq "0" ] && herbe " Volt" "Toggled \"$device\" mute." &
+		pactl set-"$device"-mute "$default" "toggle" || exit "1"
+		herbe " Volt" "Toggled \"$device\" mute." &
 		;;
 	"down") pactl set-"$device"-volume "$default" "-2%" ;;
 	"up") pactl set-"$device"-volume "$default" "+2%" ;;

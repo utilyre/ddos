@@ -9,22 +9,18 @@ case "$(echo "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
 		source="${disk%% *}"
 		target="$XDG_PUBLIC_HOME/${source##*/}"
 
-		(
-			mkdir --parents -- "$target"
-			pkexec mount -- "$source" "$target"
-		)
+		mkdir --parents -- "$target"
+		pkexec mount -- "$source" "$target" || exit "130"
 
-		[ "$?" -eq "0" ] && herbe " Mont" "Mounted \"$source\" on \"$(echo "$target" | sed -- "s|^$HOME|~|")\"." &
+		herbe " Mont" "Mounted \"$source\" on \"$(echo "$target" | sed -- "s|^$HOME|~|")\"." &
 		;;
 	"umount")
 		source="${disk%% *}"
 		target="$XDG_PUBLIC_HOME/${source##*/}"
 
-		(
-			pkexec umount -- "$source"
-			rmdir -- "$target"
-		)
+		pkexec umount -- "$source" || exit "130"
+		rmdir -- "$target"
 
-		[ "$?" -eq "0" ] && herbe " Mont" "Unmounted \"$source\"." &
+		herbe " Mont" "Unmounted \"$source\"." &
 		;;
 esac
