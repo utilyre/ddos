@@ -1,11 +1,11 @@
 #!/bin/sh
 
 out() {
-	printf "\e[1;32m%s\e[m %s\n" "===>" "$1"
+	printf "\e[1;32m%s\e[m \e[1m%s\e[m\n" "===>" "$1" # bold
 }
 
 err() {
-	printf "\e[1;31m%s\e[m %s\n" "===> ERROR:" "$1" >&2
+	printf "\e[1;31m%s\e[m \e[1m%s\e[m\n" "===> ERROR:" "$1" >&2
 	exit 1
 }
 
