@@ -29,6 +29,7 @@ alias v="nvrs"
 setopt appendhistory
 setopt histignorealldups
 setopt promptsubst
+setopt transientrprompt
 setopt nolisttypes
 setopt interactivecomments
 
