@@ -9,13 +9,20 @@ zuse() {
 	source -- "$dest/${1##*:}"
 }
 
+lf-cd() {
+	tmp="$(mktemp)"
+	lfub -last-dir-path="$tmp" "$@"
+
+	cd -- "$(cat -- "$tmp")"
+	rm -- "$tmp"
+} && zle -N "lf-cd"
+
 alias grep="grep --color=\"auto\" --ignore-case"
 alias diff="diff --color=\"auto\""
 alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-readable"
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
-alias lf=". lfcd"
 alias g="git"
 alias v="nvrs"
 
@@ -43,7 +50,7 @@ zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "$LS_COLORS"
-bindkey -M "menuselect" "^[[Z" "reverse-menu-complete"
+bindkey -M "menuselect" "^[[z" "reverse-menu-complete"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
@@ -51,6 +58,7 @@ zuse "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
 zuse "softmoth/zsh-vim-mode:zsh-vim-mode.plugin.zsh"
+bindkey -M "viins" "^p" "lf-cd"
 bindkey -M "viins" "jk" "vi-cmd-mode"
 bindkey -M "viins" "kj" "vi-cmd-mode"
 KEYTIMEOUT="5"
