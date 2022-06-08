@@ -1,7 +1,13 @@
 #!/bin/sh
 
-out() { echo "$(tput bold setaf 2)===>$(tput sgr0) $1"; }
-err() { echo "$(tput bold setaf 1)===> ERROR:$(tput sgr0) $1" >&2 && exit 1; }
+out() {
+	printf "\e[1;32m%s\e[m %s\n" "===>" "$1"
+}
+
+err() {
+	printf "\e[1;31m%s\e[m %s\n" "===> ERROR:" "$1" >&2
+	exit 1
+}
 
 install_yay() {
 	git clone --depth="1" -- "https://aur.archlinux.org/yay.git"
