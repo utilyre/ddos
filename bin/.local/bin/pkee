@@ -3,7 +3,7 @@
 mkdir --parents -- "$PASSWORDS_DIR"
 
 case "$1" in
-	"init") echo "$2" > "$PASSWORDS_DIR/.gpg-id" ;;
+	"init") printf -- "%s" "$2" > "$PASSWORDS_DIR/.gpg-id" ;;
 	"add") gpg --recipient="$(cat "$PASSWORDS_DIR/.gpg-id")" --armor --encrypt "-" < "/dev/stdin" > "$PASSWORDS_DIR/$2" ;;
 	"generate") tr --delete --complement "A-Za-z0-9" < "/dev/urandom" | head --bytes="32" | pkee add "$2" ;;
 	"menu")

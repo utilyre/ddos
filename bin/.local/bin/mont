@@ -1,10 +1,10 @@
 #!/bin/sh
 
 disks="$(lsblk --raw --path --output="type,name,fstype,size,mountpoint" | awk -- "(\$1 == \"part\") { print \$2 \" \" \$3 \" \" \$4 \" \" \$5 }")"
-disk="$(echo "$disks" | column --table | dmenu -p " ")"
+disk="$(printf -- "%s" "$disks" | column --table | dmenu -p " ")"
 [ "$?" -ne "0" ] && exit "130"
 
-case "$(echo "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
+case "$(printf -- "%s" "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
 	"mount")
 		source="${disk%% *}"
 		target="$XDG_PUBLIC_HOME/${source##*/}"
@@ -12,7 +12,7 @@ case "$(echo "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
 		mkdir --parents -- "$target"
 		pkexec mount -- "$source" "$target" || exit "130"
 
-		herbe " Mont" "Mounted \"$source\" on \"$(echo "$target" | sed -- "s|^$HOME|~|")\"." &
+		herbe " Mont" "Mounted \"$source\" on \"$(printf -- "%s" "$target" | sed -- "s|^$HOME|~|")\"." &
 		;;
 	"umount")
 		source="${disk%% *}"

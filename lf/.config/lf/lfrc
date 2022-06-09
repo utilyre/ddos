@@ -20,5 +20,5 @@ map c :rename
 map x :delete
 map a push :create<space>
 map gw &wali "$f"
-map gd &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact --and-exit
-map gD &echo "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact
+map gd &printf "%s" "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact --and-exit
+map gD &printf "%s" "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact
