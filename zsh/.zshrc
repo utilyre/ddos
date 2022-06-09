@@ -42,7 +42,7 @@ zstyle ":vcs_info:*" stagedstr "+"
 zstyle ":vcs_info:*" unstagedstr "!"
 zstyle ":vcs_info:*" formats "─%B%F{magenta}%K{magenta}%F{black}  %b %k%F{magenta}"
 zstyle ":vcs_info:*" actionformats "─%B%F{magenta}%K{magenta}%F{black}  %b %K{yellow}%F{magenta}%F{black}  %a %k%F{yellow}"
-PS1=$'\n'"%B%F{blue}%K{blue}%F{black}  %c %(?.%K{green}.%K{red})%F{blue}%F{black}  %? %k%(?.%F{green}.%F{red})%f%k%b\$vcs_info_msg_0_%f%k%b "
+PS1=$'\n'"%B%F{blue}%K{blue}%F{black}  %c %(?.%K{green}.%K{red})%F{blue}%F{black} %(?.. %?) %k%(?.%F{green}.%F{red})%f%k%b\$vcs_info_msg_0_%f%k%b "
 RPS1="%B\$MODE_INDICATOR_PROMPT%f%k%b"
 
 zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
