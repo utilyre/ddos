@@ -22,15 +22,15 @@ _uptm() {
 
 _desk() {
 	while read -r line; do
-		printf -- "%{A:bspc desktop --focus \"%s\":}" "$line"
-		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%{F:current}"
-		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%{U:current}%{+u}"
+		printf -- "%%{A:bspc desktop --focus \"%s\":}" "$line"
+		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{F:current}"
+		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{U:current}%%{+u}"
 
 		printf -- " %s " "$line"
 
-		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%{-u}%{U-}"
-		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%{F-}"
-		printf -- "%{A}"
+		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{-u}%%{U-}"
+		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{F-}"
+		printf -- "%%{A}"
 	done <<- EOF
 		$(bspc query --desktops --names)
 	EOF
