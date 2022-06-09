@@ -7,7 +7,7 @@ case "$1" in
 	"add") gpg --recipient="$(cat "$PASSWORDS_DIR/.gpg-id")" --armor --encrypt "-" < "/dev/stdin" > "$PASSWORDS_DIR/$2" ;;
 	"generate") tr --delete --complement "A-Za-z0-9" < "/dev/urandom" | head --bytes="32" | pkee add "$2" ;;
 	"menu")
-		name="$(find "$PASSWORDS_DIR/" -type "f" -not -name ".*" -printf "%f\n" | dmenu -p " ")"
+		name="$(find "$PASSWORDS_DIR" -type "f" -not -name ".*" -printf "%f\n" | dmenu -p " ")"
 		[ "$?" -ne "0" ] && exit "130"
 		password="$(gpg --decrypt -- "$PASSWORDS_DIR/$name")"
 		[ "$?" -ne "0" ] && exit "130"
