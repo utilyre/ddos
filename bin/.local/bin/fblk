@@ -2,11 +2,13 @@
 
 date_color="$(xrdb -get "fblk.date")"
 wttr_color="$(xrdb -get "fblk.wttr")"
-uptm_color="$(xrdb -get "fblk.uptm")"
+mail_color="$(xrdb -get "fblk.mail")"
+boat_color="$(xrdb -get "fblk.boat")"
 desk_color="$(xrdb -get "fblk.desk")"
-volt_color="$(xrdb -get "fblk.volt")"
-memo_color="$(xrdb -get "fblk.memo")"
 temp_color="$(xrdb -get "fblk.temp")"
+memo_color="$(xrdb -get "fblk.memo")"
+volt_color="$(xrdb -get "fblk.volt")"
+conn_color="$(xrdb -get "fblk.conn")"
 
 _date() {
 	date -- "+%H:%M %a, %b %d"
@@ -16,8 +18,12 @@ _wttr() {
 	curl -- "https://wttr.in/Hamadan?m&format=%l,+%C+%t"
 }
 
-_uptm() {
-	uptime --pretty | sed --regexp-extended -- "s/^(.)/\U\1/"
+_mail() {
+	printf -- "%d" "1"
+}
+
+_boat() {
+	boat --execute="print-unread" | cut --delimiter=" " --fields="1"
 }
 
 _desk() {
@@ -36,20 +42,32 @@ _desk() {
 	EOF
 }
 
+_temp() {
+	printf -- "%d°C" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
+}
+
+_memo() {
+	free --human | awk -- "(\$1 == \"Mem:\") { print \$4 }"
+}
+
 _volt() {
 	printf -- "%s <> %s" \
 		"$(volt --device="sink" get)" \
 		"$(volt --device="source" get)"
 }
 
-_memo() {
-	free --human | awk -- "(\$0 ~ /^Mem:/) { print \$3 \"/\" \$2 }"
-}
+_conn() {
+	printf -- "Ethernet: "
+	grep --quiet "up" -- "/sys/class/net"/e*/"operstate" &&
+		printf -- "Up" ||
+		printf -- "Down"
 
-_temp() {
-	printf -- "%d°C (High: %d°C)" \
-		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")" \
-		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_max")"
+	printf -- " <> "
+
+	printf -- "Wi-Fi: "
+	grep --quiet "up" -- "/sys/class/net"/w*/"operstate" &&
+		printf -- "%s%%" "$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")" ||
+		printf -- "Down"
 }
 
 trap "unset desk" "10"
@@ -58,18 +76,20 @@ while true; do
 	sleep -- "1s" & wait -- "$!"
 	timestamp="$(date -- "+%s")"
 
-	[ -z "$date" ] || [ "$(($timestamp % 60))" -eq "0" ] && date="$(_date)"
+	[ -z "$date" ] || [ "$(($timestamp % 0060))" -eq "0" ] && date="$(_date)"
 	[ -z "$wttr" ] || [ "$(($timestamp % 1800))" -eq "0" ] && wttr="$(_wttr)"
-	[ -z "$uptm" ] || [ "$(($timestamp % 60))" -eq "0" ] && uptm="$(_uptm)"
+	[ -z "$mail" ] || [ "$(($timestamp % 0010))" -eq "0" ] && mail="$(_mail)"
+	[ -z "$boat" ] || [ "$(($timestamp % 0010))" -eq "0" ] && boat="$(_boat)"
 
-	[ -z "$desk" ] && desk="$(_desk)"
+	[ -z "$desk" ]                                         && desk="$(_desk)"
 
-	[ -z "$volt" ] && volt="$(_volt)"
-	[ -z "$memo" ] || [ "$(($timestamp % 30))" -eq "0" ] && memo="$(_memo)"
-	[ -z "$temp" ] || [ "$(($timestamp % 10))" -eq "0" ] && temp="$(_temp)"
+	[ -z "$temp" ] || [ "$(($timestamp % 0010))" -eq "0" ] && temp="$(_temp)"
+	[ -z "$memo" ] || [ "$(($timestamp % 0010))" -eq "0" ] && memo="$(_memo)"
+	[ -z "$volt" ]                                         && volt="$(_volt)"
+	[ -z "$conn" ] || [ "$(($timestamp % 0010))" -eq "0" ] && conn="$(_conn)"
 
-	printf -- "%s %s %s\n" \
-		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$uptm_color}%{U$uptm_color}%{+u}  $uptm %{-u}%{U-}%{F-}" \
+	printf -- "%s %s %s \n" \
+		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$mail_color}%{U$mail_color}%{+u}  $mail %{-u}%{U-}%{F-} %{F$boat_color}%{U$boat_color}%{+u}  $boat %{-u}%{U-}%{F-}" \
 		"%{c} $(printf -- "%s" "$desk" | sed -- "s/:current/$desk_color/g")" \
-		"%{r} %{F$volt_color}%{U$volt_color}%{+u}  $volt %{-u}%{U-}%{F-} %{F$memo_color}%{U$memo_color}%{+u}  $memo %{-u}%{U-}%{F-} %{F$temp_color}%{U$temp_color}%{+u}  $temp %{-u}%{U-}%{F-}"
+		"%{r} %{F$temp_color}%{U$temp_color}%{+u}  $temp %{-u}%{U-}%{F-} %{F$memo_color}%{U$memo_color}%{+u}  $memo %{-u}%{U-}%{F-} %{F$volt_color}%{U$volt_color}%{+u}  $volt %{-u}%{U-}%{F-} %{F$conn_color}%{U$conn_color}%{+u}  $conn %{-u}%{U-}%{F-}"
 done

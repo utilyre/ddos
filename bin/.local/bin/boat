@@ -1,0 +1,3 @@
+#!/bin/sh
+
+newsboat --url-file="$BOAT_CONFIG" "$@"

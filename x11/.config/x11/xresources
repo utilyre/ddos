@@ -20,11 +20,13 @@ fblk.background: BLACK
 fblk.foreground: WHITE
 fblk.date: BLUE
 fblk.wttr: GREEN
-fblk.uptm: YELLOW
+fblk.mail: YELLOW
+fblk.boat: RED
 fblk.desk: CYAN
-fblk.volt: YELLOW
-fblk.memo: GREEN
-fblk.temp: BLUE
+fblk.temp: RED
+fblk.memo: YELLOW
+fblk.volt: GREEN
+fblk.conn: BLUE
 
 herbe.font_pattern: monospace:size=10
 herbe.background_color: BLACK

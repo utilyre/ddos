@@ -5,7 +5,7 @@ local cmp = require("cmp_nvim_lsp")
 local whichkey = require("which-key")
 
 local get_sources = function()
-  local config_path = vim.fn.expand("$HOME/.nullrc")
+  local config_path = vim.fn.expand("$NULL_CONFIG")
   if vim.fn.filereadable(config_path) == 0 then return {} end
 
   local sources = {}

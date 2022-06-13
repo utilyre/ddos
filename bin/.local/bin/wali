@@ -1,7 +1,7 @@
 #!/bin/sh
 
-[ -z "$1" ] && exec xwallpaper --zoom "$WALIRESFILE"
+[ -z "$1" ] && exec xwallpaper --zoom "$WALIHISTFILE"
 
 file --brief --mime-type -- "$1" | grep --quiet -- "^image/" || exit "1"
-ln --force --symbolic -- "$(realpath --canonicalize-missing -- "$1")" "$WALIRESFILE"
-xwallpaper --zoom "$WALIRESFILE"
+ln --force --symbolic -- "$(realpath --canonicalize-missing -- "$1")" "$WALIHISTFILE"
+xwallpaper --zoom "$WALIHISTFILE"

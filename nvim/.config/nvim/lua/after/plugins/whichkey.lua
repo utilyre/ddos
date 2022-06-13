@@ -28,7 +28,6 @@ whichkey.register({
   w = { "<cmd>write<cr>", "Write" },
   q = { "<cmd>quit<cr>", "Quit" },
   c = { "<cmd>bdelete<cr>", "Close" },
-  n = { "<cmd>enew<cr>", "New" },
   t = { "<cmd>terminal<cr>", "Terminal" },
   s = { "<cmd>split<cr>", "Split" },
   v = { "<cmd>vsplit<cr>", "VSplit" },

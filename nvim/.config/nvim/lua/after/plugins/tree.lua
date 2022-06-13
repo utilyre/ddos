@@ -1,4 +1,5 @@
 local tree = require("nvim-tree")
+local whichkey = require("which-key")
 
 tree.setup({
   update_cwd = true,
@@ -53,4 +54,6 @@ tree.setup({
   },
 })
 
-vim.keymap.set("n", "<c-p>", vim.api.nvim_create_hof(tree.toggle))
+whichkey.register({
+  e = { vim.api.nvim_create_hof(tree.toggle), "Explorer" },
+}, { prefix = "<leader>" })

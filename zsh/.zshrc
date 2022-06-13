@@ -1,21 +1,21 @@
 #!/bin/zsh
 
 zuse() {
-	mkdir --parents -- "$ZDIR"
+	mkdir --parents -- "$ZSH_DATA"
 	repo="${1%:*}"
-	dest="$ZDIR/${repo##*/}"
+	dest="$ZSH_DATA/${repo##*/}"
 
 	[ ! -d "$dest" ] && git clone --depth="1" -- "https://github.com/$repo.git" "$dest"
 	source -- "$dest/${1##*:}"
 }
 
-lf-cd() {
+lfcd() {
 	tmp="$(mktemp)"
 	lfub -last-dir-path="$tmp" "$@"
 
 	cd -- "$(cat -- "$tmp")"
 	rm -- "$tmp"
-} && zle -N "lf-cd"
+}
 
 alias grep="grep --color=\"auto\" --ignore-case"
 alias diff="diff --color=\"auto\""
@@ -23,6 +23,7 @@ alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-reada
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
+alias lf="lfcd"
 alias g="git"
 alias v="nvrs"
 
@@ -46,7 +47,7 @@ PS1=$'\n'"%B%F{blue}%K{blue}%F{black}  %c %(?.%K{green}.%K{red})%F{blue}�
 RPS1="%B\$MODE_INDICATOR_PROMPT%f%k%b"
 
 zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
-autoload "compinit" && compinit -d "$ZCOMPDUMP"
+autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
@@ -59,7 +60,6 @@ zuse "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
 zuse "softmoth/zsh-vim-mode:zsh-vim-mode.plugin.zsh"
-bindkey -M "viins" "^p" "lf-cd"
 bindkey -M "viins" "jk" "vi-cmd-mode"
 bindkey -M "viins" "kj" "vi-cmd-mode"
 KEYTIMEOUT="5"

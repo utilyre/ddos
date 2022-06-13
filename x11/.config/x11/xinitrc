@@ -4,7 +4,7 @@ xrdb "$XDG_CONFIG_HOME/x11/xresources"
 
 xset r rate "200" "30"
 xsetroot -cursor_name "left_ptr"
-xrandr --output "HDMI-1" --mode "1920x1080" --rate "75"
+eval "$(cat -- "$XRANDR_CONFIG")"
 
 lxsession &
 sxhkd &

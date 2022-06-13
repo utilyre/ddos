@@ -14,10 +14,10 @@ super + {_,shift} + {backslash,minus,equal}
 
 super + i
 	dmenu_run -p " "
-super + {Return,b}
-	gtk-launch -- "{terminal,browser}.desktop"
+super + {Return,b,p}
+	gtk-launch -- "{terminal,browser,explorer}.desktop"
 super + o
-	pkee menu
+	orph menu
 super + m
 	mont
 super + u
