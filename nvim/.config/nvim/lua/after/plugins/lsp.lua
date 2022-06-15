@@ -10,8 +10,11 @@ local get_sources = function()
 
   local sources = {}
   for _, line in pairs(vim.fn.readfile(config_path)) do
-    local parts = vim.split(line, "->")
-    table.insert(sources, null.builtins[parts[2]][parts[1]])
+    line = line:gsub("%s*#.*$", "")
+    if not vim.str_isempty(line) then
+      local parts = vim.split(line, "->")
+      table.insert(sources, null.builtins[parts[2]][parts[1]])
+    end
   end
 
   return sources
