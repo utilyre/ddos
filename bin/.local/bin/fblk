@@ -3,7 +3,7 @@
 date_color="$(xrdb -get "fblk.date")"
 wttr_color="$(xrdb -get "fblk.wttr")"
 mail_color="$(xrdb -get "fblk.mail")"
-boat_color="$(xrdb -get "fblk.boat")"
+poca_color="$(xrdb -get "fblk.poca")"
 desk_color="$(xrdb -get "fblk.desk")"
 temp_color="$(xrdb -get "fblk.temp")"
 memo_color="$(xrdb -get "fblk.memo")"
@@ -22,8 +22,8 @@ _mail() {
 	printf -- "%d" "1"
 }
 
-_boat() {
-	boat --execute="print-unread" | cut --delimiter=" " --fields="1"
+_poca() {
+	poca --execute="print-unread" | cut --delimiter=" " --fields="1"
 }
 
 _desk() {
@@ -79,7 +79,7 @@ while true; do
 	[ -z "$date" ] || [ "$(($timestamp % 0060))" -eq "0" ] && date="$(_date)"
 	[ -z "$wttr" ] || [ "$(($timestamp % 1800))" -eq "0" ] && wttr="$(_wttr)"
 	[ -z "$mail" ] || [ "$(($timestamp % 0010))" -eq "0" ] && mail="$(_mail)"
-	[ -z "$boat" ] || [ "$(($timestamp % 0010))" -eq "0" ] && boat="$(_boat)"
+	[ -z "$poca" ] || [ "$(($timestamp % 0010))" -eq "0" ] && poca="$(_poca)"
 
 	[ -z "$desk" ]                                         && desk="$(_desk)"
 
@@ -89,7 +89,7 @@ while true; do
 	[ -z "$conn" ] || [ "$(($timestamp % 0010))" -eq "0" ] && conn="$(_conn)"
 
 	printf -- "%s %s %s \n" \
-		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$mail_color}%{U$mail_color}%{+u}  $mail %{-u}%{U-}%{F-} %{F$boat_color}%{U$boat_color}%{+u}  $boat %{-u}%{U-}%{F-}" \
+		"%{l} %{F$date_color}%{U$date_color}%{+u}  $date %{-u}%{U-}%{F-} %{F$wttr_color}%{U$wttr_color}%{+u}  $wttr %{-u}%{U-}%{F-} %{F$mail_color}%{U$mail_color}%{+u}  $mail %{-u}%{U-}%{F-} %{F$poca_color}%{U$poca_color}%{+u}  $poca %{-u}%{U-}%{F-}" \
 		"%{c} $(printf -- "%s" "$desk" | sed -- "s/:current/$desk_color/g")" \
 		"%{r} %{F$temp_color}%{U$temp_color}%{+u}  $temp %{-u}%{U-}%{F-} %{F$memo_color}%{U$memo_color}%{+u}  $memo %{-u}%{U-}%{F-} %{F$volt_color}%{U$volt_color}%{+u}  $volt %{-u}%{U-}%{F-} %{F$conn_color}%{U$conn_color}%{+u}  $conn %{-u}%{U-}%{F-}"
 done

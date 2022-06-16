@@ -13,7 +13,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin"
 
 export XRANDR_CONFIG="$XDG_CONFIG_HOME/user/xrandrrc"
-export BOAT_CONFIG="$XDG_CONFIG_HOME/user/boatrc"
+export POCA_CONFIG="$XDG_CONFIG_HOME/user/pocarc"
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/user/gitrc"
 export NULL_CONFIG="$XDG_CONFIG_HOME/user/nullrc"
 export ZSH_CACHE="$XDG_CACHE_HOME/zsh"

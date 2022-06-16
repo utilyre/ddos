@@ -1,0 +1,3 @@
+#!/bin/sh
+
+newsboat --url-file="$POCA_CONFIG" "$@"

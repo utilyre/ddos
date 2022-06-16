@@ -21,7 +21,7 @@ fblk.foreground: WHITE
 fblk.date: BLUE
 fblk.wttr: GREEN
 fblk.mail: YELLOW
-fblk.boat: RED
+fblk.poca: RED
 fblk.desk: CYAN
 fblk.temp: RED
 fblk.memo: YELLOW

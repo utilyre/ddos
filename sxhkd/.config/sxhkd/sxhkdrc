@@ -15,7 +15,7 @@ super + {_,shift} + {backslash,minus,equal}
 super + i
 	dmenu_run -p " "
 super + {Return,b,p}
-	gtk-launch -- "{terminal,browser,explorer}.desktop"
+	gtk-launch -- "{terminal,browser,podcast}.desktop"
 super + o
 	orph menu
 super + m

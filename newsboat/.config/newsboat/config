@@ -1,0 +1,25 @@
+swap-title-and-hints "yes"
+show-keymap-hint "no"
+scrolloff "2"
+browser "xdg-open"
+
+bind-key q hard-quit
+bind-key g home
+bind-key G end
+bind-key b pageup
+bind-key f pagedown
+bind-key k up
+bind-key j down
+bind-key h quit article
+bind-key h quit articlelist
+bind-key l open
+bind-key r reload-all
+bind-key SPACE delete-article
+bind-key x purge-deleted
+
+color listnormal white default
+color listfocus white black
+color listnormal_unread yellow default bold
+color listfocus_unread yellow black bold
+color info black green bold
+color article white default
