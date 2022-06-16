@@ -16,7 +16,7 @@ install_yay() {
 
 install_deps() {
 	yay --noconfirm --sync --refresh --sysupgrade
-	yay --noconfirm --sync --removemake "-" < "package.txt"
+	yay --noconfirm --sync --removemake - < "package.txt"
 	yay --noconfirm --sync --clean
 }
 
