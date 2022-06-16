@@ -19,5 +19,6 @@ lualine.setup({
           info = vim.g.symbols.diagnostic.Info .. " ",
         } },
     },
+    lualine_c = {},
   },
 })
