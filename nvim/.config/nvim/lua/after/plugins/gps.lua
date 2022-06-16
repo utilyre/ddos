@@ -27,7 +27,7 @@ gps.setup({
     yang = true,
     zig = true,
   },
-  separator = " %#LineNr#" .. vim.g.symbols.ui.Chevron .. "%* ",
+  separator = " %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* ",
   icons = {
     ["module-name"] = "%CmpItemKindModule#" .. vim.g.symbols.kind.Module .. "%* ",
     ["class-name"] = "%#CmpItemKindClass#" .. vim.g.symbols.kind.Class .. "%* ",
@@ -50,19 +50,22 @@ local gGps = vim.api.nvim_create_augroup("Gps", {})
 vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "CursorMovedI", "TextChanged", "TextChangedI" }, {
   group = gGps,
   callback = function()
-    if not vim.tbl_contains({ "terminal", "" }, vim.bo.buftype) then
+    if not vim.tbl_contains({ "terminal", "acwrite", "" }, vim.bo.buftype) then
       vim.opt_local.winbar = nil
       return
     end
 
+    local filepath = vim.fn.expand("%:.:h")
     local filename = vim.fn.expand("%:t")
+    if vim.str_isempty(filename) then return end
+
     local icon, highlight = devicons.get_icon_by_filetype(vim.bo.filetype, { default = true })
-    vim.opt_local.winbar = " %#" .. highlight .. "#" .. icon .. "%* %#" .. (vim.bo.modified and "BufferCurrentMod" or "BufferCurrent") .. "#" .. (vim.str_isempty(filename) and "[No Name]" or filename) .. "%*"
+    vim.opt_local.winbar = " %#" .. highlight .. "#" .. icon .. "%* " .. "%#Directory#" .. filepath .. "/%*%#" .. (vim.bo.modified and "BufferCurrentMod" or "BufferCurrent") .. "#" .. filename .. "%*"
 
     if not gps.is_available() then return end
     local location = gps.get_location()
     if not vim.str_isempty(location) then
-      vim.opt_local.winbar:append(" %#LineNr#" .. vim.g.symbols.ui.Chevron .. "%* " .. location)
+      vim.opt_local.winbar:append(" %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* " .. location)
     end
   end,
 })
