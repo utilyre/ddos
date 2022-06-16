@@ -1,7 +1,7 @@
 super + {_,shift} + q
 	bspc node {--close,--kill}
-super + {t,f,space}
-	bspc node --state "{tiled,fullscreen,floating}"
+super + {space,t,f}
+	bspc node --state "{floating,tiled,fullscreen}"
 super + {_,shift} + {k,j}
 	bspc node {--focus,--swap} '{prev,next}.local.!hidden.window'
 super + {_,shift} + {h,l}
