@@ -10,8 +10,8 @@ err() {
 }
 
 install_yay() {
-	git clone --depth="1" -- "https://aur.archlinux.org/yay.git"
-	(cd -- "yay" && makepkg --noconfirm --syncdeps --rmdeps --install)
+	git clone --depth="1" -- "https://aur.archlinux.org/yay-bin.git"
+	(cd -- "yay-bin" && makepkg --noconfirm --syncdeps --rmdeps --install)
 }
 
 install_deps() {
