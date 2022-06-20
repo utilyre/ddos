@@ -50,7 +50,7 @@ local gGps = vim.api.nvim_create_augroup("Gps", {})
 vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "CursorMovedI", "TextChanged", "TextChangedI" }, {
   group = gGps,
   callback = function()
-    if not vim.tbl_contains({ "terminal", "acwrite", "" }, vim.bo.buftype) then
+    if not vim.tbl_contains({ "terminal", "acwrite", "" }, vim.bo.buftype) or vim.api.nvim_win_get_config(0).relative ~= "" then
       vim.opt_local.winbar = nil
       return
     end
