@@ -51,7 +51,7 @@ _memo() {
 }
 
 _volt() {
-	printf -- "%s <> %s" \
+	printf -- "%s ~ %s" \
 		"$(volt --device="sink" get)" \
 		"$(volt --device="source" get)"
 }
@@ -62,7 +62,7 @@ _conn() {
 		printf -- "Up" ||
 		printf -- "Down"
 
-	printf -- " <> "
+	printf -- " ~ "
 
 	printf -- "Wi-Fi: "
 	grep --quiet "up" -- "/sys/class/net"/w*/"operstate" &&
