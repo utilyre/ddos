@@ -2,7 +2,6 @@ local config = require("lspconfig")
 local installer = require("nvim-lsp-installer")
 local null = require("null-ls")
 local cmp = require("cmp_nvim_lsp")
-local whichkey = require("which-key")
 
 local get_sources = function()
   local config_path = vim.fn.expand("$NULL_CONFIG")
@@ -36,19 +35,14 @@ local on_attach = function(client, buffnr)
     })
   end
 
-  whichkey.register({
-    i = {
-      name = "Intellisense",
-      d = { vim.api.nvim_create_hof(vim.lsp.buf.definition), "Definition" },
-      a = { vim.api.nvim_create_hof(vim.lsp.buf.code_action), "Actions" },
-      f = { vim.api.nvim_create_hof(vim.lsp.buf.format, { async = true }), "Format" },
-      c = { vim.api.nvim_create_hof(vim.lsp.buf.rename), "Change" },
-      h = { vim.api.nvim_create_hof(vim.lsp.buf.hover), "Hover" },
-      l = { vim.api.nvim_create_hof(vim.diagnostic.open_float), "Diagnostics" },
-      k = { vim.api.nvim_create_hof(vim.diagnostic.goto_prev), "Previous" },
-      j = { vim.api.nvim_create_hof(vim.diagnostic.goto_next), "Next" },
-    },
-  }, { prefix = "<leader>", buffer = buffnr })
+  vim.keymap.set("n", "<leader>id", vim.api.nvim_create_hof(vim.lsp.buf.definition))
+  vim.keymap.set("n", "<leader>ia", vim.api.nvim_create_hof(vim.lsp.buf.code_action))
+  vim.keymap.set("n", "<leader>if", vim.api.nvim_create_hof(vim.lsp.buf.format, { async = true }))
+  vim.keymap.set("n", "<leader>ic", vim.api.nvim_create_hof(vim.lsp.buf.rename))
+  vim.keymap.set("n", "<leader>ih", vim.api.nvim_create_hof(vim.lsp.buf.hover))
+  vim.keymap.set("n", "<leader>il", vim.api.nvim_create_hof(vim.diagnostic.open_float))
+  vim.keymap.set("n", "<leader>ik", vim.api.nvim_create_hof(vim.diagnostic.goto_prev))
+  vim.keymap.set("n", "<leader>ij", vim.api.nvim_create_hof(vim.diagnostic.goto_next))
 end
 
 vim.diagnostic.config({

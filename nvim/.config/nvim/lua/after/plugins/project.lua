@@ -4,7 +4,6 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")
 local todo = require("todo-comments")
-local whichkey = require("which-key")
 
 project.setup({
   manual_mode = true,
@@ -41,16 +40,11 @@ todo.setup({
   },
 })
 
-whichkey.register({
-  f = {
-    name = "Find",
-    p = { vim.api.nvim_create_hof(telescope.extensions.projects.projects), "Project" },
-    b = { vim.api.nvim_create_hof(builtin.git_branches), "Branch" },
-    r = { vim.api.nvim_create_hof(builtin.oldfiles), "Recent" },
-    f = { vim.api.nvim_create_hof(builtin.find_files), "File" },
-    a = { vim.api.nvim_create_hof(builtin.filetypes), "Association" },
-    w = { vim.api.nvim_create_hof(builtin.live_grep), "Word" },
-    t = { vim.api.nvim_create_hof(telescope.extensions["todo-comments"].todo), "Todo" },
-    h = { vim.api.nvim_create_hof(builtin.help_tags), "Help" },
-  },
-}, { prefix = "<leader>" })
+vim.keymap.set("n", "<leader>fp", vim.api.nvim_create_hof(telescope.extensions.projects.projects))
+vim.keymap.set("n", "<leader>fb", vim.api.nvim_create_hof(builtin.git_branches))
+vim.keymap.set("n", "<leader>fr", vim.api.nvim_create_hof(builtin.oldfiles))
+vim.keymap.set("n", "<leader>ff", vim.api.nvim_create_hof(builtin.find_files))
+vim.keymap.set("n", "<leader>fa", vim.api.nvim_create_hof(builtin.filetypes))
+vim.keymap.set("n", "<leader>fw", vim.api.nvim_create_hof(builtin.live_grep))
+vim.keymap.set("n", "<leader>ft", vim.api.nvim_create_hof(telescope.extensions["todo-comments"].todo))
+vim.keymap.set("n", "<leader>fh", vim.api.nvim_create_hof(builtin.help_tags))

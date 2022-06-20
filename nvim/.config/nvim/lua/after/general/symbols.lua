@@ -1,7 +1,5 @@
 vim.g.symbols = {
   ui = {
-    Separator = ":",
-    Group = "~",
     Chevron = "",
     Closed = "",
     Open = "",

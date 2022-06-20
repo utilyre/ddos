@@ -4,6 +4,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.writebackup = false
 vim.opt.undofile = true
 
+vim.opt.timeout = false
 vim.opt.timeoutlen = 50
 vim.opt.updatetime = 500
 
@@ -49,4 +50,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = gOptions,
   callback = vim.api.nvim_create_hof(vim.highlight.on_yank, { higroup = "Visual", on_visual = false }),
+})
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = gOptions,
+  callback = function() vim.opt.timeout = true end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = gOptions,
+  callback = function() vim.opt.timeout = false end,
 })

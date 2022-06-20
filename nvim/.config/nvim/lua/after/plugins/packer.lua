@@ -1,6 +1,5 @@
 local packer = require("packer")
 local util = require("packer.util")
-local whichkey = require("which-key")
 
 packer.init({
   display = {
@@ -16,12 +15,7 @@ packer.startup({
   end,
 })
 
-whichkey.register({
-  p = {
-    name = "Plugin",
-    s = { vim.api.nvim_create_hof(packer.sync), "Sync" },
-    i = { vim.api.nvim_create_hof(packer.install), "Install" },
-    u = { vim.api.nvim_create_hof(packer.update), "Update" },
-    c = { vim.api.nvim_create_hof(packer.clean), "Clean" },
-  },
-}, { prefix = "<leader>" })
+vim.keymap.set("n", "<leader>ps", vim.api.nvim_create_hof(packer.sync))
+vim.keymap.set("n", "<leader>pi", vim.api.nvim_create_hof(packer.install))
+vim.keymap.set("n", "<leader>pu", vim.api.nvim_create_hof(packer.update))
+vim.keymap.set("n", "<leader>pc", vim.api.nvim_create_hof(packer.clean))
