@@ -15,7 +15,6 @@ vim.opt.splitbelow = true
 vim.opt.scrolloff = 2
 vim.opt.sidescrolloff = 2
 
-vim.opt.cmdheight = 0
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

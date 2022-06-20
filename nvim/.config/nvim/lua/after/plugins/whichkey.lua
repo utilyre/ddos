@@ -2,12 +2,21 @@ local whichkey = require("which-key")
 
 whichkey.setup({
   ignore_missing = true,
+  plugins = {
+    marks = false,
+    registers = false,
+    presets = {
+      operators = false,
+      motions = false,
+      text_objects = false,
+      windows = false,
+      nav = false,
+      z = false,
+      g = false,
+    },
+  },
   window = { border = "rounded" },
   layout = { align = "center" },
-  operators = {
-    gc = "Comment",
-    gb = "BComment",
-  },
   icons = {
     separator = vim.g.symbols.ui.Separator,
     group = vim.g.symbols.ui.Group,
