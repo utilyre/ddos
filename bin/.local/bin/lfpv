@@ -5,7 +5,7 @@ mkdir --parents -- "$LF_CACHE"
 case "$(file --brief --mime-type -- "$1")" in
 	"text/"*) cat -- "$1" ;;
 	"image/"* | "audio/"* | "video/"*)
-		thumbnail="$LF_CACHE/$(printf -- "%s:%s" "$1" "$(stat --format="%Y" -- "$1")" | shasum | head --bytes="40").png"
+		thumbnail="$LF_CACHE/$(printf -- "%s:%s\n" "$1" "$(stat --format="%Y" -- "$1")" | shasum | head --bytes="40").png"
 		[ ! -f "$thumbnail" ] && { ffmpeg -i "$1" -frames:v "1" -filter:v "scale=512:-1" -- "$thumbnail" || exec mediainfo -- "$1" ;}
 
 		printf -- "{ \"action\": \"add\", \"identifier\": \"PREVIEW\", \"scaler\": \"contain\", \"path\": \"%s\", \"width\": \"%d\", \"height\": \"%d\", \"x\": \"$(($4 + 1))\", \"y\": \"$5\" }\n" "$thumbnail" "$(($2 - 2))" "$3" > "$LF_TMP"

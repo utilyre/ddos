@@ -90,6 +90,6 @@ while true; do
 
 	printf -- "%s %s %s \n" \
 		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$inbox_color}%{U$inbox_color}%{+u}  $inbox %{-u}%{U-}%{F-} %{F$unread_color}%{U$unread_color}%{+u}  $unread %{-u}%{U-}%{F-}" \
-		"%{c} $(printf -- "%s" "$desktops" | sed -- "s/:current/$desktops_color/g")" \
+		"%{c} $(printf -- "%s\n" "$desktops" | sed -- "s/:current/$desktops_color/g")" \
 		"%{r} %{F$temperature_color}%{U$temperature_color}%{+u}  $temperature %{-u}%{U-}%{F-} %{F$memory_color}%{U$memory_color}%{+u}  $memory %{-u}%{U-}%{F-} %{F$volume_color}%{U$volume_color}%{+u}  $volume %{-u}%{U-}%{F-} %{F$connection_color}%{U$connection_color}%{+u}  $connection %{-u}%{U-}%{F-}"
 done

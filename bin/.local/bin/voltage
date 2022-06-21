@@ -19,7 +19,7 @@ default="$(pactl get-default-"$device")"
 case "$1" in
 	"get")
 		[ "$(pactl get-"$device"-mute "$default")" = "Mute: yes" ] &&
-			printf -- "Muted" ||
+			printf -- "Muted\n" ||
 			pactl get-"$device"-volume "$default" | awk -- "(NR == 1) { print \$5 }"
 		exit
 		;;
