@@ -36,8 +36,9 @@ setopt interactivecomments
 
 HISTSIZE="1024"
 SAVEHIST="1024"
+history_precmd() { [ "$?" -ne "0" ] && return; } && precmd_functions+=("history_precmd")
 
-autoload "vcs_info" && precmd() { vcs_info; }
+autoload "vcs_info" && vcs_precmd() { vcs_info; } && precmd_functions+=("vcs_precmd")
 zstyle ":vcs_info:*" check-for-changes "true"
 zstyle ":vcs_info:*" stagedstr "+"
 zstyle ":vcs_info:*" unstagedstr "!"
