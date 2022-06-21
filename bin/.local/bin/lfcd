@@ -1,7 +1,0 @@
-#!/bin/sh
-
-tmp="$(mktemp)"
-lfub -last-dir-path="$tmp" "$@"
-
-cd -- "$(cat -- "$tmp")"
-rm -- "$tmp"

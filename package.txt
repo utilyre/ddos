@@ -10,7 +10,6 @@ mediainfo
 mpv
 neovim
 neovim-remote
-newsboat
 picom
 polkit
 pulseaudio

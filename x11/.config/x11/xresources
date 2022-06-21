@@ -13,20 +13,20 @@ bspwm.border: 2
 bspwm.border_nrm: BLACK
 bspwm.border_sel: WHITE
 
-fblk.font: monospace:size=10
-fblk.height: 30
-fblk.underline: 4
-fblk.background: BLACK
-fblk.foreground: WHITE
-fblk.date: BLUE
-fblk.wttr: GREEN
-fblk.mail: YELLOW
-fblk.poca: RED
-fblk.desk: CYAN
-fblk.temp: RED
-fblk.memo: YELLOW
-fblk.volt: GREEN
-fblk.conn: BLUE
+flexblocks.font: monospace:size=10
+flexblocks.height: 30
+flexblocks.underline: 4
+flexblocks.background: BLACK
+flexblocks.foreground: WHITE
+flexblocks.calendar: BLUE
+flexblocks.weather: GREEN
+flexblocks.inbox: YELLOW
+flexblocks.unread: RED
+flexblocks.desktops: CYAN
+flexblocks.temperature: RED
+flexblocks.memory: YELLOW
+flexblocks.volume: GREEN
+flexblocks.connection: BLUE
 
 herbe.font_pattern: monospace:size=10
 herbe.background_color: BLACK

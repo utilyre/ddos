@@ -1,11 +1,11 @@
 #!/bin/sh
 
-export FIFO_UEBERZUG="/tmp/ueberzug-$$"
-mkfifo "$FIFO_UEBERZUG"
+export LF_TMP="/tmp/lf-$$"
+mkfifo "$LF_TMP"
 
-ueberzug layer --silent < "$FIFO_UEBERZUG" &
-exec 3> "$FIFO_UEBERZUG"
+ueberzug layer --silent < "$LF_TMP" &
+exec 3> "$LF_TMP"
 lf "$@" 3>&-
 
 exec 3>&-
-rm -- "$FIFO_UEBERZUG"
+rm -- "$LF_TMP"

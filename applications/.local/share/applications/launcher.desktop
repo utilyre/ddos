@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Name=Podcast
-Exec=st -e poca
+Name=Launcher
+Exec=dmenu_run -p " "
 NoDisplay=true

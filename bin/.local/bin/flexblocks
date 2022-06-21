@@ -1,0 +1,95 @@
+#!/bin/sh
+
+calendar_color="$(xrdb -get "flexblocks.calendar")"
+weather_color="$(xrdb -get "flexblocks.weather")"
+inbox_color="$(xrdb -get "flexblocks.inbox")"
+unread_color="$(xrdb -get "flexblocks.unread")"
+desktops_color="$(xrdb -get "flexblocks.desktops")"
+temperature_color="$(xrdb -get "flexblocks.temperature")"
+memory_color="$(xrdb -get "flexblocks.memory")"
+volume_color="$(xrdb -get "flexblocks.volume")"
+connection_color="$(xrdb -get "flexblocks.connection")"
+
+calendar() {
+	date -- "+%H:%M %a, %b %d"
+}
+
+weather() {
+	curl -- "https://wttr.in/Hamadan?m&format=%l,+%C+%t"
+}
+
+inbox() {
+	printf -- "%d" "1"
+}
+
+unread() {
+	printf -- "%d" "72"
+}
+
+desktops() {
+	while read -r line; do
+		printf -- "%%{A:bspc desktop --focus \"%s\":}" "$line"
+		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{F:current}"
+		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{U:current}%%{+u}"
+
+		printf -- " %s " "$line"
+
+		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{-u}%%{U-}"
+		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{F-}"
+		printf -- "%%{A}"
+	done <<- EOF
+		$(bspc query --desktops --names)
+	EOF
+}
+
+temperature() {
+	printf -- "%d°C" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
+}
+
+memory() {
+	free --human | awk -- "(\$1 == \"Mem:\") { print \$4 }"
+}
+
+volume() {
+	printf -- "%s ~ %s" \
+		"$(voltage --device="sink" get)" \
+		"$(voltage --device="source" get)"
+}
+
+connection() {
+	printf -- "Ethernet: "
+	grep --quiet "up" -- "/sys/class/net"/e*/"operstate" &&
+		printf -- "Up" ||
+		printf -- "Down"
+
+	printf -- " ~ "
+
+	printf -- "Wi-Fi: "
+	grep --quiet "up" -- "/sys/class/net"/w*/"operstate" &&
+		printf -- "%s%%" "$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")" ||
+		printf -- "Down"
+}
+
+trap "unset desktops" "10"
+trap "unset volume" "12"
+while true; do
+	sleep -- "1s" & wait -- "$!"
+	timestamp="$(date -- "+%s")"
+
+	[ -z "$calendar" ] || [ "$(($timestamp % 0060))" -eq "0" ] && calendar="$(calendar)"
+	[ -z "$weather" ] || [ "$(($timestamp % 1800))" -eq "0" ] && weather="$(weather)"
+	[ -z "$inbox" ] || [ "$(($timestamp % 0010))" -eq "0" ] && inbox="$(inbox)"
+	[ -z "$unread" ] || [ "$(($timestamp % 0010))" -eq "0" ] && unread="$(unread)"
+
+	[ -z "$desktops" ] && desktops="$(desktops)"
+
+	[ -z "$temperature" ] || [ "$(($timestamp % 0010))" -eq "0" ] && temperature="$(temperature)"
+	[ -z "$memory" ] || [ "$(($timestamp % 0010))" -eq "0" ] && memory="$(memory)"
+	[ -z "$volume" ] && volume="$(volume)"
+	[ -z "$connection" ] || [ "$(($timestamp % 0010))" -eq "0" ] && connection="$(connection)"
+
+	printf -- "%s %s %s \n" \
+		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$inbox_color}%{U$inbox_color}%{+u}  $inbox %{-u}%{U-}%{F-} %{F$unread_color}%{U$unread_color}%{+u}  $unread %{-u}%{U-}%{F-}" \
+		"%{c} $(printf -- "%s" "$desktops" | sed -- "s/:current/$desktops_color/g")" \
+		"%{r} %{F$temperature_color}%{U$temperature_color}%{+u}  $temperature %{-u}%{U-}%{F-} %{F$memory_color}%{U$memory_color}%{+u}  $memory %{-u}%{U-}%{F-} %{F$volume_color}%{U$volume_color}%{+u}  $volume %{-u}%{U-}%{F-} %{F$connection_color}%{U$connection_color}%{+u}  $connection %{-u}%{U-}%{F-}"
+done
