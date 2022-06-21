@@ -57,10 +57,11 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "Cur
 
     local filepath = vim.fn.expand("%:.:h")
     local filename = vim.fn.expand("%:t")
+    if (filepath ~= "/") then filepath = filepath .. "/" end
     if vim.str_isempty(filename) then return end
 
     local icon, highlight = devicons.get_icon_by_filetype(vim.bo.filetype, { default = true })
-    vim.opt_local.winbar = " %#" .. highlight .. "#" .. icon .. "%* " .. "%#Directory#" .. filepath .. "/%*%#" .. (vim.bo.modified and "BufferCurrentMod" or "BufferCurrent") .. "#" .. filename .. "%*"
+    vim.opt_local.winbar = " %#" .. highlight .. "#" .. icon .. "%* " .. "%#Directory#" .. filepath .. "%*%#" .. (vim.bo.modified and "BufferCurrentMod" or "BufferCurrent") .. "#" .. filename .. "%*"
 
     if not gps.is_available() then return end
     local location = gps.get_location()
