@@ -1,11 +1,11 @@
 #!/bin/sh
 
 out() {
-	printf "\e[1;32m%s\e[m \e[1m%s\e[m\n" "===>" "$1" # bold
+	printf -- "\e[1;32m%s\e[m \e[1m%s\e[m\n" "===>" "$1" # bold
 }
 
 err() {
-	printf "\e[1;31m%s\e[m \e[1m%s\e[m\n" "===> ERROR:" "$1" >&2
+	printf -- "\e[1;31m%s\e[m \e[1m%s\e[m\n" "===> ERROR:" "$1" >&2
 	exit 1
 }
 
@@ -18,12 +18,12 @@ install_deps() {
 	yay --noconfirm --sync --refresh --sysupgrade
 	yay --noconfirm --sync --removemake - < "package.txt"
 	yay --noconfirm --sync --clean
-	sudo usermod --shell="/bin/zsh" "$USER"
+	sudo usermod --shell="/bin/zsh" -- "$USER"
 }
 
 download_repo() {
 	git clone --depth="1" -- "https://github.com/utilyre/dotfiles.git"
-	(cd "dotfiles" && stow --target="$HOME" */)
+	(cd -- "dotfiles" && stow --target="$HOME" */)
 }
 
 main() {

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-action="$(printf "%s\n" "Sleep" "Restart" "Shutdown" | dmenu -p " ")"
+action="$(printf -- "%s\n" "Sleep" "Restart" "Shutdown" | dmenu -p " ")"
 [ "$?" -ne "0" ] && exit "130"
 
 case "$action" in

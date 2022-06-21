@@ -1,7 +1,7 @@
 #!/bin/sh
 
-get_unics() {
-	cat -- <<- 'EOF'
+get_emojis() {
+	cat <<- 'EOF'
 		😀 grinning face
 		😃 grinning face with big eyes
 		😄 grinning face with smiling eyes
@@ -1597,7 +1597,7 @@ get_unics() {
 		🏴 Wales
 	EOF
 }
-unic="$(get_unics | dmenu -p " ")"
+emoji="$(get_emojis | dmenu -p " ")"
 [ "$?" -ne "0" ] && exit "130"
 
-xdotool type -- "${unic%% *}"
+xdotool type -- "${emoji%% *}"

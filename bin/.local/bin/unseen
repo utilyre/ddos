@@ -3,6 +3,6 @@
 # UNSEEN_CONFIG
 # UNSEEN_DATA
 
-printf "%d\n" 5
+printf -- "%d\n" 5
 
 # cat "$UNSEEN_CONFIG"

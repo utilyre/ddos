@@ -20,7 +20,7 @@ case "$1" in
 	"get")
 		[ "$(pactl get-"$device"-mute "$default")" = "Mute: yes" ] &&
 			printf -- "Muted" ||
-			pactl get-"$device"-volume "$default" | awk "(NR == 1) { print \$5 }"
+			pactl get-"$device"-volume "$default" | awk -- "(NR == 1) { print \$5 }"
 		exit
 		;;
 	"switch")
@@ -35,4 +35,4 @@ case "$1" in
 	"up") pactl set-"$device"-volume "$default" "+2%" ;;
 esac
 
-killall -12 "flexblocks"
+killall -12 -- "flexblocks"

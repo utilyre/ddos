@@ -7,7 +7,7 @@ disk="$(printf -- "%s" "$disks" | column --table | dmenu -p " ")"
 case "$(printf -- "%s" "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
 	"mount")
 		source="${disk%% *}"
-		target="$XDG_PUBLIC_HOME/${source##*/}"
+		target="$XDG_PUBLIC_HOME/$(basename -- "$source")"
 
 		mkdir --parents -- "$target"
 		pkexec mount -- "$source" "$target" || exit "130"
@@ -16,7 +16,7 @@ case "$(printf -- "%s" "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount
 		;;
 	"umount")
 		source="${disk%% *}"
-		target="$XDG_PUBLIC_HOME/${source##*/}"
+		target="$XDG_PUBLIC_HOME/$(basename -- "$source")"
 
 		pkexec umount -- "$source" || exit "130"
 		rmdir -- "$target"

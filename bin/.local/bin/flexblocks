@@ -52,8 +52,8 @@ memory() {
 
 volume() {
 	printf -- "%s ~ %s" \
-		"$(voltage --device="sink" get)" \
-		"$(voltage --device="source" get)"
+		"$(voltage --device="sink" -- get)" \
+		"$(voltage --device="source" -- get)"
 }
 
 connection() {
@@ -70,8 +70,8 @@ connection() {
 		printf -- "Down"
 }
 
-trap "unset desktops" "10"
-trap "unset volume" "12"
+trap -- "unset desktops" "10"
+trap -- "unset volume" "12"
 while true; do
 	sleep -- "1s" & wait -- "$!"
 	timestamp="$(date -- "+%s")"

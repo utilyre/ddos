@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export LF_TMP="/tmp/lf-$$"
-mkfifo "$LF_TMP"
+mkfifo -- "$LF_TMP"
 
 ueberzug layer --silent < "$LF_TMP" &
 exec 3> "$LF_TMP"
