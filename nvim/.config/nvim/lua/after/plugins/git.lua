@@ -27,19 +27,19 @@ vim.api.nvim_create_autocmd("User", {
   group = gGit,
   pattern = "GitConflictDetected",
   callback = function(args)
-    vim.keymap.set("n", "co", vim.api.nvim_create_hof(conflict.choose, "ours"), { buffer = args.buf })
-    vim.keymap.set("n", "ct", vim.api.nvim_create_hof(conflict.choose, "theirs"), { buffer = args.buf })
-    vim.keymap.set("n", "cb", vim.api.nvim_create_hof(conflict.choose, "both"), { buffer = args.buf })
-    vim.keymap.set("n", "cn", vim.api.nvim_create_hof(conflict.choose, "none"), { buffer = args.buf })
+    vim.keymap.set("n", "<leader>go", vim.api.nvim_create_hof(conflict.choose, "ours"), { buffer = args.buf })
+    vim.keymap.set("n", "<leader>gt", vim.api.nvim_create_hof(conflict.choose, "theirs"), { buffer = args.buf })
+    vim.keymap.set("n", "<leader>gb", vim.api.nvim_create_hof(conflict.choose, "both"), { buffer = args.buf })
+    vim.keymap.set("n", "<leader>gn", vim.api.nvim_create_hof(conflict.choose, "none"), { buffer = args.buf })
   end,
 })
 vim.api.nvim_create_autocmd("User", {
   group = gGit,
   pattern = "GitConflictResolved",
   callback = function(args)
-    vim.keymap.del("n", "co", { buffer = args.buf })
-    vim.keymap.del("n", "ct", { buffer = args.buf })
-    vim.keymap.del("n", "cb", { buffer = args.buf })
-    vim.keymap.del("n", "cn", { buffer = args.buf })
+    vim.keymap.del("n", "<leader>go", { buffer = args.buf })
+    vim.keymap.del("n", "<leader>gt", { buffer = args.buf })
+    vim.keymap.del("n", "<leader>gb", { buffer = args.buf })
+    vim.keymap.del("n", "<leader>gn", { buffer = args.buf })
   end,
 })
