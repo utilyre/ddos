@@ -52,8 +52,8 @@ memory() {
 
 volume() {
 	printf -- "%s ~ %s" \
-		"$(voltage --device="sink" -- get)" \
-		"$(voltage --device="source" -- get)"
+		"$(voltage --device="sink" get)" \
+		"$(voltage --device="source" get)"
 }
 
 connection() {
