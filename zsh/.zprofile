@@ -12,6 +12,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin"
 
+export X11_CONFIG="$XDG_CONFIG_HOME/x11"
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/user/gitrc"
 export XRANDR_CONFIG="$XDG_CONFIG_HOME/user/xrandrrc"
 export UNSEEN_CONFIG="$XDG_CONFIG_HOME/user/unseenrc"
@@ -33,4 +34,4 @@ export LS_COLORS="no=0;37:fi=0;37:ex=0;32:so=0;35:do=0;35:pi=0;33:ln=0;36:or=0;3
 export LF_ICONS="no=:fi=:ex=:so=:do=:pi=:ln=:or=:mi=:di=:tw=:ow=:st=:cd=:bd="
 
 printenv | awk --field-separator="=" -- "(\$1 ~ /^XDG_.+_HOME\$/) { print \$2 }" | xargs --delimiter="\n" mkdir --parents --
-startx "$XDG_CONFIG_HOME/x11/xinitrc"
+startx "$X11_CONFIG/xinitrc"
