@@ -39,6 +39,7 @@ vim.g.plugins = {
 
   "kyazdani42/nvim-tree.lua",
   "toppair/reach.nvim",
+  "akinsho/toggleterm.nvim",
 
   "smiteshp/nvim-gps",
   "petertriho/nvim-scrollbar",
