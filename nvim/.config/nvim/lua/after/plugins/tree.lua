@@ -2,8 +2,11 @@ local tree = require("nvim-tree")
 
 tree.setup({
   update_cwd = true,
-  git = { ignore = false },
-  diagnostics = { enable = true },
+  filesystem_watchers = { enable = true },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+  },
   view = {
     width = 40,
     hide_root_folder = true,
@@ -25,6 +28,7 @@ tree.setup({
   renderer = {
     group_empty = true,
     icons = {
+      git_placement = "after",
       symlink_arrow = " -> ",
       glyphs = {
         default = vim.g.symbols.document.File,
