@@ -2,7 +2,10 @@ local tree = require("nvim-tree")
 
 tree.setup({
   update_cwd = true,
-  filesystem_watchers = { enable = true },
+  filesystem_watchers = {
+    enable = true,
+    interval = 1000,
+  },
   diagnostics = {
     enable = true,
     show_on_dirs = true,
