@@ -14,6 +14,7 @@ vim.g.plugins = {
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "numtostr/comment.nvim",
+  "lukas-reineke/indent-blankline.nvim",
 
   "neovim/nvim-lspconfig",
   "williamboman/nvim-lsp-installer",
@@ -44,5 +45,4 @@ vim.g.plugins = {
   "smiteshp/nvim-gps",
   "petertriho/nvim-scrollbar",
   "nvim-lualine/lualine.nvim",
-  "lukas-reineke/indent-blankline.nvim",
 }

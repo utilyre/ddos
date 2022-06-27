@@ -1,5 +1,6 @@
 local configs = require("nvim-treesitter.configs")
 local comment = require("Comment")
+local indentblankline = require("indent_blankline")
 
 configs.setup({
   ensure_installed = "all",
@@ -14,4 +15,8 @@ comment.setup({
     extra = true,
     extended = true,
   },
+})
+
+indentblankline.setup({
+  show_current_context = true,
 })
