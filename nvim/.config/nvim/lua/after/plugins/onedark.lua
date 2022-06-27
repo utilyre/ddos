@@ -11,6 +11,7 @@ onedark.setup({
   highlights = {
     NvimTreeNormal = { bg = "$bg_d" },
     NvimTreeOpenedFile = { fg = "$grey" },
+    NvimTreeExecFile = { fg = "$green" },
   },
 })
 

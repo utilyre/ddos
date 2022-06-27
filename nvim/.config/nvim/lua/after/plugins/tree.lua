@@ -2,7 +2,6 @@ local tree = require("nvim-tree")
 
 tree.setup({
   update_cwd = true,
-  reload_on_bufenter = true,
   git = { ignore = false },
   diagnostics = {
     enable = true,
