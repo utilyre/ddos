@@ -27,7 +27,7 @@ tree.setup({
   },
   renderer = {
     group_empty = true,
-    highlight_opened_files = "name",
+    highlight_opened_files = "all",
     icons = {
       git_placement = "after",
       symlink_arrow = " -> ",
