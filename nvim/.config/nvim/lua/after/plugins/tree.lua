@@ -2,10 +2,7 @@ local tree = require("nvim-tree")
 
 tree.setup({
   update_cwd = true,
-  filesystem_watchers = {
-    enable = true,
-    interval = 1000,
-  },
+  reload_on_bufenter = true,
   diagnostics = {
     enable = true,
     show_on_dirs = true,
@@ -30,6 +27,7 @@ tree.setup({
   },
   renderer = {
     group_empty = true,
+    highlight_opened_files = "name",
     icons = {
       git_placement = "after",
       symlink_arrow = " -> ",
