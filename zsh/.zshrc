@@ -56,6 +56,7 @@ ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
 zuse "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=("main" "brackets")
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
 zuse "softmoth/zsh-vim-mode:zsh-vim-mode.plugin.zsh"
