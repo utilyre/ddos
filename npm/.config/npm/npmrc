@@ -1,0 +1,3 @@
+cache=${NPM_CACHE}
+prefix=${NPM_DATA}
+tmp=${NPM_RUNTIME}
