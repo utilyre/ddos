@@ -13,8 +13,8 @@ vim.g.plugins = {
 
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
-  "numtostr/comment.nvim",
   "lukas-reineke/indent-blankline.nvim",
+  "numtostr/comment.nvim",
 
   "neovim/nvim-lspconfig",
   "williamboman/nvim-lsp-installer",
