@@ -1,6 +1,8 @@
 #!/bin/sh
 
-export LF_TMP="/tmp/lf-$$"
+mkdir --parents -- "$LF_RUNTIME"
+
+export LF_TMP="$LF_RUNTIME/lf-$$"
 mkfifo -- "$LF_TMP"
 
 ueberzug layer --silent < "$LF_TMP" &
