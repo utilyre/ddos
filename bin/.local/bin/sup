@@ -2,7 +2,7 @@
 
 mkdir --parents -- "$SUP_DATA"
 
-entries="$(sed -- "s/ +#.*$//;/^ *$/d" "$SUP_CONFIG")"
+entries="$(sed -- "s/ *#.*$//;/^ *$/d" "$SUP_CONFIG")"
 while read -r entry; do
 	name="${entry%%->*}"
 	url="${entry#*->}"
