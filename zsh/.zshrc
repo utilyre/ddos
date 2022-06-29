@@ -18,7 +18,7 @@ lfcd() {
 }
 
 alias grep="grep --color=\"auto\" --ignore-case"
-alias diff="diff --color=\"auto\""
+alias diff="diff --color=\"auto\" --side-by-side"
 alias ls="ls --color=\"auto\" --group-directories-first --human-readable"
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
@@ -39,8 +39,6 @@ SAVEHIST="1024"
 
 autoload "vcs_info" && precmd() { vcs_info; }
 zstyle ":vcs_info:*" check-for-changes "true"
-zstyle ":vcs_info:*" stagedstr "+"
-zstyle ":vcs_info:*" unstagedstr "!"
 zstyle ":vcs_info:*" formats "─%B%F{magenta}%K{magenta}%F{black}  %b %k%F{magenta}"
 zstyle ":vcs_info:*" actionformats "─%B%F{magenta}%K{magenta}%F{black}  %b %K{yellow}%F{magenta}%F{black}  %a %k%F{yellow}"
 PS1=$'\n'"%B%F{blue}%K{blue}%F{black}  %c %(?.%K{green}.%K{red})%F{blue}%F{black} %(?.. %?) %k%(?.%F{green}.%F{red})%f%k%b\$vcs_info_msg_0_%f%k%b "
