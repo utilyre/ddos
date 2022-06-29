@@ -31,8 +31,8 @@ super + y
 	yank
 super + g
 	guard menu
-super + p
-	plunder
+super + o
+	omegalol
 super + s
 	sup
 super + n
