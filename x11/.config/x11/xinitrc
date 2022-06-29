@@ -1,10 +1,10 @@
 #!/bin/sh
 
+eval "$(cat -- "$STARTUP_CONFIG")"
 xrdb "$X11_CONFIG/xresources"
 
 xset r rate "200" "30"
 xsetroot -cursor_name "left_ptr"
-eval "$(cat -- "$XRANDR_CONFIG")"
 
 lxsession &
 sxhkd &

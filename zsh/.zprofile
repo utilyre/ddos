@@ -13,7 +13,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin"
 
 export X11_CONFIG="$XDG_CONFIG_HOME/x11"
-export XRANDR_CONFIG="$XDG_CONFIG_HOME/user/xrandrrc"
+export STARTUP_CONFIG="$XDG_CONFIG_HOME/user/startuprc"
 export UNSEEN_CONFIG="$XDG_CONFIG_HOME/user/unseenrc"
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/user/gitrc"
 export NULL_CONFIG="$XDG_CONFIG_HOME/user/nullrc"
