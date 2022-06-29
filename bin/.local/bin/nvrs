@@ -1,6 +1,0 @@
-#!/bin/sh
-
-mkdir --parents -- "$NVIM_RUNTIME"
-
-export NVIM_TMP="$NVIM_RUNTIME/nvim-$$"
-nvim --listen "$NVIM_TMP" "$@"

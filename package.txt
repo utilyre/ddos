@@ -9,7 +9,6 @@ lxsession-gtk3
 mediainfo
 mpv
 neovim
-neovim-remote
 npm
 picom
 polkit

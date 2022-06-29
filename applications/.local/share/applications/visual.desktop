@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Visual
-Exec=st -e nvim -- %F
+Exec=st -e nvimr -- %F
 NoDisplay=true

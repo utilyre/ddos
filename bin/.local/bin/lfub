@@ -2,7 +2,7 @@
 
 mkdir --parents -- "$LF_RUNTIME"
 
-export LF_TMP="$LF_RUNTIME/lf-$$"
+export LF_TMP="$LF_RUNTIME/$$.fifo"
 mkfifo -- "$LF_TMP"
 
 ueberzug layer --silent < "$LF_TMP" &

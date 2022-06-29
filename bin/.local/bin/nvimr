@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mkdir --parents -- "$NVIM_RUNTIME"
+
+[ -n "$NVIM_TMP" ] && exec nvim --server "$NVIM_TMP" --remote-tab-wait-silent "$@"
+
+export NVIM_TMP="$NVIM_RUNTIME/$$.sock"
+exec nvim --listen "$NVIM_TMP" "$@"
