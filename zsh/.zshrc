@@ -25,7 +25,7 @@ alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
 alias lf="lfcd"
 alias g="git"
-alias v="nvimr"
+alias v="rvim"
 
 setopt appendhistory
 setopt histignorealldups
