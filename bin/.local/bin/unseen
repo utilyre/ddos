@@ -1,8 +1,13 @@
 #!/bin/sh
 
-# UNSEEN_CONFIG
-# UNSEEN_DATA
+mkdir --parents -- "$UNSEEN_DATA"
 
-printf -- "%d\n" 5
+entries="$(sed -- "s/ +#.*$//;/^ *$/d" "$UNSEEN_CONFIG")"
+while read -r entry; do
+  name="${entry%%->*}"
+  url="${entry#*->}"
 
-# cat "$UNSEEN_CONFIG"
+  curl --user-agent "$(printf -- "%s\n" "$entries" | head --lines="1")" -- "$url" > "$UNSEEN_DATA/$name"
+done <<- EOF
+	$(printf -- "%s\n" "$entries" | tail --lines="+2")
+EOF
