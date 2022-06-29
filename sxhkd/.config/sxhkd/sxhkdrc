@@ -33,7 +33,7 @@ super + g
 	guard menu
 super + p
 	plunder
-super + u
-	unseen
+super + s
+	sup
 super + n
 	nandato

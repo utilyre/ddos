@@ -21,7 +21,7 @@ flexblocks.foreground: WHITE
 flexblocks.calendar: BLUE
 flexblocks.weather: GREEN
 flexblocks.inbox: YELLOW
-flexblocks.unread: RED
+flexblocks.feeds: RED
 flexblocks.desktops: CYAN
 flexblocks.temperature: RED
 flexblocks.memory: YELLOW

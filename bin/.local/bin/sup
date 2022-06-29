@@ -1,0 +1,13 @@
+#!/bin/sh
+
+mkdir --parents -- "$SUP_DATA"
+
+entries="$(sed -- "s/ +#.*$//;/^ *$/d" "$SUP_CONFIG")"
+while read -r entry; do
+	name="${entry%%->*}"
+	url="${entry#*->}"
+
+	curl --user-agent "$(printf -- "%s\n" "$entries" | head --lines="1")" -- "$url" > "$SUP_DATA/$name"
+done <<- EOF
+	$(printf -- "%s\n" "$entries" | tail --lines="+2")
+EOF

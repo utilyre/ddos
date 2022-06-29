@@ -3,7 +3,7 @@
 calendar_color="$(xrdb -get "flexblocks.calendar")"
 weather_color="$(xrdb -get "flexblocks.weather")"
 inbox_color="$(xrdb -get "flexblocks.inbox")"
-unread_color="$(xrdb -get "flexblocks.unread")"
+feeds_color="$(xrdb -get "flexblocks.feeds")"
 desktops_color="$(xrdb -get "flexblocks.desktops")"
 temperature_color="$(xrdb -get "flexblocks.temperature")"
 memory_color="$(xrdb -get "flexblocks.memory")"
@@ -22,7 +22,7 @@ inbox() {
 	printf -- "%d" "1"
 }
 
-unread() {
+feeds() {
 	printf -- "%d" "72"
 }
 
@@ -79,7 +79,7 @@ while true; do
 	[ -z "$calendar" ] || [ "$(($timestamp % 0060))" -eq "0" ] && calendar="$(calendar)"
 	[ -z "$weather" ] || [ "$(($timestamp % 1800))" -eq "0" ] && weather="$(weather)"
 	[ -z "$inbox" ] || [ "$(($timestamp % 0010))" -eq "0" ] && inbox="$(inbox)"
-	[ -z "$unread" ] || [ "$(($timestamp % 0010))" -eq "0" ] && unread="$(unread)"
+	[ -z "$feeds" ] || [ "$(($timestamp % 0010))" -eq "0" ] && feeds="$(feeds)"
 
 	[ -z "$desktops" ] && desktops="$(desktops)"
 
@@ -89,7 +89,7 @@ while true; do
 	[ -z "$connection" ] || [ "$(($timestamp % 0010))" -eq "0" ] && connection="$(connection)"
 
 	printf -- "%s %s %s \n" \
-		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$inbox_color}%{U$inbox_color}%{+u}  $inbox %{-u}%{U-}%{F-} %{F$unread_color}%{U$unread_color}%{+u}  $unread %{-u}%{U-}%{F-}" \
+		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$inbox_color}%{U$inbox_color}%{+u}  $inbox %{-u}%{U-}%{F-} %{F$feeds_color}%{U$feeds_color}%{+u}  $feeds %{-u}%{U-}%{F-}" \
 		"%{c} $(printf -- "%s\n" "$desktops" | sed -- "s/:current/$desktops_color/g")" \
 		"%{r} %{F$temperature_color}%{U$temperature_color}%{+u}  $temperature %{-u}%{U-}%{F-} %{F$memory_color}%{U$memory_color}%{+u}  $memory %{-u}%{U-}%{F-} %{F$volume_color}%{U$volume_color}%{+u}  $volume %{-u}%{U-}%{F-} %{F$connection_color}%{U$connection_color}%{+u}  $connection %{-u}%{U-}%{F-}"
 done
