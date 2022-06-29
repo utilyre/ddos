@@ -19,7 +19,7 @@ lfcd() {
 
 alias grep="grep --color=\"auto\" --ignore-case"
 alias diff="diff --color=\"auto\""
-alias ls="ls --color=\"auto\" --group-directories-first --no-group --human-readable"
+alias ls="ls --color=\"auto\" --group-directories-first --human-readable"
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
