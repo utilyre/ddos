@@ -6,6 +6,6 @@
 
 Run the install script:
 
-```sh
+```bash
 curl "https://raw.githubusercontent.com/utilyre/dotfiles/main/install.sh" | sh
 ```
