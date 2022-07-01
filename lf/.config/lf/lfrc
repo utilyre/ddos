@@ -6,8 +6,6 @@ set scrolloff 2
 set previewer "lfpv"
 set cleaner "lfcl"
 
-cmd create %mk "$@"
-
 map <m-1> :updir
 map <m-2> :open
 map <m-down> :down
@@ -18,7 +16,7 @@ map y :copy
 map p :paste
 map c :rename
 map x :delete
-map a push :create<space>
+map a push %mk<space>
 map gw &wali "$f"
 map gd &printf "%s\n" "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact --and-exit
 map gD &printf "%s\n" "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact
