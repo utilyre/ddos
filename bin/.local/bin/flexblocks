@@ -70,8 +70,8 @@ connection() {
 		printf -- "Down"
 }
 
-trap -- "unset desktops" "10"
-trap -- "unset volume" "12"
+trap -- "unset desktops" "USR1"
+trap -- "unset volume" "USR2"
 while true; do
 	sleep -- "1s" & wait -- "$!"
 	timestamp="$(date -- "+%s")"
