@@ -1,7 +1,6 @@
 #!/bin/sh
 
-options="$(getopt --name="volt" --options="i,o" --longoptions="device::" -- "$@")"
-[ "$?" -ne "0" ] && exit "2"
+options="$(getopt --name="volt" --options="i,o" --longoptions="device::" -- "$@")" || exit "2"
 eval set -- "$options"
 
 device="source"

@@ -1,9 +1,6 @@
 #!/bin/sh
 
-disks="$(lsblk --raw --path --output="type,name,fstype,size,mountpoint" | awk -- "(\$1 == \"part\") { print \$2 \" \" \$3 \" \" \$4 \" \" \$5 }")"
-disk="$(printf -- "%s\n" "$disks" | column --table | dmenu -p " ")"
-[ "$?" -ne "0" ] && exit "130"
-
+disk="$(lsblk --raw --path --output="type,name,fstype,size,mountpoint" | awk -- "(\$1 == \"part\") { print \$2 \" \" \$3 \" \" \$4 \" \" \$5 }" | column --table | dmenu -p " ")" || exit "130"
 case "$(printf -- "%s\n" "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
 	"mount")
 		source="${disk%% *}"
