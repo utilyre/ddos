@@ -77,16 +77,16 @@ while true; do
 	timestamp="$(date -- "+%s")"
 
 	[ -z "$calendar" ] || [ "$(($timestamp % 60))" -eq "0" ] && calendar="$(calendar)"
-	[ -z "$weather" ] || [ "$(($timestamp % 3600))" -eq "0" ] && weather="$(weather)"
-	[ -z "$fortune" ] || [ "$(($timestamp % 1800))" -eq "0" ] && fortune="$(fortune)"
+	[ -z "$weather" ] || [ "$(($timestamp % 7200))" -eq "0" ] && weather="$(weather)"
+	[ -z "$fortune" ] && fortune="$(fortune)"
 	[ -z "$distro" ] && distro="$(distro)"
 
 	[ -z "$desktops" ] && desktops="$(desktops)"
 
 	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
-	[ -z "$memory" ] || [ "$(($timestamp % 10))" -eq "0" ] && memory="$(memory)"
+	[ -z "$memory" ] || [ "$(($timestamp % 30))" -eq "0" ] && memory="$(memory)"
 	[ -z "$volume" ] && volume="$(volume)"
-	[ -z "$connection" ] || [ "$(($timestamp % 10))" -eq "0" ] && connection="$(connection)"
+	[ -z "$connection" ] || [ "$(($timestamp % 5))" -eq "0" ] && connection="$(connection)"
 
 	printf -- "%s %s %s \n" \
 		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$fortune_color}%{U$fortune_color}%{+u}  $fortune %{-u}%{U-}%{F-} %{F$distro_color}%{U$distro_color}%{+u}  $distro %{-u}%{U-}%{F-}" \
