@@ -2,8 +2,8 @@
 
 calendar_color="$(xrdb -get "flexblocks.calendar")"
 weather_color="$(xrdb -get "flexblocks.weather")"
-inbox_color="$(xrdb -get "flexblocks.inbox")"
-feeds_color="$(xrdb -get "flexblocks.feeds")"
+fortune_color="$(xrdb -get "flexblocks.fortune")"
+distro_color="$(xrdb -get "flexblocks.distro")"
 desktops_color="$(xrdb -get "flexblocks.desktops")"
 temperature_color="$(xrdb -get "flexblocks.temperature")"
 memory_color="$(xrdb -get "flexblocks.memory")"
@@ -15,15 +15,15 @@ calendar() {
 }
 
 weather() {
-	curl -- "https://wttr.in/Hamadan?m&format=%l,+%C+%t"
+	curl --request "GET" -- "https://wttr.in/Hamadan?m&format=%C+%t"
 }
 
-inbox() {
-	printf -- "%d" "1"
+fortune() {
+	printf -- "\"%s\"\n" "$(curl --request "GET" -- "https://api.quotable.io/random?maxLength=25" | jq --raw-output ".\"content\"")"
 }
 
-feeds() {
-	printf -- "%d" "72"
+distro() {
+	uname --nodename | sed --regexp-extended -- "s/^(.)/\U\1/"
 }
 
 desktops() {
@@ -76,20 +76,20 @@ while true; do
 	sleep -- "1s" & wait -- "$!"
 	timestamp="$(date -- "+%s")"
 
-	[ -z "$calendar" ] || [ "$(($timestamp % 0060))" -eq "0" ] && calendar="$(calendar)"
-	[ -z "$weather" ] || [ "$(($timestamp % 1800))" -eq "0" ] && weather="$(weather)"
-	[ -z "$inbox" ] || [ "$(($timestamp % 0010))" -eq "0" ] && inbox="$(inbox)"
-	[ -z "$feeds" ] || [ "$(($timestamp % 0010))" -eq "0" ] && feeds="$(feeds)"
+	[ -z "$calendar" ] || [ "$(($timestamp % 60))" -eq "0" ] && calendar="$(calendar)"
+	[ -z "$weather" ] || [ "$(($timestamp % 3600))" -eq "0" ] && weather="$(weather)"
+	[ -z "$fortune" ] || [ "$(($timestamp % 1800))" -eq "0" ] && fortune="$(fortune)"
+	[ -z "$distro" ] && distro="$(distro)"
 
 	[ -z "$desktops" ] && desktops="$(desktops)"
 
-	[ -z "$temperature" ] || [ "$(($timestamp % 0010))" -eq "0" ] && temperature="$(temperature)"
-	[ -z "$memory" ] || [ "$(($timestamp % 0010))" -eq "0" ] && memory="$(memory)"
+	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
+	[ -z "$memory" ] || [ "$(($timestamp % 10))" -eq "0" ] && memory="$(memory)"
 	[ -z "$volume" ] && volume="$(volume)"
-	[ -z "$connection" ] || [ "$(($timestamp % 0010))" -eq "0" ] && connection="$(connection)"
+	[ -z "$connection" ] || [ "$(($timestamp % 10))" -eq "0" ] && connection="$(connection)"
 
 	printf -- "%s %s %s \n" \
-		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$inbox_color}%{U$inbox_color}%{+u}  $inbox %{-u}%{U-}%{F-} %{F$feeds_color}%{U$feeds_color}%{+u}  $feeds %{-u}%{U-}%{F-}" \
+		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$fortune_color}%{U$fortune_color}%{+u}  $fortune %{-u}%{U-}%{F-} %{F$distro_color}%{U$distro_color}%{+u}  $distro %{-u}%{U-}%{F-}" \
 		"%{c} $(printf -- "%s\n" "$desktops" | sed -- "s/:current/$desktops_color/g")" \
 		"%{r} %{F$temperature_color}%{U$temperature_color}%{+u}  $temperature %{-u}%{U-}%{F-} %{F$memory_color}%{U$memory_color}%{+u}  $memory %{-u}%{U-}%{F-} %{F$volume_color}%{U$volume_color}%{+u}  $volume %{-u}%{U-}%{F-} %{F$connection_color}%{U$connection_color}%{+u}  $connection %{-u}%{U-}%{F-}"
 done
