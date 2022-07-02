@@ -8,11 +8,11 @@ local get_sources = function()
   if vim.fn.filereadable(config_path) == 0 then return {} end
 
   local sources = {}
-  for _, line in pairs(vim.fn.readfile(config_path)) do
-    line = line:gsub("%s*#.*$", "")
-    if not vim.str_isempty(line) then
-      local parts = vim.split(line, "->")
-      table.insert(sources, null.builtins[parts[2]][parts[1]])
+  local groups = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+
+  for group, members in pairs(groups) do
+    for member, options in pairs(members) do
+      table.insert(sources, null.builtins[group][member].with(options))
     end
   end
 

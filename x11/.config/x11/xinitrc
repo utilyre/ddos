@@ -1,6 +1,6 @@
 #!/bin/sh
 
-eval "$(cat -- "$STARTUP_CONFIG")"
+eval "$(cat -- "$DISPLAY_CONFIG")"
 xrdb "$X11_CONFIG/xresources"
 
 xset r rate "200" "30"
