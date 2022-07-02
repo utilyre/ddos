@@ -1,8 +1,9 @@
 set mouse true
 set drawbox true
-set icons true
-set incsearch true
 set scrolloff 2
+set icons true
+set info size
+set incsearch true
 set previewer "lfpv"
 set cleaner "lfcl"
 
