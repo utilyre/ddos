@@ -15,7 +15,7 @@ calendar() {
 }
 
 weather() {
-	curl --request "GET" -- "https://wttr.in/Hamadan?m&format=%C+%t"
+	curl --request "GET" -- "https://wttr.in/Hamadan?m&format=%C+%t\n"
 }
 
 fortune() {
@@ -57,17 +57,23 @@ volume() {
 }
 
 connection() {
-	printf -- "Ethernet: "
-	grep --quiet "up" -- "/sys/class/net"/e*/"operstate" &&
-		printf -- "Up" ||
-		printf -- "Down"
+	status="Down"
+	download="0B/s"
+	upload="0B/s"
 
-	printf -- " ~ "
+	grep --quiet -- "up" "/sys/class/net"/w*/"operstate" && {
+		status="Wireless ($(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")%)"
+		download="$(tradiff "/sys/class/net/"w*"/statistics/rx_bytes")/s"
+		upload="$(tradiff "/sys/class/net/"w*"/statistics/tx_bytes")/s"
+	}
 
-	printf -- "Wi-Fi: "
-	grep --quiet "up" -- "/sys/class/net"/w*/"operstate" &&
-		printf -- "%s%%" "$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")" ||
-		printf -- "Down"
+	grep --quiet -- "up" "/sys/class/net"/e*/"operstate" && {
+		status="Ethernet"
+		download="$(tradiff "/sys/class/net"/e*/"statistics/rx_bytes")/s"
+		upload="$(tradiff "/sys/class/net"/e*/"statistics/tx_bytes")/s"
+	}
+
+	printf "%s ~ %-8s %-8s\n" "$status" "$download" "$upload"
 }
 
 trap -- "unset desktops" "USR1"
@@ -85,8 +91,8 @@ while true; do
 
 	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
 	[ -z "$memory" ] || [ "$(($timestamp % 30))" -eq "0" ] && memory="$(memory)"
-	[ -z "$volume" ] || [ "$(($timestamp % 15))" -eq "0" ] && volume="$(volume)"
-	[ -z "$connection" ] || [ "$(($timestamp % 5))" -eq "0" ] && connection="$(connection)"
+	[ -z "$volume" ] || [ "$(($timestamp % 5))" -eq "0" ] && volume="$(volume)"
+	[ -z "$connection" ] || [ "$(($timestamp % 1))" -eq "0" ] && connection="$(connection)"
 
 	printf -- "%s %s %s \n" \
 		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$fortune_color}%{U$fortune_color}%{+u}  $fortune %{-u}%{U-}%{F-} %{F$distro_color}%{U$distro_color}%{+u}  $distro %{-u}%{U-}%{F-}" \
