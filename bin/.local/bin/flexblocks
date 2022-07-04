@@ -11,7 +11,7 @@ volume_color="$(xrdb -get "flexblocks.volume")"
 connection_color="$(xrdb -get "flexblocks.connection")"
 
 calendar() {
-	date -- "+%H:%M %a, %b %d"
+	date -- "+%H:%M ~ %a, %b %d"
 }
 
 weather() {
@@ -19,12 +19,12 @@ weather() {
 }
 
 fortune() {
-	quote="$(curl --request "GET" -- "https://api.quotable.io/random?maxLength=25" | jq --raw-output ".\"content\"")"
+	quote="$(curl --request "GET" -- "https://api.quotable.io/random?maxLength=20" | jq --raw-output ".\"content\"")"
 	[ -n "$quote" ] && printf -- "\"%s\"\n" "$quote"
 }
 
 monero() {
-	printf "$%.2f\n" "$(curl --request "GET" -- "https://usd.rate.sx/1xmr")"
+	printf "%.2f USD\n" "$(curl --request "GET" -- "https://usd.rate.sx/1xmr")"
 }
 
 desktops() {
