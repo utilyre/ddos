@@ -7,4 +7,4 @@ previous="$(cat -- "$TRADIFF_TMP" || printf -- "0\n")"
 current="$(cat -- "$1")"
 
 printf -- "%d\n" "$current" > "$TRADIFF_TMP"
-printf -- "%sB\n" "$(numfmt --to="iec-i" "$(($current - $previous))")"
+printf -- "%sB\n" "$(numfmt --to="iec-i" -- "$(($current - $previous))")"
