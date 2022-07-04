@@ -85,7 +85,7 @@ while true; do
 
 	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
 	[ -z "$memory" ] || [ "$(($timestamp % 30))" -eq "0" ] && memory="$(memory)"
-	[ -z "$volume" ] && volume="$(volume)"
+	[ -z "$volume" ] || [ "$(($timestamp % 15))" -eq "0" ] && volume="$(volume)"
 	[ -z "$connection" ] || [ "$(($timestamp % 5))" -eq "0" ] && connection="$(connection)"
 
 	printf -- "%s %s %s \n" \
