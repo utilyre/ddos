@@ -3,7 +3,7 @@
 mkdir --parents -- "$TRADIFF_RUNTIME"
 
 export TRADIFF_TMP="$TRADIFF_RUNTIME/$(realpath -- "$1" | shasum | head --bytes="40")"
-previous="$(cat "$TRADIFF_TMP" || printf "0\n")"
+previous="$(cat -- "$TRADIFF_TMP" || printf -- "0\n")"
 current="$(cat -- "$1")"
 
 printf -- "%d\n" "$current" > "$TRADIFF_TMP"

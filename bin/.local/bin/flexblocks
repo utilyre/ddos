@@ -73,7 +73,7 @@ connection() {
 		upload="$(tradiff "/sys/class/net"/e*/"statistics/tx_bytes")/s"
 	}
 
-	printf "%s ~ %-8s %-8s\n" "$status" "$download" "$upload"
+	printf -- "%s ~ %-8s %-8s\n" "$status" "$download" "$upload"
 }
 
 trap -- "unset desktops" "USR1"
