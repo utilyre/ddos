@@ -55,18 +55,19 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "Cur
       return
     end
 
-    local filepath = vim.fn.expand("%:.:h")
-    local filename = vim.fn.expand("%:t")
-    if (filepath ~= "/") then filepath = filepath .. "/" end
-    if vim.str_isempty(filename) then return end
+    local filepath = vim.fn.expand("%:.:h") .. "/"
+    if filepath ~= "//" and filepath:sub(1, 1) == "/" then filepath = "/" .. filepath end
+    if filepath == "./" then filepath = "" end
 
     local icon, highlight = devicons.get_icon_by_filetype(vim.bo.filetype, { default = true })
-    vim.opt_local.winbar = " %#" .. highlight .. "#" .. icon .. "%* " .. "%#Directory#" .. filepath .. "%*%#" .. (vim.bo.modified and "BufferCurrentMod" or "BufferCurrent") .. "#" .. filename .. "%*"
+    local filename = vim.fn.expand("%:t")
+    if vim.str_isempty(filename) then return end
+
+    vim.opt_local.winbar = " " .. vim.str_gsub(filepath, "/", " %%#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%%* ", 2) .. "%#" .. highlight .. "#" .. icon .. "%* " .. "%#" .. (vim.bo.modified and "BufferCurrentMod" or "BufferCurrent") .. "#" .. filename .. "%*"
 
     if not gps.is_available() then return end
     local location = gps.get_location()
-    if not vim.str_isempty(location) then
-      vim.opt_local.winbar:append(" %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* " .. location)
-    end
+    if vim.str_isempty(location) then return end
+    vim.opt_local.winbar:append(" %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* " .. location)
   end,
 })
