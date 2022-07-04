@@ -36,6 +36,7 @@ local on_attach = function(client, buffnr)
   end
 
   vim.keymap.set("n", "<leader>id", vim.api.nvim_create_hof(vim.lsp.buf.definition))
+  vim.keymap.set("n", "<leader>ir", vim.api.nvim_create_hof(vim.lsp.buf.references))
   vim.keymap.set("n", "<leader>ia", vim.api.nvim_create_hof(vim.lsp.buf.code_action))
   vim.keymap.set("n", "<leader>if", vim.api.nvim_create_hof(vim.lsp.buf.format, { async = true }))
   vim.keymap.set("n", "<leader>ic", vim.api.nvim_create_hof(vim.lsp.buf.rename))
