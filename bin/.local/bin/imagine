@@ -1,14 +1,14 @@
 #!/bin/sh
 
 url="$(xsel --clipboard --output)"
-herbe " Nandato" "Fething data for \"$url\"." &
+herbe " Imagine" "Fething data for \"$url\"." &
 formats="$(youtube-dl --list-formats -- "$url")" || {
-	herbe " Nandato" "Couldn't find the video." &
+	herbe " Imagine" "Couldn't find the video." &
 	exit "1"
 }
 
 format="$(printf -- "%s\n" "$formats" | awk -- "(\$0 !~ /\[.+\]/) { print \$1 \" \" \$2 \" \" \$3 }" | column --table | dmenu -p " ")" || exit "130"
 mpv --ytdl-format="${format%% *}" -- "$url" || {
-	herbe " Nandato" "Failed to play the video." &
+	herbe " Imagine" "Failed to play the video." &
 	exit "1"
 }
