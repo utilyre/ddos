@@ -3,7 +3,7 @@
 calendar_color="$(xrdb -get "flexblocks.calendar")"
 weather_color="$(xrdb -get "flexblocks.weather")"
 fortune_color="$(xrdb -get "flexblocks.fortune")"
-distro_color="$(xrdb -get "flexblocks.distro")"
+monero_color="$(xrdb -get "flexblocks.monero")"
 desktops_color="$(xrdb -get "flexblocks.desktops")"
 temperature_color="$(xrdb -get "flexblocks.temperature")"
 memory_color="$(xrdb -get "flexblocks.memory")"
@@ -23,8 +23,8 @@ fortune() {
 	[ -n "$quote" ] && printf -- "\"%s\"\n" "$quote"
 }
 
-distro() {
-	uname --nodename | sed --regexp-extended -- "s/^(.)/\U\1/"
+monero() {
+	printf "$%.2f\n" "$(curl --request "GET" -- "https://usd.rate.sx/1xmr")"
 }
 
 desktops() {
@@ -86,7 +86,7 @@ while true; do
 	[ -z "$calendar" ] || [ "$(($timestamp % 60))" -eq "0" ] && calendar="$(calendar)"
 	[ -z "$weather" ] || [ "$(($timestamp % 7200))" -eq "0" ] && weather="$(weather)"
 	[ -z "$fortune" ] && fortune="$(fortune)"
-	[ -z "$distro" ] && distro="$(distro)"
+	[ -z "$monero" ] || [ "$(($timestamp % 3600))" -eq "0" ] && monero="$(monero)"
 
 	[ -z "$desktops" ] && desktops="$(desktops)"
 
@@ -96,7 +96,7 @@ while true; do
 	[ -z "$connection" ] || [ "$(($timestamp % 1))" -eq "0" ] && connection="$(connection)"
 
 	printf -- "%s %s %s \n" \
-		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$fortune_color}%{U$fortune_color}%{+u}  $fortune %{-u}%{U-}%{F-} %{F$distro_color}%{U$distro_color}%{+u}  $distro %{-u}%{U-}%{F-}" \
+		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$fortune_color}%{U$fortune_color}%{+u}  $fortune %{-u}%{U-}%{F-} %{F$monero_color}%{U$monero_color}%{+u}  $monero %{-u}%{U-}%{F-}" \
 		"%{c} $(printf -- "%s\n" "$desktops" | sed -- "s/:current/$desktops_color/g")" \
 		"%{r} %{F$temperature_color}%{U$temperature_color}%{+u}  $temperature %{-u}%{U-}%{F-} %{F$memory_color}%{U$memory_color}%{+u}  $memory %{-u}%{U-}%{F-} %{F$volume_color}%{U$volume_color}%{+u}  $volume %{-u}%{U-}%{F-} %{F$connection_color}%{U$connection_color}%{+u}  $connection %{-u}%{U-}%{F-}"
 done
