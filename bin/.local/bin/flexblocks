@@ -19,8 +19,7 @@ weather() {
 }
 
 fortune() {
-	quote="$(curl --request "GET" -- "https://api.quotable.io/random?maxLength=20" | jq --raw-output ".\"content\"")"
-	[ -n "$quote" ] && printf -- "\"%s\"\n" "$quote"
+	printf -- "\"%s\"\n" "$(curl --request "GET" -- "https://api.quotable.io/random?maxLength=20" | jq --raw-output ".\"content\"")"
 }
 
 monero() {
