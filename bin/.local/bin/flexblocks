@@ -84,9 +84,9 @@ while true; do
 	timestamp="$(date -- "+%s")"
 
 	[ -z "$calendar" ] || [ "$(($timestamp % 60))" -eq "0" ] && calendar="$(calendar)"
-	[ -z "$weather" ] || [ "$(($timestamp % 7200))" -eq "0" ] && weather="$(weather)"
-	[ -z "$fortune" ] && fortune="$(fortune)"
-	[ -z "$monero" ] || [ "$(($timestamp % 3600))" -eq "0" ] && monero="$(monero)"
+	[ -z "$weather" ] || [ "$(($timestamp % 10800))" -eq "0" ] && weather="$(weather)"
+	[ -z "$fortune" ] || [ "$(($timestamp % 10800))" -eq "0" ] && fortune="$(fortune)"
+	[ -z "$monero" ] || [ "$(($timestamp % 10800))" -eq "0" ] && monero="$(monero)"
 
 	[ -z "$desktops" ] && desktops="$(desktops)"
 
