@@ -71,5 +71,5 @@ while true; do
 	printf -- "%s %s %s \n" \
 		"%{l}    $desktops" \
 		"%{c}  $clock" \
-		"%{r}  $connection  $volume  $memory  $temperature"
+		"%{r}  $connection  $volume  $memory  $temperature %{A:xenon:}  %{A} "
 done
