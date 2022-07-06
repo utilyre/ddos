@@ -2,14 +2,14 @@
 
 desktops() {
 	while read -r line; do
+		self="$(bspc query --desktops --desktop --names)"
+		nodes="$(bspc query --desktop "$line" --nodes --node ".window")"
+		[ "$line" != "$self" ] && [ -z "$nodes" ] && continue
+
 		printf -- "%%{A:bspc desktop --focus \"%s\":}" "$line"
-		# [ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{O5}"
-		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{+u}"
-
+		[ "$line" = "$self" ] && printf -- "%%{+u}"
 		printf -- " %s " "$line"
-
-		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{-u}"
-		# [ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{O-}"
+		[ "$line" = "$self" ] && printf -- "%%{-u}"
 		printf -- "%%{A}"
 	done <<- EOF
 		$(bspc query --desktops --names)
