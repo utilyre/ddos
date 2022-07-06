@@ -23,7 +23,7 @@ herbe.background_color: BLACK
 herbe.font_color: WHITE
 herbe.border_color: WHITE
 herbe.pos_x: 24
-herbe.pos_y: 64
+herbe.pos_y: 50
 
 st.font: monospace:size=10
 st.alpha: 0.9
