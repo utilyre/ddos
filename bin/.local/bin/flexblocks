@@ -20,12 +20,24 @@ clock() {
 	date -- "+%H:%M %a, %b %d"
 }
 
-temperature() {
-	printf -- " %d°C" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
+traffic() {
+	printf -- " %s/s  %s/s\n" \
+		"$(tradiff "/sys/class/net"/[ew]*/"statistics/rx_bytes")" \
+		"$(tradiff "/sys/class/net"/[ew]*/"statistics/tx_bytes")"
 }
 
-memory() {
-	free --human | awk -- "(\$1 == \"Mem:\") { print \" \" \$4 }"
+connection() {
+	grep --quiet -- "up" "/sys/class/net"/e*/"operstate" && {
+		printf -- " Ethernet"
+		return
+	}
+
+	grep --quiet -- "up" "/sys/class/net"/w*/"operstate" && {
+		printf -- " %s%%" "$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")"
+		return
+	}
+
+	printf -- " Down"
 }
 
 volume() {
@@ -34,24 +46,12 @@ volume() {
 		"$(voltage --device="source" get)"
 }
 
-connection() {
-	status="Down"
-	download="0B/s"
-	upload="0B/s"
+memory() {
+	free --human | awk -- "(\$1 == \"Mem:\") { print \" \" \$4 }"
+}
 
-	grep --quiet -- "up" "/sys/class/net"/w*/"operstate" && {
-		status=" $(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")%"
-		download="$(tradiff "/sys/class/net/"w*"/statistics/rx_bytes")/s"
-		upload="$(tradiff "/sys/class/net/"w*"/statistics/tx_bytes")/s"
-	}
-
-	grep --quiet -- "up" "/sys/class/net"/e*/"operstate" && {
-		status=""
-		download="$(tradiff "/sys/class/net"/e*/"statistics/rx_bytes")/s"
-		upload="$(tradiff "/sys/class/net"/e*/"statistics/tx_bytes")/s"
-	}
-
-	printf -- "%s  %s  %s\n" "$status" "$download" "$upload"
+temperature() {
+	printf -- " %d°C" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
 }
 
 trap -- "unset desktops" "USR1"
@@ -62,14 +62,14 @@ while true; do
 
 	[ -z "$desktops" ] && desktops="$(desktops)"
 	[ -z "$clock" ] || [ "$(($timestamp % 60))" -eq "0" ] && clock="$(clock)"
-
-	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
-	[ -z "$memory" ] || [ "$(($timestamp % 30))" -eq "0" ] && memory="$(memory)"
+	[ -z "$traffic" ] || [ "$(($timestamp % 1))" -eq "0" ] && traffic="$(traffic)"
+	[ -z "$connection" ] || [ "$(($timestamp % 15))" -eq "0" ] && connection="$(connection)"
 	[ -z "$volume" ] || [ "$(($timestamp % 5))" -eq "0" ] && volume="$(volume)"
-	[ -z "$connection" ] || [ "$(($timestamp % 1))" -eq "0" ] && connection="$(connection)"
+	[ -z "$memory" ] || [ "$(($timestamp % 30))" -eq "0" ] && memory="$(memory)"
+	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
 
-	printf -- "%s %s %s \n" \
-		"%{l}    $desktops" \
-		"%{c}  $clock" \
-		"%{r}  $connection  $volume  $memory  $temperature %{A:xenon:}  %{A} "
+	printf -- "%%{l} %s %%{c} %s %%{r} %s \n" \
+		"  $desktops" \
+		"$clock" \
+		"$traffic | $connection | $volume | $memory | $temperature |   "
 done

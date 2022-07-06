@@ -2,9 +2,13 @@
 
 mkdir --parents -- "$TRADIFF_RUNTIME"
 
-export TRADIFF_TMP="$TRADIFF_RUNTIME/$(realpath -- "$1" | shasum | head --bytes="40")"
+for net in "$@"; do
+	nets="$nets:$(realpath -- "$net")"
+	current="$(($current + $(cat -- "$net")))"
+done
+
+export TRADIFF_TMP="$TRADIFF_RUNTIME/$(printf -- "%s\n" "$nets" | shasum | head --bytes="40")"
 previous="$(cat -- "$TRADIFF_TMP" || printf -- "0\n")"
-current="$(cat -- "$1")"
 
 printf -- "%d\n" "$current" > "$TRADIFF_TMP"
 numfmt --to="iec-i" --suffix="B" -- "$(($current - $previous))"
