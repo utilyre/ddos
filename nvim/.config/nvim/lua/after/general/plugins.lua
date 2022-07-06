@@ -42,7 +42,7 @@ vim.g.plugins = {
   "toppair/reach.nvim",
   "akinsho/toggleterm.nvim",
 
-  "smiteshp/nvim-gps",
+  "smiteshp/nvim-navic",
   "petertriho/nvim-scrollbar",
   "nvim-lualine/lualine.nvim",
 }

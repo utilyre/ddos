@@ -2,6 +2,7 @@ local config = require("lspconfig")
 local installer = require("nvim-lsp-installer")
 local null = require("null-ls")
 local cmp = require("cmp_nvim_lsp")
+local navic = require("nvim-navic")
 
 local get_sources = function()
   local config_path = vim.fn.expand("$NULL_CONFIG")
@@ -21,7 +22,6 @@ end
 
 local on_attach = function(client, buffnr)
   local gLsp = vim.api.nvim_create_augroup("Lsp", { clear = false })
-
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
       group = gLsp,
@@ -33,6 +33,10 @@ local on_attach = function(client, buffnr)
       buffer = buffnr,
       callback = vim.lsp.buf.clear_references,
     })
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, buffnr)
   end
 
   vim.keymap.set("n", "<leader>id", vim.api.nvim_create_hof(vim.lsp.buf.definition))
