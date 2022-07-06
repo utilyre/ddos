@@ -27,9 +27,9 @@ tree.setup({
   },
   renderer = {
     group_empty = true,
+    symlink_destination = false,
     icons = {
       git_placement = "after",
-      symlink_arrow = " -> ",
       glyphs = {
         default = vim.g.symbols.document.File,
         symlink = vim.g.symbols.document.Link,
