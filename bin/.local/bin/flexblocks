@@ -1,57 +1,35 @@
 #!/bin/sh
 
-calendar_color="$(xrdb -get "flexblocks.calendar")"
-weather_color="$(xrdb -get "flexblocks.weather")"
-fortune_color="$(xrdb -get "flexblocks.fortune")"
-monero_color="$(xrdb -get "flexblocks.monero")"
-desktops_color="$(xrdb -get "flexblocks.desktops")"
-temperature_color="$(xrdb -get "flexblocks.temperature")"
-memory_color="$(xrdb -get "flexblocks.memory")"
-volume_color="$(xrdb -get "flexblocks.volume")"
-connection_color="$(xrdb -get "flexblocks.connection")"
-
-calendar() {
-	date -- "+%H:%M ~ %a, %b %d"
-}
-
-weather() {
-	curl --request "GET" -- "https://wttr.in/Hamadan?m&format=%C+%t\n"
-}
-
-fortune() {
-	printf -- "\"%s\"\n" "$(curl --request "GET" -- "https://api.quotable.io/random?maxLength=20" | jq --raw-output ".\"content\"")"
-}
-
-monero() {
-	printf "%.2f USD\n" "$(curl --request "GET" -- "https://usd.rate.sx/1xmr")"
-}
-
 desktops() {
 	while read -r line; do
 		printf -- "%%{A:bspc desktop --focus \"%s\":}" "$line"
-		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{F:current}"
-		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{U:current}%%{+u}"
+		# [ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{O5}"
+		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{+u}"
 
 		printf -- " %s " "$line"
 
-		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{-u}%%{U-}"
-		[ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{F-}"
+		[ "$line" = "$(bspc query --desktops --desktop --names)" ] && printf -- "%%{-u}"
+		# [ -n "$(bspc query --desktop "$line" --nodes --node ".window")" ] && printf -- "%%{O-}"
 		printf -- "%%{A}"
 	done <<- EOF
 		$(bspc query --desktops --names)
 	EOF
 }
 
+clock() {
+	date -- "+%H:%M %a, %b %d"
+}
+
 temperature() {
-	printf -- "%d°C" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
+	printf -- " %d°C" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
 }
 
 memory() {
-	free --human | awk -- "(\$1 == \"Mem:\") { print \$4 }"
+	free --human | awk -- "(\$1 == \"Mem:\") { print \" \" \$4 }"
 }
 
 volume() {
-	printf -- "%s ~ %s" \
+	printf -- " %s  %s" \
 		"$(voltage --device="sink" get)" \
 		"$(voltage --device="source" get)"
 }
@@ -62,18 +40,18 @@ connection() {
 	upload="0B/s"
 
 	grep --quiet -- "up" "/sys/class/net"/w*/"operstate" && {
-		status="Wireless ($(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")%)"
+		status=" $(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")%"
 		download="$(tradiff "/sys/class/net/"w*"/statistics/rx_bytes")/s"
 		upload="$(tradiff "/sys/class/net/"w*"/statistics/tx_bytes")/s"
 	}
 
 	grep --quiet -- "up" "/sys/class/net"/e*/"operstate" && {
-		status="Ethernet"
+		status=""
 		download="$(tradiff "/sys/class/net"/e*/"statistics/rx_bytes")/s"
 		upload="$(tradiff "/sys/class/net"/e*/"statistics/tx_bytes")/s"
 	}
 
-	printf -- "%s ~ %s %s\n" "$status" "$download" "$upload"
+	printf -- "%s  %s  %s\n" "$status" "$download" "$upload"
 }
 
 trap -- "unset desktops" "USR1"
@@ -82,12 +60,8 @@ while true; do
 	sleep -- "1s" & wait -- "$!"
 	timestamp="$(date -- "+%s")"
 
-	[ -z "$calendar" ] || [ "$(($timestamp % 60))" -eq "0" ] && calendar="$(calendar)"
-	[ -z "$weather" ] || [ "$(($timestamp % 10800))" -eq "0" ] && weather="$(weather)"
-	[ -z "$fortune" ] || [ "$(($timestamp % 10800))" -eq "0" ] && fortune="$(fortune)"
-	[ -z "$monero" ] || [ "$(($timestamp % 10800))" -eq "0" ] && monero="$(monero)"
-
 	[ -z "$desktops" ] && desktops="$(desktops)"
+	[ -z "$clock" ] || [ "$(($timestamp % 60))" -eq "0" ] && clock="$(clock)"
 
 	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
 	[ -z "$memory" ] || [ "$(($timestamp % 30))" -eq "0" ] && memory="$(memory)"
@@ -95,7 +69,7 @@ while true; do
 	[ -z "$connection" ] || [ "$(($timestamp % 1))" -eq "0" ] && connection="$(connection)"
 
 	printf -- "%s %s %s \n" \
-		"%{l} %{F$calendar_color}%{U$calendar_color}%{+u}  $calendar %{-u}%{U-}%{F-} %{F$weather_color}%{U$weather_color}%{+u}  $weather %{-u}%{U-}%{F-} %{F$fortune_color}%{U$fortune_color}%{+u}  $fortune %{-u}%{U-}%{F-} %{F$monero_color}%{U$monero_color}%{+u}  $monero %{-u}%{U-}%{F-}" \
-		"%{c} $(printf -- "%s\n" "$desktops" | sed -- "s/:current/$desktops_color/g")" \
-		"%{r} %{F$temperature_color}%{U$temperature_color}%{+u}  $temperature %{-u}%{U-}%{F-} %{F$memory_color}%{U$memory_color}%{+u}  $memory %{-u}%{U-}%{F-} %{F$volume_color}%{U$volume_color}%{+u}  $volume %{-u}%{U-}%{F-} %{F$connection_color}%{U$connection_color}%{+u}  $connection %{-u}%{U-}%{F-}"
+		"%{l}    $desktops" \
+		"%{c}  $clock" \
+		"%{r}  $connection  $volume  $memory  $temperature"
 done

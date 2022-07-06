@@ -7,31 +7,21 @@
 #define CYAN #56b6c2
 #define WHITE #abb2bf
 
-bspwm.padding: 4
 bspwm.gap: 8
 bspwm.border: 2
 bspwm.border_nrm: BLACK
 bspwm.border_sel: WHITE
 
 flexblocks.font: monospace:size=10
-flexblocks.height: 30
-flexblocks.underline: 4
+flexblocks.height: 24
+flexblocks.underline: 3
 flexblocks.background: BLACK
 flexblocks.foreground: WHITE
-flexblocks.calendar: BLUE
-flexblocks.weather: GREEN
-flexblocks.fortune: YELLOW
-flexblocks.monero: RED
-flexblocks.desktops: CYAN
-flexblocks.temperature: RED
-flexblocks.memory: YELLOW
-flexblocks.volume: GREEN
-flexblocks.connection: BLUE
 
 herbe.font_pattern: monospace:size=10
 herbe.background_color: BLACK
-herbe.font_color: CYAN
-herbe.border_color: CYAN
+herbe.font_color: WHITE
+herbe.border_color: WHITE
 herbe.pos_x: 24
 herbe.pos_y: 64
 
