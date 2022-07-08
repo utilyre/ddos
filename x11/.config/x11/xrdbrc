@@ -7,7 +7,7 @@
 #define CYAN #56b6c2
 #define WHITE #abb2bf
 
-bspwm.gap: 8
+bspwm.gap: 4
 bspwm.border: 2
 bspwm.border_nrm: BLACK
 bspwm.border_sel: WHITE
@@ -23,7 +23,7 @@ herbe.background_color: BLACK
 herbe.font_color: WHITE
 herbe.border_color: WHITE
 herbe.pos_x: 24
-herbe.pos_y: 50
+herbe.pos_y: 48
 
 st.font: monospace:size=10
 st.alpha: 0.9
