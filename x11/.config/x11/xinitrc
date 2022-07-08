@@ -8,8 +8,9 @@ xsetroot -cursor_name "left_ptr"
 
 lxsession &
 sxhkd &
-wali &
 picom --experimental-backends &
+wali &
+current &
 lemonblocks &
 
 exec bspwm

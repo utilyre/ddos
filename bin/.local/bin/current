@@ -1,0 +1,15 @@
+#!/bin/sh
+
+[ "$#" -eq "0" ] && {
+	playerctld &
+	playerctl metadata --follow --format="{{ mpris:trackid }}" |
+		while read -r _; do
+			herbe " Sang" "$(playerctl metadata --format="Playing \"{{ title }}\" by \"{{ artist }}\".")" &
+		done
+}
+
+case "$1" in
+	"toggle") playerctl play-pause ;;
+	"prev") playerctl previous ;;
+	"next") playerctl next ;;
+esac
