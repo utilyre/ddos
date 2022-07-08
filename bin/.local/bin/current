@@ -4,7 +4,11 @@
 	playerctld &
 	playerctl metadata --follow --format="{{ mpris:trackid }}" |
 		while read -r _; do
-			herbe " Sang" "$(playerctl metadata --format="Playing \"{{ title }}\" by \"{{ artist }}\".")" &
+			title="$(playerctl metadata --format="{{ trunc(xesam:title, 16) }}")"
+			artist="$(playerctl metadata --format="{{ trunc(xesam:artist, 16) }}")"
+			[ -z "$title" ] || [ -z "$artist" ] && continue
+
+			herbe " Sang" "Playing \"$title\" by \"$artist\"." &
 		done
 }
 
