@@ -54,6 +54,6 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "Cur
 
     if not navic.is_available() then return end
     local location = navic.get_location()
-    vim.opt_local.winbar:append(" %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* " .. (vim.str_isempty(location) and "..." or location))
+    vim.opt_local.winbar:append(" %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* " .. (vim.str_isempty(location) and "%#NonText#…%*" or location))
   end,
 })
