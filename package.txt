@@ -8,7 +8,6 @@ lf-bin
 lxsession-gtk3
 mediainfo
 mpv
-mpv-mpris
 neovim
 picom
 playerctl
