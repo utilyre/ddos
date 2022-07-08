@@ -8,7 +8,7 @@
 			artist="$(playerctl metadata --format="{{ trunc(xesam:artist, 16) }}")"
 			[ -z "$title" ] || [ -z "$artist" ] && continue
 
-			herbe " Sang" "Playing \"$title\" by \"$artist\"." &
+			herbe " Current" "Playing \"$title\" by \"$artist\"." &
 		done
 }
 
