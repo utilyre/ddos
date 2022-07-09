@@ -73,3 +73,6 @@ MODE_INDICATOR_VISUAL="%B%F{magenta}%K{magenta}%F{black} VISUAL %k%F{magenta}
 MODE_INDICATOR_VLINE="%B%F{magenta}%K{magenta}%F{black} V-LINE %k%F{magenta}%f%k%b"
 MODE_INDICATOR_REPLACE="%B%F{red}%K{red}%F{black} REPLACE %k%F{red}%f%k%b"
 MODE_INDICATOR_SEARCH="%B%F{yellow}%K{yellow}%F{black} COMMAND %k%F{yellow}%f%k%b"
+
+zuse "hlissner/zsh-autopair:autopair.zsh"
+autopair-init
