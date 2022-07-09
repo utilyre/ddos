@@ -26,9 +26,9 @@ vim.g.plugins = {
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lsp",
-  "petertriho/cmp-git",
   "hrsh7th/cmp-buffer",
   "f3fora/cmp-spell",
+  "windwp/nvim-autopairs",
 
   "ahmedkhalf/project.nvim",
   "stevearc/dressing.nvim",
