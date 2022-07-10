@@ -1,7 +1,7 @@
 #!/bin/sh
 
 [ "$#" -eq "0" ] && {
-	playerctld &
+	playerctld daemon
 	playerctl metadata --follow --format="{{ mpris:trackid }}" |
 		while read -r _; do
 			title="$(playerctl metadata --format="{{ trunc(xesam:title, 16) }}")"
