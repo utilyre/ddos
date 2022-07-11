@@ -1,7 +1,6 @@
 brave-bin
 bspwm
 dragon-drop
-git
 jq
 lemonbar-xft-git
 lf-bin
