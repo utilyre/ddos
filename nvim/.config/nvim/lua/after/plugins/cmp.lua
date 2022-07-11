@@ -10,7 +10,7 @@ cmp.setup({
   },
   formatting = {
     fields = { "kind", "abbr" },
-    format = function(_, item)
+    format = function(entry, item)
       item.kind = vim.g.symbols.kind[item.kind]
       return item
     end,
