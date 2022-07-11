@@ -6,7 +6,7 @@ out() {
 
 err() {
 	printf -- "\e[1;31m%s\e[m \e[1m%s\e[m\n" "===> ERROR:" "$1" >&2
-	exit 1
+	exit "1"
 }
 
 install_yay() {
