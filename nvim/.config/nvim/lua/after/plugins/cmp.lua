@@ -47,41 +47,20 @@ cmp.setup({
         cmp.complete()
       end
     end, { "i" }),
-    ["<c-d>"] = cmp.mapping.scroll_docs(3),
-    ["<c-u>"] = cmp.mapping.scroll_docs(-3),
-    ["<cr>"] = cmp.mapping.confirm({ select = true }),
-    ["<s-tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    ["<c-u>"] = cmp.mapping(vim.api.nvim_create_hof(cmp.scroll_docs, -3), { "i", "s" }),
+    ["<c-d>"] = cmp.mapping(vim.api.nvim_create_hof(cmp.scroll_docs, 3), { "i", "s" }),
+    ["<c-p>"] = cmp.mapping(vim.api.nvim_create_hof(cmp.select_prev_item), { "i", "s" }),
+    ["<c-n>"] = cmp.mapping(vim.api.nvim_create_hof(cmp.select_next_item), { "i", "s" }),
+    ["<s-tab>"] = cmp.mapping(vim.api.nvim_create_hof(luasnip.jump, -1), { "i", "s" }),
     ["<tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        cmp.confirm({ select = true })
       elseif luasnip.jumpable(1) then
         luasnip.jump(1)
       else
         fallback()
       end
-    end, { "i", "s" }),
-    ["<c-k>"] = cmp.mapping(function(fallback)
-      if luasnip.choice_active(-1) then
-        luasnip.change_choice(-1)
-      else
-        fallback()
-      end
-    end),
-    ["<c-j>"] = cmp.mapping(function(fallback)
-      if luasnip.choice_active(1) then
-        luasnip.change_choice(1)
-      else
-        fallback()
-      end
-    end),
+    end, { "i", "s" })
   },
 })
 
