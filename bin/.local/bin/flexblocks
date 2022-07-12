@@ -69,7 +69,7 @@ while true; do
 	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
 
 	printf -- "%%{l} %s %%{c} %s %%{r} %s \n" \
-		"  $desktops" \
+		"$desktops" \
 		"$clock" \
-		"$traffic | $connection | $volume | $memory | $temperature |   "
+		"$traffic | $connection | $volume | $memory | $temperature"
 done
