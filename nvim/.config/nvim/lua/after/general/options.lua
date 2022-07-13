@@ -22,7 +22,7 @@ vim.opt.cursorline = true
 vim.opt.list = true
 vim.opt.listchars:append("tab:  ,trail:·")
 
-vim.opt.showmode = false
+vim.opt.cmdheight = 0
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

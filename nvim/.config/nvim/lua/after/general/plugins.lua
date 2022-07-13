@@ -43,6 +43,6 @@ vim.g.plugins = {
   "numtostr/fterm.nvim",
 
   "smiteshp/nvim-navic",
-  "petertriho/nvim-scrollbar",
+  "rcarriga/nvim-notify",
   "nvim-lualine/lualine.nvim",
 }
