@@ -1,7 +1,5 @@
-local cmp = require("cmp")
 local luasnip = require("luasnip")
-local autopairs = require("nvim-autopairs")
-local completion = require("nvim-autopairs.completion.cmp")
+local cmp = require("cmp")
 
 cmp.setup({
   window = {
@@ -34,10 +32,6 @@ cmp.setup({
         get_bufnrs = vim.api.nvim_create_hof(vim.api.nvim_list_bufs),
       },
     },
-    {
-      group_index = 2,
-      name = "spell",
-    },
   },
   mapping = {
     ["<c-space>"] = cmp.mapping(function()
@@ -62,9 +56,4 @@ cmp.setup({
       end
     end, { "i", "s" })
   },
-})
-
-cmp.event:on("confirm_done", completion.on_confirm_done())
-autopairs.setup({
-  check_ts = true,
 })

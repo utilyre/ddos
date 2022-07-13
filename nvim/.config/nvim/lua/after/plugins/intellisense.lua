@@ -1,24 +1,26 @@
-local config = require("lspconfig")
+local navic = require("nvim-navic")
+local lsp = require("lspconfig")
 local installer = require("nvim-lsp-installer")
 local null = require("null-ls")
 local cmp = require("cmp_nvim_lsp")
-local navic = require("nvim-navic")
 
-local get_sources = function()
-  local config_path = vim.fn.expand("$NULL_CONFIG")
-  if vim.fn.filereadable(config_path) == 0 then return {} end
+vim.diagnostic.config({
+  update_in_insert = true,
+  virtual_text = false,
+  float = { border = "rounded" },
+  signs = {
+    active = {
+      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.symbols.diagnostic.Error),
+      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.symbols.diagnostic.Warn),
+      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.symbols.diagnostic.Hint),
+      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.symbols.diagnostic.Info),
+    },
+  },
+})
 
-  local sources = {}
-  local groups = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
-
-  for group, members in pairs(groups) do
-    for member, options in pairs(members) do
-      table.insert(sources, null.builtins[group][member].with(options))
-    end
-  end
-
-  return sources
-end
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
 
 local on_attach = function(client, buffnr)
   local gLsp = vim.api.nvim_create_augroup("Lsp", { clear = false })
@@ -50,23 +52,6 @@ local on_attach = function(client, buffnr)
   vim.keymap.set("n", "<leader>ij", vim.api.nvim_create_hof(vim.diagnostic.goto_next))
 end
 
-vim.diagnostic.config({
-  update_in_insert = true,
-  virtual_text = false,
-  float = { border = "rounded" },
-  signs = {
-    active = {
-      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.symbols.diagnostic.Error),
-      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.symbols.diagnostic.Warn),
-      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.symbols.diagnostic.Hint),
-      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.symbols.diagnostic.Info),
-    },
-  },
-})
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
-
 installer.on_server_ready(function(server)
   server:setup({
     capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -74,7 +59,23 @@ installer.on_server_ready(function(server)
   })
 end)
 
+local get_sources = function()
+  local config_path = vim.fn.expand("$NULL_CONFIG")
+  if vim.fn.filereadable(config_path) == 0 then return {} end
+
+  local sources = {}
+  local groups = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+
+  for group, members in pairs(groups) do
+    for member, options in pairs(members) do
+      table.insert(sources, null.builtins[group][member].with(options))
+    end
+  end
+
+  return sources
+end
+
 null.setup({
-  on_attach = on_attach,
   sources = get_sources(),
+  on_attach = on_attach,
 })

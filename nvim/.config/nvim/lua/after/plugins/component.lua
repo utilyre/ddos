@@ -1,5 +1,7 @@
-local navic = require("nvim-navic")
 local devicons = require("nvim-web-devicons")
+local navic = require("nvim-navic")
+local lualine = require("lualine")
+local scrollbar = require("scrollbar")
 
 navic.setup({
   separator = " %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* ",
@@ -46,7 +48,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "Cur
     if filepath ~= "//" and filepath:sub(1, 1) == "/" then filepath = "/" .. filepath end
     if filepath == "./" then filepath = "" end
 
-    local icon, highlight = devicons.get_icon_by_filetype(vim.bo.filetype, { default = true })
+    local icon, highlight = devicons.get_icon_by_filetype(vim.bo.filetype)
     local filename = vim.fn.expand("%:t")
     if vim.str_isempty(filename) then return end
 
@@ -57,3 +59,28 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "Cur
     vim.opt_local.winbar:append(" %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* " .. (vim.str_isempty(location) and "%#NonText#…%*" or location))
   end,
 })
+
+lualine.setup({
+  options = {
+    globalstatus = true,
+    section_separators = { left = vim.g.symbols.ui.SectionLeft, right = vim.g.symbols.ui.SectionRight },
+    component_separators = { left = vim.g.symbols.ui.ComponentLeft, right = vim.g.symbols.ui.ComponentRight },
+  },
+  sections = {
+    lualine_b = {
+      { "branch" },
+      { "diff" },
+      { "diagnostics",
+        update_in_insert = true,
+        symbols = {
+          error = vim.g.symbols.diagnostic.Error .. " ",
+          warn = vim.g.symbols.diagnostic.Warn .. " ",
+          hint = vim.g.symbols.diagnostic.Hint .. " ",
+          info = vim.g.symbols.diagnostic.Info .. " ",
+        } },
+    },
+    lualine_c = {},
+  },
+})
+
+scrollbar.setup()

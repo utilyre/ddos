@@ -1,4 +1,9 @@
+local devicons = require("nvim-web-devicons")
 local onedark = require("onedark")
+
+devicons.setup({
+  default = true,
+})
 
 onedark.setup({
   style = "dark",

@@ -8,41 +8,40 @@ vim.g.plugins = {
 
   "nvim-lua/plenary.nvim",
   "nvim-lua/popup.nvim",
+  "rcarriga/nvim-notify",
+  "stevearc/dressing.nvim",
+  "ahmedkhalf/project.nvim",
+
   "kyazdani42/nvim-web-devicons",
   "navarasu/onedark.nvim",
+
+  "kyazdani42/nvim-tree.lua",
+  "nvim-telescope/telescope.nvim",
+  "toppair/reach.nvim",
+  "numtostr/fterm.nvim",
+
+  "smiteshp/nvim-navic",
+  "nvim-lualine/lualine.nvim",
+  "petertriho/nvim-scrollbar",
 
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "lukas-reineke/indent-blankline.nvim",
-  "numtostr/comment.nvim",
+
+  "l3mon4d3/luasnip",
+  "utilyre/spoon.nvim",
 
   "neovim/nvim-lspconfig",
   "williamboman/nvim-lsp-installer",
   "jose-elias-alvarez/null-ls.nvim",
 
-  "l3mon4d3/luasnip",
-  "utilyre/spoon.nvim",
-
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
-  "f3fora/cmp-spell",
+
   "windwp/nvim-autopairs",
-
-  "ahmedkhalf/project.nvim",
-  "stevearc/dressing.nvim",
-  "nvim-telescope/telescope.nvim",
-  "folke/todo-comments.nvim",
-
+  "numtostr/comment.nvim",
   "lewis6991/gitsigns.nvim",
   "akinsho/git-conflict.nvim",
-
-  "kyazdani42/nvim-tree.lua",
-  "toppair/reach.nvim",
-  "numtostr/fterm.nvim",
-
-  "smiteshp/nvim-navic",
-  "rcarriga/nvim-notify",
-  "nvim-lualine/lualine.nvim",
 }
