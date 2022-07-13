@@ -15,7 +15,6 @@ packer.startup({
   end,
 })
 
-vim.keymap.set("n", "<leader>ps", vim.api.nvim_create_hof(packer.sync))
 vim.keymap.set("n", "<leader>pi", vim.api.nvim_create_hof(packer.install))
 vim.keymap.set("n", "<leader>pu", vim.api.nvim_create_hof(packer.update))
 vim.keymap.set("n", "<leader>pc", vim.api.nvim_create_hof(packer.clean))

@@ -26,7 +26,6 @@ gitsigns.setup({
   on_attach = function(buffnr)
     vim.keymap.set("n", "<leader>gd", vim.api.nvim_create_hof(gitsigns.diffthis))
     vim.keymap.set("n", "<leader>gp", vim.api.nvim_create_hof(gitsigns.preview_hunk))
-    vim.keymap.set("n", "<leader>gs", vim.api.nvim_create_hof(gitsigns.select_hunk))
     vim.keymap.set("n", "<leader>gr", vim.api.nvim_create_hof(gitsigns.reset_hunk))
     vim.keymap.set("n", "<leader>ga", vim.api.nvim_create_hof(gitsigns.stage_hunk))
     vim.keymap.set("n", "<leader>gu", vim.api.nvim_create_hof(gitsigns.undo_stage_hunk))
