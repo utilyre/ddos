@@ -20,7 +20,7 @@ vim.g.plugins = {
   "toppair/reach.nvim",
   "numtostr/fterm.nvim",
 
-  "smiteshp/nvim-navic",
+  "utilyre/barbecue.nvim",
   "nvim-lualine/lualine.nvim",
   "petertriho/nvim-scrollbar",
 
@@ -34,6 +34,7 @@ vim.g.plugins = {
   "neovim/nvim-lspconfig",
   "williamboman/nvim-lsp-installer",
   "jose-elias-alvarez/null-ls.nvim",
+  "smiteshp/nvim-navic",
 
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",

@@ -1,10 +1,10 @@
-local devicons = require("nvim-web-devicons")
-local navic = require("nvim-navic")
+local barbecue = require("barbecue")
 local lualine = require("lualine")
 local scrollbar = require("scrollbar")
 
-navic.setup({
+barbecue.setup({
   separator = " %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* ",
+  no_info_indicator = "%#NonText#…%*",
   icons = {
     File = "%#CmpItemKindFile#" .. vim.g.symbols.kind.File .. "%* ",
     Package = "%#CmpItemKindFolder#" .. vim.g.symbols.kind.Folder .. "%* ",
@@ -33,31 +33,6 @@ navic.setup({
     Array = "%#CmpItemKindValue#" .. vim.g.symbols.type.Array .. "%* ",
     Object = "%#CmpItemKindValue#" .. vim.g.symbols.type.Object .. "%* ",
   },
-})
-
-local gNavic = vim.api.nvim_create_augroup("Navic", {})
-vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost", "CursorMoved", "CursorMovedI", "TextChanged", "TextChangedI" }, {
-  group = gNavic,
-  callback = function()
-    if vim.bo.buftype ~= "" or vim.api.nvim_win_get_config(0).relative ~= "" then
-      vim.opt_local.winbar = nil
-      return
-    end
-
-    local filepath = vim.fn.expand("%:.:h") .. "/"
-    if filepath ~= "//" and filepath:sub(1, 1) == "/" then filepath = "/" .. filepath end
-    if filepath == "./" then filepath = "" end
-
-    local icon, highlight = devicons.get_icon_by_filetype(vim.bo.filetype)
-    local filename = vim.fn.expand("%:t")
-    if vim.str_isempty(filename) then return end
-
-    vim.opt_local.winbar = " " .. vim.str_gsub(filepath, "/", " %%#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%%* ", 2) .. "%#" .. highlight .. "#" .. icon .. "%* " .. "%#" .. (vim.bo.modified and "BufferCurrentMod" or "BufferCurrent") .. "#" .. filename .. "%*"
-
-    if not navic.is_available() then return end
-    local location = navic.get_location()
-    vim.opt_local.winbar:append(" %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* " .. (vim.str_isempty(location) and "%#NonText#…%*" or location))
-  end,
 })
 
 lualine.setup({

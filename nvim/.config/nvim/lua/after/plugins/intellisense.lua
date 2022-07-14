@@ -1,7 +1,7 @@
-local navic = require("nvim-navic")
 local lsp = require("lspconfig")
 local installer = require("nvim-lsp-installer")
 local null = require("null-ls")
+local navic = require("nvim-navic")
 local cmp = require("cmp_nvim_lsp")
 
 vim.diagnostic.config({
