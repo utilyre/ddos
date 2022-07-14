@@ -2,7 +2,7 @@
 
 mkdir --parents -- "$NVIM_RUNTIME"
 
-[ -n "$NVIM_TMP" ] && exec nvim --server "$NVIM_TMP" --remote-tab-wait "$@"
+[ -n "$NVIM_TMP" ] && exec nvim --server "$NVIM_TMP" --remote-wait "$@"
 
 export NVIM_TMP="$NVIM_RUNTIME/$$.sock"
 exec nvim --listen "$NVIM_TMP" "$@"
