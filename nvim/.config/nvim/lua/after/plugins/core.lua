@@ -24,12 +24,6 @@ dressing.setup({
   },
   select = {
     enabled = true,
-    backend = { "builtin" },
-    builtin = {
-      relative = "editor",
-      border = "rounded",
-      winblend = 0,
-    },
   },
 })
 
