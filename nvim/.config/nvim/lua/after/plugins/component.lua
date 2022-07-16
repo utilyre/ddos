@@ -54,5 +54,7 @@ lualine.setup({
         } },
     },
     lualine_c = {},
+    lualine_x = {},
+    lualine_y = { "encoding", "fileformat", "filetype" },
   },
 })
