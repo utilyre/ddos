@@ -1,6 +1,5 @@
 local barbecue = require("barbecue")
 local lualine = require("lualine")
-local scrollbar = require("scrollbar")
 
 barbecue.setup({
   separator = " %#Delimiter#" .. vim.g.symbols.ui.Chevron .. "%* ",
@@ -57,5 +56,3 @@ lualine.setup({
     lualine_c = {},
   },
 })
-
-scrollbar.setup()

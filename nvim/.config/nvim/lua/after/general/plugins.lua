@@ -22,7 +22,6 @@ vim.g.plugins = {
 
   "utilyre/barbecue.nvim",
   "nvim-lualine/lualine.nvim",
-  "petertriho/nvim-scrollbar",
 
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
