@@ -68,12 +68,11 @@ telescope.setup({
   defaults = themes.get_dropdown(),
 })
 
-vim.keymap.set("n", "<leader>fb", vim.api.nvim_create_hof(builtin.git_branches))
 vim.keymap.set("n", "<leader>fr", vim.api.nvim_create_hof(builtin.oldfiles))
 vim.keymap.set("n", "<leader>ff", vim.api.nvim_create_hof(builtin.find_files))
 vim.keymap.set("n", "<leader>fa", vim.api.nvim_create_hof(builtin.filetypes))
 vim.keymap.set("n", "<leader>fw", vim.api.nvim_create_hof(builtin.live_grep))
-vim.keymap.set("n", "<leader>fh", vim.api.nvim_create_hof(builtin.help_tags))
+vim.keymap.set("n", "<leader>fs", vim.api.nvim_create_hof(builtin.lsp_document_symbols))
 
 reach.setup()
 vim.keymap.set("n", "<tab>", vim.api.nvim_create_hof(reach.buffers, {
