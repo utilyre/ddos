@@ -76,7 +76,10 @@ vim.keymap.set("n", "<leader>fw", vim.api.nvim_create_hof(builtin.live_grep))
 vim.keymap.set("n", "<leader>fh", vim.api.nvim_create_hof(builtin.help_tags))
 
 reach.setup()
-vim.keymap.set("n", "<tab>", vim.api.nvim_create_hof(reach.buffers, { modified_icon = "[+]" }))
+vim.keymap.set("n", "<tab>", vim.api.nvim_create_hof(reach.buffers, {
+  handle = "dynamic",
+  modified_icon = "[+]",
+}))
 
 fterm.setup({
   hl = "NormalFloat",
