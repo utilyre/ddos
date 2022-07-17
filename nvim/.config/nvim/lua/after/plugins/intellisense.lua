@@ -10,10 +10,10 @@ vim.diagnostic.config({
   float = { border = "rounded" },
   signs = {
     active = {
-      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.symbols.diagnostic.Error),
-      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.symbols.diagnostic.Warn),
-      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.symbols.diagnostic.Hint),
-      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.symbols.diagnostic.Info),
+      vim.api.nvim_create_sign("DiagnosticSignError", _G.symbols.diagnostic.Error),
+      vim.api.nvim_create_sign("DiagnosticSignWarn", _G.symbols.diagnostic.Warn),
+      vim.api.nvim_create_sign("DiagnosticSignHint", _G.symbols.diagnostic.Hint),
+      vim.api.nvim_create_sign("DiagnosticSignInfo", _G.symbols.diagnostic.Info),
     },
   },
 })
@@ -41,15 +41,15 @@ local on_attach = function(client, buffnr)
     navic.attach(client, buffnr)
   end
 
-  vim.keymap.set("n", "<leader>id", vim.api.nvim_create_hof(vim.lsp.buf.definition))
-  vim.keymap.set("n", "<leader>ir", vim.api.nvim_create_hof(vim.lsp.buf.references))
-  vim.keymap.set("n", "<leader>ia", vim.api.nvim_create_hof(vim.lsp.buf.code_action))
-  vim.keymap.set("n", "<leader>if", vim.api.nvim_create_hof(vim.lsp.buf.format, { async = true }))
-  vim.keymap.set("n", "<leader>ic", vim.api.nvim_create_hof(vim.lsp.buf.rename))
-  vim.keymap.set("n", "<leader>ih", vim.api.nvim_create_hof(vim.lsp.buf.hover))
-  vim.keymap.set("n", "<leader>il", vim.api.nvim_create_hof(vim.diagnostic.open_float))
-  vim.keymap.set("n", "<leader>ik", vim.api.nvim_create_hof(vim.diagnostic.goto_prev))
-  vim.keymap.set("n", "<leader>ij", vim.api.nvim_create_hof(vim.diagnostic.goto_next))
+  vim.keymap.set("n", "<leader>id", vim.api.nvim_create_hof(vim.lsp.buf.definition), { buffer = buffnr })
+  vim.keymap.set("n", "<leader>ir", vim.api.nvim_create_hof(vim.lsp.buf.references), { buffer = buffnr })
+  vim.keymap.set("n", "<leader>ia", vim.api.nvim_create_hof(vim.lsp.buf.code_action), { buffer = buffnr })
+  vim.keymap.set("n", "<leader>if", vim.api.nvim_create_hof(vim.lsp.buf.format, { async = true }), { buffer = buffnr })
+  vim.keymap.set("n", "<leader>ic", vim.api.nvim_create_hof(vim.lsp.buf.rename), { buffer = buffnr })
+  vim.keymap.set("n", "<leader>ih", vim.api.nvim_create_hof(vim.lsp.buf.hover), { buffer = buffnr })
+  vim.keymap.set("n", "<leader>il", vim.api.nvim_create_hof(vim.diagnostic.open_float), { buffer = buffnr })
+  vim.keymap.set("n", "<leader>ik", vim.api.nvim_create_hof(vim.diagnostic.goto_prev), { buffer = buffnr })
+  vim.keymap.set("n", "<leader>ij", vim.api.nvim_create_hof(vim.diagnostic.goto_next), { buffer = buffnr })
 end
 
 installer.on_server_ready(function(server)

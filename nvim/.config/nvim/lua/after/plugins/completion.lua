@@ -1,3 +1,4 @@
+local completion = require("nvim-autopairs.completion.cmp")
 local luasnip = require("luasnip")
 local cmp = require("cmp")
 
@@ -9,7 +10,7 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr" },
     format = function(entry, item)
-      item.kind = vim.g.symbols.kind[item.kind]
+      item.kind = _G.symbols.kind[item.kind]
       return item
     end,
   },
@@ -57,3 +58,5 @@ cmp.setup({
     end, { "i", "s" })
   },
 })
+
+cmp.event:on("confirm_done", completion.on_confirm_done())

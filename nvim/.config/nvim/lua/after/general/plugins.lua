@@ -3,22 +3,27 @@ if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
   vim.fn.system({ "git", "clone", "--depth=1", "https://github.com/wbthomason/packer.nvim.git", install_path })
 end
 
-vim.g.plugins = {
+_G.plugins = {
   "wbthomason/packer.nvim",
+
+  "kyazdani42/nvim-web-devicons",
+  "navarasu/onedark.nvim",
 
   "nvim-lua/plenary.nvim",
   "nvim-lua/popup.nvim",
   "rcarriga/nvim-notify",
   "stevearc/dressing.nvim",
+  "windwp/nvim-autopairs",
+  "numtostr/comment.nvim",
+  "numtostr/fterm.nvim",
+
   "ahmedkhalf/project.nvim",
+  "lewis6991/gitsigns.nvim",
+  "akinsho/git-conflict.nvim",
 
-  "kyazdani42/nvim-web-devicons",
-  "navarasu/onedark.nvim",
-
+  "toppair/reach.nvim",
   "kyazdani42/nvim-tree.lua",
   "nvim-telescope/telescope.nvim",
-  "toppair/reach.nvim",
-  "numtostr/fterm.nvim",
 
   "utilyre/barbecue.nvim",
   "nvim-lualine/lualine.nvim",
@@ -39,9 +44,4 @@ vim.g.plugins = {
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
-
-  "windwp/nvim-autopairs",
-  "numtostr/comment.nvim",
-  "lewis6991/gitsigns.nvim",
-  "akinsho/git-conflict.nvim",
 }

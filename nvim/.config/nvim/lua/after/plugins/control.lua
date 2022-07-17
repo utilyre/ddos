@@ -1,36 +1,23 @@
-local cmp = require("cmp")
-local autopairs = require("nvim-autopairs")
-local completion = require("nvim-autopairs.completion.cmp")
-local comment = require("Comment")
+local project = require("project_nvim")
 local gitsigns = require("gitsigns")
 local gitconflict = require("git-conflict")
 
-autopairs.setup({
-  check_ts = true,
-})
-
-cmp.event:on("confirm_done", completion.on_confirm_done())
-
-comment.setup({
-  mappings = {
-    basic = true,
-    extra = true,
-    extended = true,
-  },
+project.setup({
+  manual_mode = true,
 })
 
 gitsigns.setup({
   current_line_blame = true,
-  current_line_blame_formatter = "  " .. vim.g.symbols.ui.Circle .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
-  current_line_blame_formatter_nc = "  " .. vim.g.symbols.ui.Circle .. " <author>",
+  current_line_blame_formatter = "  " .. _G.symbols.ui.Circle .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
+  current_line_blame_formatter_nc = "  " .. _G.symbols.ui.Circle .. " <author>",
   on_attach = function(buffnr)
-    vim.keymap.set("n", "<leader>gd", vim.api.nvim_create_hof(gitsigns.diffthis))
-    vim.keymap.set("n", "<leader>gp", vim.api.nvim_create_hof(gitsigns.preview_hunk))
-    vim.keymap.set("n", "<leader>gr", vim.api.nvim_create_hof(gitsigns.reset_hunk))
-    vim.keymap.set("n", "<leader>ga", vim.api.nvim_create_hof(gitsigns.stage_hunk))
-    vim.keymap.set("n", "<leader>gu", vim.api.nvim_create_hof(gitsigns.undo_stage_hunk))
-    vim.keymap.set("n", "<leader>gk", vim.api.nvim_create_hof(gitsigns.prev_hunk))
-    vim.keymap.set("n", "<leader>gj", vim.api.nvim_create_hof(gitsigns.next_hunk))
+    vim.keymap.set("n", "<leader>gd", vim.api.nvim_create_hof(gitsigns.diffthis), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gp", vim.api.nvim_create_hof(gitsigns.preview_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gr", vim.api.nvim_create_hof(gitsigns.reset_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>ga", vim.api.nvim_create_hof(gitsigns.stage_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gu", vim.api.nvim_create_hof(gitsigns.undo_stage_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gk", vim.api.nvim_create_hof(gitsigns.prev_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gj", vim.api.nvim_create_hof(gitsigns.next_hunk), { buffer = buffnr })
   end,
 })
 
