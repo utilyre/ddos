@@ -1,4 +1,4 @@
-_G.symbols = {
+vim.g.symbols = {
   ui = {
     Chevron = "",
     Closed = "",

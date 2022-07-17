@@ -3,7 +3,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
   vim.fn.system({ "git", "clone", "--depth=1", "https://github.com/wbthomason/packer.nvim.git", install_path })
 end
 
-_G.plugins = {
+vim.g.plugins = {
   "wbthomason/packer.nvim",
 
   "kyazdani42/nvim-web-devicons",

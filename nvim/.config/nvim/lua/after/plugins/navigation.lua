@@ -6,7 +6,7 @@ local builtin = require("telescope.builtin")
 
 reach.setup()
 
-vim.keymap.set("n", "<tab>", vim.api.nvim_create_hof(reach.buffers, {
+vim.keymap.set("n", "<tab>", vim.get_hof(reach.buffers, {
   handle = "dynamic",
   modified_icon = "[+]",
 }))
@@ -42,40 +42,40 @@ tree.setup({
     icons = {
       git_placement = "after",
       glyphs = {
-        default = _G.symbols.document.File,
-        symlink = _G.symbols.document.Link,
+        default = vim.g.symbols.document.File,
+        symlink = vim.g.symbols.document.Link,
         folder = {
-          arrow_closed = _G.symbols.ui.Closed,
-          arrow_open = _G.symbols.ui.Open,
-          symlink = _G.symbols.document.Link,
-          default = _G.symbols.document.Folder,
-          open = _G.symbols.document.Open,
-          symlink_open = _G.symbols.document.Open,
-          empty = _G.symbols.document.Empty,
-          empty_open = _G.symbols.document.EmptyOpen,
+          arrow_closed = vim.g.symbols.ui.Closed,
+          arrow_open = vim.g.symbols.ui.Open,
+          symlink = vim.g.symbols.document.Link,
+          default = vim.g.symbols.document.Folder,
+          open = vim.g.symbols.document.Open,
+          symlink_open = vim.g.symbols.document.Open,
+          empty = vim.g.symbols.document.Empty,
+          empty_open = vim.g.symbols.document.EmptyOpen,
         },
         git = {
-          untracked = _G.symbols.git.Untracked,
-          staged = _G.symbols.git.Added,
-          unstaged = _G.symbols.git.Modified,
-          renamed = _G.symbols.git.Renamed,
-          deleted = _G.symbols.git.Deleted,
-          unmerged = _G.symbols.git.Unmerged,
-          ignored = _G.symbols.git.Ignored,
+          untracked = vim.g.symbols.git.Untracked,
+          staged = vim.g.symbols.git.Added,
+          unstaged = vim.g.symbols.git.Modified,
+          renamed = vim.g.symbols.git.Renamed,
+          deleted = vim.g.symbols.git.Deleted,
+          unmerged = vim.g.symbols.git.Unmerged,
+          ignored = vim.g.symbols.git.Ignored,
         },
       },
     },
   },
 })
 
-vim.keymap.set("n", "<c-_>", vim.api.nvim_create_hof(tree.toggle))
+vim.keymap.set("n", "<c-_>", vim.get_hof(tree.toggle))
 
 telescope.setup({
   defaults = themes.get_dropdown(),
 })
 
-vim.keymap.set("n", "<leader>fr", vim.api.nvim_create_hof(builtin.oldfiles))
-vim.keymap.set("n", "<leader>ff", vim.api.nvim_create_hof(builtin.find_files))
-vim.keymap.set("n", "<leader>fa", vim.api.nvim_create_hof(builtin.filetypes))
-vim.keymap.set("n", "<leader>fw", vim.api.nvim_create_hof(builtin.live_grep))
-vim.keymap.set("n", "<leader>fs", vim.api.nvim_create_hof(builtin.lsp_document_symbols))
+vim.keymap.set("n", "<leader>fr", vim.get_hof(builtin.oldfiles))
+vim.keymap.set("n", "<leader>ff", vim.get_hof(builtin.find_files))
+vim.keymap.set("n", "<leader>fa", vim.get_hof(builtin.filetypes))
+vim.keymap.set("n", "<leader>fw", vim.get_hof(builtin.live_grep))
+vim.keymap.set("n", "<leader>fs", vim.get_hof(builtin.lsp_document_symbols))

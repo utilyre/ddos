@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = gOptions,
-  callback = vim.api.nvim_create_hof(vim.highlight.on_yank, { higroup = "Visual", on_visual = false }),
+  callback = vim.get_hof(vim.highlight.on_yank, { higroup = "Visual", on_visual = false }),
 })
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = gOptions,

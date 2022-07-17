@@ -10,7 +10,7 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr" },
     format = function(entry, item)
-      item.kind = _G.symbols.kind[item.kind]
+      item.kind = vim.g.symbols.kind[item.kind]
       return item
     end,
   },
@@ -30,7 +30,7 @@ cmp.setup({
       group_index = 2,
       name = "buffer",
       option = {
-        get_bufnrs = vim.api.nvim_create_hof(vim.api.nvim_list_bufs),
+        get_bufnrs = vim.get_hof(vim.api.nvim_list_bufs),
       },
     },
   },
@@ -42,11 +42,11 @@ cmp.setup({
         cmp.complete()
       end
     end, { "i" }),
-    ["<c-u>"] = cmp.mapping(vim.api.nvim_create_hof(cmp.scroll_docs, -3), { "i", "s" }),
-    ["<c-d>"] = cmp.mapping(vim.api.nvim_create_hof(cmp.scroll_docs, 3), { "i", "s" }),
-    ["<c-p>"] = cmp.mapping(vim.api.nvim_create_hof(cmp.select_prev_item), { "i", "s" }),
-    ["<c-n>"] = cmp.mapping(vim.api.nvim_create_hof(cmp.select_next_item), { "i", "s" }),
-    ["<s-tab>"] = cmp.mapping(vim.api.nvim_create_hof(luasnip.jump, -1), { "i", "s" }),
+    ["<c-u>"] = cmp.mapping(vim.get_hof(cmp.scroll_docs, -3), { "i", "s" }),
+    ["<c-d>"] = cmp.mapping(vim.get_hof(cmp.scroll_docs, 3), { "i", "s" }),
+    ["<c-p>"] = cmp.mapping(vim.get_hof(cmp.select_prev_item), { "i", "s" }),
+    ["<c-n>"] = cmp.mapping(vim.get_hof(cmp.select_next_item), { "i", "s" }),
+    ["<s-tab>"] = cmp.mapping(vim.get_hof(luasnip.jump, -1), { "i", "s" }),
     ["<tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.confirm({ select = true })

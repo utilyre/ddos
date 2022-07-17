@@ -2,7 +2,7 @@ local notify = require("notify")
 local dressing = require("dressing")
 local autopairs = require("nvim-autopairs")
 local comment = require("Comment")
-local Term = require("FTerm.terminal") -- TODO: use the root
+local fterm = require("FTerm")
 
 vim.notify = notify
 
@@ -10,9 +10,9 @@ notify.setup({
   stages = "slide",
   background_colour = "NormalFloat",
   icons = {
-    ERROR = _G.symbols.diagnostic.Error,
-    WARN = _G.symbols.diagnostic.Warn,
-    INFO = _G.symbols.diagnostic.Info,
+    ERROR = vim.g.symbols.diagnostic.Error,
+    WARN = vim.g.symbols.diagnostic.Warn,
+    INFO = vim.g.symbols.diagnostic.Info,
   },
 })
 
@@ -44,12 +44,12 @@ comment.setup({
 local terms = {}
 local toggleterm = function(char)
   if terms[char] == nil then
-    terms[char] = Term:new():setup({
+    terms[char] = fterm:new({
       hl = "NormalFloat",
       border = "rounded",
       on_exit = function()
-        if _G.lastchar == char then
-          _G.lastchar = "\\"
+        if vim.g.terminal == char then
+          vim.g.terminal = "\\"
         end
 
         terms[char] = nil
@@ -57,7 +57,7 @@ local toggleterm = function(char)
     })
   end
 
-  _G.lastchar = char
+  vim.g.terminal = char
   terms[char]:toggle()
 end
 
@@ -68,9 +68,9 @@ vim.keymap.set("n", "\\", function()
   toggleterm(char)
 end)
 vim.keymap.set({ "n", "t" }, "<c-\\>", function()
-  if _G.lastchar == nil then
-    _G.lastchar = "\\"
+  if vim.g.terminal == nil then
+    vim.g.terminal = "\\"
   end
 
-  toggleterm(_G.lastchar)
+  toggleterm(vim.g.terminal)
 end)

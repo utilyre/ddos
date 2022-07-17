@@ -8,16 +8,16 @@ project.setup({
 
 gitsigns.setup({
   current_line_blame = true,
-  current_line_blame_formatter = "  " .. _G.symbols.ui.Circle .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
-  current_line_blame_formatter_nc = "  " .. _G.symbols.ui.Circle .. " <author>",
+  current_line_blame_formatter = "  " .. vim.g.symbols.ui.Circle .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
+  current_line_blame_formatter_nc = "  " .. vim.g.symbols.ui.Circle .. " <author>",
   on_attach = function(buffnr)
-    vim.keymap.set("n", "<leader>gd", vim.api.nvim_create_hof(gitsigns.diffthis), { buffer = buffnr })
-    vim.keymap.set("n", "<leader>gp", vim.api.nvim_create_hof(gitsigns.preview_hunk), { buffer = buffnr })
-    vim.keymap.set("n", "<leader>gr", vim.api.nvim_create_hof(gitsigns.reset_hunk), { buffer = buffnr })
-    vim.keymap.set("n", "<leader>ga", vim.api.nvim_create_hof(gitsigns.stage_hunk), { buffer = buffnr })
-    vim.keymap.set("n", "<leader>gu", vim.api.nvim_create_hof(gitsigns.undo_stage_hunk), { buffer = buffnr })
-    vim.keymap.set("n", "<leader>gk", vim.api.nvim_create_hof(gitsigns.prev_hunk), { buffer = buffnr })
-    vim.keymap.set("n", "<leader>gj", vim.api.nvim_create_hof(gitsigns.next_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gd", vim.get_hof(gitsigns.diffthis), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gp", vim.get_hof(gitsigns.preview_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gr", vim.get_hof(gitsigns.reset_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>ga", vim.get_hof(gitsigns.stage_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gu", vim.get_hof(gitsigns.undo_stage_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gk", vim.get_hof(gitsigns.prev_hunk), { buffer = buffnr })
+    vim.keymap.set("n", "<leader>gj", vim.get_hof(gitsigns.next_hunk), { buffer = buffnr })
   end,
 })
 
@@ -31,10 +31,10 @@ vim.api.nvim_create_autocmd("User", {
   group = gGitConflict,
   pattern = "GitConflictDetected",
   callback = function(args)
-    vim.keymap.set("n", "<leader>go", vim.api.nvim_create_hof(gitconflict.choose, "ours"), { buffer = args.buf })
-    vim.keymap.set("n", "<leader>gt", vim.api.nvim_create_hof(gitconflict.choose, "theirs"), { buffer = args.buf })
-    vim.keymap.set("n", "<leader>gb", vim.api.nvim_create_hof(gitconflict.choose, "both"), { buffer = args.buf })
-    vim.keymap.set("n", "<leader>gn", vim.api.nvim_create_hof(gitconflict.choose, "none"), { buffer = args.buf })
+    vim.keymap.set("n", "<leader>go", vim.get_hof(gitconflict.choose, "ours"), { buffer = args.buf })
+    vim.keymap.set("n", "<leader>gt", vim.get_hof(gitconflict.choose, "theirs"), { buffer = args.buf })
+    vim.keymap.set("n", "<leader>gb", vim.get_hof(gitconflict.choose, "both"), { buffer = args.buf })
+    vim.keymap.set("n", "<leader>gn", vim.get_hof(gitconflict.choose, "none"), { buffer = args.buf })
   end,
 })
 vim.api.nvim_create_autocmd("User", {

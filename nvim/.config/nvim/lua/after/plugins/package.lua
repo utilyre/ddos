@@ -3,18 +3,18 @@ local util = require("packer.util")
 
 packer.init({
   display = {
-    open_fn = vim.api.nvim_create_hof(util.float, { border = "rounded" }),
+    open_fn = vim.get_hof(util.float, { border = "rounded" }),
   },
 })
 
 packer.startup({
   function(use)
-    for _, plugin in pairs(_G.plugins) do
+    for _, plugin in pairs(vim.g.plugins) do
       use(plugin)
     end
   end,
 })
 
-vim.keymap.set("n", "<leader>pi", vim.api.nvim_create_hof(packer.install))
-vim.keymap.set("n", "<leader>pu", vim.api.nvim_create_hof(packer.update))
-vim.keymap.set("n", "<leader>pc", vim.api.nvim_create_hof(packer.clean))
+vim.keymap.set("n", "<leader>pi", vim.get_hof(packer.install))
+vim.keymap.set("n", "<leader>pu", vim.get_hof(packer.update))
+vim.keymap.set("n", "<leader>pc", vim.get_hof(packer.clean))
