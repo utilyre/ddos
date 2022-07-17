@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Explorer
-Exec=st -e lfub -- %f
+Exec=st -e coughing -- %f
 NoDisplay=true
