@@ -53,7 +53,11 @@ lualine.setup({
           info = vim.g.symbols.diagnostic.Info .. " ",
         } },
     },
-    lualine_c = {},
+    lualine_c = {
+      { function()
+        return "\\" .. vim.g.terminal
+      end },
+    },
     lualine_x = {},
     lualine_y = { "encoding", "fileformat", "filetype" },
   },

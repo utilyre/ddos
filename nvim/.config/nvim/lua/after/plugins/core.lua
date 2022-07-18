@@ -41,10 +41,11 @@ comment.setup({
   },
 })
 
-local terms = {}
+vim.g.terminal = "\\"
+local terminals = {}
 local toggleterm = function(char)
-  if terms[char] == nil then
-    terms[char] = fterm:new({
+  if terminals[char] == nil then
+    terminals[char] = fterm:new({
       hl = "NormalFloat",
       border = "rounded",
       on_exit = function()
@@ -52,13 +53,13 @@ local toggleterm = function(char)
           vim.g.terminal = "\\"
         end
 
-        terms[char] = nil
+        terminals[char] = nil
       end,
     })
   end
 
   vim.g.terminal = char
-  terms[char]:toggle()
+  terminals[char]:toggle()
 end
 
 vim.keymap.set("n", "\\", function()
