@@ -7,6 +7,7 @@ local builtin = require("telescope.builtin")
 reach.setup()
 
 vim.keymap.set("n", "<tab>", vim.get_hof(reach.buffers, {
+  show_current = true,
   handle = "dynamic",
   modified_icon = "[+]",
 }))
