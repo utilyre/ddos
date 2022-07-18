@@ -9,14 +9,16 @@ err() {
 	exit "1"
 }
 
-install_yay() {
-	git clone --depth="1" -- "https://aur.archlinux.org/yay-bin.git" "$DOTFILES_CACHE/yay-bin"
-	(cd -- "$DOTFILES_CACHE/yay-bin" && makepkg --noconfirm --syncdeps --rmdeps --install)
-}
-
 install_deps() {
-	yay --noconfirm --sync --refresh --sysupgrade
-	yay --noconfirm --sync --removemake - < "package.txt"
+	grep --extended-regexp --invert-match -- "^.+\..+/?.+$" "deps.list" | sudo pacman --noconfirm --sync -
+	grep --extended-regexp -- "^.+\..+/?.+$" "deps.list" |
+		while read -r dep; do
+			mkdir --parents -- "$DOTFILES_CACHE"
+			dest="$DOTFILES_CACHE/${dep##*/}"
+
+			git clone --depth="1" -- "https://$dep.git" "$dest"
+			(cd -- "$dest" && makepkg --noconfirm --syncdeps --rmdeps --install)
+		done
 }
 
 exec_hooks() {
@@ -25,7 +27,6 @@ exec_hooks() {
 }
 
 main() {
-	install_yay || err "Failed to install yay. Exiting..."
 	install_deps || err "Failed to install dependencies. Exiting..."
 	exec_hooks || err "Failed to execute hooks. Exiting..."
 

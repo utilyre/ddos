@@ -4,12 +4,6 @@
 
 ## Installation
 
-Make sure you have **git** installed:
-
-```bash
-sudo pacman -S git
-```
-
 Clone the repository:
 
 ```bash
@@ -20,5 +14,5 @@ cd dotfiles
 Run the installation script:
 
 ```bash
-DOTFILES_CACHE="${XDG_CACHE_HOME:-"$HOME/.cache"}/dotfiles" ./install.sh
+DOTFILES_CACHE="$HOME/.cache/dotfiles" ./install.sh
 ```

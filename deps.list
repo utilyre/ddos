@@ -1,9 +1,7 @@
-bspwm
+bspw
 chromium
-dragon-drop
+git
 jq
-lemonbar-xft-git
-lf-bin
 lxsession-gtk3
 mediainfo
 mpv
@@ -17,9 +15,6 @@ stow
 sxhkd
 sxiv
 ueberzug
-utilyre-dmenu-git
-utilyre-herbe-git
-utilyre-st-git
 xdotool
 xorg-server
 xorg-xinit
@@ -30,3 +25,10 @@ xsel
 xwallpaper
 youtube-dl
 zsh
+aur.archlinux.org/dragon-drop
+aur.archlinux.org/lemonbar-xft-git
+aur.archlinux.org/lf-bin
+aur.archlinux.org/yay-bin
+github.com/utilyre/dmenu
+github.com/utilyre/herbe
+github.com/utilyre/st
