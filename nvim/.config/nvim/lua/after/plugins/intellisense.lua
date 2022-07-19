@@ -10,10 +10,10 @@ vim.diagnostic.config({
   float = { border = "rounded" },
   signs = {
     active = {
-      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.symbols.diagnostic.Error),
-      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.symbols.diagnostic.Warn),
-      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.symbols.diagnostic.Hint),
-      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.symbols.diagnostic.Info),
+      vim.api.nvim_create_sign("DiagnosticSignError", _G.symbols.diagnostic.Error),
+      vim.api.nvim_create_sign("DiagnosticSignWarn", _G.symbols.diagnostic.Warn),
+      vim.api.nvim_create_sign("DiagnosticSignHint", _G.symbols.diagnostic.Hint),
+      vim.api.nvim_create_sign("DiagnosticSignInfo", _G.symbols.diagnostic.Info),
     },
   },
 })
