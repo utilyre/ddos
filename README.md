@@ -1,8 +1,8 @@
-# Dotfiles
+# 💀 SkullOS
 
 My personal archlinux setup.
 
-## Dependencies
+## 📦 Dependencies
 
 ### Official Repos
 
@@ -46,14 +46,14 @@ My personal archlinux setup.
 - [utilyre/herbe](https://github.com/utilyre/herbe)
 - [utilyre/st](https://github.com/utilyre/st)
 
-## Installation
+## 🚦 Installation
 
 **NOTE:** Make sure you have all the dependencies installed.
 
 Clone the repo
 
 ```bash
-git clone -- "https://github.com/utilyre/dotfiles.git"
+git clone -- "https://github.com/utilyre/skullos.git"
 ```
 
 Set `zsh` as your default shell
