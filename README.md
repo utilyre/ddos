@@ -6,7 +6,7 @@ My personal archlinux setup.
 
 ### Official Repos
 
-- bspw
+- bspwm
 - git
 - jq
 - lxsession-gtk3
