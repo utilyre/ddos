@@ -17,8 +17,8 @@ lfcd() {
 	rm -- "$tmp"
 }
 
-alias grep="grep --color=\"auto\" --ignore-case"
-alias diff="diff --color=\"auto\" --side-by-side"
+alias grep="grep --color=\"auto\""
+alias diff="diff --color=\"auto\""
 alias ls="ls --color=\"auto\" --group-directories-first --human-readable"
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
