@@ -4,15 +4,15 @@ local autopairs = require("nvim-autopairs")
 local comment = require("Comment")
 local fterm = require("FTerm")
 
-vim.notify = notify
+-- vim.notify = notify
 
 notify.setup({
   stages = "slide",
   background_colour = "NormalFloat",
   icons = {
-    ERROR = _G.symbols.diagnostic.Error,
-    WARN = _G.symbols.diagnostic.Warn,
-    INFO = _G.symbols.diagnostic.Info,
+    ERROR = _G.icons.diagnostic.Error,
+    WARN = _G.icons.diagnostic.Warn,
+    INFO = _G.icons.diagnostic.Info,
   },
 })
 

@@ -1,7 +1,7 @@
-require("general.helpers")
+require("general.utils")
 require("general.options")
 require("general.keymaps")
-require("general.symbols")
+require("general.icons")
 require("general.plugins")
 
 require("plugins.package")

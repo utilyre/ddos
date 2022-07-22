@@ -10,10 +10,10 @@ vim.diagnostic.config({
   float = { border = "rounded" },
   signs = {
     active = {
-      vim.api.nvim_create_sign("DiagnosticSignError", _G.symbols.diagnostic.Error),
-      vim.api.nvim_create_sign("DiagnosticSignWarn", _G.symbols.diagnostic.Warn),
-      vim.api.nvim_create_sign("DiagnosticSignHint", _G.symbols.diagnostic.Hint),
-      vim.api.nvim_create_sign("DiagnosticSignInfo", _G.symbols.diagnostic.Info),
+      vim.api.nvim_create_sign("DiagnosticSignError", _G.icons.diagnostic.Error),
+      vim.api.nvim_create_sign("DiagnosticSignWarn", _G.icons.diagnostic.Warn),
+      vim.api.nvim_create_sign("DiagnosticSignHint", _G.icons.diagnostic.Hint),
+      vim.api.nvim_create_sign("DiagnosticSignInfo", _G.icons.diagnostic.Info),
     },
   },
 })
@@ -23,15 +23,15 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 })
 
 local on_attach = function(client, buffnr)
-  local gLsp = vim.api.nvim_create_augroup("Lsp", { clear = false })
   if client.server_capabilities.documentHighlightProvider then
+    local LspHighlight = vim.api.nvim_create_augroup("LspHighlight", { clear = false })
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      group = gLsp,
+      group = LspHighlight,
       buffer = buffnr,
       callback = vim.get_hof(vim.lsp.buf.document_highlight),
     })
     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-      group = gLsp,
+      group = LspHighlight,
       buffer = buffnr,
       callback = vim.get_hof(vim.lsp.buf.clear_references),
     })

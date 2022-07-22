@@ -8,7 +8,6 @@ vim.opt.timeout = false
 vim.opt.timeoutlen = 50
 vim.opt.updatetime = 500
 
-vim.opt.mouse = "a"
 vim.opt.termguicolors = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -36,25 +35,25 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.iskeyword:append("-")
 
-local gOptions = vim.api.nvim_create_augroup("Options", {})
+local Autocmds = vim.api.nvim_create_augroup("Autocmds", { clear = false })
 vim.api.nvim_create_autocmd("FileType", {
-  group = gOptions,
+  group = Autocmds,
   pattern = { "gitcommit", "markdown" },
   callback = function() vim.opt_local.spell = true end,
 })
 vim.api.nvim_create_autocmd("BufEnter", {
-  group = gOptions,
+  group = Autocmds,
   command = "set formatoptions-=cro",
 })
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = gOptions,
+  group = Autocmds,
   callback = vim.get_hof(vim.highlight.on_yank, { higroup = "Visual", on_visual = false }),
 })
 vim.api.nvim_create_autocmd("InsertEnter", {
-  group = gOptions,
+  group = Autocmds,
   callback = function() vim.opt.timeout = true end,
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
-  group = gOptions,
+  group = Autocmds,
   callback = function() vim.opt.timeout = false end,
 })

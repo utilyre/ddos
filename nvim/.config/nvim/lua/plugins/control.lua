@@ -8,8 +8,8 @@ project.setup({
 
 gitsigns.setup({
   current_line_blame = true,
-  current_line_blame_formatter = "  " .. _G.symbols.ui.Circle .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
-  current_line_blame_formatter_nc = "  " .. _G.symbols.ui.Circle .. " <author>",
+  current_line_blame_formatter = "  " .. _G.icons.ui.Circle .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
+  current_line_blame_formatter_nc = "  " .. _G.icons.ui.Circle .. " <author>",
   on_attach = function(buffnr)
     vim.keymap.set("n", "<leader>gd", vim.get_hof(gitsigns.diffthis), { buffer = buffnr })
     vim.keymap.set("n", "<leader>gp", vim.get_hof(gitsigns.preview_hunk), { buffer = buffnr })
@@ -26,9 +26,9 @@ gitconflict.setup({
   disable_diagnostics = true,
 })
 
-local gGitConflict = vim.api.nvim_create_augroup("GitConflict", {})
+local GitConflict = vim.api.nvim_create_augroup("GitConflict", { clear = false })
 vim.api.nvim_create_autocmd("User", {
-  group = gGitConflict,
+  group = GitConflict,
   pattern = "GitConflictDetected",
   callback = function(args)
     vim.keymap.set("n", "<leader>go", vim.get_hof(gitconflict.choose, "ours"), { buffer = args.buf })
@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 vim.api.nvim_create_autocmd("User", {
-  group = gGitConflict,
+  group = GitConflict,
   pattern = "GitConflictResolved",
   callback = function(args)
     vim.keymap.del("n", "<leader>go", { buffer = args.buf })

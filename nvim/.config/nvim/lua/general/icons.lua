@@ -1,4 +1,4 @@
-_G.symbols = {
+_G.icons = {
   ui = {
     Chevron = "",
     Closed = "",
