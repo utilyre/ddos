@@ -4,7 +4,7 @@ local autopairs = require("nvim-autopairs")
 local comment = require("Comment")
 local fterm = require("FTerm")
 
--- vim.notify = notify
+vim.notify = notify
 
 notify.setup({
   stages = "slide",
