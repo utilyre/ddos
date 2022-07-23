@@ -60,11 +60,11 @@ installer.on_server_ready(function(server)
 end)
 
 local get_sources = function()
-  local config_path = vim.fn.expand("$NULL_CONFIG")
-  if vim.fn.filereadable(config_path) == 0 then return {} end
+  local null_path = vim.fn.expand("$NULL_CONFIG")
+  if vim.fn.filereadable(null_path) == 0 then return {} end
 
   local sources = {}
-  local groups = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+  local groups = vim.json.decode(table.concat(vim.fn.readfile(null_path), "\n"))
 
   for group, members in pairs(groups) do
     for member, options in pairs(members) do
