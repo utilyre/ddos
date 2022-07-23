@@ -35,7 +35,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.iskeyword:append("-")
 
-local Autocmds = vim.api.nvim_create_augroup("Autocmds", { clear = false })
+local Autocmds = vim.api.nvim_create_augroup("Autocmds", {})
 vim.api.nvim_create_autocmd("FileType", {
   group = Autocmds,
   pattern = { "gitcommit", "markdown" },

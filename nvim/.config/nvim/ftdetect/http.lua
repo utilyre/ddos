@@ -1,4 +1,4 @@
-local FileHttp = vim.api.nvim_create_augroup("FileHttp", { clear = false })
+local FileHttp = vim.api.nvim_create_augroup("FileHttp", {})
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = FileHttp,
   pattern = "*.http",

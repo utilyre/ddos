@@ -26,7 +26,7 @@ gitconflict.setup({
   disable_diagnostics = true,
 })
 
-local GitConflict = vim.api.nvim_create_augroup("GitConflict", { clear = false })
+local GitConflict = vim.api.nvim_create_augroup("GitConflict", {})
 vim.api.nvim_create_autocmd("User", {
   group = GitConflict,
   pattern = "GitConflictDetected",
