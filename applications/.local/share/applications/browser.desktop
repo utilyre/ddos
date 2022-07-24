@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Browser
-Exec=librewolf -- %U
+Exec=brave -- %U
 NoDisplay=true

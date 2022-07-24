@@ -35,10 +35,10 @@ My personal archlinux setup.
 
 ### AUR
 
+- brave-bin
 - dragon-drop
 - lemonbar-xft-git
 - lf-bin
-- librewolf-bin
 
 ### GitHub
 
