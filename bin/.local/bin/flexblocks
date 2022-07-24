@@ -28,20 +28,20 @@ traffic() {
 
 connection() {
 	grep --quiet -- "up" "/sys/class/net"/e*/"operstate" && {
-		printf -- " Ethernet"
+		printf -- " Ethernet\n"
 		return
 	}
 
 	grep --quiet -- "up" "/sys/class/net"/w*/"operstate" && {
-		printf -- " %s%%" "$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")"
+		printf -- " %s%%\n" "$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")"
 		return
 	}
 
-	printf -- " Down"
+	printf -- " Down\n"
 }
 
 volume() {
-	printf -- " %s  %s" \
+	printf -- " %s  %s\n" \
 		"$(voltage --device="sink" get)" \
 		"$(voltage --device="source" get)"
 }
@@ -51,7 +51,7 @@ memory() {
 }
 
 temperature() {
-	printf -- " %d°C" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
+	printf -- " %d°C\n" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
 }
 
 trap -- "unset desktops" "USR1"
