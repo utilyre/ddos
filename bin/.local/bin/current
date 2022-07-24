@@ -4,8 +4,8 @@
 	playerctld daemon
 	playerctl metadata --follow --format="{{ mpris:trackid }}" |
 		while read -r _; do
-			title="$(playerctl metadata --format="{{ trunc(xesam:title, 16) }}")"
-			artist="$(playerctl metadata --format="{{ trunc(xesam:artist, 16) }}")"
+			title="$(playerctl metadata --format="{{ xesam:title }}")"
+			artist="$(playerctl metadata --format="{{ xesam:artist }}")"
 			[ -z "$title" ] || [ -z "$artist" ] && continue
 
 			herbe " Current" "Playing \"$title\" by \"$artist\"." &
