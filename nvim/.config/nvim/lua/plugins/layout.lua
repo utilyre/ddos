@@ -55,11 +55,8 @@ lualine.setup({
     },
     lualine_c = {
       { function()
-        local names = _G.lastname and _G.lastname .. " " or ""
-        for name, _ in pairs(_G.terminals) do
-          if name ~= _G.lastname then names = names .. name end
-        end
-        return names
+        local names = vim.tbl_keys(_G.terminals)
+        return (_G.lastname or "") .. table.concat(names):gsub(vim.str_escape(_G.lastname), "")
       end },
     },
     lualine_x = {},

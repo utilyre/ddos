@@ -9,7 +9,7 @@ packer.init({
 
 packer.startup({
   function(use)
-    for _, plugin in pairs(_G.plugins) do
+    for _, plugin in ipairs(_G.plugins) do
       use(plugin)
     end
   end,

@@ -1,3 +1,8 @@
+vim.str_escape = function(str)
+  local escaped = str:gsub("[%^%$%(%)%%%.%[%]%*%+%-%?]", "%%%1")
+  return escaped
+end
+
 vim.get_hof = function(fun, ...)
   local params = { ... }
   return function()

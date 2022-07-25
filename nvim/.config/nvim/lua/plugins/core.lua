@@ -48,8 +48,16 @@ local toggle_terminal = function(name)
       hl = "NormalFloat",
       border = "rounded",
       on_exit = function()
-        if _G.lastname == name then _G.lastname = nil end
         terminals[name] = nil
+
+        if _G.lastname == name then
+          for _, lastname in ipairs(vim.tbl_keys(_G.terminals)) do
+            _G.lastname = lastname
+            return
+          end
+
+          _G.lastname = nil
+        end
       end,
     })
   end
