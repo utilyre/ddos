@@ -1,7 +1,6 @@
-local lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 local null = require("null-ls")
 local navic = require("nvim-navic")
-local cmp = require("cmp_nvim_lsp")
 
 vim.diagnostic.config({
   update_in_insert = true,
@@ -51,19 +50,35 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next), { buffer = bufnr })
 end
 
+local get_servers = function()
+  local config_path = os.getenv("INTELLISENSE_CONFIG")
+  if vim.fn.filereadable(config_path) == 0 then return {} end
+  local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+
+  local servers = {}
+  for server, options in pairs(config.servers) do
+    servers[server] = options
+  end
+  return servers
+end
+
+for server, options in pairs(get_servers()) do
+  options = vim.tbl_extend("error", options, { on_attach = on_attach })
+  lspconfig[server].setup(options)
+end
+
 local get_sources = function()
-  local null_path = vim.fn.expand("$NULL_CONFIG")
-  if vim.fn.filereadable(null_path) == 0 then return {} end
+  local config_path = os.getenv("INTELLISENSE_CONFIG")
+  if vim.fn.filereadable(config_path) == 0 then return {} end
+  local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
 
   local sources = {}
-  local groups = vim.json.decode(table.concat(vim.fn.readfile(null_path), "\n"))
-
-  for group, members in pairs(groups) do
-    for member, options in pairs(members) do
-      table.insert(sources, null.builtins[group][member].with(options))
+  for source, options in pairs(config.sources) do
+    for i, method in ipairs(options.methods) do
+      options.methods = nil
+      table.insert(sources, null.builtins[method][source].with(options))
     end
   end
-
   return sources
 end
 

@@ -5,6 +5,7 @@ end
 
 _G.plugins = {
   "wbthomason/packer.nvim",
+  "williamboman/mason.nvim",
 
   "kyazdani42/nvim-web-devicons",
   "navarasu/onedark.nvim",
@@ -36,7 +37,7 @@ _G.plugins = {
   "utilyre/spoon.nvim",
 
   "neovim/nvim-lspconfig",
-  "williamboman/nvim-lsp-installer",
+  "williamboman/mason-lspconfig.nvim",
   "jose-elias-alvarez/null-ls.nvim",
   "smiteshp/nvim-navic",
 

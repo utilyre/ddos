@@ -51,7 +51,7 @@ local toggle_terminal = function(name)
         terminals[name] = nil
 
         if _G.lastname == name then
-          for _, lastname in ipairs(vim.tbl_keys(_G.terminals)) do
+          for i, lastname in ipairs(vim.tbl_keys(_G.terminals)) do
             _G.lastname = lastname
             return
           end
