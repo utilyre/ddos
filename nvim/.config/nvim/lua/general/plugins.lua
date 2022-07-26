@@ -17,6 +17,7 @@ _G.plugins = {
   "windwp/nvim-autopairs",
   "numtostr/comment.nvim",
   "numtostr/fterm.nvim",
+  "ziontee113/color-picker.nvim",
 
   "ahmedkhalf/project.nvim",
   "lewis6991/gitsigns.nvim",
