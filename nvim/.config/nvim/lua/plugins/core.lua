@@ -82,4 +82,4 @@ vim.keymap.set({ "n", "t" }, "<c-\\>", function()
   if _G.lastname == nil then return end
   toggle_terminal(_G.lastname)
 end)
-vim.keymap.set("n", "<leader>c", "<cmd>PickColor<cr>")
+vim.keymap.set("n", "#", "<cmd>PickColor<cr>")
