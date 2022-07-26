@@ -1,6 +1,6 @@
-local FileHttp = vim.api.nvim_create_augroup("FileHttp", {})
+vim.api.nvim_create_augroup("fthttp", {})
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  group = FileHttp,
+  group = "fthttp",
   pattern = "*.http",
-  callback = function() vim.opt_local.filetype = "http" end,
+  callback = function(a) vim.bo[a.buf].filetype = "http" end,
 })

@@ -24,14 +24,14 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 
 local on_attach = function(client, buffnr)
   if client.server_capabilities.documentHighlightProvider then
-    local LspHighlight = vim.api.nvim_create_augroup("LspHighlight", { clear = false })
+    vim.api.nvim_create_augroup("lsp", { clear = false })
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      group = LspHighlight,
+      group = "lsp",
       buffer = buffnr,
       callback = vim.get_hof(vim.lsp.buf.document_highlight),
     })
     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-      group = LspHighlight,
+      group = "lsp",
       buffer = buffnr,
       callback = vim.get_hof(vim.lsp.buf.clear_references),
     })

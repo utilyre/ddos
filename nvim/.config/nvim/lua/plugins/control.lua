@@ -26,24 +26,24 @@ gitconflict.setup({
   disable_diagnostics = true,
 })
 
-local GitConflict = vim.api.nvim_create_augroup("GitConflict", {})
+vim.api.nvim_create_augroup("gitconflict", {})
 vim.api.nvim_create_autocmd("User", {
-  group = GitConflict,
+  group = "gitconflict",
   pattern = "GitConflictDetected",
-  callback = function(args)
-    vim.keymap.set("n", "<leader>go", vim.get_hof(gitconflict.choose, "ours"), { buffer = args.buf })
-    vim.keymap.set("n", "<leader>gt", vim.get_hof(gitconflict.choose, "theirs"), { buffer = args.buf })
-    vim.keymap.set("n", "<leader>gb", vim.get_hof(gitconflict.choose, "both"), { buffer = args.buf })
-    vim.keymap.set("n", "<leader>gn", vim.get_hof(gitconflict.choose, "none"), { buffer = args.buf })
+  callback = function(a)
+    vim.keymap.set("n", "<leader>go", vim.get_hof(gitconflict.choose, "ours"), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>gt", vim.get_hof(gitconflict.choose, "theirs"), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>gb", vim.get_hof(gitconflict.choose, "both"), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>gn", vim.get_hof(gitconflict.choose, "none"), { buffer = a.buf })
   end,
 })
 vim.api.nvim_create_autocmd("User", {
-  group = GitConflict,
+  group = "gitconflict",
   pattern = "GitConflictResolved",
-  callback = function(args)
-    vim.keymap.del("n", "<leader>go", { buffer = args.buf })
-    vim.keymap.del("n", "<leader>gt", { buffer = args.buf })
-    vim.keymap.del("n", "<leader>gb", { buffer = args.buf })
-    vim.keymap.del("n", "<leader>gn", { buffer = args.buf })
+  callback = function(a)
+    vim.keymap.del("n", "<leader>go", { buffer = a.buf })
+    vim.keymap.del("n", "<leader>gt", { buffer = a.buf })
+    vim.keymap.del("n", "<leader>gb", { buffer = a.buf })
+    vim.keymap.del("n", "<leader>gn", { buffer = a.buf })
   end,
 })

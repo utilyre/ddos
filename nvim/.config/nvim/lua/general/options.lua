@@ -35,25 +35,20 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.iskeyword:append("-")
 
-local Autocmds = vim.api.nvim_create_augroup("Autocmds", {})
-vim.api.nvim_create_autocmd("FileType", {
-  group = Autocmds,
-  pattern = { "gitcommit", "markdown" },
-  callback = function() vim.opt_local.spell = true end,
-})
+vim.api.nvim_create_augroup("options", {})
 vim.api.nvim_create_autocmd("BufEnter", {
-  group = Autocmds,
+  group = "options",
   command = "set formatoptions-=cro",
 })
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = Autocmds,
+  group = "options",
   callback = vim.get_hof(vim.highlight.on_yank, { higroup = "Visual", on_visual = false }),
 })
 vim.api.nvim_create_autocmd("InsertEnter", {
-  group = Autocmds,
+  group = "options",
   callback = function() vim.opt.timeout = true end,
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
-  group = Autocmds,
+  group = "options",
   callback = function() vim.opt.timeout = false end,
 })
