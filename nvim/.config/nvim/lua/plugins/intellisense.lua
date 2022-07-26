@@ -1,5 +1,4 @@
 local lsp = require("lspconfig")
-local installer = require("nvim-lsp-installer")
 local null = require("null-ls")
 local navic = require("nvim-navic")
 local cmp = require("cmp_nvim_lsp")
@@ -51,13 +50,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>ik", vim.get_hof(vim.diagnostic.goto_prev), { buffer = bufnr })
   vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next), { buffer = bufnr })
 end
-
-installer.on_server_ready(function(server)
-  server:setup({
-    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach,
-  })
-end)
 
 local get_sources = function()
   local null_path = vim.fn.expand("$NULL_CONFIG")

@@ -6,12 +6,6 @@ local builtin = require("telescope.builtin")
 
 reach.setup()
 
-vim.keymap.set("n", "<tab>", vim.get_hof(reach.buffers, {
-  show_current = true,
-  handle = "dynamic",
-  modified_icon = "[+]",
-}))
-
 tree.setup({
   update_cwd = true,
   git = { ignore = false },
@@ -69,12 +63,16 @@ tree.setup({
   },
 })
 
-vim.keymap.set("n", "<c-_>", vim.get_hof(tree.toggle))
-
 telescope.setup({
   defaults = themes.get_dropdown(),
 })
 
+vim.keymap.set("n", "<tab>", vim.get_hof(reach.buffers, {
+  show_current = true,
+  handle = "dynamic",
+  modified_icon = "[+]",
+}))
+vim.keymap.set("n", "<c-_>", vim.get_hof(tree.toggle))
 vim.keymap.set("n", "<leader>fr", vim.get_hof(builtin.oldfiles))
 vim.keymap.set("n", "<leader>ff", vim.get_hof(builtin.find_files))
 vim.keymap.set("n", "<leader>fa", vim.get_hof(builtin.filetypes))
