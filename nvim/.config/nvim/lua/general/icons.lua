@@ -34,6 +34,13 @@ _G.icons = {
     Hint = "",
     Info = "",
   },
+  debug = {
+    Stopped = "",
+    Logpoint = "",
+    Breakpoint = "",
+    BreakpointCondition = "",
+    BreakpointRejected = "",
+  },
   kind = {
     File = "",
     Folder = "",

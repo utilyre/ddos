@@ -17,6 +17,11 @@ onedark.setup({
     NvimTreeNormal = { bg = "$bg_d" },
     NvimTreeExecFile = { fg = "$green" },
     IndentBlanklineContextChar = { fg = "$fg" },
+    DapStopped = { fg = "$green" },
+    DapLogPoint = { fg = "$yellow" },
+    DapBreakpoint = { fg = "$red" },
+    DapBreakpointCondition = { fg = "$orange" },
+    DapBreakpointRejected = { fg = "$grey" },
   },
 })
 

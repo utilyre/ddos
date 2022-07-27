@@ -1,6 +1,8 @@
 local lspconfig = require("lspconfig")
 local mason = require("mason-lspconfig")
 local null = require("null-ls")
+local dap = require("dap")
+local scope = require("nvim-dap-virtual-text")
 local navic = require("nvim-navic")
 
 vim.diagnostic.config({
@@ -92,3 +94,43 @@ null.setup({
   sources = get_sources(),
   on_attach = on_attach,
 })
+
+local get_debuggers = function()
+  local config_path = os.getenv("MASON_CONFIG")
+  if vim.fn.filereadable(config_path) == 0 then return {} end
+  local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+
+  local debuggers = {}
+  for debugger, options in pairs(config.debuggers) do
+    setmetatable(options, nil)
+    debuggers[debugger] = options
+  end
+  return debuggers
+end
+
+for debugger, options in pairs(get_debuggers()) do
+  dap.configurations[debugger] = options.config
+  for adapter, opts in pairs(options) do
+    if adapter ~= "config" then dap.adapters[adapter] = opts end
+  end
+end
+
+vim.api.nvim_create_sign("DapStopped", _G.icons.debug.Stopped)
+vim.api.nvim_create_sign("DapLogPoint", _G.icons.debug.Logpoint)
+vim.api.nvim_create_sign("DapBreakpoint", _G.icons.debug.Breakpoint)
+vim.api.nvim_create_sign("DapBreakpointCondition", _G.icons.debug.BreakpointCondition)
+vim.api.nvim_create_sign("DapBreakpointRejected", _G.icons.debug.BreakpointRejected)
+
+scope.setup({
+  commented = true,
+  all_references = true,
+})
+
+vim.keymap.set("n", "<leader>dr", vim.get_hof(dap.continue))
+vim.keymap.set("n", "<leader>dx", vim.get_hof(dap.terminate))
+vim.keymap.set("n", "<leader>db", vim.get_hof(dap.toggle_breakpoint))
+vim.keymap.set("n", "<leader>dc", vim.get_hof(dap.clear_breakpoints))
+vim.keymap.set("n", "<leader>dh", vim.get_hof(dap.step_out))
+vim.keymap.set("n", "<leader>dl", vim.get_hof(dap.step_into))
+vim.keymap.set("n", "<leader>dk", vim.get_hof(dap.step_back))
+vim.keymap.set("n", "<leader>dj", vim.get_hof(dap.step_over))

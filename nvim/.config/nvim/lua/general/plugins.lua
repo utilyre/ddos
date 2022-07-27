@@ -40,6 +40,8 @@ _G.plugins = {
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
   "jose-elias-alvarez/null-ls.nvim",
+  "mfussenegger/nvim-dap",
+  "theHamsta/nvim-dap-virtual-text",
   "smiteshp/nvim-navic",
 
   "hrsh7th/nvim-cmp",
