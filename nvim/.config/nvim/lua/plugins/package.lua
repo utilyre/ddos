@@ -1,7 +1,6 @@
 local packer = require("packer")
 local util = require("packer.util")
 local mason = require("mason")
-local lspconfig = require("mason-lspconfig")
 
 packer.init({
   display = {
@@ -26,10 +25,6 @@ mason.setup({
      package_installed = _G.icons.ui.Checked,
     },
   },
-})
-
-lspconfig.setup({
-  automatic_installation = true,
 })
 
 vim.keymap.set("n", "<leader>pi", vim.get_hof(packer.install))

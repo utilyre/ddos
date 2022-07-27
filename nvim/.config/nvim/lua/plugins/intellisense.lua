@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local mason = require("mason-lspconfig")
 local null = require("null-ls")
 local navic = require("nvim-navic")
 
@@ -50,25 +51,30 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next), { buffer = bufnr })
 end
 
+mason.setup({
+  automatic_installation = true,
+})
+
 local get_servers = function()
-  local config_path = os.getenv("INTELLISENSE_CONFIG")
+  local config_path = os.getenv("MASON_CONFIG")
   if vim.fn.filereadable(config_path) == 0 then return {} end
   local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
 
   local servers = {}
   for server, options in pairs(config.servers) do
+    setmetatable(options, nil)
     servers[server] = options
   end
   return servers
 end
 
 for server, options in pairs(get_servers()) do
-  options = vim.tbl_extend("error", options, { on_attach = on_attach })
+  options.on_attach = on_attach
   lspconfig[server].setup(options)
 end
 
 local get_sources = function()
-  local config_path = os.getenv("INTELLISENSE_CONFIG")
+  local config_path = os.getenv("MASON_CONFIG")
   if vim.fn.filereadable(config_path) == 0 then return {} end
   local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
 
