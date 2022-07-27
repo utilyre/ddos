@@ -7,9 +7,6 @@ project.setup({
 })
 
 gitsigns.setup({
-  current_line_blame = true,
-  current_line_blame_formatter = "  " .. _G.icons.ui.Circle .. " <abbrev_sha>: <author> (<author_time:%R>) - <summary>",
-  current_line_blame_formatter_nc = "  " .. _G.icons.ui.Circle .. " <author>",
   on_attach = function(bufnr)
     vim.keymap.set("n", "<leader>gd", vim.get_hof(gitsigns.diffthis), { buffer = bufnr })
     vim.keymap.set("n", "<leader>gp", vim.get_hof(gitsigns.preview_hunk), { buffer = bufnr })
