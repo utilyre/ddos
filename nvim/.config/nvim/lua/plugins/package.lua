@@ -1,6 +1,7 @@
 local packer = require("packer")
 local util = require("packer.util")
 local mason = require("mason")
+local ui = require("mason.ui")
 
 packer.startup({
 	function(use)
@@ -29,4 +30,4 @@ mason.setup({
 vim.keymap.set("n", "<leader>pi", vim.get_hof(packer.install))
 vim.keymap.set("n", "<leader>pu", vim.get_hof(packer.update))
 vim.keymap.set("n", "<leader>pc", vim.get_hof(packer.clean))
-vim.keymap.set("n", "<leader>pm", "<cmd>Mason<cr>")
+vim.keymap.set("n", "<leader>pm", vim.get_hof(ui.open))

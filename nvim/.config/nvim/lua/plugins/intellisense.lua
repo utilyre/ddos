@@ -109,9 +109,9 @@ local get_debuggers = function()
 end
 
 for debugger, options in pairs(get_debuggers()) do
-  dap.configurations[debugger] = options.config
-  for adapter, opts in pairs(options) do
-    if adapter ~= "config" then dap.adapters[adapter] = opts end
+  dap.adapters[debugger] = options.config
+  for language, config in pairs(options) do
+    if language ~= "config" then dap.configurations[language] = config end
   end
 end
 
@@ -123,13 +123,12 @@ vim.api.nvim_create_sign("DapBreakpointRejected", _G.icons.debug.BreakpointRejec
 
 scope.setup({
   commented = true,
-  all_references = true,
 })
 
 vim.keymap.set("n", "<leader>dr", vim.get_hof(dap.continue))
 vim.keymap.set("n", "<leader>dx", vim.get_hof(dap.terminate))
+vim.keymap.set("n", "<leader>dc", vim.get_hof(dap.repl.toggle))
 vim.keymap.set("n", "<leader>db", vim.get_hof(dap.toggle_breakpoint))
-vim.keymap.set("n", "<leader>dc", vim.get_hof(dap.clear_breakpoints))
 vim.keymap.set("n", "<leader>dh", vim.get_hof(dap.step_out))
 vim.keymap.set("n", "<leader>dl", vim.get_hof(dap.step_into))
 vim.keymap.set("n", "<leader>dk", vim.get_hof(dap.step_back))
