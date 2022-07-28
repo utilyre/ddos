@@ -40,8 +40,9 @@ _G.plugins = {
   "williamboman/mason-lspconfig.nvim",
   "jose-elias-alvarez/null-ls.nvim",
   "mfussenegger/nvim-dap",
-  "theHamsta/nvim-dap-virtual-text",
+  "thehamsta/nvim-dap-virtual-text",
   "smiteshp/nvim-navic",
+  "rrethy/vim-illuminate",
 
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",
