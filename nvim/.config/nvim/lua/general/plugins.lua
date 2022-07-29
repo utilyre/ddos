@@ -29,16 +29,17 @@ _G.plugins = {
   "utilyre/barbecue.nvim",
   "nvim-lualine/lualine.nvim",
 
+  "lukas-reineke/indent-blankline.nvim",
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "windwp/nvim-ts-autotag",
-  "lukas-reineke/indent-blankline.nvim",
 
   "l3mon4d3/luasnip",
   "utilyre/spoon.nvim",
 
-  "neovim/nvim-lspconfig",
+  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
   "mfussenegger/nvim-dap",
   "thehamsta/nvim-dap-virtual-text",

@@ -16,6 +16,10 @@ packer.startup({
 	},
 })
 
+vim.keymap.set("n", "<leader>pi", vim.get_hof(packer.install))
+vim.keymap.set("n", "<leader>pu", vim.get_hof(packer.update))
+vim.keymap.set("n", "<leader>pc", vim.get_hof(packer.clean))
+
 mason.setup({
 	ui = {
 		border = "rounded",
@@ -27,7 +31,4 @@ mason.setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>pi", vim.get_hof(packer.install))
-vim.keymap.set("n", "<leader>pu", vim.get_hof(packer.update))
-vim.keymap.set("n", "<leader>pc", vim.get_hof(packer.clean))
-vim.keymap.set("n", "<leader>pm", vim.get_hof(ui.open))
+vim.keymap.set("n", "<leader>m", vim.get_hof(ui.open))

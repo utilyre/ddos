@@ -4,8 +4,6 @@ local autopairs = require("nvim-autopairs")
 local comment = require("Comment")
 local fterm = require("FTerm")
 
-vim.notify = notify
-
 notify.setup({
   stages = "slide",
   background_colour = "NormalFloat",
@@ -15,6 +13,8 @@ notify.setup({
     INFO = _G.icons.diagnostic.Info,
   },
 })
+
+vim.notify = notify
 
 dressing.setup({
   input = {

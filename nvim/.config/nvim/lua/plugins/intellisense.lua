@@ -1,10 +1,13 @@
-local lspconfig = require("lspconfig")
+local lines = require("lsp_lines")
 local mason = require("mason-lspconfig")
+local lspconfig = require("lspconfig")
 local null = require("null-ls")
 local dap = require("dap")
 local scope = require("nvim-dap-virtual-text")
 local navic = require("nvim-navic")
 local illuminate = require("illuminate")
+
+lines.setup()
 
 vim.diagnostic.config({
   update_in_insert = true,
@@ -18,10 +21,6 @@ vim.diagnostic.config({
       vim.api.nvim_create_sign("DiagnosticSignInfo", _G.icons.diagnostic.Info),
     },
   },
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
 })
 
 local on_attach = function(client, bufnr)
@@ -44,10 +43,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next), { buffer = bufnr })
 end
 
-mason.setup({
-  automatic_installation = true,
-})
-
 local get_servers = function()
   local config_path = os.getenv("MASON_CONFIG")
   if vim.fn.filereadable(config_path) == 0 then return {} end
@@ -60,10 +55,18 @@ local get_servers = function()
   return servers
 end
 
+mason.setup({
+  automatic_installation = true,
+})
+
 for server, options in pairs(get_servers()) do
   options.on_attach = on_attach
   lspconfig[server].setup(options)
 end
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
 
 local get_sources = function()
   local config_path = os.getenv("MASON_CONFIG")
@@ -122,10 +125,6 @@ vim.api.nvim_create_sign("DapBreakpoint", _G.icons.debug.Breakpoint)
 vim.api.nvim_create_sign("DapBreakpointCondition", _G.icons.debug.BreakpointCondition)
 vim.api.nvim_create_sign("DapBreakpointRejected", _G.icons.debug.BreakpointRejected)
 
-scope.setup({
-  commented = true,
-})
-
 vim.keymap.set("n", "<leader>dr", vim.get_hof(dap.continue))
 vim.keymap.set("n", "<leader>dx", vim.get_hof(dap.terminate))
 vim.keymap.set("n", "<leader>dc", vim.get_hof(dap.repl.toggle))
@@ -134,3 +133,7 @@ vim.keymap.set("n", "<leader>dh", vim.get_hof(dap.step_out))
 vim.keymap.set("n", "<leader>dl", vim.get_hof(dap.step_into))
 vim.keymap.set("n", "<leader>dk", vim.get_hof(dap.step_back))
 vim.keymap.set("n", "<leader>dj", vim.get_hof(dap.step_over))
+
+scope.setup({
+  commented = true,
+})
