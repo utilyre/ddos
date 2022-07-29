@@ -16,6 +16,9 @@ onedark.setup({
   highlights = {
     NvimTreeNormal = { bg = "$bg_d" },
     NvimTreeExecFile = { fg = "$green" },
+    CommentTSNote = { fmt = "bold", fg = "$blue" },
+    CommentTSWarning = { fmt = "bold", fg = "$yellow" },
+    CommentTSDanger = { fmt = "bold", fg = "$red" },
     IndentBlanklineContextChar = { fg = "$fg" },
     DapStopped = { fg = "$green" },
     DapLogPoint = { fg = "$yellow" },
