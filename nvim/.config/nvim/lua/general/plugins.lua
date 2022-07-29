@@ -31,6 +31,7 @@ _G.plugins = {
 
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
+  "windwp/nvim-ts-autotag",
   "lukas-reineke/indent-blankline.nvim",
 
   "l3mon4d3/luasnip",

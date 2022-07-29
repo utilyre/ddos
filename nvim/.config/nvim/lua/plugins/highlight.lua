@@ -4,8 +4,9 @@ local indentblankline = require("indent_blankline")
 treesitter.setup({
   ensure_installed = "all",
   highlight = { enable = true },
-  indent = { enable = true },
   rainbow = { enable = true },
+  indent = { enable = true },
+  autotag = { enable = true },
 })
 
 indentblankline.setup({
