@@ -55,8 +55,7 @@ local get_servers = function()
 
   local servers = {}
   for server, options in pairs(config.servers) do
-    setmetatable(options, nil)
-    servers[server] = options
+    servers[server] = options.config
   end
   return servers
 end
@@ -74,8 +73,7 @@ local get_sources = function()
   local sources = {}
   for source, options in pairs(config.sources) do
     for i, method in ipairs(options.methods) do
-      options.methods = nil
-      table.insert(sources, null.builtins[method][source].with(options))
+      table.insert(sources, null.builtins[method][source].with(options.config))
     end
   end
   return sources
@@ -86,24 +84,36 @@ null.setup({
   on_attach = on_attach,
 })
 
-local get_debuggers = function()
+local get_adapters = function()
   local config_path = os.getenv("MASON_CONFIG")
   if vim.fn.filereadable(config_path) == 0 then return {} end
   local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
 
-  local debuggers = {}
-  for debugger, options in pairs(config.debuggers) do
-    setmetatable(options, nil)
-    debuggers[debugger] = options
+  local adapters = {}
+  for adapter, options in pairs(config.adapters) do
+    adapters[adapter] = options.config
   end
-  return debuggers
+  return adapters
 end
 
-for debugger, options in pairs(get_debuggers()) do
-  dap.adapters[debugger] = options.config
-  for language, config in pairs(options) do
-    if language ~= "config" then dap.configurations[language] = config end
+for adapter, options in pairs(get_adapters()) do
+  dap.adapters[adapter] = options
+end
+
+local get_languages = function()
+  local config_path = os.getenv("MASON_CONFIG")
+  if vim.fn.filereadable(config_path) == 0 then return {} end
+  local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+
+  local languages = {}
+  for language, options in pairs(config.languages) do
+    languages[language] = options.configs
   end
+  return languages
+end
+
+for language, options in pairs(get_languages()) do
+  dap.configurations[language] = options
 end
 
 vim.api.nvim_create_sign("DapStopped", _G.icons.debug.Stopped)
