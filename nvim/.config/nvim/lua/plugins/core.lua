@@ -5,7 +5,7 @@ local comment = require("Comment")
 local fterm = require("FTerm")
 
 notify.setup({
-  stages = "slide",
+  stages = "fade",
   background_colour = "NormalFloat",
   icons = {
     ERROR = _G.icons.diagnostic.Error,
