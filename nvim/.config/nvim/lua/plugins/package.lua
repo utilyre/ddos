@@ -10,6 +10,7 @@ packer.startup({
     end
   end,
   config = {
+    max_jobs = 4,
     display = {
       open_fn = vim.get_hof(util.float, { border = "rounded" }),
     },
