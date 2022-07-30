@@ -5,7 +5,6 @@ local null = require("null-ls")
 local dap = require("dap")
 local scope = require("nvim-dap-virtual-text")
 local navic = require("nvim-navic")
-local illuminate = require("illuminate")
 
 lines.setup()
 
@@ -29,7 +28,17 @@ local on_attach = function(client, bufnr)
   end
 
   if client.server_capabilities.documentHighlightProvider then
-    illuminate.on_attach(client, bufnr)
+    vim.api.nvim_create_augroup("lsp", { clear = false })
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      group = "lsp",
+      buffer = bufnr,
+      callback = vim.get_hof(vim.lsp.buf.document_highlight),
+    })
+    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+      group = "lsp",
+      buffer = bufnr,
+      callback = vim.get_hof(vim.lsp.buf.clear_references),
+    })
   end
 
   vim.keymap.set("n", "<leader>id", vim.get_hof(vim.lsp.buf.definition), { buffer = bufnr })

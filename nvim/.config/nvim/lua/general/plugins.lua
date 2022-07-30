@@ -44,7 +44,6 @@ _G.plugins = {
   "mfussenegger/nvim-dap",
   "thehamsta/nvim-dap-virtual-text",
   "smiteshp/nvim-navic",
-  "rrethy/vim-illuminate",
 
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",
