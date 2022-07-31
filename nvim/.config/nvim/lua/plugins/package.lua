@@ -12,6 +12,11 @@ packer.startup({
   config = {
     max_jobs = 4,
     display = {
+      error_sym = _G.icons.ui.Pending,
+      working_sym = _G.icons.ui.Pending,
+      removed_sym = _G.icons.ui.Unchecked,
+      done_sym = _G.icons.ui.Checked,
+      prompt_border = "rounded",
       open_fn = vim.get_hof(util.float, { border = "rounded" }),
     },
   },
