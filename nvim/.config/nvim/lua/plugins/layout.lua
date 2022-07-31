@@ -54,11 +54,7 @@ lualine.setup({
     },
     lualine_c = {
       { function()
-        local names = vim.tbl_keys(_G.terminals)
-        for i, name in ipairs(names) do
-          if name == _G.lastname then table.remove(names, i) end
-        end
-
+        local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
         return (_G.lastname or "") .. table.concat(names)
       end },
     },

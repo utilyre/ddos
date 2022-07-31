@@ -7,7 +7,6 @@ devicons.setup({
 
 onedark.setup({
   style = "dark",
-  transparent = true,
   toggle_style_key = "<nop>",
   code_style = {
     comments = "italic",
@@ -23,9 +22,6 @@ onedark.setup({
     NotifyINFOBorder = { fg = "$cyan" },
     NotifyINFOIcon = { fg = "$cyan" },
     NotifyINFOTitle = { fg = "$cyan" },
-
-    NvimTreeNormal = { bg = "$bg_d" },
-    NvimTreeExecFile = { fg = "$green" },
 
     NavicText = { fg = "$fg" },
     NavicSeparator = { fg = "$light_grey" },

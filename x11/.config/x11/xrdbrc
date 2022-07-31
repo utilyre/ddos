@@ -26,7 +26,6 @@ herbe.pos_x: 24
 herbe.pos_y: 48
 
 st.font: monospace:size=10
-st.alpha: 0.9
 st.background: BLACK
 st.foreground: WHITE
 st.black: BLACK
