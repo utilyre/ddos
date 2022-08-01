@@ -1,6 +1,10 @@
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
-  vim.fn.system({ "git", "clone", "--depth=1", "https://github.com/wbthomason/packer.nvim.git", install_path })
+local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if vim.fn.empty(vim.fn.glob(packer_path)) == 1 then
+  vim.fn.system({ "git", "clone", "--depth=1", "https://github.com/wbthomason/packer.nvim.git", packer_path })
+end
+local mason_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/mason.nvim"
+if vim.fn.empty(vim.fn.glob(mason_path)) == 1 then
+  vim.fn.system({ "git", "clone", "--depth=1", "https://github.com/williamboman/mason.nvim.git", mason_path })
 end
 
 _G.plugins = {
@@ -41,8 +45,6 @@ _G.plugins = {
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
-  "mfussenegger/nvim-dap",
-  "thehamsta/nvim-dap-virtual-text",
   "smiteshp/nvim-navic",
 
   "hrsh7th/nvim-cmp",

@@ -56,16 +56,6 @@ onedark.setup({
     CommentTSNote = { fmt = "bold", fg = "$blue" },
     CommentTSWarning = { fmt = "bold", fg = "$yellow" },
     CommentTSDanger = { fmt = "bold", fg = "$red" },
-
-    DiagnosticVirtualTextError = { bg = "none" },
-    DiagnosticVirtualTextWarn = { bg = "none" },
-    DiagnosticVirtualTextHint = { bg = "none" },
-    DiagnosticVirtualTextInfo = { bg = "none" },
-    DapStopped = { fg = "$green" },
-    DapLogPoint = { fg = "$yellow" },
-    DapBreakpoint = { fg = "$red" },
-    DapBreakpointCondition = { fg = "$orange" },
-    DapBreakpointRejected = { fg = "$grey" },
   },
 })
 

@@ -2,8 +2,6 @@ local lines = require("lsp_lines")
 local mason = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local null = require("null-ls")
-local dap = require("dap")
-local scope = require("nvim-dap-virtual-text")
 local navic = require("nvim-navic")
 
 lines.setup()
@@ -67,9 +65,9 @@ mason.setup({
   automatic_installation = true,
 })
 
-for server, options in pairs(get_servers()) do
-  options.on_attach = on_attach
-  lspconfig[server].setup(options)
+for server, config in pairs(get_servers()) do
+  config.on_attach = on_attach
+  lspconfig[server].setup(config)
 end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -93,55 +91,4 @@ end
 null.setup({
   sources = get_sources(),
   on_attach = on_attach,
-})
-
-local get_adapters = function()
-  local config_path = os.getenv("MASON_CONFIG")
-  if vim.fn.filereadable(config_path) == 0 then return {} end
-  local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
-
-  local adapters = {}
-  for adapter, options in pairs(config.adapters) do
-    adapters[adapter] = options.config
-  end
-  return adapters
-end
-
-for adapter, options in pairs(get_adapters()) do
-  dap.adapters[adapter] = options
-end
-
-local get_languages = function()
-  local config_path = os.getenv("MASON_CONFIG")
-  if vim.fn.filereadable(config_path) == 0 then return {} end
-  local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
-
-  local languages = {}
-  for language, options in pairs(config.languages) do
-    languages[language] = options.configs
-  end
-  return languages
-end
-
-for language, options in pairs(get_languages()) do
-  dap.configurations[language] = options
-end
-
-vim.api.nvim_create_sign("DapStopped", _G.icons.debug.Stopped)
-vim.api.nvim_create_sign("DapLogPoint", _G.icons.debug.Logpoint)
-vim.api.nvim_create_sign("DapBreakpoint", _G.icons.debug.Breakpoint)
-vim.api.nvim_create_sign("DapBreakpointCondition", _G.icons.debug.BreakpointCondition)
-vim.api.nvim_create_sign("DapBreakpointRejected", _G.icons.debug.BreakpointRejected)
-
-vim.keymap.set("n", "<leader>dr", vim.get_hof(dap.continue))
-vim.keymap.set("n", "<leader>dx", vim.get_hof(dap.terminate))
-vim.keymap.set("n", "<leader>dc", vim.get_hof(dap.repl.toggle))
-vim.keymap.set("n", "<leader>db", vim.get_hof(dap.toggle_breakpoint))
-vim.keymap.set("n", "<leader>dh", vim.get_hof(dap.step_out))
-vim.keymap.set("n", "<leader>dl", vim.get_hof(dap.step_into))
-vim.keymap.set("n", "<leader>dk", vim.get_hof(dap.step_back))
-vim.keymap.set("n", "<leader>dj", vim.get_hof(dap.step_over))
-
-scope.setup({
-  commented = true,
 })
