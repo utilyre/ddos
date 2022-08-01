@@ -9,7 +9,9 @@ lines.setup()
 vim.diagnostic.config({
   update_in_insert = true,
   virtual_text = false,
-  float = { border = "rounded" },
+  virtual_lines = {
+    only_current_line = true,
+  },
   signs = {
     active = {
       vim.api.nvim_create_sign("DiagnosticSignError", _G.icons.diagnostic.Error),
@@ -45,8 +47,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>if", vim.get_hof(vim.lsp.buf.format, { async = true }), { buffer = bufnr })
   vim.keymap.set("n", "<leader>ic", vim.get_hof(vim.lsp.buf.rename), { buffer = bufnr })
   vim.keymap.set("n", "<leader>ii", vim.get_hof(vim.lsp.buf.hover), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ik", vim.get_hof(vim.diagnostic.goto_prev), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next), { buffer = bufnr })
+  vim.keymap.set("n", "<leader>ik", vim.get_hof(vim.diagnostic.goto_prev, { float = false }), { buffer = bufnr })
+  vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next, { float = false }), { buffer = bufnr })
 end
 
 local get_servers = function()
