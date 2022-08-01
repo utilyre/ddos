@@ -37,4 +37,4 @@ mason.setup({
   },
 })
 
-vim.keymap.set("n", "<leader>m", vim.get_hof(ui.open))
+vim.keymap.set("n", "<leader>pm", vim.get_hof(ui.open))
