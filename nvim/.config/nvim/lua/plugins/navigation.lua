@@ -6,7 +6,9 @@ local builtin = require("telescope.builtin")
 
 cybu.setup({
   position = {
-    relative_to = "editor",
+    anchor = "bottomright",
+    vertical_offset = 2,
+    horizontal_offset = 2,
   },
   style = {
     hide_buffer_id = true,
@@ -14,7 +16,6 @@ cybu.setup({
     highlights = {
       adjacent_buffers = "NormalFloat",
       background = "NormalFloat",
-      border = "FloatBorder",
     },
   },
 })
