@@ -1,16 +1,26 @@
-local reach = require("reach")
+local cybu = require("cybu")
 local tree = require("nvim-tree")
 local telescope = require("telescope")
 local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
 
-reach.setup()
+cybu.setup({
+  position = {
+    relative_to = "editor",
+  },
+  style = {
+    hide_buffer_id = true,
+    border = "rounded",
+    highlights = {
+      adjacent_buffers = "NormalFloat",
+      background = "NormalFloat",
+      border = "FloatBorder",
+    },
+  },
+})
 
-vim.keymap.set("n", "<tab>", vim.get_hof(reach.buffers, {
-  show_current = true,
-  handle = "dynamic",
-  modified_icon = "[+]",
-}))
+vim.keymap.set("n", "<s-h>", vim.get_hof(cybu.cycle, "prev"))
+vim.keymap.set("n", "<s-l>", vim.get_hof(cybu.cycle, "next"))
 
 tree.setup({
   update_cwd = true,
