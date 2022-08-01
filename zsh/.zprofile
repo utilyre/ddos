@@ -23,6 +23,7 @@ export TERMINFO="$XDG_DATA_HOME/terminfo"
 export ZSH_DATA="$XDG_DATA_HOME/zsh"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GUARD_DATA="$XDG_DATA_HOME/guard"
+export OMEGALUL_DATA="$XDG_DATA_HOME/omegalul"
 export WALIHISTFILE="$XDG_STATE_HOME/wali"
 export LESSHISTFILE="$XDG_STATE_HOME/less"
 export HISTFILE="$XDG_STATE_HOME/shell"
@@ -38,5 +39,5 @@ export EDITOR="rvim"
 export LS_COLORS="no=0;37:fi=0;37:ex=0;32:so=0;35:do=0;35:pi=0;33:ln=0;36:or=0;31:mi=0;31:di=1;34:tw=1;32:ow=1;32:st=1;32:cd=1;33:bd=1;37"
 export LF_ICONS="no=:fi=:ex=:so=:do=:pi=:ln=:or=:mi=:di=:tw=:ow=:st=:cd=:bd="
 
-printenv | awk --field-separator="=" -- "(\$1 ~ /^XDG_.+_HOME\$/) { print \$2 }" | xargs --delimiter="\n" mkdir --parents --
+printenv | awk --field-separator="=" -- "(\$1 ~ /^XDG_.+_HOME\$/) { print \$2 }" | xargs --delimiter="\n" -- mkdir --parents --
 startx "$XINIT_CONFIG"
