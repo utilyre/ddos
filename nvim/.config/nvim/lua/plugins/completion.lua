@@ -3,6 +3,12 @@ local luasnip = require("luasnip")
 local cmp = require("cmp")
 
 cmp.setup({
+  snippet = {
+    expand = function(a) luasnip.lsp_expand(a.body) end
+  },
+  experimental = {
+    ghost_text = true,
+  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
@@ -14,8 +20,6 @@ cmp.setup({
       return item
     end,
   },
-  snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
-  experimental = { ghost_text = true },
   sources = {
     {
       group_index = 1,

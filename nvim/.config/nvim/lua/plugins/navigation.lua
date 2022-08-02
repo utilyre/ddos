@@ -20,12 +20,14 @@ cybu.setup({
   },
 })
 
-vim.keymap.set("n", "<s-h>", vim.get_hof(cybu.cycle, "prev"))
-vim.keymap.set("n", "<s-l>", vim.get_hof(cybu.cycle, "next"))
+vim.keymap.set("n", "<s-k>", vim.get_hof(cybu.cycle, "prev"))
+vim.keymap.set("n", "<s-j>", vim.get_hof(cybu.cycle, "next"))
 
 tree.setup({
   update_cwd = true,
-  git = { ignore = false },
+  git = {
+    ignore = false,
+  },
   diagnostics = {
     enable = true,
     show_on_dirs = true,

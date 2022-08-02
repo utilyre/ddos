@@ -68,8 +68,6 @@ end
 
 vim.keymap.set("n", "\\", function()
   local name = vim.fn.getcharstr()
-  if name == "" then return end
-
   toggle_terminal(name)
 end)
 vim.keymap.set({ "n", "t" }, "<c-\\>", function()
