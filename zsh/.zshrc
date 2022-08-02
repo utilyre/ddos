@@ -11,7 +11,7 @@ zuse() {
 
 lfcd() {
 	tmp="$(mktemp)"
-	cough -last-dir-path="$tmp" "$@"
+	cough --last-dir-path="$tmp" "$@"
 
 	cd -- "$(cat -- "$tmp")"
 	rm -- "$tmp"
