@@ -3,6 +3,7 @@ _G.icons = {
     Chevron = "",
     Closed = "",
     Open = "",
+    Modified = "●",
     Pending = "",
     Unchecked = "",
     Checked = "",

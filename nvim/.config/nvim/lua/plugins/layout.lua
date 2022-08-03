@@ -3,6 +3,7 @@ local lualine = require("lualine")
 
 barbecue.setup({
   separator = " " .. _G.icons.ui.Chevron .. " ",
+  modified_indicator = " " .. _G.icons.ui.Modified,
   icons = {
     File = _G.icons.kind.File .. " ",
     Package = _G.icons.kind.Folder .. " ",
