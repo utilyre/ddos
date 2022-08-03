@@ -56,10 +56,21 @@ lualine.setup({
     lualine_c = {
       { function()
         local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
-        return (_G.lastname or "") .. table.concat(names)
+        if #names == 0 then return _G.lastname or "" end
+
+        return (_G.lastname or "") .. " [" .. table.concat(names, ", ") .. "]"
       end },
     },
-    lualine_x = {},
+    lualine_x = {
+      { function()
+        local names = vim.tbl_map(function(client)
+          return client.name
+        end, vim.lsp.buf_get_clients())
+        if #names == 0 then return "" end
+
+        return "[" .. table.concat(names, ", ") .. "]"
+      end },
+    },
     lualine_y = { "encoding", "fileformat", "filetype" },
   },
 })
