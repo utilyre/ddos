@@ -1,8 +1,11 @@
+local bufdelete = require("bufdelete")
 local notify = require("notify")
 local dressing = require("dressing")
 local autopairs = require("nvim-autopairs")
 local comment = require("Comment")
 local fterm = require("FTerm")
+
+vim.keymap.set("n", "<leader>c", vim.get_hof(bufdelete.bufdelete, 0, false))
 
 notify.setup({
   stages = "fade",
