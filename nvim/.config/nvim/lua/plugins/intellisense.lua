@@ -22,7 +22,7 @@ vim.diagnostic.config({
   },
 })
 
-local on_attach = function(client, bufnr)
+local attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
   end
@@ -58,6 +58,14 @@ local get_servers = function()
 
   local servers = {}
   for server, options in pairs(config.servers) do
+    options.config.on_attach = function(client, bufnr)
+      attach(client, bufnr)
+
+      for capability, enabled in pairs(options.capabilities) do
+        client.server_capabilities[capability] = enabled
+      end
+    end
+
     servers[server] = options.config
   end
   return servers
@@ -68,7 +76,6 @@ mason.setup({
 })
 
 for server, config in pairs(get_servers()) do
-  config.on_attach = on_attach
   lspconfig[server].setup(config)
 end
 
@@ -92,5 +99,7 @@ end
 
 null.setup({
   sources = get_sources(),
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    attach(client, bufnr)
+  end,
 })
