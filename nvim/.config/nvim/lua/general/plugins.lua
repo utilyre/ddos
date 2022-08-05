@@ -25,7 +25,6 @@ _G.plugins = {
 
   "ahmedkhalf/project.nvim",
   "lewis6991/gitsigns.nvim",
-  "akinsho/git-conflict.nvim",
 
   "ghillb/cybu.nvim",
   "kyazdani42/nvim-tree.lua",
