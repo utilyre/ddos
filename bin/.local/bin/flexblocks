@@ -28,7 +28,7 @@ traffic() {
 
 connection() {
 	grep --quiet -- "up" "/sys/class/net"/e*/"operstate" && {
-		printf -- " Ethernet\n"
+		printf -- " Wired\n"
 		return
 	}
 
@@ -37,7 +37,7 @@ connection() {
 		return
 	}
 
-	printf -- " Down\n"
+	printf -- " Broken\n"
 }
 
 volume() {
