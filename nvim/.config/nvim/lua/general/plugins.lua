@@ -16,7 +16,6 @@ _G.plugins = {
 
   "nvim-lua/plenary.nvim",
   "nvim-lua/popup.nvim",
-  "famiu/bufdelete.nvim",
   "rcarriga/nvim-notify",
   "stevearc/dressing.nvim",
   "windwp/nvim-autopairs",

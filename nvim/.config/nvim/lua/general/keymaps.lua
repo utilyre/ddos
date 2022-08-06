@@ -8,6 +8,7 @@ vim.keymap.set("i", "kj", "<esc>")
 
 vim.keymap.set("n", "<leader>w", "<cmd>write<cr>")
 vim.keymap.set("n", "<leader>q", "<cmd>quit<cr>")
+vim.keymap.set("n", "<leader>c", "<cmd>bdelete<cr>")
 vim.keymap.set("n", "<leader>s", "<cmd>split<cr>")
 vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>")
 vim.keymap.set("n", "<leader>u", "<cmd>nohlsearch<cr>")
