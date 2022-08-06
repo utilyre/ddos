@@ -52,7 +52,7 @@ onedark.setup({
     NavicIconsArray = { fg = "$orange" },
     NavicIconsObject = { fg = "$orange" },
 
-    IndentBlanklineContextChar = { fg = "$fg" },
+    IndentBlanklineContextChar = { fmt = "nocombine", fg = "$fg" },
     CommentTSNote = { fmt = "bold", fg = "$blue" },
     CommentTSWarning = { fmt = "bold", fg = "$yellow" },
     CommentTSDanger = { fmt = "bold", fg = "$red" },
