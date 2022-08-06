@@ -33,8 +33,11 @@ tree.setup({
     show_on_dirs = true,
   },
   view = {
-    width = 40,
     hide_root_folder = true,
+    width = 40,
+    float= {
+      enable = true,
+    },
     mappings = {
       custom_only = true,
       list = {
