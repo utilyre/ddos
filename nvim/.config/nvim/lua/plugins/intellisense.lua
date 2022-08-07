@@ -59,11 +59,8 @@ local get_servers = function()
   local servers = {}
   for server, options in pairs(config.servers) do
     options.config.on_attach = function(client, bufnr)
+      client.server_capabilities = vim.tbl_deep_extend("force", client.server_capabilities, options.capabilities)
       attach(client, bufnr)
-
-      for capability, enabled in pairs(options.capabilities) do
-        client.server_capabilities[capability] = enabled
-      end
     end
 
     servers[server] = options.config
