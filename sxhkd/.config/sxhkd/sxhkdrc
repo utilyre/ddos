@@ -9,7 +9,7 @@ super + {_,shift} + {h,l}
 
 super + {_,shift} + {1,2,3,4,5,6,7,8,9,0}
 	voltage --device="{sink,source}" switch -- "{0,1,2,3,4,5,6,7,8,9}"
-super + {_,shift} + {backslash,minus,equal}
+super + {_,shift} + {BackSpace,minus,equal}
 	voltage --device="{sink,source}" {toggle,down,up}
 super + {slash,comma,period}
 	current {toggle,prev,next}
