@@ -1,11 +1,11 @@
-#define BLACK #282c34
-#define RED #e06c75
-#define GREEN #98c379
-#define YELLOW #e5c07b
-#define BLUE #61afef
-#define MAGENTA #c678dd
-#define CYAN #56b6c2
-#define WHITE #abb2bf
+#define BLACK #24283b
+#define RED #f7768e
+#define GREEN #9ece6a
+#define YELLOW #e0af68
+#define BLUE #7aa2f7
+#define MAGENTA #bb9af7
+#define CYAN #7dcfff
+#define WHITE #c0caf5
 
 bspwm.gap: 4
 bspwm.border: 2
