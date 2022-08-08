@@ -1,14 +1,5 @@
 #!/bin/zsh
 
-zuse() {
-	mkdir --parents -- "$ZSH_DATA"
-	repo="${1%:*}"
-	dest="$ZSH_DATA/${repo##*/}"
-
-	[ ! -d "$dest" ] && git clone --depth="1" -- "https://github.com/$repo.git" "$dest"
-	source -- "$dest/${1##*:}"
-}
-
 lfcd() {
 	tmp="$(mktemp)"
 	cough --last-dir-path="$tmp" "$@"
@@ -37,14 +28,8 @@ HISTSIZE="1024"
 SAVEHIST="1024"
 PS1="%B%F{blue}%~%f%b %(?.%F{green}.%F{red})%(!.#.$)%f "
 
-zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
-autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
 zmodload "zsh/complist"
+autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
 zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "$LS_COLORS"
-ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
-
-zuse "hlissner/zsh-autopair:autopair.zsh"
-autopair-init
