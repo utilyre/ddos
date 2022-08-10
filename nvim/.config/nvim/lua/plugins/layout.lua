@@ -1,5 +1,6 @@
 local barbecue = require("barbecue")
 local lualine = require("lualine")
+local sources = require("null-ls.sources")
 
 barbecue.setup({
   separator = " " .. _G.icons.ui.Chevron .. " ",
@@ -49,7 +50,7 @@ lualine.setup({
   sections = {
     lualine_a = {
       {
-        "branch",
+        "mode",
         separator = {
           left = _G.icons.ui.SectionRight,
           right = _G.icons.ui.SectionLeft,
@@ -71,18 +72,24 @@ lualine.setup({
     lualine_y = {
       {
         function()
-          local names = vim.tbl_map(function(client)
-            return client.name
-          end, vim.lsp.buf_get_clients())
-          if #names == 0 then return "" end
+          local names = vim.tbl_insert(
+            vim.tbl_map(function(client)
+              if client.name == "null-ls" then return end
+              return client.name
+            end, vim.lsp.buf_get_clients()),
+            unpack(vim.tbl_map(function(source)
+              return source.name
+            end, sources.get_available(vim.bo.filetype)))
+          )
 
+          if #names == 0 then return "" end
           return table.concat(names, " ")
         end,
       },
     },
     lualine_z = {
       {
-        "mode",
+        "location",
         separator = {
           left = _G.icons.ui.SectionRight,
           right = _G.icons.ui.SectionLeft,

@@ -5,10 +5,18 @@ vim.get_hof = function(fun, ...)
   end
 end
 
+vim.tbl_insert = function(tbl, ...)
+  for i, element in ipairs({ ... }) do
+    table.insert(tbl, element)
+  end
+
+  return tbl
+end
+
 vim.tbl_remove = function(tbl, value)
-  for k, v in pairs(tbl) do
-    if v == value then
-      table.remove(tbl, k)
+  for i, element in ipairs(tbl) do
+    if element == value then
+      table.remove(tbl, i)
     end
   end
 
