@@ -30,7 +30,6 @@ alias v="rvim"
 setopt appendhistory
 setopt histignorealldups
 setopt promptsubst
-setopt transientrprompt
 setopt nolisttypes
 setopt interactivecomments
 
@@ -39,9 +38,10 @@ SAVEHIST="1024"
 
 autoload "vcs_info" && precmd() { vcs_info; }
 zstyle ":vcs_info:*" check-for-changes "true"
-zstyle ":vcs_info:*" formats "─%B%F{magenta}%K{magenta}%F{black}  %b %k%F{magenta}"
-zstyle ":vcs_info:*" actionformats "─%B%F{magenta}%K{magenta}%F{black}  %b %K{yellow}%F{magenta}%F{black}  %a %k%F{yellow}"
-PS1=$'\n'"%B%F{blue}%K{blue}%F{black}  %c %(?.%K{green}.%K{red})%F{blue}%F{black} %(?.. %?) %k%(?.%F{green}.%F{red})%f%k%b\$vcs_info_msg_0_%f%k%b "
+zstyle ":vcs_info:*" formats "─%F{magenta}%K{magenta}%F{black}  %b %k%F{magenta}"
+zstyle ":vcs_info:*" actionformats "─%F{magenta}%K{magenta}%F{black}  %b %K{yellow}%F{magenta}%F{black}  %a %k%F{yellow}"
+PS1=$'\n'"%F{blue}%K{blue}%F{black}  %c %(?.%K{green}.%K{red})%F{blue}%F{black} %(?.. %?) %k%(?.%F{green}.%F{red})%f%k\$vcs_info_msg_0_%f%k "
+RPS1=""
 
 zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
 autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
@@ -67,12 +67,3 @@ MODE_CURSOR_VISUAL="block"
 MODE_CURSOR_VLINE="block"
 MODE_CURSOR_REPLACE="underline"
 MODE_CURSOR_SEARCH="underline"
-MODE_INDICATOR_VICMD="%B%F{green}%K{green}%F{black} NORMAL %k%F{green}%f%k%b"
-MODE_INDICATOR_VIINS="%B%F{blue}%K{blue}%F{black} INSERT %k%F{blue}%f%k%b"
-MODE_INDICATOR_VISUAL="%B%F{magenta}%K{magenta}%F{black} VISUAL %k%F{magenta}%f%k%b"
-MODE_INDICATOR_VLINE="%B%F{magenta}%K{magenta}%F{black} V-LINE %k%F{magenta}%f%k%b"
-MODE_INDICATOR_REPLACE="%B%F{red}%K{red}%F{black} REPLACE %k%F{red}%f%k%b"
-MODE_INDICATOR_SEARCH="%B%F{yellow}%K{yellow}%F{black} COMMAND %k%F{yellow}%f%k%b"
-
-zuse "hlissner/zsh-autopair:autopair.zsh"
-autopair-init
