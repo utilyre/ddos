@@ -72,7 +72,7 @@ lualine.setup({
     lualine_y = {
       {
         function()
-          local names = vim.tbl_insert(
+          local names = vim.tbl_unique(vim.tbl_insert(
             vim.tbl_map(function(client)
               if client.name == "null-ls" then return end
               return client.name
@@ -80,13 +80,7 @@ lualine.setup({
             unpack(vim.tbl_map(function(client)
               return client.name
             end, sources.get_available(vim.bo.filetype)))
-          )
-
-          local hash = {}
-          for i, name in ipairs(names) do
-            if hash[name] then table.remove(names, i) end
-            hash[name] = true
-          end
+          ))
 
           if #names == 0 then return end
           return table.concat(names, " ")
