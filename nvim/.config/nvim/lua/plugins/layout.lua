@@ -39,12 +39,12 @@ lualine.setup({
   options = {
     globalstatus = true,
     section_separators = {
-      left = _G.icons.ui.SectionLeft,
-      right = _G.icons.ui.SectionRight,
+      left = _G.icons.ui.SectionRight,
+      right = _G.icons.ui.SectionLeft,
     },
     component_separators = {
-      left = _G.icons.ui.ComponentLeft,
-      right = _G.icons.ui.ComponentRight,
+      left = _G.icons.ui.ComponentRight,
+      right = _G.icons.ui.ComponentLeft,
     },
   },
   sections = {
@@ -52,8 +52,8 @@ lualine.setup({
       {
         "mode",
         separator = {
-          left = _G.icons.ui.SectionRight,
-          right = _G.icons.ui.SectionLeft,
+          left = _G.icons.ui.SectionLeft,
+          right = _G.icons.ui.SectionRight,
         },
       },
     },
@@ -91,8 +91,8 @@ lualine.setup({
       {
         "location",
         separator = {
-          left = _G.icons.ui.SectionRight,
-          right = _G.icons.ui.SectionLeft,
+          left = _G.icons.ui.SectionLeft,
+          right = _G.icons.ui.SectionRight,
         },
       },
     },
