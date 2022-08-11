@@ -82,7 +82,7 @@ lualine.setup({
             end, sources.get_available(vim.bo.filetype)))
           ))
 
-          if #names == 0 then return end
+          if #names == 0 then return "" end
           return table.concat(names, " ")
         end,
       },
