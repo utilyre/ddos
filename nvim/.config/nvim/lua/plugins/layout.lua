@@ -61,8 +61,8 @@ lualine.setup({
       {
         function()
           local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
-          if #names == 0 then return _G.lastname or "" end
 
+          if #names == 0 then return _G.lastname or "" end
           return (_G.lastname or "") .. " " .. table.concat(names)
         end,
       },
@@ -77,12 +77,18 @@ lualine.setup({
               if client.name == "null-ls" then return end
               return client.name
             end, vim.lsp.buf_get_clients()),
-            unpack(vim.tbl_map(function(source)
-              return source.name
+            unpack(vim.tbl_map(function(client)
+              return client.name
             end, sources.get_available(vim.bo.filetype)))
           )
 
-          if #names == 0 then return "" end
+          local hash = {}
+          for i, name in ipairs(names) do
+            if hash[name] then table.remove(names, i) end
+            hash[name] = true
+          end
+
+          if #names == 0 then return end
           return table.concat(names, " ")
         end,
       },
