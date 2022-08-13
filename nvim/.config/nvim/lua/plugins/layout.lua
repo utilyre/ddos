@@ -42,10 +42,6 @@ lualine.setup({
       left = _G.icons.ui.SectionRight,
       right = _G.icons.ui.SectionLeft,
     },
-    component_separators = {
-      left = _G.icons.ui.ComponentRight,
-      right = _G.icons.ui.ComponentLeft,
-    },
   },
   sections = {
     lualine_a = {

@@ -9,8 +9,6 @@ _G.icons = {
     Checked = "",
     SectionLeft = "",
     SectionRight = "",
-    ComponentLeft = "",
-    ComponentRight = "",
   },
   document = {
     File = "",
