@@ -62,8 +62,8 @@ tree.setup({
         default = _G.icons.document.File,
         symlink = _G.icons.document.Link,
         folder = {
-          arrow_closed = _G.icons.ui.Closed,
-          arrow_open = _G.icons.ui.Open,
+          arrow_closed = _G.icons.ui.Collapsed,
+          arrow_open = _G.icons.ui.Expanded,
           symlink = _G.icons.document.Link,
           default = _G.icons.document.Folder,
           open = _G.icons.document.Open,

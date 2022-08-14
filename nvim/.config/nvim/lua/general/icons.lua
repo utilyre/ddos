@@ -1,12 +1,11 @@
 _G.icons = {
   ui = {
-    Chevron = "",
-    Closed = "",
-    Open = "",
+    Collapsed = "",
+    Expanded = "",
     Modified = "●",
     Pending = "",
-    Unchecked = "",
-    Checked = "",
+    Uninstalled = "",
+    Installed = "",
     SectionLeft = "",
     SectionRight = "",
   },
@@ -32,13 +31,6 @@ _G.icons = {
     Warn = "",
     Hint = "",
     Info = "",
-  },
-  debug = {
-    Stopped = "",
-    Logpoint = "",
-    Breakpoint = "",
-    BreakpointCondition = "",
-    BreakpointRejected = "",
   },
   kind = {
     File = "",

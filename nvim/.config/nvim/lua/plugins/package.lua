@@ -14,8 +14,8 @@ packer.startup({
     display = {
       error_sym = _G.icons.ui.Pending,
       working_sym = _G.icons.ui.Pending,
-      removed_sym = _G.icons.ui.Unchecked,
-      done_sym = _G.icons.ui.Checked,
+      removed_sym = _G.icons.ui.Uninstalled,
+      done_sym = _G.icons.ui.Installed,
       prompt_border = "rounded",
       open_fn = vim.get_hof(util.float, { border = "rounded" }),
     },
@@ -27,12 +27,13 @@ vim.keymap.set("n", "<leader>pu", vim.get_hof(packer.update))
 vim.keymap.set("n", "<leader>pc", vim.get_hof(packer.clean))
 
 mason.setup({
+  max_concurrent_installers = 4,
   ui = {
     border = "rounded",
     icons = {
       package_pending = _G.icons.ui.Pending,
-      package_uninstalled = _G.icons.ui.Unchecked,
-      package_installed = _G.icons.ui.Checked,
+      package_uninstalled = _G.icons.ui.Uninstalled,
+      package_installed = _G.icons.ui.Installed,
     },
   },
 })
