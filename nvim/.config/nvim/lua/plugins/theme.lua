@@ -7,8 +7,8 @@ devicons.setup({
 
 tokyonight.colorscheme()
 
-vim.api.nvim_set_hl(0, "NavicSeparator", { link = "CmpItemMenu" })
 vim.api.nvim_set_hl(0, "NavicText", { link = "CmpItemKindDefault" })
+vim.api.nvim_set_hl(0, "NavicSeparator", { link = "CmpItemKindDefault" })
 vim.api.nvim_set_hl(0, "NavicIconsFile", { link = "CmpItemKindFile" })
 vim.api.nvim_set_hl(0, "NavicIconsPackage", { link = "CmpItemKindFolder" })
 vim.api.nvim_set_hl(0, "NavicIconsModule", { link = "CmpItemKindModule" })
