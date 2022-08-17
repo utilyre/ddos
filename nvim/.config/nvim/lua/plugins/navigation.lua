@@ -24,7 +24,7 @@ vim.keymap.set("n", "<s-k>", vim.get_hof(cybu.cycle, "prev"))
 vim.keymap.set("n", "<s-j>", vim.get_hof(cybu.cycle, "next"))
 
 tree.setup({
-  update_cwd = true,
+  hijack_cursor = true,
   git = {
     ignore = false,
   },
@@ -56,6 +56,9 @@ tree.setup({
   renderer = {
     group_empty = true,
     symlink_destination = false,
+    indent_markers = {
+      enable = true
+    },
     icons = {
       git_placement = "after",
       glyphs = {
