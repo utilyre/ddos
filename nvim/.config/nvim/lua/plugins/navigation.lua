@@ -1,5 +1,6 @@
 local cybu = require("cybu")
 local tree = require("nvim-tree")
+local api = require("nvim-tree.api")
 local telescope = require("telescope")
 local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
@@ -25,6 +26,19 @@ vim.keymap.set("n", "<s-j>", vim.get_hof(cybu.cycle, "next"))
 
 tree.setup({
   hijack_cursor = true,
+  remove_keymaps = true,
+  on_attach = function(bufnr)
+    vim.keymap.set("n", "h", vim.get_hof(api.node.navigate.parent_close), { buffer = bufnr })
+    vim.keymap.set("n", "l", vim.get_hof(api.node.open.edit), { buffer = bufnr })
+    vim.keymap.set("n", "q", vim.get_hof(api.tree.close), { buffer = bufnr })
+    vim.keymap.set("n", "r", vim.get_hof(api.tree.reload), { buffer = bufnr })
+    vim.keymap.set("n", "d", vim.get_hof(api.fs.cut), { buffer = bufnr })
+    vim.keymap.set("n", "y", vim.get_hof(api.fs.copy.node), { buffer = bufnr })
+    vim.keymap.set("n", "p", vim.get_hof(api.fs.paste), { buffer = bufnr })
+    vim.keymap.set("n", "c", vim.get_hof(api.fs.rename), { buffer = bufnr })
+    vim.keymap.set("n", "x", vim.get_hof(api.fs.remove), { buffer = bufnr })
+    vim.keymap.set("n", "a", vim.get_hof(api.fs.create), { buffer = bufnr })
+  end,
   git = {
     ignore = false,
   },
@@ -37,21 +51,6 @@ tree.setup({
     width = 40,
     float= {
       enable = true,
-    },
-    mappings = {
-      custom_only = true,
-      list = {
-        { key = "h", action = "close_node" },
-        { key = { "l", "<2-leftmouse>" }, action = "edit" },
-        { key = "q", action = "close" },
-        { key = "r", action = "refresh" },
-        { key = "d", action = "cut" },
-        { key = "y", action = "copy" },
-        { key = "p", action = "paste" },
-        { key = "c", action = "rename" },
-        { key = "x", action = "remove" },
-        { key = "a", action = "create" },
-      },
     },
   },
   renderer = {
