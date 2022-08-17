@@ -43,6 +43,7 @@ tree.setup({
       list = {
         { key = "h", action = "close_node" },
         { key = { "l", "<2-leftmouse>" }, action = "edit" },
+        { key = "q", action = "close" },
         { key = "r", action = "refresh" },
         { key = "d", action = "cut" },
         { key = "y", action = "copy" },
