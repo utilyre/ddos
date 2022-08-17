@@ -7,7 +7,7 @@ for net in "$@"; do
 	current="$(($current + $(cat -- "$net")))"
 done
 
-export TRADIFF_TMP="$TRADIFF_RUNTIME/$(printf -- "%s\n" "$nets" | shasum | head --bytes="40")"
+export TRADIFF_TMP="$TRADIFF_RUNTIME/$(printf -- "%s\n" "$nets" | shasum | cut --delimiter=" " --fields="1")"
 previous="$(cat -- "$TRADIFF_TMP" || printf -- "0\n")"
 
 printf -- "%d\n" "$current" > "$TRADIFF_TMP"
