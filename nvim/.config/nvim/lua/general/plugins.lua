@@ -36,6 +36,8 @@ _G.plugins = {
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "windwp/nvim-ts-autotag",
+  "nvim-treesitter/nvim-treesitter-context",
+  "folke/twilight.nvim",
 
   "l3mon4d3/luasnip",
   "utilyre/spoon.nvim",
