@@ -18,6 +18,7 @@ _G.plugins = {
   "nvim-lua/popup.nvim",
   "rcarriga/nvim-notify",
   "stevearc/dressing.nvim",
+  "lukas-reineke/indent-blankline.nvim",
   "windwp/nvim-autopairs",
   "numtostr/comment.nvim",
   "numtostr/fterm.nvim",
@@ -32,7 +33,6 @@ _G.plugins = {
   "utilyre/barbecue.nvim",
   "nvim-lualine/lualine.nvim",
 
-  "lukas-reineke/indent-blankline.nvim",
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "windwp/nvim-ts-autotag",
@@ -45,6 +45,7 @@ _G.plugins = {
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
   "smiteshp/nvim-navic",
+  "mrshmllow/document-color.nvim",
 
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",

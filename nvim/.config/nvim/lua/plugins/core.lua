@@ -1,5 +1,6 @@
 local notify = require("notify")
 local dressing = require("dressing")
+local indentblankline = require("indent_blankline")
 local autopairs = require("nvim-autopairs")
 local comment = require("Comment")
 local fterm = require("FTerm")
@@ -29,6 +30,11 @@ dressing.setup({
   },
 })
 
+indentblankline.setup({
+  show_current_context = true,
+  show_trailing_blankline_indent = false,
+})
+
 autopairs.setup({
   check_ts = true,
 })
@@ -48,7 +54,7 @@ local toggle_terminal = function(name)
       hl = "NormalFloat",
       border = "rounded",
       on_exit = function()
-        terminals[name] = nil
+        _G.terminals[name] = nil
 
         if _G.lastname == name then
           for i, lastname in ipairs(vim.tbl_keys(_G.terminals)) do
