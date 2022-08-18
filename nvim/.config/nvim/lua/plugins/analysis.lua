@@ -18,8 +18,15 @@ treesitter.setup({
   },
 })
 
-context.setup()
+context.setup({
+  max_lines = 1,
+})
 
-twilight.setup()
+twilight.setup({
+  dimming = {
+    alpha = 1,
+    color = { "Comment" },
+  },
+})
 
 vim.keymap.set("n", "<leader>z", vim.get_hof(twilight.toggle))
