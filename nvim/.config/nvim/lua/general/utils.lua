@@ -1,5 +1,6 @@
 vim.get_hof = function(fun, ...)
   local params = { ... }
+
   return function()
     return fun(unpack(params))
   end
