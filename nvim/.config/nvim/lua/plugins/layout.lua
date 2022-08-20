@@ -53,12 +53,14 @@ lualine.setup({
     },
     lualine_b = {
       {
-        function()
-          local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
-
-          if #names == 0 then return _G.lastname or "" end
-          return (_G.lastname or "") .. " " .. table.concat(names)
-        end,
+        "diagnostics",
+        update_in_insert = true,
+        symbols = {
+          error = _G.icons.diagnostic.Error .. " ",
+          warn = _G.icons.diagnostic.Warn .. " ",
+          hint = _G.icons.diagnostic.Hint .. " ",
+          info = _G.icons.diagnostic.Info .. " ",
+        },
       },
     },
     lualine_c = {},

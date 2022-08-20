@@ -13,7 +13,16 @@ bufferline.setup({
     modified_icon = _G.icons.ui.Modified,
     left_trunc_marker = _G.icons.ui.TruncLeft,
     right_trunc_marker = _G.icons.ui.TruncRight,
-  }
+    custom_areas = {
+      right = function()
+        local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
+        return {
+          { text = _G.lastname or "" },
+          { text = table.concat(names) },
+        }
+      end,
+    },
+  },
 })
 
 vim.keymap.set("n", "<s-h>", vim.get_hof(bufferline.cycle, -1))
