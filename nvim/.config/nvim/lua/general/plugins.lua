@@ -26,7 +26,7 @@ _G.plugins = {
   "ahmedkhalf/project.nvim",
   "lewis6991/gitsigns.nvim",
 
-  "ghillb/cybu.nvim",
+  "akinsho/bufferline.nvim",
   "kyazdani42/nvim-tree.lua",
   "nvim-telescope/telescope.nvim",
 

@@ -1,28 +1,23 @@
-local cybu = require("cybu")
+local bufferline = require("bufferline")
 local tree = require("nvim-tree")
 local api = require("nvim-tree.api")
 local telescope = require("telescope")
 local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
 
-cybu.setup({
-  position = {
-    anchor = "bottomright",
-    vertical_offset = 2,
-    horizontal_offset = 2,
-  },
-  style = {
-    hide_buffer_id = true,
-    border = "rounded",
-    highlights = {
-      adjacent_buffers = "NormalFloat",
-      background = "NormalFloat",
-    },
-  },
+bufferline.setup({
+  options = {
+    persist_buffer_sort = false,
+    show_close_icon = false,
+    show_buffer_close_icons = false,
+    modified_icon = _G.icons.ui.Modified,
+    left_trunc_marker = _G.icons.ui.TruncLeft,
+    right_trunc_marker = _G.icons.ui.TruncRight,
+  }
 })
 
-vim.keymap.set("n", "<s-k>", vim.get_hof(cybu.cycle, "prev"))
-vim.keymap.set("n", "<s-j>", vim.get_hof(cybu.cycle, "next"))
+vim.keymap.set("n", "<s-h>", vim.get_hof(bufferline.cycle, -1))
+vim.keymap.set("n", "<s-l>", vim.get_hof(bufferline.cycle, 1))
 
 tree.setup({
   hijack_cursor = true,

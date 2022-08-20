@@ -1,11 +1,13 @@
 _G.icons = {
   ui = {
-    Collapsed = "",
-    Expanded = "",
-    Modified = "●",
     Pending = "",
     Uninstalled = "",
     Installed = "",
+    Modified = "●",
+    TruncLeft = "",
+    TruncRight = "",
+    Collapsed = "",
+    Expanded = "",
     SectionLeft = "",
     SectionRight = "",
   },
