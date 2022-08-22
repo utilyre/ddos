@@ -47,7 +47,6 @@ _G.plugins = {
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
   "smiteshp/nvim-navic",
-  "mrshmllow/document-color.nvim",
 
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",

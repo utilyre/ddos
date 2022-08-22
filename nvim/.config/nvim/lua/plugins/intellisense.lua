@@ -3,7 +3,6 @@ local mason = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local null = require("null-ls")
 local navic = require("nvim-navic")
-local color = require("document-color")
 
 lines.setup()
 
@@ -26,10 +25,6 @@ vim.diagnostic.config({
 local attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
-  end
-
-  if client.server_capabilities.colorProvider then
-    color.buf_attach(bufnr)
   end
 
   if client.server_capabilities.documentHighlightProvider then
@@ -104,8 +99,4 @@ null.setup({
   on_attach = function(client, bufnr)
     attach(client, bufnr)
   end,
-})
-
-color.setup({
-  mode = "single",
 })
