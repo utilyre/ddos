@@ -10,14 +10,12 @@
 flexblocks.background: BLACK
 flexblocks.foreground: WHITE
 
-herbe.font_pattern: monospace:size=10
 herbe.background_color: BLACK
 herbe.font_color: WHITE
 herbe.border_color: WHITE
 herbe.pos_x: 24
 herbe.pos_y: 48
 
-st.font: monospace:size=10
 st.background: BLACK
 st.foreground: WHITE
 st.black: BLACK
@@ -29,7 +27,6 @@ st.magenta: MAGENTA
 st.cyan: CYAN
 st.white: WHITE
 
-dmenu.font: monospace:size=10
 dmenu.background_nrm: BLACK
 dmenu.foreground_nrm: WHITE
 dmenu.background_sel: BLUE
