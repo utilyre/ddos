@@ -7,9 +7,6 @@
 #define CYAN #7dcfff
 #define WHITE #c0caf5
 
-flexblocks.background: BLACK
-flexblocks.foreground: WHITE
-
 herbe.background_color: BLACK
 herbe.font_color: WHITE
 herbe.border_color: WHITE
