@@ -7,9 +7,6 @@
 #define CYAN #7dcfff
 #define WHITE #c0caf5
 
-flexblocks.font: monospace:size=10
-flexblocks.height: 24
-flexblocks.underline: 3
 flexblocks.background: BLACK
 flexblocks.foreground: WHITE
 
