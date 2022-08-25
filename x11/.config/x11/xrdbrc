@@ -7,11 +7,6 @@
 #define CYAN #7dcfff
 #define WHITE #c0caf5
 
-bspwm.gap: 4
-bspwm.border: 2
-bspwm.border_nrm: BLACK
-bspwm.border_sel: WHITE
-
 flexblocks.font: monospace:size=10
 flexblocks.height: 24
 flexblocks.underline: 3
