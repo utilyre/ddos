@@ -9,7 +9,7 @@ zuse() {
 	source -- "$dest/${1##*:}"
 }
 
-lfcd() {
+lf() {
 	tmp="$(mktemp)"
 	cough --last-dir-path="$tmp" "$@"
 
@@ -23,7 +23,6 @@ alias ls="ls --color=\"auto\" --group-directories-first --human-readable"
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
-alias lf="lfcd"
 alias g="git"
 alias v="rvim"
 
