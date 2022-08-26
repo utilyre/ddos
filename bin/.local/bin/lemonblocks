@@ -4,6 +4,6 @@ flexblocks | lemonbar \
 	-g "$(xrandr | awk --field-separator="[x ]" -- "(\$0 ~ /*/) { print \$4 }")x24+0+0" \
 	-f "monospace:size=10" \
 	-u "2" \
-	-B "#aa000000" \
-	-F "#ffcccccc" \
-	-U "#ffcccccc" | sh
+	-B "#aa1d1d1d" \
+	-F "#ffd4d4d4" \
+	-U "#ffd4d4d4" | sh
