@@ -1,6 +1,0 @@
-#!/bin/sh
-
-mkdir --parents -- "$OMEGALUL_DATA"
-
-emoji="$(find "$OMEGALUL_DATA/" -type "f" -name "*.csv" | xargs --delimiter="\n" -- cat -- | dmenu -p " ")" || exit "130"
-xdotool type -- "${emoji%%,*}"
