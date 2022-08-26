@@ -37,9 +37,9 @@ SAVEHIST="1024"
 
 autoload "vcs_info" && precmd() { vcs_info; }
 zstyle ":vcs_info:*" check-for-changes "true"
-zstyle ":vcs_info:*" formats " %F{magenta}%K{magenta}%F{black}  %b %k%F{magenta}"
-zstyle ":vcs_info:*" actionformats " %F{magenta}%K{magenta}%F{black}  %b %K{yellow}%F{magenta}%F{black}  %a %k%F{yellow}"
-PS1=$'\n'"%F{blue}%K{blue}%F{black}  %c %(?.%K{green}.%K{red})%F{blue}%F{black} %(?.. %?) %k%(?.%F{green}.%F{red})%f%k\$vcs_info_msg_0_%f%k "
+zstyle ":vcs_info:*" formats "-%F{magenta}%K{magenta}%F{black}  %b %k%F{magenta}"
+zstyle ":vcs_info:*" actionformats "-%F{magenta}%K{magenta}%F{black}  %b %K{yellow}%F{magenta}%F{black}  %a %k%F{yellow}"
+PS1=$'\n'"%F{blue}%K{blue}%F{black}  %~ %(?.%K{green}.%K{red})%F{blue}%F{black} %(?.. %?) %k%(?.%F{green}.%F{red})%f%k\$vcs_info_msg_0_%f%k "
 RPS1=""
 
 zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
