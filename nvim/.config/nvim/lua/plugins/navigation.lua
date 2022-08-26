@@ -92,7 +92,7 @@ tree.setup({
   },
 })
 
-vim.keymap.set("n", "<c-_>", vim.get_hof(tree.toggle))
+vim.keymap.set("n", "<c-/>", vim.get_hof(tree.toggle))
 
 telescope.setup({
   defaults = themes.get_dropdown(),
