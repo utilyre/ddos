@@ -10,7 +10,6 @@ lxsession &
 sxhkd &
 picom --experimental-backends &
 wali &
-current &
 lemonblocks &
 
 bspwm
