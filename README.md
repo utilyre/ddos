@@ -9,6 +9,7 @@ My personal archlinux setup.
 - bspwm
 - git
 - jq
+- kitty
 - lxsession-gtk3
 - mediainfo
 - mpv
@@ -44,11 +45,10 @@ My personal archlinux setup.
 
 - [utilyre/dmenu](https://github.com/utilyre/dmenu)
 - [utilyre/herbe](https://github.com/utilyre/herbe)
-- [utilyre/st](https://github.com/utilyre/st)
 
 ## 🚦 Installation
 
-**NOTE:** Make sure you have all the dependencies installed.
+**NOTE**: Make sure you have all the dependencies installed.
 
 Clone the repo
 

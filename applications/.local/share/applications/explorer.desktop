@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Explorer
-Exec=st -e cough -- %f
+Exec=kitty -e cough -- %f
 NoDisplay=true

@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Terminal
-Exec=st
+Exec=kitty
 NoDisplay=true
