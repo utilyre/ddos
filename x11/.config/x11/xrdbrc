@@ -13,17 +13,6 @@ herbe.border_color: WHITE
 herbe.pos_x: 24
 herbe.pos_y: 48
 
-st.background: BLACK
-st.foreground: WHITE
-st.black: BLACK
-st.red: RED
-st.green: GREEN
-st.yellow: YELLOW
-st.blue: BLUE
-st.magenta: MAGENTA
-st.cyan: CYAN
-st.white: WHITE
-
 dmenu.background_nrm: BLACK
 dmenu.foreground_nrm: WHITE
 dmenu.background_sel: BLUE
