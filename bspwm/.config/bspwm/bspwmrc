@@ -7,6 +7,7 @@ bspc config initial_polarity "second_child"
 bspc config focus_follows_pointer "true"
 
 bspc config window_gap "4"
+bspc config border_width "0"
 
 bspc subscribe "desktop_focus" "node_transfer" "node_remove" "node_add" |
 	while read -r _; do
