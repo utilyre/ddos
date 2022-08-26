@@ -1,0 +1,12 @@
+#!/bin/sh
+
+[ "$#" -eq "0" ] && {
+	printf -- "Cord"
+	exit "0"
+}
+
+for supply in "$@"; do
+	printf -- "%s%% (%s)\n" \
+		"$(cat -- "$supply/capacity")" \
+		"$(cat -- "$supply/status")"
+done

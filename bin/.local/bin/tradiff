@@ -2,12 +2,12 @@
 
 mkdir --parents -- "$TRADIFF_RUNTIME"
 
-for net in "$@"; do
-	nets="$nets:$(realpath -- "$net")"
-	current="$(($current + $(cat -- "$net")))"
+for network in "$@"; do
+	networks="$networks:$network"
+	current="$(($current + $(cat -- "$network")))"
 done
 
-export TRADIFF_TMP="$TRADIFF_RUNTIME/$(printf -- "%s\n" "$nets" | base64 --wrap="0")"
+export TRADIFF_TMP="$TRADIFF_RUNTIME/$(printf -- "%s\n" "$networks" | base64 --wrap="0")"
 previous="$(cat -- "$TRADIFF_TMP" || printf -- "0\n")"
 
 printf -- "%d\n" "$current" > "$TRADIFF_TMP"

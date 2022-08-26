@@ -22,17 +22,17 @@ clock() {
 
 traffic() {
 	printf -- " %s/s  %s/s\n" \
-		"$(tradiff "/sys/class/net"/[ew]*/"statistics/rx_bytes")" \
-		"$(tradiff "/sys/class/net"/[ew]*/"statistics/tx_bytes")"
+		"$(find "/sys/class/net/" -type "l" -name "[ew]*" -printf "%p/statistics/rx_bytes\n" | xargs --delimiter="\n" -- tradiff)" \
+		"$(find "/sys/class/net/" -type "l" -name "[ew]*" -printf "%p/statistics/rx_bytes\n" | xargs --delimiter="\n" -- tradiff)"
 }
 
 connection() {
-	grep --quiet -- "up" "/sys/class/net"/e*/"operstate" && {
+	find "/sys/class/net/" -type "l" -name "e*" -printf "%p/operstate\n" | xargs --delimiter="\n" -- grep --quiet -- "up" && {
 		printf -- " Wired\n"
 		return
 	}
 
-	grep --quiet -- "up" "/sys/class/net"/w*/"operstate" && {
+	find "/sys/class/net" -type "l" -name "w*" -printf "%p/operstate\n" | xargs --delimiter="\n" -- grep --quiet -- "up" && {
 		printf -- " %s%%\n" "$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")"
 		return
 	}
@@ -46,12 +46,14 @@ volume() {
 		"$(voltage --device="source" get)"
 }
 
-memory() {
-	free --human | awk -- "(\$1 == \"Mem:\") { print \" \" \$4 }"
+battery() {
+	printf -- " %s\n" "$(find "/sys/class/power_supply/" -type "l" -name "BAT*" | xargs --delimiter="\n" -- tesla | tr -- "\n" " ")"
 }
 
-temperature() {
-	printf -- " %d°C\n" "$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
+system() {
+	printf -- " %s  %s°C\n" \
+		"$(free --human | awk -- "(\$1 == \"Mem:\") { print \$4 }")" \
+		"$(sensors -j | jq --raw-output ".\"coretemp-isa-0000\".\"Package id 0\".temp1_input")"
 }
 
 trap -- "unset desktops" "USR1"
@@ -65,11 +67,11 @@ while true; do
 	[ -z "$traffic" ] || [ "$(($timestamp % 1))" -eq "0" ] && traffic="$(traffic)"
 	[ -z "$connection" ] || [ "$(($timestamp % 15))" -eq "0" ] && connection="$(connection)"
 	[ -z "$volume" ] || [ "$(($timestamp % 5))" -eq "0" ] && volume="$(volume)"
-	[ -z "$memory" ] || [ "$(($timestamp % 30))" -eq "0" ] && memory="$(memory)"
-	[ -z "$temperature" ] || [ "$(($timestamp % 10))" -eq "0" ] && temperature="$(temperature)"
+	[ -z "$battery" ] || [ "$(($timestamp % 30))" -eq "0" ] && battery="$(battery)"
+	[ -z "$system" ] || [ "$(($timestamp % 10))" -eq "0" ] && system="$(system)"
 
 	printf -- "%%{l} %s %%{c} %s %%{r} %s \n" \
 		"$desktops" \
 		"$clock" \
-		"$traffic    $connection    $volume    $memory    $temperature"
+		"$traffic    $connection    $volume    $battery    $system"
 done
