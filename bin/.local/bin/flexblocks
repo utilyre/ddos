@@ -33,7 +33,9 @@ connection() {
 	}
 
 	find "/sys/class/net" -type "l" -name "w*" -printf "%p/operstate\n" | xargs --delimiter="\n" -- grep --quiet -- "up" && {
-		printf -- " %s%%\n" "$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")"
+		printf -- " %s (%s%%)\n" \
+			"$(nmcli --terse --fields "NAME" connection show --active | head --lines="1")" \
+			"$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")"
 		return
 	}
 

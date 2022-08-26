@@ -6,7 +6,7 @@
 }
 
 for supply in "$@"; do
-	printf -- "%s%% (%s)\n" \
-		"$(cat -- "$supply/capacity")" \
-		"$(cat -- "$supply/status")"
+	printf -- "%s (%s%%)\n" \
+		"$(cat -- "$supply/status")" \
+		"$(cat -- "$supply/capacity")"
 done
