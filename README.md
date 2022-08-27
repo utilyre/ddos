@@ -9,6 +9,7 @@ My personal archlinux setup.
 - bspwm
 - dunst
 - git
+- gtk2
 - jq
 - kitty
 - lxsession-gtk3
