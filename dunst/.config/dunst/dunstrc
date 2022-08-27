@@ -1,0 +1,10 @@
+[global]
+background = "#1d1d1daa"
+foreground = "#d4d4d4ff"
+follow = "mouse"
+font = "monospace 10"
+width = "360"
+height = "64"
+offset = "24x48"
+gap_size = "8"
+frame_width = "0"
