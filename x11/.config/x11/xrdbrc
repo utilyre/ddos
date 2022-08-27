@@ -7,12 +7,6 @@
 #define CYAN #7dcfff
 #define WHITE #c0caf5
 
-herbe.background_color: BLACK
-herbe.font_color: WHITE
-herbe.border_color: WHITE
-herbe.pos_x: 24
-herbe.pos_y: 48
-
 dmenu.background_nrm: BLACK
 dmenu.foreground_nrm: WHITE
 dmenu.background_sel: BLUE

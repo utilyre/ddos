@@ -7,6 +7,7 @@ My personal archlinux setup.
 ### Official Repos
 
 - bspwm
+- dunst
 - git
 - jq
 - kitty
@@ -44,7 +45,6 @@ My personal archlinux setup.
 ### GitHub
 
 - [utilyre/dmenu](https://github.com/utilyre/dmenu)
-- [utilyre/herbe](https://github.com/utilyre/herbe)
 
 ## 🚦 Installation
 

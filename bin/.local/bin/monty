@@ -9,7 +9,7 @@ case "$(printf -- "%s\n" "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umou
 		mkdir --parents -- "$target"
 		pkexec mount -- "$source" "$target" || exit "130"
 
-		herbe " Monty" "Mounted \"$source\" on \"$(printf -- "%s\n" "$target" | sed -- "s|^$HOME|~|")\"." &
+		notify-send "Monty" "Mounted \"$source\" on \"$(printf -- "%s\n" "$target" | sed -- "s|^$HOME|~|")\"."
 		;;
 	"umount")
 		source="${disk%% *}"
@@ -18,6 +18,6 @@ case "$(printf -- "%s\n" "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umou
 		pkexec umount -- "$source" || exit "130"
 		rmdir -- "$target"
 
-		herbe " Monty" "Unmounted \"$source\"." &
+		notify-send "Monty" "Unmounted \"$source\"."
 		;;
 esac

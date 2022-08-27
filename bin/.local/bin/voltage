@@ -24,11 +24,11 @@ case "$1" in
 		;;
 	"switch")
 		pactl set-default-"$device" "$2" || exit "1"
-		herbe " Voltage" "Set default \"$device\" to \"$2\"." &
+		notify-send "Voltage" "Set default $device to \"$2\"."
 		;;
 	"toggle")
 		pactl set-"$device"-mute "$default" "toggle" || exit "1"
-		herbe " Voltage" "Toggled \"$device\" mute." &
+		notify-send "Voltage" "Toggled $device mute."
 		;;
 	"down") pactl set-"$device"-volume "$default" "-2%" ;;
 	"up") pactl set-"$device"-volume "$default" "+2%" ;;
