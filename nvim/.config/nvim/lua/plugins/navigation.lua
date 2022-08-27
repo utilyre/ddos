@@ -44,11 +44,18 @@ tree.setup({
     vim.keymap.set("n", "a", vim.get_hof(api.fs.create), { buffer = bufnr })
   end,
   git = {
+    enable = true,
     ignore = false,
   },
   diagnostics = {
     enable = true,
     show_on_dirs = true,
+    icons = {
+      error = _G.icons.diagnostic.Error,
+      warning = _G.icons.diagnostic.Warn,
+      hint = _G.icons.diagnostic.Hint,
+      info = _G.icons.diagnostic.Info,
+    },
   },
   view = {
     hide_root_folder = true,
