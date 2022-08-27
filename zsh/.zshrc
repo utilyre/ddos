@@ -32,8 +32,8 @@ setopt promptsubst
 setopt nolisttypes
 setopt interactivecomments
 
-HISTSIZE="1024"
-SAVEHIST="1024"
+HISTSIZE="2048"
+SAVEHIST="2048"
 
 autoload "vcs_info" && precmd() { vcs_info; }
 zstyle ":vcs_info:*" check-for-changes "true"
