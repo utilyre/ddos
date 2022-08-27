@@ -24,7 +24,7 @@ case "$1" in
 		;;
 	"switch")
 		pactl set-default-"$device" "$2" || exit "1"
-		notify-send "Voltage" "Set default $device to \"$2\"."
+		notify-send "Voltage" "Set default $device to $2."
 		;;
 	"toggle")
 		pactl set-"$device"-mute "$default" "toggle" || exit "1"
