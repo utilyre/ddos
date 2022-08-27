@@ -3,11 +3,11 @@
 mkdir --parents -- "$GUARD_DATA"
 
 case "$1" in
-	"init") printf -- "%s" "$2" > "$GUARD_DATA/.id" ;;
-	"add") gpg --recipient="$(cat -- "$GUARD_DATA/.id")" --armor --encrypt - < "/dev/stdin" > "$GUARD_DATA/$2" ;;
+	"init") printf -- "%s" "$2" > "$GUARD_STATE" ;;
+	"add") gpg --recipient="$(cat -- "$GUARD_STATE")" --armor --encrypt - < "/dev/stdin" > "$GUARD_DATA/$2" ;;
 	"generate") tr --delete --complement -- "A-Za-z0-9" < "/dev/urandom" | head --bytes="32" | guard add "$2" ;;
 	"menu")
-		name="$(find "$GUARD_DATA" -type "f" -not -name ".*" -printf "%f\n" | dmenu -p " ")" || exit "130"
+		name="$(find "$GUARD_DATA" -type "f" -name "*" -printf "%f\n" | dmenu -p " ")" || exit "130"
 		password="$(gpg --decrypt -- "$GUARD_DATA/$name")" || exit "130"
 
 		herbe " Guard" "Copied \"$name\" password to clipboard for 10s." &
