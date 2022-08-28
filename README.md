@@ -12,6 +12,7 @@ My personal archlinux setup.
 - gtk2
 - jq
 - kitty
+- libnotify
 - lxsession-gtk3
 - mediainfo
 - mpv
