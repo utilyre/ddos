@@ -73,7 +73,10 @@ local toggle_name = function(name)
 end
 
 vim.keymap.set({ "n", "t" }, "<c-\\>", function()
-  if _G.lastname == nil then return end
+  if _G.lastname == nil then
+    return
+  end
+
   toggle_name(_G.lastname)
 end)
 vim.keymap.set("n", "\\a", vim.get_hof(toggle_name, "a"))

@@ -36,7 +36,7 @@ tree.setup({
   view = {
     hide_root_folder = true,
     width = 40,
-    float= {
+    float = {
       enable = true,
     },
   },
@@ -44,7 +44,7 @@ tree.setup({
     group_empty = true,
     symlink_destination = false,
     indent_markers = {
-      enable = true
+      enable = true,
     },
     icons = {
       git_placement = "after",

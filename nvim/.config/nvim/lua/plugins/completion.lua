@@ -4,7 +4,9 @@ local cmp = require("cmp")
 
 cmp.setup({
   snippet = {
-    expand = function(a) luasnip.lsp_expand(a.body) end
+    expand = function(a)
+      luasnip.lsp_expand(a.body)
+    end,
   },
   experimental = {
     ghost_text = true,
@@ -59,7 +61,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s" })
+    end, { "i", "s" }),
   },
 })
 

@@ -92,18 +92,19 @@ lualine.setup({
     lualine_y = {
       {
         function()
-          local names = vim.tbl_unique(vim.tbl_insert(
-            vim.tbl_map(function(client)
-              if client.name == "null-ls" then return end
-              return client.name
-            end, vim.lsp.buf_get_clients()),
+          local clients = vim.tbl_map(function(client)
+            return client.name
+          end, vim.lsp.buf_get_clients())
+
+          vim.tbl_remove(clients, "null-ls")
+          vim.tbl_insert(
+            clients,
             unpack(vim.tbl_map(function(client)
               return client.name
             end, sources.get_available(vim.bo.filetype)))
-          ))
+          )
 
-          if #names == 0 then return "" end
-          return table.concat(names, " ")
+          return table.concat(vim.tbl_unique(clients), " ")
         end,
       },
     },

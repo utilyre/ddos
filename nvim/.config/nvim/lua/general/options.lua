@@ -46,9 +46,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = "options",
-  callback = function() vim.opt.timeout = true end,
+  callback = function()
+    vim.opt.timeout = true
+  end,
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
   group = "options",
-  callback = function() vim.opt.timeout = false end,
+  callback = function()
+    vim.opt.timeout = false
+  end,
 })

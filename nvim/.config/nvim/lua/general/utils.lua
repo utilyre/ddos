@@ -18,6 +18,7 @@ vim.tbl_remove = function(tbl, value)
   for i, element in ipairs(tbl) do
     if element == value then
       table.remove(tbl, i)
+      break
     end
   end
 
@@ -27,7 +28,10 @@ end
 vim.tbl_unique = function(tbl)
   local hash = {}
   for i, element in ipairs(tbl) do
-    if hash[element] then table.remove(tbl, i) end
+    if hash[element] then
+      table.remove(tbl, i)
+    end
+
     hash[element] = true
   end
 
