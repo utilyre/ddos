@@ -1,32 +1,8 @@
-local bufferline = require("bufferline")
 local tree = require("nvim-tree")
 local api = require("nvim-tree.api")
 local telescope = require("telescope")
 local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
-
-bufferline.setup({
-  options = {
-    persist_buffer_sort = false,
-    show_close_icon = false,
-    show_buffer_close_icons = false,
-    modified_icon = _G.icons.ui.Modified,
-    left_trunc_marker = _G.icons.ui.TruncLeft,
-    right_trunc_marker = _G.icons.ui.TruncRight,
-    custom_areas = {
-      right = function()
-        local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
-        return {
-          { text = _G.lastname or "" },
-          { text = table.concat(names) },
-        }
-      end,
-    },
-  },
-})
-
-vim.keymap.set("n", "<s-h>", vim.get_hof(bufferline.cycle, -1))
-vim.keymap.set("n", "<s-l>", vim.get_hof(bufferline.cycle, 1))
 
 tree.setup({
   hijack_cursor = true,
