@@ -22,7 +22,7 @@ vim.diagnostic.config({
   },
 })
 
-local attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
   end
@@ -58,12 +58,8 @@ local get_servers = function()
 
   local servers = {}
   for server, options in pairs(config.servers) do
-    options.config.on_attach = function(client, bufnr)
-      client.server_capabilities = vim.tbl_deep_extend("force", client.server_capabilities, options.capabilities)
-      attach(client, bufnr)
-    end
-
-    servers[server] = options.config
+    options.on_attach = on_attach
+    servers[server] = options
   end
   return servers
 end
@@ -86,17 +82,17 @@ local get_sources = function()
   local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
 
   local sources = {}
-  for source, options in pairs(config.sources) do
-    for i, method in ipairs(options.methods) do
-      table.insert(sources, null.builtins[method][source].with(options.config))
-    end
+  for linter, options in pairs(config.linters) do
+    table.insert(sources, null.builtins.diagnostics[linter].with(options))
+    table.insert(sources, null.builtins.code_actions[linter].with(options))
+  end
+  for formatter, options in pairs(config.formatters) do
+    table.insert(sources, null.builtins.formatting[formatter].with(options))
   end
   return sources
 end
 
 null.setup({
   sources = get_sources(),
-  on_attach = function(client, bufnr)
-    attach(client, bufnr)
-  end,
+  on_attach = on_attach,
 })
