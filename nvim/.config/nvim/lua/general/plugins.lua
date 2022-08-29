@@ -40,7 +40,7 @@ _G.plugins = {
   "folke/twilight.nvim",
 
   "l3mon4d3/luasnip",
-  "utilyre/spoon.nvim",
+  "rafamadriz/friendly-snippets",
 
   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   "williamboman/mason-lspconfig.nvim",
