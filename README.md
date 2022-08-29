@@ -67,6 +67,6 @@ sudo usermod --shell="/bin/zsh" -- "$USER"
 Create symbolic links of the configurations
 
 ```bash
-stow --target="$HOME" */ # everything
-stow --target="$HOME" DIR # only DIR
+stow --no-folding --target="$HOME" */ # everything
+stow --no-folding --target="$HOME" [DIR] # only [DIR]
 ```

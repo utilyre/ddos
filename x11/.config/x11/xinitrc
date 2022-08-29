@@ -1,6 +1,6 @@
 #!/bin/sh
 
-eval "$(cat -- "$DISPLAY_CONFIG")"
+. -- "$XPROFILE_CONFIG"
 
 xset r rate "200" "30"
 xsetroot -cursor_name "left_ptr"

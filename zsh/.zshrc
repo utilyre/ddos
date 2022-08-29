@@ -6,7 +6,7 @@ zuse() {
 	dest="$ZSH_DATA/${repo##*/}"
 
 	[ ! -d "$dest" ] && git clone --depth="1" -- "https://github.com/$repo.git" "$dest"
-	source -- "$dest/${1##*:}"
+	. -- "$dest/${1##*:}"
 }
 
 lf() {
