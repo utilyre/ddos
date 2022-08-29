@@ -7,6 +7,7 @@ My personal archlinux setup.
 ### Official Repos
 
 - bspwm
+- dmenu
 - dunst
 - git
 - gtk2
@@ -43,10 +44,6 @@ My personal archlinux setup.
 - dragon-drop
 - lemonbar-xft-git
 - lf-bin
-
-### GitHub
-
-- [utilyre/dmenu](https://github.com/utilyre/dmenu)
 
 ## 🚦 Installation
 
