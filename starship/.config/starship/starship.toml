@@ -1,0 +1,6 @@
+[directory]
+style = "bold blue"
+
+[sudo]
+disabled = false
+style = "bold cyan"
