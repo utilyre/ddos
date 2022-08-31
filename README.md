@@ -23,6 +23,7 @@ My personal archlinux setup.
 - polkit
 - pulseaudio
 - ripgrep
+- starship
 - stow
 - sxhkd
 - sxiv
