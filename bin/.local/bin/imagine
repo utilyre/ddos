@@ -2,9 +2,9 @@
 
 url="$(xsel --clipboard --output)"
 
-notify-send "Imagine" "Fething data for \"$url\"."
+notify-send "Imagine" "Fething data for $url"
 formats="$(youtube-dl --list-formats -- "$url")" || {
-	notify-send "Imagine" "Couldn't find the video."
+	notify-send "Imagine" "Couldn't find the video"
 	exit "1"
 }
 

@@ -10,7 +10,7 @@ case "$1" in
 		name="$(find "$GUARD_DATA" -type "f" -name "*" -printf "%f\n" | dmenu -p " ")" || exit "130"
 		password="$(gpg --decrypt -- "$GUARD_DATA/$name")" || exit "130"
 
-		notify-send "Guard" "Copied $name password to clipboard for 10s."
+		notify-send "Guard" "Copied $name password to clipboard for 10s"
 		printf -- "%s" "$password" | xsel --clipboard --selectionTimeout "10000"
 		;;
 esac
