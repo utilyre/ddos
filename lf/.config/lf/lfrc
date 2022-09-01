@@ -21,4 +21,3 @@ map x :delete
 map a push %mk<space>
 map gw &wali "$f"
 map gd &printf "%s\n" "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact --and-exit
-map gD &printf "%s\n" "$fx" | xargs --delimiter="\n" dragon-drop --on-top --all-compact
