@@ -20,4 +20,4 @@ map c :rename
 map x :delete
 map a push %mk<space>
 map gw &wali "$f"
-map gp &printf "%s\n" "$fx" | tr -- "\n" "\0" | xargs --null -- dragon-drop --and-exit --on-top
+map gp &printf "%s\n" "$fx" | tr -- "\n" "\0" | xargs --null -- dragon-drop --and-exit --on-top --all-compact
