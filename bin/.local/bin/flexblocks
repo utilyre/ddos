@@ -22,17 +22,17 @@ clock() {
 
 traffic() {
 	printf -- " %s/s  %s/s\n" \
-		"$(find "/sys/class/net/" -type "l" -name "[ew]*" -printf "%p/statistics/rx_bytes\n" | xargs --delimiter="\n" -- tradiff)" \
-		"$(find "/sys/class/net/" -type "l" -name "[ew]*" -printf "%p/statistics/rx_bytes\n" | xargs --delimiter="\n" -- tradiff)"
+		"$(find "/sys/class/net/" -type "l" -name "[ew]*" -printf "%p/statistics/rx_bytes\0" | xargs --null -- tradiff)" \
+		"$(find "/sys/class/net/" -type "l" -name "[ew]*" -printf "%p/statistics/tx_bytes\0" | xargs --null -- tradiff)"
 }
 
 connection() {
-	find "/sys/class/net/" -type "l" -name "e*" -printf "%p/operstate\n" | xargs --delimiter="\n" -- grep --quiet -- "up" && {
+	find "/sys/class/net/" -type "l" -name "e*" -printf "%p/operstate\0" | xargs --null -- grep --quiet -- "up" && {
 		printf -- " Wired\n"
 		return
 	}
 
-	find "/sys/class/net" -type "l" -name "w*" -printf "%p/operstate\n" | xargs --delimiter="\n" -- grep --quiet -- "up" && {
+	find "/sys/class/net" -type "l" -name "w*" -printf "%p/operstate\0" | xargs --null -- grep --quiet -- "up" && {
 		printf -- " %s (%s%%)\n" \
 			"$(nmcli --terse --fields "NAME" connection show --active | head --lines="1")" \
 			"$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")"
@@ -43,9 +43,13 @@ connection() {
 }
 
 volume() {
-	printf -- " %s  %s\n" \
-		"$(voltage --device="sink" get)" \
-		"$(voltage --device="source" get)"
+	voltage --device="sink" get > "/dev/null" &&
+		printf -- " %s " "$(voltage --device="sink" get)" ||
+		printf -- " "
+
+	voltage --device="source" get > "/dev/null" &&
+		printf -- " %s\n" "$(voltage --device="source" get)" ||
+		printf -- "\n"
 }
 
 battery() {
