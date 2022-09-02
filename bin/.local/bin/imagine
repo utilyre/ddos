@@ -8,5 +8,5 @@ formats="$(youtube-dl --list-formats -- "$url")" || {
 	exit "1"
 }
 
-format="$(printf -- "%s\n" "$formats" | awk -- "(\$0 !~ /\[.+\]/) { print \$1 \" \" \$2 \" \" \$3 }" | column --table | dmenu -p " ")" || exit "130"
+format="$(printf -- "%s\n" "$formats" | awk -- "(\$0 !~ /\[.+\]/) { print \$1 \" \" \$2 \" \" \$3 }" | tail --lines="+2" | column --table | dmenu -p " ")" || exit "130"
 mpv --ytdl-format="$(printf -- "%s\n" "$format" | cut --delimiter=" " --fields="1" | paste --delimiter="+" --serial)" -- "$url"
