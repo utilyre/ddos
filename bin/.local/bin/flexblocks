@@ -53,7 +53,15 @@ volume() {
 }
 
 battery() {
-	printf -- " %s\n" "$(find "/sys/class/power_supply/" -type "l" -name "BAT*" -printf "%p\0" | xargs --null -- tesla | tr -- "\n" " ")"
+	supply="$(find "/sys/class/power_supply/" -type "l" -name "BAT*" -quit -printf "%p\0")"
+	[ -z "$supply" ] && {
+		printf -- " Cord"
+		return
+	}
+
+	printf -- " %s (%s%%)\n" \
+		"$(cat -- "$supply/status")" \
+		"$(cat -- "$supply/capacity")"
 }
 
 system() {
