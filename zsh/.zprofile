@@ -35,7 +35,7 @@ export PAGER="less --use-color --raw-control-chars --color=\"P+kg\" --color=\"S+
 export EDITOR="rvim"
 
 export LS_COLORS="no=0;37:fi=0;37:ex=0;32:so=0;35:do=0;35:pi=0;33:ln=0;36:or=0;31:mi=0;31:di=1;34:tw=1;32:ow=1;32:st=1;32:cd=1;33:bd=1;37"
-export LF_ICONS="no=:fi=:ex=:so=:do=:pi=:ln=:or=:mi=:di=:tw=:ow=:st=:cd=:bd="
+export LF_ICONS="no=:fi=:ex=:so=:do=:pi=:ln=:or=:mi=:di=:tw=:ow=:st=:cd=:bd="
 
 printenv --null | awk --assign="RS=\0" --assign="ORS=\0" --assign="FS==" -- "(\$1 ~ /^XDG_.+_HOME\$/) { print \$2 }" | xargs --null -- mkdir --parents --
 startx "$XINIT_CONFIG"

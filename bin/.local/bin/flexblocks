@@ -28,18 +28,18 @@ traffic() {
 
 connection() {
 	find "/sys/class/net/" -type "l" -name "e*" -printf "%p/operstate\0" | xargs --null -- grep --quiet -- "up" && {
-		printf -- " Wired\n"
+		printf -- " Wired\n"
 		return
 	}
 
 	find "/sys/class/net" -type "l" -name "w*" -printf "%p/operstate\0" | xargs --null -- grep --quiet -- "up" && {
 		printf -- " %s (%s%%)\n" \
-			"$(nmcli --terse --fields "NAME" connection show --active | head --lines="1")" \
+			"$(nmcli --terse --fields "NAME" connection show | head --lines="1")" \
 			"$(awk -- "(NR == 3) { print int(\$3) }" "/proc/net/wireless")"
 		return
 	}
 
-	printf -- " Broken\n"
+	printf -- " Disconnected\n"
 }
 
 volume() {
@@ -55,7 +55,7 @@ volume() {
 battery() {
 	supply="$(find "/sys/class/power_supply/" -type "l" -name "BAT*" -quit -printf "%p\0")"
 	[ -z "$supply" ] && {
-		printf -- " Cord"
+		printf -- " Cord\n"
 		return
 	}
 
