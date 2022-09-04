@@ -20,6 +20,7 @@ treesitter.setup({
 
 context.setup({
   max_lines = 1,
+  trim_scope = "inner",
 })
 
 twilight.setup({
