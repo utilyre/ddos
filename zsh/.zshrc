@@ -23,8 +23,6 @@ alias ls="ls --color=\"auto\" --group-directories-first --human-readable"
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
-alias g="git"
-alias v="rvim"
 
 setopt appendhistory
 setopt histignorealldups
@@ -35,7 +33,7 @@ setopt interactivecomments
 HISTSIZE="2048"
 SAVEHIST="2048"
 
-eval "$(starship init zsh)"
+eval "$(starship init "zsh")"
 RPS1=""
 
 zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
