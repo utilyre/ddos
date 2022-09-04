@@ -1,0 +1,5 @@
+[options]
+overlay_font = monospace:10
+background = 24283b
+overlay_background_color = 24283b
+overlay_text_color = c0caf5

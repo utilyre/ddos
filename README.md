@@ -11,6 +11,7 @@ My personal archlinux setup.
 - dunst
 - git
 - gtk2
+- imv
 - jq
 - kitty
 - libnotify
@@ -26,7 +27,6 @@ My personal archlinux setup.
 - starship
 - stow
 - sxhkd
-- sxiv
 - ueberzug
 - xdotool
 - xorg-server
