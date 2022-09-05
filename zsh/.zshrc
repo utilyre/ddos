@@ -30,8 +30,8 @@ setopt promptsubst
 setopt nolisttypes
 setopt interactivecomments
 
-HISTSIZE="2048"
-SAVEHIST="2048"
+HISTSIZE="4096"
+SAVEHIST="4096"
 
 eval "$(starship init "zsh")"
 RPS1=""
