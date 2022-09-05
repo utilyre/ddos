@@ -28,7 +28,7 @@ traffic() {
 
 connection() {
 	find "/sys/class/net/" -type "l" -name "e*" -printf "%p/operstate\0" | xargs --null -- grep --quiet -- "up" && {
-		printf -- " Wired\n"
+		printf -- "\n"
 		return
 	}
 
@@ -39,7 +39,7 @@ connection() {
 		return
 	}
 
-	printf -- " Disconnected\n"
+	printf -- "\n"
 }
 
 volume() {
@@ -55,7 +55,7 @@ volume() {
 battery() {
 	supply="$(find "/sys/class/power_supply/" -type "l" -name "BAT*" -quit -printf "%p\0")"
 	[ -z "$supply" ] && {
-		printf -- " Cord\n"
+		printf -- "\n"
 		return
 	}
 
