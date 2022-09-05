@@ -27,6 +27,7 @@ dressing.setup({
   },
   select = {
     enabled = true,
+    backend = { "telescope" },
   },
 })
 
@@ -74,11 +75,12 @@ end
 
 vim.keymap.set({ "n", "t" }, "<c-\\>", function()
   if _G.lastname == nil then
-    return
+    _G.lastname = "\\"
   end
 
   toggle_name(_G.lastname)
 end)
+vim.keymap.set("n", "\\\\", vim.get_hof(toggle_name, "\\"))
 vim.keymap.set("n", "\\a", vim.get_hof(toggle_name, "a"))
 vim.keymap.set("n", "\\b", vim.get_hof(toggle_name, "b"))
 vim.keymap.set("n", "\\c", vim.get_hof(toggle_name, "c"))
