@@ -43,7 +43,6 @@ _G.plugins = {
   "rafamadriz/friendly-snippets",
 
   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
   "smiteshp/nvim-navic",

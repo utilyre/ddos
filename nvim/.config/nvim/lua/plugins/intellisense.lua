@@ -1,5 +1,4 @@
 local lines = require("lsp_lines")
-local mason = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local null = require("null-ls")
 local navic = require("nvim-navic")
@@ -67,10 +66,6 @@ local get_servers = function()
 
   return servers
 end
-
-mason.setup({
-  automatic_installation = true,
-})
 
 for server, config in pairs(get_servers()) do
   lspconfig[server].setup(config)
