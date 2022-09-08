@@ -1,5 +1,6 @@
 local lines = require("lsp_lines")
 local lspconfig = require("lspconfig")
+local completion = require("cmp_nvim_lsp")
 local null = require("null-ls")
 local navic = require("nvim-navic")
 
@@ -60,6 +61,7 @@ local get_servers = function()
   local servers = {}
 
   for server, options in pairs(config.servers) do
+    options.capabilities = completion.update_capabilities(vim.lsp.protocol.make_client_capabilities())
     options.on_attach = on_attach
     servers[server] = options
   end
