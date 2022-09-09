@@ -80,10 +80,10 @@ lualine.setup({
         "diagnostics",
         update_in_insert = true,
         symbols = {
+          hint = _G.icons.diagnostic.Suggestion .. " ",
+          info = _G.icons.diagnostic.Information .. " ",
+          warn = _G.icons.diagnostic.Warning .. " ",
           error = _G.icons.diagnostic.Error .. " ",
-          warn = _G.icons.diagnostic.Warn .. " ",
-          hint = _G.icons.diagnostic.Hint .. " ",
-          info = _G.icons.diagnostic.Info .. " ",
         },
       },
     },

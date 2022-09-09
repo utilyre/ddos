@@ -27,10 +27,10 @@ tree.setup({
     enable = true,
     show_on_dirs = true,
     icons = {
+      hint = _G.icons.diagnostic.Suggestion,
+      info = _G.icons.diagnostic.Information,
+      warning = _G.icons.diagnostic.Warning,
       error = _G.icons.diagnostic.Error,
-      warning = _G.icons.diagnostic.Warn,
-      hint = _G.icons.diagnostic.Hint,
-      info = _G.icons.diagnostic.Info,
     },
   },
   view = {

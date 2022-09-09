@@ -9,9 +9,9 @@ notify.setup({
   stages = "fade",
   background_colour = "NormalFloat",
   icons = {
+    INFO = _G.icons.diagnostic.Information,
+    WARN = _G.icons.diagnostic.Warning,
     ERROR = _G.icons.diagnostic.Error,
-    WARN = _G.icons.diagnostic.Warn,
-    INFO = _G.icons.diagnostic.Info,
   },
 })
 

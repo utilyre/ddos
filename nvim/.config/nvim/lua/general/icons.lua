@@ -29,10 +29,10 @@ _G.icons = {
     Ignored = "#",
   },
   diagnostic = {
-    Error = "",
-    Warn = "",
-    Hint = "",
-    Info = "",
+    Suggestion = "",
+    Information = "",
+    Warning = "",
+    Error = "",
   },
   kind = {
     File = "",

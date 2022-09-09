@@ -14,10 +14,10 @@ vim.diagnostic.config({
   },
   signs = {
     active = {
+      vim.api.nvim_create_sign("DiagnosticSignHint", _G.icons.diagnostic.Suggestion),
+      vim.api.nvim_create_sign("DiagnosticSignInfo", _G.icons.diagnostic.Information),
+      vim.api.nvim_create_sign("DiagnosticSignWarn", _G.icons.diagnostic.Warning),
       vim.api.nvim_create_sign("DiagnosticSignError", _G.icons.diagnostic.Error),
-      vim.api.nvim_create_sign("DiagnosticSignWarn", _G.icons.diagnostic.Warn),
-      vim.api.nvim_create_sign("DiagnosticSignHint", _G.icons.diagnostic.Hint),
-      vim.api.nvim_create_sign("DiagnosticSignInfo", _G.icons.diagnostic.Info),
     },
   },
 })
