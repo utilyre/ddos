@@ -1,5 +1,6 @@
 [global]
 follow = mouse
+notification_limit = 4
 enable_recursive_icon_lookup = true
 font = monospace 10
 width = 360
