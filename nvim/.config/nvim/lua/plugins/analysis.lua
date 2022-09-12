@@ -1,5 +1,4 @@
 local treesitter = require("nvim-treesitter.configs")
-local context = require("treesitter-context")
 local twilight = require("twilight")
 
 treesitter.setup({
@@ -16,11 +15,6 @@ treesitter.setup({
   autotag = {
     enable = true,
   },
-})
-
-context.setup({
-  max_lines = 1,
-  trim_scope = "inner",
 })
 
 twilight.setup({
