@@ -35,9 +35,13 @@ tree.setup({
   },
   view = {
     hide_root_folder = true,
-    width = 40,
     float = {
       enable = true,
+      open_win_config = {
+        width = 40,
+        height = 40,
+        row = (vim.api.nvim_win_get_height(0) / 2) - 20,
+      },
     },
   },
   renderer = {
