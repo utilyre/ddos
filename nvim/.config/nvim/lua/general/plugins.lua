@@ -18,13 +18,11 @@ _G.plugins = {
   "nvim-lua/popup.nvim",
   "rcarriga/nvim-notify",
   "stevearc/dressing.nvim",
+  "lewis6991/gitsigns.nvim",
   "lukas-reineke/indent-blankline.nvim",
   "windwp/nvim-autopairs",
   "numtostr/comment.nvim",
   "numtostr/fterm.nvim",
-
-  "ahmedkhalf/project.nvim",
-  "lewis6991/gitsigns.nvim",
 
   "akinsho/bufferline.nvim",
   "kyazdani42/nvim-tree.lua",
