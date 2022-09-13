@@ -33,7 +33,5 @@ super + y
 	yank
 super + g
 	guard menu
-super + o
-	omegalul
 super + i
 	imagine
