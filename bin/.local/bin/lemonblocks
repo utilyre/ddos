@@ -6,4 +6,19 @@ flexblocks | lemonbar \
 	-u "2" \
 	-B "#aa1d1d1d" \
 	-F "#ffd4d4d4" \
-	-U "#ffd4d4d4" | sh
+	-U "#ffd4d4d4" | sh &
+
+sleep -- "1s"
+
+trayer \
+  --monitor "primary" \
+	--edge "top" \
+	--align "right" \
+	--widthtype "pixel" \
+	--heighttype "pixel" \
+	--width "96" \
+	--height "24" \
+	--expand "false" \
+	--transparent "true" \
+	--alpha "85" \
+	--tint "0x1d1d1d" &

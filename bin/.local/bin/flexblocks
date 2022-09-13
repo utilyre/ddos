@@ -87,5 +87,5 @@ while true; do
 	printf -- "%%{l} %s %%{c} %s %%{r} %s \n" \
 		"$desktops" \
 		"$clock" \
-		"$traffic    $connection    $volume    $battery    $system"
+		"$traffic    $connection    $volume    $battery    $system                "
 done

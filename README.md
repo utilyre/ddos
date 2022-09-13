@@ -28,6 +28,7 @@ My personal archlinux setup.
 - starship
 - stow
 - sxhkd
+- trayer
 - ueberzug
 - wmctrl
 - xdotool
