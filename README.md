@@ -6,7 +6,7 @@ My personal archlinux setup.
 
 ### Official Repos
 
-- adapta-gtk-theme
+- arc-solid-gtk-theme
 - bspwm
 - dmenu
 - dunst
