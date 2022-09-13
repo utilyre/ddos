@@ -8,9 +8,14 @@ height = 64
 offset = 24x48
 frame_width = 0
 separator_height = 1
-background = "#1d1d1daa"
 foreground = "#d4d4d4ff"
 separator_color = "#d4d4d4ff"
 
-[urgency]
+[urgency_low]
+background = "#1d1d1daa"
+
+[urgency_normal]
+background = "#1d1d1daa"
+
+[urgency_critical]
 background = "#cc2200aa"
