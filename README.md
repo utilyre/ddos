@@ -29,6 +29,7 @@ My personal archlinux setup.
 - stow
 - sxhkd
 - ueberzug
+- wmctrl
 - xdotool
 - xorg-server
 - xorg-xinit

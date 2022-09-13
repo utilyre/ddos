@@ -11,3 +11,6 @@ separator_height = 1
 background = "#1d1d1daa"
 foreground = "#d4d4d4ff"
 separator_color = "#d4d4d4ff"
+
+[urgency]
+background = "#cc2200aa"
