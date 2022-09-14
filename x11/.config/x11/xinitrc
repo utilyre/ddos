@@ -9,7 +9,7 @@ lxsession &
 sxhkd &
 wali &
 picom --experimental-backends &
-lemonblocks &
+limonade &
 dunst &
 
 bspwm
