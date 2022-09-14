@@ -22,35 +22,6 @@ vim.diagnostic.config({
   },
 })
 
-local on_attach = function(client, bufnr)
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
-  end
-
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_create_augroup("lsp", { clear = false })
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      group = "lsp",
-      buffer = bufnr,
-      callback = vim.get_hof(vim.lsp.buf.document_highlight),
-    })
-    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-      group = "lsp",
-      buffer = bufnr,
-      callback = vim.get_hof(vim.lsp.buf.clear_references),
-    })
-  end
-
-  vim.keymap.set("n", "<leader>id", vim.get_hof(vim.lsp.buf.definition), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ir", vim.get_hof(vim.lsp.buf.references), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ia", vim.get_hof(vim.lsp.buf.code_action), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>if", vim.get_hof(vim.lsp.buf.format, { async = true }), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ic", vim.get_hof(vim.lsp.buf.rename), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ii", vim.get_hof(vim.lsp.buf.hover), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ik", vim.get_hof(vim.diagnostic.goto_prev, { float = false }), { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next, { float = false }), { buffer = bufnr })
-end
-
 local get_servers = function()
   local config_path = os.getenv("MASON_CONFIG")
   if vim.fn.filereadable(config_path) == 0 then
@@ -62,7 +33,6 @@ local get_servers = function()
 
   for server, options in pairs(config.servers) do
     options.capabilities = completion.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    options.on_attach = on_attach
     servers[server] = options
   end
 
@@ -99,5 +69,39 @@ end
 
 null.setup({
   sources = get_sources(),
-  on_attach = on_attach,
+})
+
+vim.api.nvim_create_augroup("lsp", {})
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = "lsp",
+  callback = function(a)
+    local client = vim.lsp.get_client_by_id(a.data.client_id)
+
+    if client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, a.buf)
+    end
+
+    if client.server_capabilities.documentHighlightProvider then
+      vim.api.nvim_create_augroup("highlight", { clear = false })
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        group = "highlight",
+        buffer = a.buf,
+        callback = vim.get_hof(vim.lsp.buf.document_highlight),
+      })
+      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+        group = "highlight",
+        buffer = a.buf,
+        callback = vim.get_hof(vim.lsp.buf.clear_references),
+      })
+    end
+
+    vim.keymap.set("n", "<leader>id", vim.get_hof(vim.lsp.buf.definition), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>ir", vim.get_hof(vim.lsp.buf.references), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>ia", vim.get_hof(vim.lsp.buf.code_action), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>if", vim.get_hof(vim.lsp.buf.format, { async = true }), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>ic", vim.get_hof(vim.lsp.buf.rename), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>ii", vim.get_hof(vim.lsp.buf.hover), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>ik", vim.get_hof(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
+  end;
 })
