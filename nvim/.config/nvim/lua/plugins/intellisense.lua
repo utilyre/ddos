@@ -3,6 +3,7 @@ local lspconfig = require("lspconfig")
 local completion = require("cmp_nvim_lsp")
 local null = require("null-ls")
 local navic = require("nvim-navic")
+local illuminate = require("illuminate")
 
 lines.setup()
 
@@ -71,6 +72,10 @@ null.setup({
   sources = get_sources(),
 })
 
+illuminate.configure({
+  providers = { "lsp" },
+})
+
 vim.api.nvim_create_augroup("lsp", {})
 vim.api.nvim_create_autocmd("LspAttach", {
   group = "lsp",
@@ -82,17 +87,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     if client.server_capabilities.documentHighlightProvider then
-      vim.api.nvim_create_augroup("highlight", { clear = false })
-      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-        group = "highlight",
-        buffer = a.buf,
-        callback = vim.get_hof(vim.lsp.buf.document_highlight),
-      })
-      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-        group = "highlight",
-        buffer = a.buf,
-        callback = vim.get_hof(vim.lsp.buf.clear_references),
-      })
+      illuminate.on_attach(client, a.buf)
     end
 
     vim.keymap.set("n", "<leader>id", vim.get_hof(vim.lsp.buf.definition), { buffer = a.buf })

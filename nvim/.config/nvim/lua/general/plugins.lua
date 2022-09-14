@@ -43,6 +43,7 @@ _G.plugins = {
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
   "smiteshp/nvim-navic",
+  "rrethy/vim-illuminate",
 
   "hrsh7th/nvim-cmp",
   "saadparwaiz1/cmp_luasnip",
