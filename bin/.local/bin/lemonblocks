@@ -16,9 +16,14 @@ trayer \
 	--align "right" \
 	--widthtype "pixel" \
 	--heighttype "pixel" \
-	--width "96" \
+	--width "116" \
 	--height "24" \
 	--expand "false" \
 	--transparent "true" \
 	--alpha "85" \
 	--tint "0x1d1d1d" &
+
+bspc subscribe "desktop_focus" "node_transfer" "node_remove" "node_add" |
+	while read -r _; do
+		killall --signal="USR1" -- "flexblocks"
+	done &
