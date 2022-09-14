@@ -36,10 +36,6 @@ SAVEHIST="4096"
 eval "$(starship init "zsh")"
 RPS1=""
 
-zuse "marzocchi/zsh-notify:notify.plugin.zsh"
-zstyle ":notify:*" success-title "Job took #{time_elapsed}"
-zstyle ":notify:*" error-title "Job wasted #{time_elapsed} and failed"
-
 zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
 autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
 zmodload "zsh/complist"
