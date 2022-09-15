@@ -3,6 +3,7 @@
 flexblocks | lemonbar \
 	-g "$(xrandr | awk --assign="FS=[x ]" -- "(\$0 ~ /*/) { print \$4 }")x24+0+0" \
 	-f "monospace:size=10" \
+	-f "Symbols Nerd Font:size=10" \
 	-u "2" \
 	-B "#aa1d1d1d" \
 	-F "#ffd4d4d4" \
