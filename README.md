@@ -30,7 +30,6 @@ My personal archlinux setup.
 - sxhkd
 - trayer
 - ueberzug
-- wmctrl
 - xdotool
 - xorg-server
 - xorg-xinit
