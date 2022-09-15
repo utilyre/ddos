@@ -20,6 +20,7 @@ My personal archlinux setup.
 - mediainfo
 - mpv
 - neovim
+- noto-fonts-emoji
 - picom
 - playerctl
 - polkit
@@ -29,6 +30,9 @@ My personal archlinux setup.
 - stow
 - sxhkd
 - trayer
+- ttf-cascadia-code
+- ttf-dejavu
+- ttf-nerd-fonts-symbols-2048-em
 - ueberzug
 - xdotool
 - xorg-server
