@@ -9,17 +9,10 @@ super + {_,shift} + {h,l}
 
 XF86AudioMute
 	pactl set-sink-mute "$(pactl get-default-sink)" "toggle"
-XF86AudioLowerVolume
-	pactl set-sink-volume "$(pactl get-default-sink)" "-2%"
-XF86AudioRaiseVolume
-	pactl set-sink-volume "$(pactl get-default-sink)" "+2%"
-
-XF86AudioPlay
-	playerctl play-pause
-XF86AudioPrev
-	playerctl previous
-XF86AudioNext
-	playerctl next
+XF86Audio{LowerVolume,RaiseVolume}
+	pactl set-sink-volume "$(pactl get-default-sink)" "{-2%,+2%}"
+XF86Audio{Play,Prev,Next}
+	playerctl {play-pause,previous,next}
 
 super + Return
 	gtk-launch terminal
