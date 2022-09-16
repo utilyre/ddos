@@ -16,11 +16,6 @@ done
 
 default="$(pactl get-default-"$device")"
 case "$1" in
-	"get")
-		[ "$(pactl get-"$device"-mute "$default")" = "Mute: yes" ] && exit "1"
-		pactl get-"$device"-volume "$default" | awk -- "(NR == 1) { print \$5 }"
-		exit "0"
-		;;
 	"switch")
 		pactl set-default-"$device" "$2" || exit "1"
 		notify-send "Voltage" "Set default $device to $2"
@@ -32,5 +27,3 @@ case "$1" in
 	"down") pactl set-"$device"-volume "$default" "-2%" ;;
 	"up") pactl set-"$device"-volume "$default" "+2%" ;;
 esac
-
-killall --signal="USR2" -- "flexblocks"

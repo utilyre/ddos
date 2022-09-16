@@ -13,7 +13,6 @@ My personal archlinux setup.
 - git
 - gtk2
 - imv
-- jq
 - kitty
 - libnotify
 - lxsession-gtk3
@@ -24,17 +23,16 @@ My personal archlinux setup.
 - picom
 - playerctl
 - polkit
+- polybar
 - pulseaudio
 - ripgrep
 - starship
 - stow
 - sxhkd
-- trayer
 - ttf-cascadia-code
 - ttf-dejavu
 - ttf-nerd-fonts-symbols-2048-em
 - ueberzug
-- xdotool
 - xorg-server
 - xorg-xinit
 - xorg-xrandr
@@ -49,7 +47,6 @@ My personal archlinux setup.
 
 - brave-bin
 - dragon-drop
-- lemonbar-xft-git
 - lf-bin
 
 ## 🚦 Installation
