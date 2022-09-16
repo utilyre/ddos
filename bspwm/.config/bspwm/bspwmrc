@@ -6,5 +6,5 @@ bspc config automatic_scheme "alternate"
 bspc config initial_polarity "second_child"
 bspc config focus_follows_pointer "true"
 
-bspc config window_gap "8"
+bspc config window_gap "4"
 bspc config border_width "0"
