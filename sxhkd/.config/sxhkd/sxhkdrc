@@ -7,12 +7,19 @@ super + {_,shift} + {k,j}
 super + {_,shift} + {h,l}
 	bspc {desktop --focus,node --to-desktop} "{prev,next}"
 
-super + {_,shift} + {1,2,3,4,5,6,7,8,9,0}
-	voltage --device="{sink,source}" switch -- "{0,1,2,3,4,5,6,7,8,9}"
-super + {_,shift} + {BackSpace,minus,equal}
-	voltage --device="{sink,source}" {toggle,down,up}
-super + {slash,comma,period}
-	playerctl {play-pause,previous,next}
+XF86AudioMute
+	pactl set-sink-mute "$(pactl get-default-sink)" "toggle"
+XF86AudioLowerVolume
+	pactl set-sink-volume "$(pactl get-default-sink)" "-2%"
+XF86AudioRaiseVolume
+	pactl set-sink-volume "$(pactl get-default-sink)" "+2%"
+
+XF86AudioPlay
+	playerctl play-pause
+XF86AudioPrev
+	playerctl previous
+XF86AudioNext
+	playerctl next
 
 super + Return
 	gtk-launch terminal
