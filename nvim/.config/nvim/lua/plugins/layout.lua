@@ -1,3 +1,4 @@
+local tokyonight = require("lualine.themes.tokyonight")
 local bufferline = require("bufferline")
 local barbecue = require("barbecue")
 local lualine = require("lualine")
@@ -60,10 +61,19 @@ barbecue.setup({
 lualine.setup({
   options = {
     globalstatus = true,
+    component_separators = _G.icons.ui.ComponentSeparator,
     section_separators = {
       left = _G.icons.ui.SectionRight,
       right = _G.icons.ui.SectionLeft,
     },
+    theme = vim.tbl_deep_extend("force", tokyonight, {
+      normal = {
+        c = { bg = "none" },
+      },
+      inactive = {
+        c = { bg = "none" },
+      },
+    }),
   },
   sections = {
     lualine_a = {
@@ -76,6 +86,18 @@ lualine.setup({
       },
     },
     lualine_b = {
+      {
+        "branch",
+      },
+      {
+        "diff",
+        colored = false,
+        symbols = {
+          added = _G.icons.git.Added,
+          modified = _G.icons.git.Modified,
+          removed = _G.icons.git.Deleted,
+        },
+      },
       {
         "diagnostics",
         update_in_insert = true,
@@ -106,6 +128,9 @@ lualine.setup({
 
           return table.concat(vim.tbl_unique(clients), " ")
         end,
+      },
+      {
+        "filetype",
       },
     },
     lualine_z = {

@@ -8,6 +8,7 @@ _G.icons = {
     TruncRight = "",
     Collapsed = "",
     Expanded = "",
+    ComponentSeparator = "·",
     SectionLeft = "",
     SectionRight = "",
   },
