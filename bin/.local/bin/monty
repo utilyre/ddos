@@ -1,23 +1,20 @@
 #!/bin/sh
 
-disk="$(lsblk --raw --path --output="type,name,fstype,size,mountpoint" | awk -- "(\$1 == \"part\") { print \$2 \" \" \$3 \" \" \$4 \" \" \$5 }" | column --table | dmenu -p " ")" || exit "130"
+disk="$(lsblk --raw --path --output="type,name,fstype,size,mountpoint" | awk -- "(\$1 == \"part\") { print \$2 \" \" \$3 \" \" \$4 \" \" \$5 }" | column --table | dmenu -p "Monty")" || exit "130"
+origin="${disk%% *}"
+target="$XDG_PUBLIC_HOME/$(basename -- "$origin")"
+
 case "$(printf -- "%s\n" "$disk" | awk -- "{ print (NF < 4) ? \"mount\" : \"umount\" }")" in
 	"mount")
-		origin="${disk%% *}"
-		target="$XDG_PUBLIC_HOME/$(basename -- "$origin")"
-
 		mkdir --parents -- "$target"
 		pkexec mount -- "$origin" "$target" || exit "130"
 
-		notify-send "Monty" "Mounted $origin on $(printf -- "%s\n" "$target" | sed -- "s|^$HOME|~|")"
+		notify-send -- "Monty" "Mounted $origin on $target"
 		;;
 	"umount")
-		origin="${disk%% *}"
-		target="$XDG_PUBLIC_HOME/$(basename -- "$origin")"
-
 		pkexec umount -- "$origin" || exit "130"
 		rmdir -- "$target"
 
-		notify-send "Monty" "Unmounted $origin"
+		notify-send -- "Monty" "Unmounted $origin"
 		;;
 esac

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-action="$(printf -- "%s\n" "Sleep" "Restart" "Shutdown" | dmenu -p " ")" || exit "130"
+action="$(printf -- "%s\n" "Sleep" "Restart" "Shutdown" | dmenu -p "Xenon")" || exit "130"
 case "$action" in
 	"Sleep") systemctl suspend ;;
 	"Restart") systemctl reboot ;;

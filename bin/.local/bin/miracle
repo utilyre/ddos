@@ -3,4 +3,4 @@
 [ "$#" -eq "0" ] && exit "2"
 
 for country in "$@"; do countries="$countries&country=$country"; done
-curl --request "GET" -- "https://archlinux.org/mirrorlist/?protocol=https&ip_version=4$countries" | sed --regexp-extended -- "s/^#(#?.*)/\1/"
+curl -- "https://archlinux.org/mirrorlist/?protocol=https&ip_version=4$countries" | sed --regexp-extended -- "s/^#(#?.*)/\1/"

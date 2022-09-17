@@ -4,10 +4,9 @@ mkdir --parents -- "$LF_RUNTIME"
 
 export LF_TMP="$LF_RUNTIME/$$.fifo"
 mkfifo -- "$LF_TMP"
-
 ueberzug layer --silent < "$LF_TMP" &
 exec 3> "$LF_TMP"
-lf "$@" 3>&-
 
+lf "$@"
 exec 3>&-
 rm -- "$LF_TMP"
