@@ -1,12 +1,12 @@
 #!/bin/sh
 
-mkdir --parents -- "$LF_RUNTIME"
+mkdir --parents -- "$COUGH_RUNTIME"
 
-export LF_TMP="$LF_RUNTIME/$$.fifo"
-mkfifo -- "$LF_TMP"
-ueberzug layer --silent < "$LF_TMP" &
-exec 3> "$LF_TMP"
+export COUGH_TMP="$COUGH_RUNTIME/$$.fifo"
+mkfifo -- "$COUGH_TMP"
+ueberzug layer --silent < "$COUGH_TMP" &
+exec 3> "$COUGH_TMP"
 
 lf "$@"
 exec 3>&-
-rm -- "$LF_TMP"
+rm -- "$COUGH_TMP"

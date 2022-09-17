@@ -1,11 +1,11 @@
 #!/bin/sh
 
-mkdir --parents -- "$LF_CACHE"
+mkdir --parents -- "$COUGH_CACHE"
 
 case "$(file --brief --mime-type -- "$1")" in
 	"text/"*) cat -- "$1" | fold --width="$(($2 - 3))" ;;
 	"audio/"* | "image/"* | "video/"*)
-		thumbnail="$LF_CACHE/$(printf -- "%s:%s\n" "$1" "$(stat --format="%Y" -- "$1")" | base64 --wrap="0").png"
+		thumbnail="$COUGH_CACHE/$(printf -- "%s:%s\n" "$1" "$(stat --format="%Y" -- "$1")" | base64 --wrap="0").png"
 		[ ! -f "$thumbnail" ] && {
 			ffmpeg -i "$1" -frames:v "1" -filter:v "scale=512:-1" -- "$thumbnail" || {
 				mediainfo -- "$1" | fold --width="$(($2 - 3))"
@@ -13,7 +13,7 @@ case "$(file --brief --mime-type -- "$1")" in
 			}
 		}
 
-		printf -- "{ \"action\": \"add\", \"identifier\": \"cough\", \"path\": \"%s\", \"x\": \"%d\", \"y\": \"%d\", \"width\": \"%d\", \"height\": \"%d\" }\n" "$thumbnail" "$(($4 + 1))" "$5" "$(($2 - 2))" "$3" > "$LF_TMP"
+		printf -- "{ \"action\": \"add\", \"identifier\": \"cough\", \"path\": \"%s\", \"x\": \"%d\", \"y\": \"%d\", \"width\": \"%d\", \"height\": \"%d\" }\n" "$thumbnail" "$(($4 + 1))" "$5" "$(($2 - 2))" "$3" > "$COUGH_TMP"
 		exit "1"
 		;;
 	*) file --brief -- "$1" | fold --width="$(($2 - 3))" ;;

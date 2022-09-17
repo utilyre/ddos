@@ -1,11 +1,11 @@
 #!/bin/sh
 
-mkdir --parents -- "$NVIM_RUNTIME"
+mkdir --parents -- "$RVIM_RUNTIME"
 
-[ -n "$NVIM_TMP" ] && {
-	nvim --server "$NVIM_TMP" --remote-wait "$@"
+[ -n "$RVIM_TMP" ] && {
+	nvim --server "$RVIM_TMP" --remote-wait "$@"
 	exit "0"
 }
 
-export NVIM_TMP="$NVIM_RUNTIME/$$.sock"
-nvim --listen "$NVIM_TMP" "$@"
+export RVIM_TMP="$RVIM_RUNTIME/$$.sock"
+nvim --listen "$RVIM_TMP" "$@"
