@@ -16,8 +16,10 @@ bufferline.setup({
       right = function()
         local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
         return {
-          { text = _G.lastname or "" },
           { text = table.concat(names) },
+          { text = " " },
+          { text = _G.lastname },
+          { text = "  " },
         }
       end,
     },
