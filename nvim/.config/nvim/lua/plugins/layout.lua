@@ -63,7 +63,7 @@ barbecue.setup({
 lualine.setup({
   options = {
     globalstatus = true,
-    component_separators = _G.icons.ui.ComponentSeparator,
+    component_separators = _G.icons.ui.Separator,
     section_separators = {
       left = _G.icons.ui.SectionRight,
       right = _G.icons.ui.SectionLeft,
