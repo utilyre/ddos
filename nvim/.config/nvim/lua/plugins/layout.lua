@@ -1,4 +1,4 @@
-local tokyonight = require("lualine.themes.tokyonight")
+local theme = require("lualine.themes.auto")
 local bufferline = require("bufferline")
 local barbecue = require("barbecue")
 local lualine = require("lualine")
@@ -66,11 +66,8 @@ lualine.setup({
       left = _G.icons.ui.SectionRight,
       right = _G.icons.ui.SectionLeft,
     },
-    theme = vim.tbl_deep_extend("force", tokyonight, {
+    theme = vim.tbl_deep_extend("force", theme, {
       normal = {
-        c = { bg = "none" },
-      },
-      inactive = {
         c = { bg = "none" },
       },
     }),
