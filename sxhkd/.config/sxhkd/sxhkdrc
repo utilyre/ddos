@@ -10,7 +10,7 @@ super + {_,shift} + {h,l}
 XF86AudioMute
 	pactl set-sink-mute "$(pactl get-default-sink)" "toggle"
 XF86Audio{LowerVolume,RaiseVolume}
-	pactl set-sink-volume "$(pactl get-default-sink)" "{-2%,+2%}"
+	pactl set-sink-volume "$(pactl get-default-sink)" "{-1%,+1%}"
 XF86Audio{Play,Prev,Next}
 	playerctl {play-pause,previous,next}
 
