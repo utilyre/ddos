@@ -2,10 +2,24 @@
 
 mkdir --parents -- "$GUARD_DATA"
 
+create() {
+	printf -- "%s" "$2" | gpg --recipient="$(cat -- "$GUARD_STATE")" --armor --encrypt - < "/dev/stdin" > "$GUARD_DATA/$1"
+}
+
 case "$1" in
 	"init") printf -- "%s" "$2" > "$GUARD_STATE" ;;
-	"add") gpg --recipient="$(cat -- "$GUARD_STATE")" --armor --encrypt - < "/dev/stdin" > "$GUARD_DATA/$2" ;;
-	"generate") tr --delete --complement -- "A-Za-z0-9" < "/dev/urandom" | head --bytes="32" | guard add "$2" ;;
+	"generate")
+		password="$(tr --delete --complement -- "A-Za-z0-9" < "/dev/urandom" | head --bytes="32")"
+		create "$2" "$password"
+		;;
+	"add")
+		stty -echo
+		read -p "Password: " password
+		stty echo
+		printf -- "\n"
+
+		create "$2" "$password"
+		;;
 	"menu")
 		name="$(find "$GUARD_DATA" -type "f" -name "*" -printf "%f\n" | dmenu -p "Guard")" || exit "130"
 		password="$(gpg --decrypt -- "$GUARD_DATA/$name")" || exit "130"
