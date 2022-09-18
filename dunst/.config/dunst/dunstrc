@@ -1,5 +1,8 @@
 [global]
 follow = mouse
+mouse_left_click = close_current
+mouse_middle_click = none
+mouse_right_click = do_action
 notification_limit = 4
 enable_recursive_icon_lookup = true
 font = monospace 10
