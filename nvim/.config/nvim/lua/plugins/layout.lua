@@ -1,34 +1,12 @@
-local bufferline = require("bufferline")
 local barbecue = require("barbecue")
 local lualine = require("lualine")
 local sources = require("null-ls.sources")
 
-bufferline.setup({
-  options = {
-    persist_buffer_sort = false,
-    show_close_icon = false,
-    show_buffer_close_icons = false,
-    modified_icon = _G.icons.ui.Modified,
-    left_trunc_marker = _G.icons.ui.TruncLeft,
-    right_trunc_marker = _G.icons.ui.TruncRight,
-    custom_areas = {
-      right = function()
-        local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
-        return {
-          { text = table.concat(names) },
-          { text = " " },
-          { text = _G.lastname },
-          { text = "  " },
-        }
-      end,
-    },
-  },
-})
-
-vim.keymap.set("n", "<s-h>", vim.get_hof(bufferline.cycle, -1))
-vim.keymap.set("n", "<s-l>", vim.get_hof(bufferline.cycle, 1))
-
 barbecue.setup({
+  custom_section = function()
+    local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
+    return table.concat(names) .. " " .. _G.lastname .. " "
+  end,
   icons = {
     File = _G.icons.kind.File .. " ",
     Package = _G.icons.kind.Folder .. " ",
