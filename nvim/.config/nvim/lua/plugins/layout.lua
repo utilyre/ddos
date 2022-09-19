@@ -4,10 +4,6 @@ local sources = require("null-ls.sources")
 
 barbecue.setup({
   modified_indicator = " " .. _G.icons.ui.Modified,
-  custom_section = function()
-    local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
-    return table.concat(names) .. " " .. _G.lastname .. " "
-  end,
   icons = {
     File = _G.icons.kind.File .. " ",
     Package = _G.icons.kind.Folder .. " ",
@@ -82,7 +78,14 @@ lualine.setup({
       },
     },
     lualine_c = {},
-    lualine_x = {},
+    lualine_x = {
+      {
+        function()
+          local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
+          return (_G.lastname or "") .. "%#Conceal#(" .. table.concat(names, " ") .. ")%*"
+        end,
+      }
+    },
     lualine_y = {
       {
         function()
