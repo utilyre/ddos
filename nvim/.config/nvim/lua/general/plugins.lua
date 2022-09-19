@@ -24,7 +24,6 @@ _G.plugins = {
   "numtostr/comment.nvim",
   "numtostr/fterm.nvim",
 
-  "akinsho/bufferline.nvim",
   "kyazdani42/nvim-tree.lua",
   "nvim-telescope/telescope.nvim",
 

@@ -1,23 +1,8 @@
-local bufferline = require("bufferline")
 local tree = require("nvim-tree")
 local api = require("nvim-tree.api")
 local telescope = require("telescope")
 local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
-
-bufferline.setup({
-  options = {
-    persist_buffer_sort = false,
-    show_close_icon = false,
-    show_buffer_close_icons = false,
-    modified_icon = _G.icons.ui.Modified,
-    left_trunc_marker = _G.icons.ui.TruncLeft,
-    right_trunc_marker = _G.icons.ui.TruncRight,
-  },
-})
-
-vim.keymap.set("n", "<s-h>", vim.get_hof(bufferline.cycle, -1))
-vim.keymap.set("n", "<s-l>", vim.get_hof(bufferline.cycle, 1))
 
 tree.setup({
   hijack_cursor = true,
@@ -100,6 +85,7 @@ telescope.setup({
   defaults = themes.get_dropdown(),
 })
 
+vim.keymap.set("n", "<tab>", vim.get_hof(builtin.buffers))
 vim.keymap.set("n", "<leader>fr", vim.get_hof(builtin.oldfiles))
 vim.keymap.set("n", "<leader>ff", vim.get_hof(builtin.find_files))
 vim.keymap.set("n", "<leader>fa", vim.get_hof(builtin.filetypes))
