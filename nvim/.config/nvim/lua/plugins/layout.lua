@@ -82,7 +82,7 @@ lualine.setup({
       {
         function()
           local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastname)
-          return (_G.lastname or "") .. "%#Conceal#(" .. table.concat(names, " ") .. ")%*"
+          return (_G.lastname or "") .. "%#Conceal#(" .. table.concat(names) .. ")%*"
         end,
       }
     },
