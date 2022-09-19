@@ -3,7 +3,7 @@ local lualine = require("lualine")
 local sources = require("null-ls.sources")
 
 barbecue.setup({
-  modified_indicator = " " .. _G.icons.ui.Modified,
+  modified_indicator = " %#BufferVisibleMod#" .. _G.icons.ui.Modified .. "%*",
   icons = {
     File = _G.icons.kind.File .. " ",
     Package = _G.icons.kind.Folder .. " ",
