@@ -32,7 +32,7 @@ local get_servers = function()
   local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
   local servers = {}
 
-  for server, options in pairs(config.servers) do
+  for server, options in pairs(config.servers or {}) do
     options.capabilities = completion.update_capabilities(vim.lsp.protocol.make_client_capabilities())
     servers[server] = options
   end
@@ -57,11 +57,11 @@ local get_sources = function()
   local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
   local sources = {}
 
-  for linter, options in pairs(config.linters) do
+  for linter, options in pairs(config.linters or {}) do
     table.insert(sources, null.builtins.diagnostics[linter].with(options))
     table.insert(sources, null.builtins.code_actions[linter].with(options))
   end
-  for formatter, options in pairs(config.formatters) do
+  for formatter, options in pairs(config.formatters or {}) do
     table.insert(sources, null.builtins.formatting[formatter].with(options))
   end
 
