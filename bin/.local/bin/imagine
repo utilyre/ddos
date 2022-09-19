@@ -9,4 +9,7 @@ formats="$(youtube-dl --list-formats -- "$url")" || {
 }
 
 format="$(printf -- "%s\n" "$formats" | awk -- "(\$0 !~ /\[.+\]/) { print \$1 \" \" \$2 \" \" \$3 }" | tail --lines="+2" | column --table | dmenu -p "Imagine")" || exit "130"
-mpv --ytdl-format="$(printf -- "%s\n" "$format" | cut --delimiter=" " --fields="1" | paste --delimiter="+" --serial)" -- "$url"
+mpv --ytdl-format="$(printf -- "%s\n" "$format" | cut --delimiter=" " --fields="1" | paste --delimiter="+" --serial)" -- "$url" || {
+	notify-send -- "Imagine" "Couldn't play the video"
+	exit "1"
+}
