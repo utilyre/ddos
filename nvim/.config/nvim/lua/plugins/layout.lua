@@ -46,7 +46,9 @@ lualine.setup({
   sections = {
     lualine_a = {
       {
-        "mode",
+        function()
+          return "code"
+        end,
         separator = {
           left = _G.icons.ui.SectionLeft,
           right = _G.icons.ui.SectionRight,

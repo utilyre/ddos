@@ -38,7 +38,6 @@ _G.plugins = {
   "l3mon4d3/luasnip",
   "rafamadriz/friendly-snippets",
 
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
   "smiteshp/nvim-navic",

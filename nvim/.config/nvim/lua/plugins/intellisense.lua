@@ -1,17 +1,17 @@
-local lines = require("lsp_lines")
 local lspconfig = require("lspconfig")
 local completion = require("cmp_nvim_lsp")
 local null = require("null-ls")
 local navic = require("nvim-navic")
 local illuminate = require("illuminate")
 
-lines.setup()
-
 vim.diagnostic.config({
   update_in_insert = true,
   virtual_text = false,
-  virtual_lines = {
-    only_current_line = true,
+  float = {
+    source = "if_many",
+    border = "rounded",
+    header = "",
+    prefix = "",
   },
   signs = {
     active = {
@@ -96,6 +96,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>if", vim.get_hof(vim.lsp.buf.format, { async = true }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ic", vim.get_hof(vim.lsp.buf.rename), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ii", vim.get_hof(vim.lsp.buf.hover), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>iw", vim.get_hof(vim.diagnostic.open_float), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ik", vim.get_hof(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
   end;
