@@ -6,7 +6,7 @@ require("general.plugins")
 
 require("plugins.package")
 require("plugins.theme")
-require("plugins.core")
+require("plugins.api")
 require("plugins.navigation")
 require("plugins.layout")
 require("plugins.analysis")

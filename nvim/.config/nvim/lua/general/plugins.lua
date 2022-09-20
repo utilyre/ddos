@@ -18,22 +18,22 @@ _G.plugins = {
   "nvim-lua/popup.nvim",
   "rcarriga/nvim-notify",
   "stevearc/dressing.nvim",
-  "lewis6991/gitsigns.nvim",
-  "lukas-reineke/indent-blankline.nvim",
-  "windwp/nvim-autopairs",
-  "numtostr/comment.nvim",
-  "numtostr/fterm.nvim",
 
   "kyazdani42/nvim-tree.lua",
   "nvim-telescope/telescope.nvim",
+  "lewis6991/gitsigns.nvim",
+  "numtostr/fterm.nvim",
 
   "utilyre/barbecue.nvim",
   "nvim-lualine/lualine.nvim",
 
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
-  "windwp/nvim-ts-autotag",
+  "lukas-reineke/indent-blankline.nvim",
   "folke/twilight.nvim",
+  "windwp/nvim-ts-autotag",
+  "windwp/nvim-autopairs",
+  "numtostr/comment.nvim",
 
   "l3mon4d3/luasnip",
   "rafamadriz/friendly-snippets",

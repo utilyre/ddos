@@ -3,6 +3,8 @@ local api = require("nvim-tree.api")
 local telescope = require("telescope")
 local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
+local gitsigns = require("gitsigns")
+local fterm = require("FTerm")
 
 tree.setup({
   hijack_cursor = true,
@@ -91,3 +93,77 @@ vim.keymap.set("n", "<leader>ff", vim.get_hof(builtin.find_files))
 vim.keymap.set("n", "<leader>fa", vim.get_hof(builtin.filetypes))
 vim.keymap.set("n", "<leader>fw", vim.get_hof(builtin.live_grep))
 vim.keymap.set("n", "<leader>fs", vim.get_hof(builtin.lsp_document_symbols))
+
+gitsigns.setup({
+  preview_config = {
+    border = "rounded",
+  },
+  on_attach = function(bufnr)
+    vim.keymap.set("n", "<leader>gd", vim.get_hof(gitsigns.diffthis), { buffer = bufnr })
+    vim.keymap.set("n", "<leader>gp", vim.get_hof(gitsigns.preview_hunk), { buffer = bufnr })
+    vim.keymap.set("n", "<leader>gr", vim.get_hof(gitsigns.reset_hunk), { buffer = bufnr })
+    vim.keymap.set("n", "<leader>ga", vim.get_hof(gitsigns.stage_hunk), { buffer = bufnr })
+    vim.keymap.set("n", "<leader>gu", vim.get_hof(gitsigns.undo_stage_hunk), { buffer = bufnr })
+    vim.keymap.set("n", "<leader>gk", vim.get_hof(gitsigns.prev_hunk), { buffer = bufnr })
+    vim.keymap.set("n", "<leader>gj", vim.get_hof(gitsigns.next_hunk), { buffer = bufnr })
+  end,
+})
+
+_G.terminals = {}
+local toggle_name = function(name)
+  if _G.terminals[name] == nil then
+    _G.terminals[name] = fterm:new({
+      hl = "NormalFloat",
+      border = "rounded",
+      on_exit = function()
+        _G.terminals[name] = nil
+
+        if _G.lastname == name then
+          for i, lastname in ipairs(vim.tbl_keys(_G.terminals)) do
+            _G.lastname = lastname
+            return
+          end
+
+          _G.lastname = nil
+        end
+      end,
+    })
+  end
+
+  _G.lastname = name
+  _G.terminals[name]:toggle()
+end
+
+vim.keymap.set({ "n", "t" }, "<c-\\>", function()
+  if _G.lastname == nil then
+    _G.lastname = "t"
+  end
+
+  toggle_name(_G.lastname)
+end)
+vim.keymap.set("n", "\\a", vim.get_hof(toggle_name, "a"))
+vim.keymap.set("n", "\\b", vim.get_hof(toggle_name, "b"))
+vim.keymap.set("n", "\\c", vim.get_hof(toggle_name, "c"))
+vim.keymap.set("n", "\\d", vim.get_hof(toggle_name, "d"))
+vim.keymap.set("n", "\\e", vim.get_hof(toggle_name, "e"))
+vim.keymap.set("n", "\\f", vim.get_hof(toggle_name, "f"))
+vim.keymap.set("n", "\\g", vim.get_hof(toggle_name, "g"))
+vim.keymap.set("n", "\\h", vim.get_hof(toggle_name, "h"))
+vim.keymap.set("n", "\\i", vim.get_hof(toggle_name, "i"))
+vim.keymap.set("n", "\\j", vim.get_hof(toggle_name, "j"))
+vim.keymap.set("n", "\\k", vim.get_hof(toggle_name, "k"))
+vim.keymap.set("n", "\\l", vim.get_hof(toggle_name, "l"))
+vim.keymap.set("n", "\\m", vim.get_hof(toggle_name, "m"))
+vim.keymap.set("n", "\\n", vim.get_hof(toggle_name, "n"))
+vim.keymap.set("n", "\\o", vim.get_hof(toggle_name, "o"))
+vim.keymap.set("n", "\\p", vim.get_hof(toggle_name, "p"))
+vim.keymap.set("n", "\\q", vim.get_hof(toggle_name, "q"))
+vim.keymap.set("n", "\\r", vim.get_hof(toggle_name, "r"))
+vim.keymap.set("n", "\\s", vim.get_hof(toggle_name, "s"))
+vim.keymap.set("n", "\\t", vim.get_hof(toggle_name, "t"))
+vim.keymap.set("n", "\\u", vim.get_hof(toggle_name, "u"))
+vim.keymap.set("n", "\\v", vim.get_hof(toggle_name, "v"))
+vim.keymap.set("n", "\\w", vim.get_hof(toggle_name, "w"))
+vim.keymap.set("n", "\\x", vim.get_hof(toggle_name, "x"))
+vim.keymap.set("n", "\\y", vim.get_hof(toggle_name, "y"))
+vim.keymap.set("n", "\\z", vim.get_hof(toggle_name, "z"))
