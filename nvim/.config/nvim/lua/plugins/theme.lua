@@ -9,9 +9,6 @@ tokyonight.setup({
   on_colors = function(colors)
     colors.bg_statusline = "none"
   end,
-  on_highlights = function(highlights, colors)
-    highlights.TSProperty.italic = true
-  end,
 })
 
 tokyonight.colorscheme()
