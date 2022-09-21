@@ -19,6 +19,7 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.list = true
 vim.opt.listchars:append("tab:  ,trail:·")
+vim.opt.fillchars:append("eob: ")
 
 vim.opt.showmode = false
 vim.opt.incsearch = true
