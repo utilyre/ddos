@@ -36,7 +36,9 @@ _G.icons = {
   kind = {
     File = "",
     Folder = "",
+    Package = "",
     Module = "",
+    Namespace = "",
     Reference = "",
     Class = "",
     Constructor = "",
@@ -59,12 +61,11 @@ _G.icons = {
     Color = "",
     Snippet = "",
     Text = "",
-  },
-  type = {
     Null = "",
     Boolean = "",
     Number = "",
     String = "",
+    Key = "",
     Array = "",
     Object = "",
   },

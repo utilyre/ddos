@@ -3,35 +3,10 @@ local lualine = require("lualine")
 local sources = require("null-ls.sources")
 
 barbecue.setup({
-  modified_indicator = " %#BufferVisibleMod#" .. _G.icons.ui.Modified .. "%*",
-  icons = {
-    File = _G.icons.kind.File .. " ",
-    Package = _G.icons.kind.Folder .. " ",
-    Module = _G.icons.kind.Module .. " ",
-    Namespace = _G.icons.kind.Module .. " ",
-    Class = _G.icons.kind.Class .. " ",
-    Constructor = _G.icons.kind.Constructor .. " ",
-    Field = _G.icons.kind.Field .. " ",
-    Property = _G.icons.kind.Property .. " ",
-    Method = _G.icons.kind.Method .. " ",
-    Struct = _G.icons.kind.Struct .. " ",
-    Event = _G.icons.kind.Event .. " ",
-    Interface = _G.icons.kind.Interface .. " ",
-    Enum = _G.icons.kind.Enum .. " ",
-    EnumMember = _G.icons.kind.EnumMember .. " ",
-    Constant = _G.icons.kind.Constant .. " ",
-    Function = _G.icons.kind.Function .. " ",
-    TypeParameter = _G.icons.kind.TypeParameter .. " ",
-    Variable = _G.icons.kind.Variable .. " ",
-    Operator = _G.icons.kind.Operator .. " ",
-    Null = _G.icons.type.Null .. " ",
-    Boolean = _G.icons.type.Boolean .. " ",
-    Number = _G.icons.type.Number .. " ",
-    String = _G.icons.type.String .. " ",
-    Key = _G.icons.type.String .. " ",
-    Array = _G.icons.type.Array .. " ",
-    Object = _G.icons.type.Object .. " ",
+  symbols = {
+    modified = "%#BufferVisibleMod#" .. _G.icons.ui.Modified .. "%*",
   },
+  kinds = _G.icons.kind,
 })
 
 lualine.setup({
