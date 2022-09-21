@@ -1,43 +1,53 @@
 local devicons = require("nvim-web-devicons")
+local neodim = require("neodim")
 local tokyonight = require("tokyonight")
+local colors = require("tokyonight.colors")
 
 devicons.setup({
   default = true,
 })
 
+neodim.setup({
+  alpha = 0.6,
+  blend_color = colors.setup().bg,
+  hide = {
+    signs = false,
+  }
+})
+
 tokyonight.setup({
-  on_colors = function(colors)
-    colors.bg_statusline = "none"
+  on_colors = function(c)
+    c.bg_statusline = "none"
   end,
-  on_highlights = function(highlights)
-    highlights.NavicText = { link = "Normal" }
-    highlights.NavicSeparator = { link = "Conceal" }
-    highlights.NavicIconsFile = { link = "CmpItemKindFile" }
-    highlights.NavicIconsPackage = { link = "CmpItemKindFolder" }
-    highlights.NavicIconsModule = { link = "CmpItemKindModule" }
-    highlights.NavicIconsNamespace = { link = "CmpItemKindModule" }
-    highlights.NavicIconsClass = { link = "CmpItemKindClass" }
-    highlights.NavicIconsConstructor = { link = "CmpItemKindConstructor" }
-    highlights.NavicIconsField = { link = "CmpItemKindField" }
-    highlights.NavicIconsProperty = { link = "CmpItemKindProperty" }
-    highlights.NavicIconsMethod = { link = "CmpItemKindMethod" }
-    highlights.NavicIconsStruct = { link = "CmpItemKindStruct" }
-    highlights.NavicIconsEvent = { link = "CmpItemKindEvent" }
-    highlights.NavicIconsInterface = { link = "CmpItemKindInterface" }
-    highlights.NavicIconsEnum = { link = "CmpItemKindEnum" }
-    highlights.NavicIconsEnumMember = { link = "CmpItemKindEnumMember" }
-    highlights.NavicIconsConstant = { link = "CmpItemKindConstant" }
-    highlights.NavicIconsFunction = { link = "CmpItemKindFunction" }
-    highlights.NavicIconsTypeParameter = { link = "CmpItemKindTypeParameter" }
-    highlights.NavicIconsVariable = { link = "CmpItemKindVariable" }
-    highlights.NavicIconsOperator = { link = "CmpItemKindOperator" }
-    highlights.NavicIconsNull = { link = "CmpItemKindValue" }
-    highlights.NavicIconsBoolean = { link = "CmpItemKindValue" }
-    highlights.NavicIconsNumber = { link = "CmpItemKindValue" }
-    highlights.NavicIconsString = { link = "CmpItemKindValue" }
-    highlights.NavicIconsKey = { link = "CmpItemKindValue" }
-    highlights.NavicIconsArray = { link = "CmpItemKindValue" }
-    highlights.NavicIconsObject = { link = "CmpItemKindValue" }
+  on_highlights = function(hl)
+    hl.NavicText = { link = "Normal" }
+    hl.NavicSeparator = { link = "Conceal" }
+    hl.NavicIconsFile = { link = "CmpItemKindFile" }
+    hl.NavicIconsPackage = { link = "CmpItemKindFolder" }
+    hl.NavicIconsModule = { link = "CmpItemKindModule" }
+    hl.NavicIconsNamespace = { link = "CmpItemKindModule" }
+    hl.NavicIconsClass = { link = "CmpItemKindClass" }
+    hl.NavicIconsConstructor = { link = "CmpItemKindConstructor" }
+    hl.NavicIconsField = { link = "CmpItemKindField" }
+    hl.NavicIconsProperty = { link = "CmpItemKindProperty" }
+    hl.NavicIconsMethod = { link = "CmpItemKindMethod" }
+    hl.NavicIconsStruct = { link = "CmpItemKindStruct" }
+    hl.NavicIconsEvent = { link = "CmpItemKindEvent" }
+    hl.NavicIconsInterface = { link = "CmpItemKindInterface" }
+    hl.NavicIconsEnum = { link = "CmpItemKindEnum" }
+    hl.NavicIconsEnumMember = { link = "CmpItemKindEnumMember" }
+    hl.NavicIconsConstant = { link = "CmpItemKindConstant" }
+    hl.NavicIconsFunction = { link = "CmpItemKindFunction" }
+    hl.NavicIconsTypeParameter = { link = "CmpItemKindTypeParameter" }
+    hl.NavicIconsVariable = { link = "CmpItemKindVariable" }
+    hl.NavicIconsOperator = { link = "CmpItemKindOperator" }
+    hl.NavicIconsNull = { link = "CmpItemKindValue" }
+    hl.NavicIconsBoolean = { link = "CmpItemKindValue" }
+    hl.NavicIconsNumber = { link = "CmpItemKindValue" }
+    hl.NavicIconsString = { link = "CmpItemKindValue" }
+    hl.NavicIconsKey = { link = "CmpItemKindValue" }
+    hl.NavicIconsArray = { link = "CmpItemKindValue" }
+    hl.NavicIconsObject = { link = "CmpItemKindValue" }
   end,
 })
 
