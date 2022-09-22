@@ -6,7 +6,7 @@ local navic = require("nvim-navic")
 local illuminate = require("illuminate")
 
 neodim.setup({
-  blend_color = string.format("#%06x", vim.api.nvim_get_hl_by_name("Normal", true).background),
+  blend_color = string.format("#%06x", vim.api.nvim_get_hl_by_name("Normal", true).background or 0),
   hide = {
     signs = false,
   },
