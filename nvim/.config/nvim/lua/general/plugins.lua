@@ -12,7 +12,6 @@ _G.plugins = {
   "williamboman/mason.nvim",
 
   "kyazdani42/nvim-web-devicons",
-  "zbirenbaum/neodim",
   "folke/tokyonight.nvim",
 
   "nvim-lua/plenary.nvim",
@@ -39,6 +38,7 @@ _G.plugins = {
   "l3mon4d3/luasnip",
   "rafamadriz/friendly-snippets",
 
+  "zbirenbaum/neodim",
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
   "smiteshp/nvim-navic",

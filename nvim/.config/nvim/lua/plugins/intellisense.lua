@@ -1,8 +1,16 @@
+local neodim = require("neodim")
 local lspconfig = require("lspconfig")
 local completion = require("cmp_nvim_lsp")
 local null = require("null-ls")
 local navic = require("nvim-navic")
 local illuminate = require("illuminate")
+
+neodim.setup({
+  blend_color = string.format("#%06x", vim.api.nvim_get_hl_by_name("Normal", true).background),
+  hide = {
+    signs = false,
+  },
+})
 
 vim.diagnostic.config({
   update_in_insert = true,

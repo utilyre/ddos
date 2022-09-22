@@ -1,18 +1,8 @@
 local devicons = require("nvim-web-devicons")
-local neodim = require("neodim")
 local tokyonight = require("tokyonight")
-local colors = require("tokyonight.colors")
 
 devicons.setup({
   default = true,
-})
-
-neodim.setup({
-  alpha = 0.6,
-  blend_color = colors.setup().bg,
-  hide = {
-    signs = false,
-  }
 })
 
 tokyonight.setup({
