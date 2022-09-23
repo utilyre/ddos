@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 vim.opt.clipboard = "unnamedplus"
 vim.opt.writebackup = false
 vim.opt.undofile = true
@@ -33,7 +31,6 @@ vim.opt.wrap = false
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-vim.opt.iskeyword:append("-")
 
 vim.api.nvim_create_augroup("options", {})
 vim.api.nvim_create_autocmd("BufEnter", {
