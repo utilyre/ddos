@@ -2,6 +2,7 @@ local tree = require("nvim-tree")
 local api = require("nvim-tree.api")
 local telescope = require("telescope")
 local themes = require("telescope.themes")
+local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local gitsigns = require("gitsigns")
 local fterm = require("FTerm")
@@ -85,6 +86,17 @@ vim.keymap.set("n", "<c-/>", vim.get_hof(tree.toggle))
 
 telescope.setup({
   defaults = themes.get_dropdown(),
+  pickers = {
+    buffers = {
+      ignore_current_buffer = true,
+      initial_mode = "normal",
+      mappings = {
+        n = {
+          dd = actions.delete_buffer,
+        },
+      },
+    },
+  },
 })
 
 vim.keymap.set("n", "<tab>", vim.get_hof(builtin.buffers))
