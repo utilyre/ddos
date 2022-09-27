@@ -3,8 +3,10 @@ local tree = require("nvim-tree")
 local api = require("nvim-tree.api")
 local telescope = require("telescope")
 local themes = require("telescope.themes")
-local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
+local harpoon = require("harpoon")
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
 local gitsigns = require("gitsigns")
 
 _G.terminals = {}
@@ -147,25 +149,18 @@ vim.keymap.set("n", "<c-/>", vim.get_hof(tree.toggle))
 
 telescope.setup({
   defaults = themes.get_dropdown(),
-  pickers = {
-    buffers = {
-      ignore_current_buffer = true,
-      initial_mode = "normal",
-      mappings = {
-        n = {
-          dd = actions.delete_buffer,
-        },
-      },
-    },
-  },
 })
 
-vim.keymap.set("n", "<tab>", vim.get_hof(builtin.buffers))
 vim.keymap.set("n", "<leader>fr", vim.get_hof(builtin.oldfiles))
 vim.keymap.set("n", "<leader>ff", vim.get_hof(builtin.find_files))
 vim.keymap.set("n", "<leader>fa", vim.get_hof(builtin.filetypes))
 vim.keymap.set("n", "<leader>fw", vim.get_hof(builtin.live_grep))
 vim.keymap.set("n", "<leader>fs", vim.get_hof(builtin.lsp_document_symbols))
+
+harpoon.setup()
+
+vim.keymap.set("n", "<cr>", vim.get_hof(mark.add_file))
+vim.keymap.set("n", "<tab>", vim.get_hof(ui.toggle_quick_menu))
 
 gitsigns.setup({
   preview_config = {

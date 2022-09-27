@@ -22,6 +22,7 @@ _G.plugins = {
   "numtostr/fterm.nvim",
   "kyazdani42/nvim-tree.lua",
   "nvim-telescope/telescope.nvim",
+  "theprimeagen/harpoon",
   "lewis6991/gitsigns.nvim",
 
   "utilyre/barbecue.nvim",
