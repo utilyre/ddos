@@ -30,7 +30,6 @@ _G.plugins = {
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "lukas-reineke/indent-blankline.nvim",
-  "folke/twilight.nvim",
   "windwp/nvim-ts-autotag",
   "windwp/nvim-autopairs",
   "numtostr/comment.nvim",
