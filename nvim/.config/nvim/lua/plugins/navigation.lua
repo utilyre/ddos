@@ -5,8 +5,8 @@ local telescope = require("telescope")
 local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
 local harpoon = require("harpoon")
-local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
+local mark = require("harpoon.mark")
 local gitsigns = require("gitsigns")
 
 _G.terminals = {}
@@ -159,8 +159,8 @@ vim.keymap.set("n", "<leader>fs", vim.get_hof(builtin.lsp_document_symbols))
 
 harpoon.setup()
 
-vim.keymap.set("n", "<cr>", vim.get_hof(mark.add_file))
 vim.keymap.set("n", "<tab>", vim.get_hof(ui.toggle_quick_menu))
+vim.keymap.set("n", "<c-m>", vim.get_hof(mark.add_file))
 
 gitsigns.setup({
   preview_config = {
