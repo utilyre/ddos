@@ -22,7 +22,6 @@ My personal archlinux setup.
 - noto-fonts-emoji
 - picom
 - playerctl
-- polkit
 - polybar
 - pulseaudio
 - ripgrep
