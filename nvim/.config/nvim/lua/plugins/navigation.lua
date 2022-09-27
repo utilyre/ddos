@@ -1,3 +1,4 @@
+local fterm = require("FTerm")
 local tree = require("nvim-tree")
 local api = require("nvim-tree.api")
 local telescope = require("telescope")
@@ -5,7 +6,67 @@ local themes = require("telescope.themes")
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local gitsigns = require("gitsigns")
-local fterm = require("FTerm")
+
+_G.terminals = {}
+local toggle_terminal = function(key)
+  if _G.terminals[key] == nil then
+    _G.terminals[key] = fterm:new({
+      hl = "NormalFloat",
+      border = "rounded",
+      on_exit = function()
+        _G.terminals[key] = nil
+
+        local keys = vim.tbl_keys(_G.terminals)
+        if _G.lastkey == key and #keys > 0 then
+          _G.lastkey = keys[1]
+        else
+          _G.lastkey = nil
+        end
+      end,
+    })
+  end
+
+  _G.lastkey = key
+  _G.terminals[key]:toggle()
+end
+
+vim.keymap.set({ "n", "t" }, "<c-\\>", function()
+  if _G.lastkey == nil then
+    _G.lastkey = "t"
+  end
+
+  toggle_terminal(_G.lastkey)
+end)
+for _, key in ipairs({
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+}) do
+  vim.keymap.set("n", "\\" .. key, vim.get_hof(toggle_terminal, key))
+end
 
 tree.setup({
   hijack_cursor = true,
@@ -120,64 +181,3 @@ gitsigns.setup({
     vim.keymap.set("n", "<leader>gj", vim.get_hof(gitsigns.next_hunk), { buffer = bufnr })
   end,
 })
-
-_G.terminals = {}
-local toggle_terminal = function(key)
-  if _G.terminals[key] == nil then
-    _G.terminals[key] = fterm:new({
-      hl = "NormalFloat",
-      border = "rounded",
-      on_exit = function()
-        _G.terminals[key] = nil
-
-        local keys = vim.tbl_keys(_G.terminals)
-        if _G.lastkey == key and #keys > 0 then
-          _G.lastkey = keys[1]
-        else
-          _G.lastkey = nil
-        end
-      end,
-    })
-  end
-
-  _G.lastkey = key
-  _G.terminals[key]:toggle()
-end
-
-vim.keymap.set({ "n", "t" }, "<c-\\>", function()
-  if _G.lastkey == nil then
-    _G.lastkey = "t"
-  end
-
-  toggle_terminal(_G.lastkey)
-end)
-for _, key in ipairs({
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-}) do
-  vim.keymap.set("n", "\\" .. key, vim.get_hof(toggle_terminal, key))
-end

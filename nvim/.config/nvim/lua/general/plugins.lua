@@ -19,10 +19,10 @@ _G.plugins = {
   "rcarriga/nvim-notify",
   "stevearc/dressing.nvim",
 
+  "numtostr/fterm.nvim",
   "kyazdani42/nvim-tree.lua",
   "nvim-telescope/telescope.nvim",
   "lewis6991/gitsigns.nvim",
-  "numtostr/fterm.nvim",
 
   "utilyre/barbecue.nvim",
   "nvim-lualine/lualine.nvim",
