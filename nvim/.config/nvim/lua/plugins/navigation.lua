@@ -157,7 +157,10 @@ vim.keymap.set("n", "<leader>fa", vim.get_hof(builtin.filetypes))
 vim.keymap.set("n", "<leader>fw", vim.get_hof(builtin.live_grep))
 vim.keymap.set("n", "<leader>fs", vim.get_hof(builtin.lsp_document_symbols))
 
-harpoon.setup()
+harpoon.setup({
+  save_on_toggle = true,
+  save_on_change = false,
+})
 
 vim.keymap.set("n", "<tab>", vim.get_hof(ui.toggle_quick_menu))
 vim.keymap.set("n", "<c-m>", vim.get_hof(mark.add_file))
