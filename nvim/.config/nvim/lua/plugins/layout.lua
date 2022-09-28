@@ -68,7 +68,7 @@ lualine.setup({
             return key ~= _G.lastkey
           end, vim.tbl_keys(_G.terminals))
 
-          return (_G.lastkey or "") .. "%#Conceal#(" .. table.concat(names) .. ")"
+          return (_G.lastkey or "") .. "%#Conceal#(" .. table.concat(names) .. ")%1*"
         end,
       },
     },
