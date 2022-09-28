@@ -7,16 +7,18 @@ vim.get_hof = function(fun, ...)
 end
 
 vim.tbl_unique = function(tbl)
+  local flat = vim.tbl_flatten(tbl)
   local hash = {}
-  for i, element in ipairs(tbl) do
-    if hash[element] then
-      table.remove(tbl, i)
+
+  for i, value in ipairs(flat) do
+    if hash[value] then
+      table.remove(flat, i)
     end
 
-    hash[element] = true
+    hash[value] = true
   end
 
-  return tbl
+  return flat
 end
 
 vim.api.nvim_create_sign = function(name, text)
