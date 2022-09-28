@@ -1,5 +1,6 @@
 local barbecue = require("barbecue")
 local lualine = require("lualine")
+local theme = require("lualine.themes.auto")
 local sources = require("null-ls.sources")
 
 barbecue.setup({
@@ -17,6 +18,11 @@ lualine.setup({
       left = _G.icons.ui.SectionRight,
       right = _G.icons.ui.SectionLeft,
     },
+    theme = vim.tbl_deep_extend("force", theme, {
+      normal = {
+        c = { bg = "none" },
+      },
+    }),
   },
   sections = {
     lualine_a = {
@@ -59,9 +65,9 @@ lualine.setup({
       {
         function()
           local names = vim.tbl_remove(vim.tbl_keys(_G.terminals), _G.lastkey)
-          return (_G.lastkey or "") .. "%#Conceal#(" .. table.concat(names) .. ")%*"
+          return (_G.lastkey or "") .. "%#Conceal#(" .. table.concat(names) .. ")"
         end,
-      }
+      },
     },
     lualine_y = {
       {

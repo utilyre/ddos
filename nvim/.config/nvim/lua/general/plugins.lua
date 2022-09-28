@@ -12,7 +12,7 @@ _G.plugins = {
   "williamboman/mason.nvim",
 
   "kyazdani42/nvim-web-devicons",
-  "folke/tokyonight.nvim",
+  "catppuccin/nvim",
 
   "nvim-lua/plenary.nvim",
   "nvim-lua/popup.nvim",
