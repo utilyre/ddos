@@ -107,5 +107,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>iw", vim.get_hof(vim.diagnostic.open_float), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ik", vim.get_hof(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ij", vim.get_hof(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
-  end;
+  end,
 })
