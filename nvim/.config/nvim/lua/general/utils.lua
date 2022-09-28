@@ -6,25 +6,6 @@ vim.get_hof = function(fun, ...)
   end
 end
 
-vim.tbl_insert = function(tbl, ...)
-  for i, element in ipairs({ ... }) do
-    table.insert(tbl, element)
-  end
-
-  return tbl
-end
-
-vim.tbl_remove = function(tbl, value)
-  for i, element in ipairs(tbl) do
-    if element == value then
-      table.remove(tbl, i)
-      break
-    end
-  end
-
-  return tbl
-end
-
 vim.tbl_unique = function(tbl)
   local hash = {}
   for i, element in ipairs(tbl) do
