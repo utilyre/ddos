@@ -2,7 +2,8 @@ local notify = require("notify")
 local dressing = require("dressing")
 
 notify.setup({
-  stages = "fade",
+  stages = "slide",
+  top_down = false,
   background_colour = "NormalFloat",
   icons = {
     INFO = _G.icons.diagnostic.Information,
