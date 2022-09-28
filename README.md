@@ -11,7 +11,6 @@ My personal archlinux setup.
 - dmenu
 - dunst
 - git
-- gtk2
 - imv
 - kitty
 - libnotify
