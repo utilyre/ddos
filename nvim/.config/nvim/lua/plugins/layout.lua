@@ -5,7 +5,7 @@ local sources = require("null-ls.sources")
 
 barbecue.setup({
   symbols = {
-    modified = "%#BufferVisibleMod#" .. _G.icons.ui.Modified .. "%*",
+    modified = "%#BufferMod#" .. _G.icons.ui.Modified .. "%*",
   },
   kinds = _G.icons.kind,
 })
