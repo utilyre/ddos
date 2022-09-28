@@ -12,3 +12,4 @@ catppuccin.setup()
 catppuccin.load()
 
 vim.api.nvim_set_hl(0, "BufferMod", { bg = palette.none, fg = palette.peach })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = palette.none, fg = palette.text })
