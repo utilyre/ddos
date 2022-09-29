@@ -154,6 +154,7 @@ telescope.setup({
   }),
 })
 
+vim.keymap.set("n", "<leader>fh", vim.get_hof(builtin.help_tags))
 vim.keymap.set("n", "<leader>fr", vim.get_hof(builtin.oldfiles))
 vim.keymap.set("n", "<leader>ff", vim.get_hof(builtin.find_files))
 vim.keymap.set("n", "<leader>fa", vim.get_hof(builtin.filetypes))
