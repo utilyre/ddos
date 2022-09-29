@@ -1,13 +1,27 @@
 local barbecue = require("barbecue")
+local fidget = require("fidget")
 local lualine = require("lualine")
 local theme = require("lualine.themes.auto")
 local sources = require("null-ls.sources")
 
 barbecue.setup({
   symbols = {
-    modified = "%#BufferMod#" .. _G.icons.ui.Modified .. "%*",
+    modified = "%#BufferMod#" .. _G.icons.ui.Modified,
   },
   kinds = _G.icons.kind,
+})
+
+fidget.setup({
+  timer = {
+    spinner_rate = 60,
+  },
+  fmt = {
+    stack_upwards = false,
+  },
+  text = {
+    spinner = "arc",
+    done = _G.icons.ui.Ready,
+  },
 })
 
 lualine.setup({
@@ -68,7 +82,7 @@ lualine.setup({
             return key ~= _G.lastkey
           end, vim.tbl_keys(_G.terminals))
 
-          return (_G.lastkey or "") .. "%#Conceal#(" .. table.concat(names) .. ")%1*"
+          return (_G.lastkey or "") .. "%#Conceal#(" .. table.concat(names) .. ")"
         end,
       },
     },

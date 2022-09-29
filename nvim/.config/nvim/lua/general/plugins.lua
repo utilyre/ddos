@@ -26,6 +26,7 @@ _G.plugins = {
   "lewis6991/gitsigns.nvim",
 
   "utilyre/barbecue.nvim",
+  "j-hui/fidget.nvim",
   "nvim-lualine/lualine.nvim",
 
   "nvim-treesitter/nvim-treesitter",

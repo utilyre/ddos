@@ -3,6 +3,7 @@ _G.icons = {
     Pending = "",
     Uninstalled = "",
     Installed = "",
+    Ready = "",
     Modified = "●",
     Collapsed = "",
     Expanded = "",
