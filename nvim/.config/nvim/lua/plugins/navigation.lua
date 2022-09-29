@@ -147,7 +147,11 @@ tree.setup({
 vim.keymap.set("n", "<c-/>", vim.get_hof(tree.toggle))
 
 telescope.setup({
-  defaults = themes.get_dropdown(),
+  defaults = vim.tbl_deep_extend("force", themes.get_dropdown(), {
+    prompt_prefix = _G.icons.ui.Search .. " ",
+    multi_icon = _G.icons.ui.Tag .. " ",
+    selection_caret = _G.icons.ui.Caret .. " ",
+  }),
 })
 
 vim.keymap.set("n", "<leader>fr", vim.get_hof(builtin.oldfiles))
