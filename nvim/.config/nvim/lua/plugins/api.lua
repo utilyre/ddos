@@ -24,6 +24,12 @@ dressing.setup({
   },
   select = {
     enabled = true,
-    backend = { "telescope" },
+    backend = { "builtin" },
+    builtin = {
+      winblend = 0,
+      mappings = {
+        q = "Close",
+      },
+    },
   },
 })
