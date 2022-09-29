@@ -23,12 +23,12 @@ _G.plugins = {
   "kyazdani42/nvim-tree.lua",
   "nvim-telescope/telescope.nvim",
   "theprimeagen/harpoon",
-  "lewis6991/gitsigns.nvim",
 
   "utilyre/barbecue.nvim",
   "j-hui/fidget.nvim",
   "nvim-lualine/lualine.nvim",
 
+  "lewis6991/gitsigns.nvim",
   "nvim-treesitter/nvim-treesitter",
   "p00f/nvim-ts-rainbow",
   "lukas-reineke/indent-blankline.nvim",
