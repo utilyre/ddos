@@ -1,10 +1,10 @@
 local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if vim.fs.isempty(packer_path) then
-  vim.fn.system({ "git", "clone", "--depth=1", "https://github.com/wbthomason/packer.nvim.git", packer_path })
+  os.execute("git clone --depth=\"1\" \"https://github.com/wbthomason/packer.nvim.git\" \"" .. packer_path .. "\"")
 end
 local mason_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/mason.nvim"
 if vim.fs.isempty(mason_path) then
-  vim.fn.system({ "git", "clone", "--depth=1", "https://github.com/williamboman/mason.nvim.git", mason_path })
+  os.execute("git clone --depth=\"1\" \"https://github.com/williamboman/mason.nvim.git\" \"" .. mason_path .. "\"")
 end
 
 _G.plugins = {
