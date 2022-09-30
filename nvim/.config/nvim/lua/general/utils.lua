@@ -21,10 +21,17 @@ vim.tbl_unique = function(tbl)
   return flat
 end
 
+vim.fs.isempty = function(name)
+  local found = vim.fs.find(function()
+    return true
+  end, { path = name })
+
+  return #found == 0
+end
+
 vim.fs.exists = function(name)
   local found = vim.fs.find(vim.fs.basename(name), {
     path = vim.fs.dirname(name),
-    type = "file",
   })
 
   return #found > 0

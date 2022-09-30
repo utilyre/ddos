@@ -20,6 +20,7 @@ vim.opt.listchars:append("tab:  ,trail:·")
 vim.opt.fillchars:append("eob: ")
 
 vim.opt.showmode = false
+vim.opt.inccommand = "split"
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -31,6 +32,9 @@ vim.opt.wrap = false
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
+
+vim.opt.spell = true
+vim.opt.spelloptions:append("camel")
 
 vim.api.nvim_create_augroup("options", {})
 vim.api.nvim_create_autocmd("BufEnter", {
