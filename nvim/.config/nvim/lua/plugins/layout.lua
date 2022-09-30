@@ -104,7 +104,7 @@ lualine.setup({
               if client.name ~= "null-ls" then
                 return client.name
               end
-            end, vim.lsp.buf_get_clients())),
+            end, vim.lsp.get_active_clients({ bufnr = 0 }))),
             unpack(vim.tbl_map(function(source)
               return source.name
             end, sources.get_available(vim.bo.filetype))),
