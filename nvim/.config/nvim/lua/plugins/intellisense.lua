@@ -33,11 +33,11 @@ vim.diagnostic.config({
 
 local get_servers = function()
   local config_path = os.getenv("MASON_CONFIG")
-  if vim.fn.filereadable(config_path) == 0 then
+  if not vim.fs.exists(config_path) then
     return {}
   end
 
-  local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+  local config = vim.json.decode(vim.fs.read(config_path))
   local servers = {}
 
   for server, options in pairs(config.servers or {}) do
@@ -58,11 +58,11 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 
 local get_sources = function()
   local config_path = os.getenv("MASON_CONFIG")
-  if vim.fn.filereadable(config_path) == 0 then
+  if not vim.fs.exists(config_path) then
     return {}
   end
 
-  local config = vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+  local config = vim.json.decode(vim.fs.read(config_path))
   local sources = {}
 
   for linter, options in pairs(config.linters or {}) do
