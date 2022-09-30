@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Launcher
-Exec=dmenu_run -p " "
+Exec=dmenu_run -p "Launcher"
 NoDisplay=true
