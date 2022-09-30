@@ -26,7 +26,8 @@ fidget.setup({
   fmt = {
     stack_upwards = false,
     task = function(name, message, percent)
-      return name .. " (" .. (percent and percent .. "%" or message) .. ")"
+      local progress = percent and percent .. "%" or message
+      return (name or "") .. " (" .. (progress or "") .. ")"
     end,
   },
   text = {

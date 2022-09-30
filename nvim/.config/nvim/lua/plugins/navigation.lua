@@ -10,6 +10,8 @@ local mark = require("harpoon.mark")
 
 _G.terminals = {}
 local toggle_terminal = function(key)
+  key = key or _G.lastkey or "t"
+
   if _G.terminals[key] == nil then
     _G.terminals[key] = fterm:new({
       hl = "NormalFloat",
@@ -31,43 +33,33 @@ local toggle_terminal = function(key)
   _G.terminals[key]:toggle()
 end
 
-vim.keymap.set({ "n", "t" }, "<c-\\>", function()
-  if _G.lastkey == nil then
-    _G.lastkey = "t"
-  end
-
-  toggle_terminal(_G.lastkey)
-end)
-for _, key in ipairs({
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-}) do
-  vim.keymap.set("n", "\\" .. key, vim.get_hof(toggle_terminal, key))
-end
+vim.keymap.set({ "n", "t" }, "<c-\\>", vim.get_hof(toggle_terminal))
+vim.keymap.set("n", "\\a", vim.get_hof(toggle_terminal, "a"))
+vim.keymap.set("n", "\\b", vim.get_hof(toggle_terminal, "b"))
+vim.keymap.set("n", "\\c", vim.get_hof(toggle_terminal, "c"))
+vim.keymap.set("n", "\\d", vim.get_hof(toggle_terminal, "d"))
+vim.keymap.set("n", "\\e", vim.get_hof(toggle_terminal, "e"))
+vim.keymap.set("n", "\\f", vim.get_hof(toggle_terminal, "f"))
+vim.keymap.set("n", "\\g", vim.get_hof(toggle_terminal, "g"))
+vim.keymap.set("n", "\\h", vim.get_hof(toggle_terminal, "h"))
+vim.keymap.set("n", "\\i", vim.get_hof(toggle_terminal, "i"))
+vim.keymap.set("n", "\\j", vim.get_hof(toggle_terminal, "j"))
+vim.keymap.set("n", "\\k", vim.get_hof(toggle_terminal, "k"))
+vim.keymap.set("n", "\\l", vim.get_hof(toggle_terminal, "l"))
+vim.keymap.set("n", "\\m", vim.get_hof(toggle_terminal, "m"))
+vim.keymap.set("n", "\\n", vim.get_hof(toggle_terminal, "n"))
+vim.keymap.set("n", "\\o", vim.get_hof(toggle_terminal, "o"))
+vim.keymap.set("n", "\\p", vim.get_hof(toggle_terminal, "p"))
+vim.keymap.set("n", "\\q", vim.get_hof(toggle_terminal, "q"))
+vim.keymap.set("n", "\\r", vim.get_hof(toggle_terminal, "r"))
+vim.keymap.set("n", "\\s", vim.get_hof(toggle_terminal, "s"))
+vim.keymap.set("n", "\\t", vim.get_hof(toggle_terminal, "t"))
+vim.keymap.set("n", "\\u", vim.get_hof(toggle_terminal, "u"))
+vim.keymap.set("n", "\\v", vim.get_hof(toggle_terminal, "v"))
+vim.keymap.set("n", "\\w", vim.get_hof(toggle_terminal, "w"))
+vim.keymap.set("n", "\\x", vim.get_hof(toggle_terminal, "x"))
+vim.keymap.set("n", "\\y", vim.get_hof(toggle_terminal, "y"))
+vim.keymap.set("n", "\\z", vim.get_hof(toggle_terminal, "z"))
 
 tree.setup({
   hijack_cursor = true,

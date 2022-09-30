@@ -22,9 +22,9 @@ packer.startup({
   },
 })
 
+vim.keymap.set("n", "<leader>pc", vim.get_hof(packer.clean))
 vim.keymap.set("n", "<leader>pi", vim.get_hof(packer.install))
 vim.keymap.set("n", "<leader>pu", vim.get_hof(packer.update))
-vim.keymap.set("n", "<leader>pc", vim.get_hof(packer.clean))
 
 mason.setup({
   max_concurrent_installers = 4,
