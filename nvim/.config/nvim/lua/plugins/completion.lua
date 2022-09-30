@@ -36,7 +36,13 @@ cmp.setup({
       group_index = 2,
       name = "buffer",
       option = {
-        get_bufnrs = vim.get_hof(vim.api.nvim_list_bufs),
+        get_bufnrs = function()
+          local bufnrs = vim.tbl_filter(function(bufnr)
+            return vim.api.nvim_buf_is_loaded(bufnr)
+          end, vim.api.nvim_list_bufs())
+
+          return bufnrs
+        end,
       },
     },
   },
