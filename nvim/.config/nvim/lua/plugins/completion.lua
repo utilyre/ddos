@@ -54,11 +54,11 @@ cmp.setup({
         cmp.complete()
       end
     end, { "i" }),
-    ["<c-u>"] = cmp.mapping(vim.get_hof(cmp.scroll_docs, -10), { "i", "s" }),
-    ["<c-d>"] = cmp.mapping(vim.get_hof(cmp.scroll_docs, 10), { "i", "s" }),
-    ["<c-p>"] = cmp.mapping(vim.get_hof(cmp.select_prev_item), { "i", "s" }),
-    ["<c-n>"] = cmp.mapping(vim.get_hof(cmp.select_next_item), { "i", "s" }),
-    ["<s-tab>"] = cmp.mapping(vim.get_hof(luasnip.jump, -1), { "i", "s" }),
+    ["<c-u>"] = cmp.mapping(vim.fun_lambda(cmp.scroll_docs, -10), { "i", "s" }),
+    ["<c-d>"] = cmp.mapping(vim.fun_lambda(cmp.scroll_docs, 10), { "i", "s" }),
+    ["<c-p>"] = cmp.mapping(vim.fun_lambda(cmp.select_prev_item), { "i", "s" }),
+    ["<c-n>"] = cmp.mapping(vim.fun_lambda(cmp.select_next_item), { "i", "s" }),
+    ["<s-tab>"] = cmp.mapping(vim.fun_lambda(luasnip.jump, -1), { "i", "s" }),
     ["<tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.confirm({ select = true })

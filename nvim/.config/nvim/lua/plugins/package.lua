@@ -17,14 +17,14 @@ packer.startup({
       removed_sym = _G.icons.ui.Uninstalled,
       done_sym = _G.icons.ui.Installed,
       prompt_border = "rounded",
-      open_fn = vim.get_hof(util.float, { border = "rounded" }),
+      open_fn = vim.fun_lambda(util.float, { border = "rounded" }),
     },
   },
 })
 
-vim.keymap.set("n", "<leader>pc", vim.get_hof(packer.clean))
-vim.keymap.set("n", "<leader>pi", vim.get_hof(packer.install))
-vim.keymap.set("n", "<leader>pu", vim.get_hof(packer.update))
+vim.keymap.set("n", "<leader>pc", vim.fun_lambda(packer.clean))
+vim.keymap.set("n", "<leader>pi", vim.fun_lambda(packer.install))
+vim.keymap.set("n", "<leader>pu", vim.fun_lambda(packer.update))
 
 mason.setup({
   max_concurrent_installers = 4,
@@ -38,4 +38,4 @@ mason.setup({
   },
 })
 
-vim.keymap.set("n", "<leader>pm", vim.get_hof(ui.open))
+vim.keymap.set("n", "<leader>pm", vim.fun_lambda(ui.open))

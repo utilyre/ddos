@@ -1,4 +1,4 @@
-vim.get_hof = function(fun, ...)
+vim.fun_lambda = function(fun, ...)
   local params = { ... }
 
   return function()
