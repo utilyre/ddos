@@ -20,9 +20,6 @@ barbecue.setup({
 })
 
 fidget.setup({
-  timer = {
-    spinner_rate = 60,
-  },
   window = {
     zindex = 1,
   },
