@@ -15,6 +15,9 @@ fidget.setup({
   timer = {
     spinner_rate = 60,
   },
+  window = {
+    zindex = 1,
+  },
   fmt = {
     stack_upwards = false,
   },
