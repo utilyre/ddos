@@ -21,14 +21,6 @@ vim.tbl_unique = function(tbl)
   return flat
 end
 
-vim.fs.isempty = function(name)
-  local found = vim.fs.find(function()
-    return true
-  end, { path = name })
-
-  return #found == 0
-end
-
 vim.fs.exists = function(name)
   local found = vim.fs.find(vim.fs.basename(name), {
     path = vim.fs.dirname(name),
@@ -38,7 +30,11 @@ vim.fs.exists = function(name)
 end
 
 vim.fs.read = function(name)
-  local lines = vim.fn.readfile(name)
+  local lines = {}
+  for line in io.lines(name) do
+    table.insert(lines, line)
+  end
+
   return table.concat(lines, "\n")
 end
 
