@@ -104,6 +104,7 @@ tree.setup({
   renderer = {
     group_empty = true,
     symlink_destination = false,
+    highlight_git = true,
     indent_markers = {
       enable = true,
     },
