@@ -2,7 +2,6 @@ local mark = require("harpoon.mark")
 local barbecue = require("barbecue")
 local fidget = require("fidget")
 local lualine = require("lualine")
-local theme = require("lualine.themes.auto")
 local sources = require("null-ls.sources")
 
 barbecue.setup({
@@ -14,7 +13,7 @@ barbecue.setup({
     return mark.get_length() .. "/" .. #bufnrs
   end,
   symbols = {
-    modified = "%#BufferMod#" .. _G.icons.ui.Modified,
+    modified = "%#BufferVisibleMod#" .. _G.icons.ui.Modified,
   },
   kinds = _G.icons.kind,
 })
@@ -44,11 +43,6 @@ lualine.setup({
       left = _G.icons.ui.SectionRight,
       right = _G.icons.ui.SectionLeft,
     },
-    theme = vim.tbl_deep_extend("force", theme, {
-      normal = {
-        c = { bg = "none" },
-      },
-    }),
   },
   sections = {
     lualine_a = {
