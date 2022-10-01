@@ -1,6 +1,9 @@
 local completion = require("nvim-autopairs.completion.cmp")
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local git = require("cmp_git")
+
+cmp.event:on("confirm_done", completion.on_confirm_done())
 
 cmp.setup({
   snippet = {
@@ -31,6 +34,10 @@ cmp.setup({
     {
       group_index = 1,
       name = "nvim_lsp",
+    },
+    {
+      group_index = 1,
+      name = "git",
     },
     {
       group_index = 2,
@@ -71,4 +78,4 @@ cmp.setup({
   },
 })
 
-cmp.event:on("confirm_done", completion.on_confirm_done())
+git.setup()
