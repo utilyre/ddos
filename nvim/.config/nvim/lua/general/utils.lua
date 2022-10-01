@@ -22,11 +22,13 @@ vim.tbl_unique = function(tbl)
 end
 
 vim.fs.exists = function(name)
-  local found = vim.fs.find(vim.fs.basename(name), {
-    path = vim.fs.dirname(name),
-  })
+  local file, err = io.open(name, "r")
+  if err ~= nil then
+    return false
+  end
 
-  return #found > 0
+  io.close(file)
+  return true
 end
 
 vim.fs.read = function(name)
