@@ -23,11 +23,11 @@ end
 
 function vim.pkg_use(repo)
   local dest = os.getenv("XDG_DATA_HOME") .. "/nvim/site/pack/packer/start/" .. vim.fs.basename(repo)
-  if vim.fs.exists(dest) then
-    return
+  if not vim.fs.exists(dest) then
+    os.execute("git clone --depth=\"1\" -- \"https://github.com/" .. repo .. ".git\" \"" .. dest .. "\"")
   end
 
-  os.execute("git clone --depth=\"1\" -- \"https://github.com/" .. repo .. ".git\" \"" .. dest .. "\"")
+  return repo
 end
 
 function vim.fs.exists(name)

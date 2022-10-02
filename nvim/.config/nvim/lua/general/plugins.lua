@@ -1,9 +1,6 @@
-vim.pkg_use("wbthomason/packer.nvim")
-vim.pkg_use("williamboman/mason.nvim")
-
 _G.plugins = {
-  "wbthomason/packer.nvim",
-  "williamboman/mason.nvim",
+  vim.pkg_use("wbthomason/packer.nvim"),
+  vim.pkg_use("williamboman/mason.nvim"),
 
   "kyazdani42/nvim-web-devicons",
   "folke/tokyonight.nvim",
