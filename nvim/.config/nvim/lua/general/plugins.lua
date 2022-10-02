@@ -1,11 +1,5 @@
-local packer_path = os.getenv("XDG_DATA_HOME") .. "/nvim/site/pack/packer/start/packer.nvim"
-if not vim.fs.exists(packer_path) then
-  os.execute("git clone --depth=\"1\" \"https://github.com/wbthomason/packer.nvim.git\" \"" .. packer_path .. "\"")
-end
-local mason_path = os.getenv("XDG_DATA_HOME") .. "/nvim/site/pack/packer/start/mason.nvim"
-if not vim.fs.exists(mason_path) then
-  os.execute("git clone --depth=\"1\" \"https://github.com/williamboman/mason.nvim.git\" \"" .. mason_path .. "\"")
-end
+vim.pkg_use("wbthomason/packer.nvim")
+vim.pkg_use("williamboman/mason.nvim")
 
 _G.plugins = {
   "wbthomason/packer.nvim",
