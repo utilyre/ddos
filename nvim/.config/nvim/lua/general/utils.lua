@@ -41,6 +41,10 @@ function vim.fs.exists(name)
 end
 
 function vim.fs.read(name)
+  if not vim.fs.exists(name) then
+    return nil
+  end
+
   local lines = {}
   for line in io.lines(name) do
     table.insert(lines, line)
