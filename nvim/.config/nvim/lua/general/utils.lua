@@ -1,4 +1,4 @@
-vim.fun_lambda = function(fun, ...)
+function vim.fun_lambda(fun, ...)
   local params = { ... }
 
   return function()
@@ -6,7 +6,7 @@ vim.fun_lambda = function(fun, ...)
   end
 end
 
-vim.tbl_unique = function(tbl)
+function vim.tbl_unique(tbl)
   local flat = vim.tbl_flatten(tbl)
   local hash = {}
 
@@ -21,7 +21,7 @@ vim.tbl_unique = function(tbl)
   return flat
 end
 
-vim.fs.exists = function(name)
+function vim.fs.exists(name)
   local file, err = io.open(name, "r")
   if err ~= nil then
     return false
@@ -31,7 +31,7 @@ vim.fs.exists = function(name)
   return true
 end
 
-vim.fs.read = function(name)
+function vim.fs.read(name)
   local lines = {}
   for line in io.lines(name) do
     table.insert(lines, line)
@@ -40,7 +40,7 @@ vim.fs.read = function(name)
   return table.concat(lines, "\n")
 end
 
-vim.api.nvim_create_sign = function(name, text)
+function vim.api.nvim_create_sign(name, text)
   vim.fn.sign_define(name, { texthl = name, text = text })
   return { name, text }
 end
