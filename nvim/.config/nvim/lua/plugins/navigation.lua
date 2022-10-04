@@ -142,8 +142,8 @@ vim.keymap.set("n", "<c-/>", vim.fun_lambda(tree.toggle))
 telescope.setup({
   defaults = vim.tbl_deep_extend("force", themes.get_dropdown(), {
     prompt_prefix = _G.icons.ui.Search .. " ",
-    multi_icon = _G.icons.ui.Tag .. " ",
     selection_caret = _G.icons.ui.Caret .. " ",
+    multi_icon = _G.icons.ui.Tag .. " ",
   }),
 })
 
