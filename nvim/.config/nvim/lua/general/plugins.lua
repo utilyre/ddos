@@ -30,7 +30,6 @@ _G.plugins = {
   "l3mon4d3/luasnip",
   "rafamadriz/friendly-snippets",
 
-  "zbirenbaum/neodim",
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
   "smiteshp/nvim-navic",
