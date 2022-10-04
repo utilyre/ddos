@@ -21,13 +21,18 @@ function vim.tbl_unique(tbl)
   return flat
 end
 
-function vim.pkg_use(repo)
+function vim.pkg_use(specifications)
+  local repo = specifications
+  if type(specifications) == "table" then
+    repo = specifications[1]
+  end
+
   local dest = os.getenv("XDG_DATA_HOME") .. "/nvim/site/pack/packer/start/" .. vim.fs.basename(repo)
   if not vim.fs.exists(dest) then
     os.execute("git clone --depth=\"1\" -- \"https://github.com/" .. repo .. ".git\" \"" .. dest .. "\"")
   end
 
-  return repo
+  return specifications
 end
 
 function vim.fs.exists(name)

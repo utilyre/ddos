@@ -4,11 +4,7 @@ local mason = require("mason")
 local ui = require("mason.ui")
 
 packer.startup({
-  function(use)
-    for i, plugin in ipairs(_G.plugins) do
-      use(plugin)
-    end
-  end,
+  _G.plugins,
   config = {
     max_jobs = 4,
     display = {

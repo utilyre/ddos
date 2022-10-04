@@ -7,8 +7,8 @@ cmp.event:on("confirm_done", completion.on_confirm_done())
 
 cmp.setup({
   snippet = {
-    expand = function(opts)
-      luasnip.lsp_expand(opts.body)
+    expand = function(options)
+      luasnip.lsp_expand(options.body)
     end,
   },
   experimental = {
