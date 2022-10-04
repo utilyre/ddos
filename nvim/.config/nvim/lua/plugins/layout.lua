@@ -13,7 +13,7 @@ barbecue.setup({
     return mark.get_length() .. "/" .. #bufnrs
   end,
   symbols = {
-    modified = "%#BufferVisibleMod#" .. _G.icons.ui.Modified,
+    modified = _G.icons.ui.Modified,
   },
   kinds = _G.icons.kind,
 })

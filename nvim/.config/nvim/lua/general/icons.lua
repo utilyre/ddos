@@ -43,6 +43,7 @@ _G.icons = {
     Package = "",
     Module = "",
     Namespace = "",
+    Macro = "",
     Reference = "",
     Class = "",
     Constructor = "",
