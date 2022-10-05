@@ -15,6 +15,7 @@
 - git
 - imv
 - kitty
+- lf
 - libnotify
 - lxsession-gtk3
 - mediainfo
@@ -47,7 +48,6 @@
 
 - brave-bin
 - dragon-drop
-- lf-bin
 
 ## 🚦 Installation
 
