@@ -72,11 +72,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(a)
     local client = vim.lsp.get_client_by_id(a.data.client_id)
 
-    if client.server_capabilities.documentSymbolProvider then
+    if client.server_capabilities["documentSymbolProvider"] then
       navic.attach(client, a.buf)
     end
-
-    if client.server_capabilities.documentHighlightProvider then
+    if client.server_capabilities["documentHighlightProvider"] then
       illuminate.on_attach(client, a.buf)
     end
 
