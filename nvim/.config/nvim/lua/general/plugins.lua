@@ -25,6 +25,7 @@ _G.plugins = {
   "lukas-reineke/indent-blankline.nvim",
   "windwp/nvim-ts-autotag",
   "windwp/nvim-autopairs",
+  "nvim-treesitter/nvim-treesitter-textobjects",
   "numtostr/comment.nvim",
 
   "l3mon4d3/luasnip",

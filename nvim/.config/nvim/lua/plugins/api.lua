@@ -28,7 +28,8 @@ dressing.setup({
     builtin = {
       winblend = 0,
       mappings = {
-        q = "Close",
+        ["q"] = "Close",
+        ["<cr>"] = "Confirm",
       },
     },
   },
