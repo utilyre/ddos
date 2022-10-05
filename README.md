@@ -1,6 +1,8 @@
-# 💀 SkullOS
+<h1 align="center">ddOS</h1>
 
-My personal archlinux setup.
+<p align="center">
+  My personal archlinux setup.
+</p>
 
 ## 📦 Dependencies
 
@@ -54,7 +56,7 @@ My personal archlinux setup.
 Clone the repo
 
 ```bash
-git clone -- "https://github.com/utilyre/skullos.git"
+git clone -- "https://github.com/utilyre/ddos.git"
 ```
 
 Set `zsh` as your default shell
