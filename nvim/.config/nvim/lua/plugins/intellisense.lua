@@ -49,7 +49,6 @@ local get_sources = function()
 
   for linter, options in pairs(config.linters or {}) do
     table.insert(sources, null.builtins.diagnostics[linter].with(options))
-    table.insert(sources, null.builtins.code_actions[linter].with(options))
   end
   for formatter, options in pairs(config.formatters or {}) do
     table.insert(sources, null.builtins.formatting[formatter].with(options))
