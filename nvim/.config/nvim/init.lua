@@ -79,6 +79,10 @@ _G.plugins = {
 
   {
     "utilyre/barbecue.nvim",
+    requires = {
+      "smiteshp/nvim-navic",
+      "theprimeagen/harpoon",
+    },
     config = function()
       require("plugins.barbecue")
     end,
@@ -93,6 +97,9 @@ _G.plugins = {
 
   {
     "nvim-lualine/lualine.nvim",
+    requires = {
+      "jose-elias-alvarez/null-ls.nvim",
+    },
     config = function()
       require("plugins.lualine")
     end,
@@ -169,6 +176,7 @@ _G.plugins = {
   {
     "hrsh7th/nvim-cmp",
     requires = {
+      "windwp/nvim-autopairs",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
       "petertriho/cmp-git",
