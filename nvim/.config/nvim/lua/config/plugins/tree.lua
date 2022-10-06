@@ -34,11 +34,16 @@ tree.setup({
     hide_root_folder = true,
     float = {
       enable = true,
-      open_win_config = {
-        width = 40,
-        height = 40,
-        row = (vim.api.nvim_win_get_height(0) / 2) - 20,
-      },
+      open_win_config = function()
+        return {
+          relative = "editor",
+          border = "rounded",
+          width = 40,
+          height = 40,
+          row = (vim.o.lines / 2) - 20,
+          col = 2,
+        }
+      end,
     },
   },
   renderer = {
