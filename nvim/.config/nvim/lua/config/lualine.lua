@@ -60,11 +60,14 @@ lualine.setup({
       {
         function()
           local names = vim.tbl_unique({
-            unpack(vim.tbl_map(function(client)
-              if client.name ~= "null-ls" then
+            unpack(vim.tbl_map(
+              function(client)
                 return client.name
-              end
-            end, vim.lsp.get_active_clients({ bufnr = 0 }))),
+              end,
+              vim.tbl_filter(function(client)
+                return client.name ~= "null-ls"
+              end, vim.lsp.get_active_clients({ bufnr = 0 }))
+            )),
             unpack(vim.tbl_map(function(source)
               return source.name
             end, sources.get_available(vim.bo.filetype))),
