@@ -1,7 +1,7 @@
-require("general.icons")
-require("general.utils")
-require("general.keymaps")
-require("general.options")
+require("config.icons")
+require("config.utils")
+require("config.keymaps")
+require("config.options")
 
 _G.plugins = {
   "nvim-lua/plenary.nvim",
@@ -10,70 +10,70 @@ _G.plugins = {
   vim.pkg_use({
     "wbthomason/packer.nvim",
     config = function()
-      require("plugins.packer")
+      require("config.packer")
     end,
   }),
 
   {
     "williamboman/mason.nvim",
     config = function()
-      require("plugins.mason")
+      require("config.mason")
     end,
   },
 
   {
     "kyazdani42/nvim-web-devicons",
     config = function()
-      require("plugins.devicons")
+      require("config.devicons")
     end,
   },
 
   {
     "folke/tokyonight.nvim",
     config = function()
-      require("plugins.tokyonight")
+      require("config.tokyonight")
     end,
   },
 
   {
     "rcarriga/nvim-notify",
     config = function()
-      require("plugins.notify")
+      require("config.notify")
     end,
   },
 
   {
     "stevearc/dressing.nvim",
     config = function()
-      require("plugins.dressing")
+      require("config.dressing")
     end,
   },
 
   {
     "numtostr/fterm.nvim",
     config = function()
-      require("plugins.fterm")
+      require("config.fterm")
     end,
   },
 
   {
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require("plugins.tree")
+      require("config.tree")
     end,
   },
 
   {
     "nvim-telescope/telescope.nvim",
     config = function()
-      require("plugins.telescope")
+      require("config.telescope")
     end,
   },
 
   {
     "theprimeagen/harpoon",
     config = function()
-      require("plugins.harpoon")
+      require("config.harpoon")
     end,
   },
 
@@ -84,14 +84,14 @@ _G.plugins = {
       "theprimeagen/harpoon",
     },
     config = function()
-      require("plugins.barbecue")
+      require("config.barbecue")
     end,
   },
 
   {
     "j-hui/fidget.nvim",
     config = function()
-      require("plugins.fidget")
+      require("config.fidget")
     end,
   },
 
@@ -101,14 +101,14 @@ _G.plugins = {
       "jose-elias-alvarez/null-ls.nvim",
     },
     config = function()
-      require("plugins.lualine")
+      require("config.lualine")
     end,
   },
 
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require("plugins.gitsigns")
+      require("config.gitsigns")
     end,
   },
 
@@ -119,28 +119,28 @@ _G.plugins = {
       "windwp/nvim-ts-autotag",
     },
     config = function()
-      require("plugins.treesitter")
+      require("config.treesitter")
     end,
   },
 
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("plugins.blankline")
+      require("config.blankline")
     end,
   },
 
   {
     "windwp/nvim-autopairs",
     config = function()
-      require("plugins.autopairs")
+      require("config.autopairs")
     end,
   },
 
   {
     "numtostr/comment.nvim",
     config = function()
-      require("plugins.comment")
+      require("config.comment")
     end,
   },
 
@@ -150,7 +150,7 @@ _G.plugins = {
       "rafamadriz/friendly-snippets",
     },
     config = function()
-      require("plugins.luasnip")
+      require("config.luasnip")
     end,
   },
 
@@ -162,14 +162,14 @@ _G.plugins = {
       "rrethy/vim-illuminate",
     },
     config = function()
-      require("plugins.lsp")
+      require("config.lsp")
     end,
   },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
-      require("plugins.null")
+      require("config.null")
     end,
   },
 
@@ -183,7 +183,7 @@ _G.plugins = {
       "hrsh7th/cmp-buffer",
     },
     config = function()
-      require("plugins.cmp")
+      require("config.cmp")
     end,
   },
 }
