@@ -1,11 +1,11 @@
 local lspconfig = require("lspconfig")
-local completion = require("cmp_nvim_lsp")
+local cmp = require("cmp_nvim_lsp")
 local navic = require("nvim-navic")
 local illuminate = require("illuminate")
 
 local config = vim.json.decode(vim.fs.read(os.getenv("MASON_CONFIG")) or "{}")
 for server, options in pairs(config.servers or {}) do
-  options.capabilities = completion.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  options.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
   lspconfig[server].setup(config)
 end
 

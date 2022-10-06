@@ -5,10 +5,10 @@ treesitter.setup({
   highlight = {
     enable = true,
   },
-  rainbow = {
+  indent = {
     enable = true,
   },
-  indent = {
+  rainbow = {
     enable = true,
   },
   autotag = {

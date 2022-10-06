@@ -1,5 +1,5 @@
-local mark = require("harpoon.mark")
 local barbecue = require("barbecue")
+local mark = require("harpoon.mark")
 
 barbecue.setup({
   custom_section = function()
