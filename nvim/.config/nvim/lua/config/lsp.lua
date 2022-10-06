@@ -6,7 +6,7 @@ local illuminate = require("illuminate")
 local config = vim.json.decode(vim.fs.read(os.getenv("MASON_CONFIG")) or "{}")
 for server, options in pairs(config.servers or {}) do
   options.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  lspconfig[server].setup(config)
+  lspconfig[server].setup(options)
 end
 
 illuminate.configure({
