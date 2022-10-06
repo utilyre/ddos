@@ -5,6 +5,7 @@ packer.startup({
   {
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
+    "muniftanjim/nui.nvim",
 
     vim.pkg_use("wbthomason/packer.nvim"),
 
@@ -92,6 +93,7 @@ packer.startup({
     {
       "nvim-lualine/lualine.nvim",
       requires = {
+        "folke/tokyonight.nvim",
         "jose-elias-alvarez/null-ls.nvim",
       },
       config = function()
