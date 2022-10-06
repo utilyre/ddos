@@ -40,7 +40,7 @@ tree.setup({
           border = "rounded",
           width = 40,
           height = 40,
-          row = (vim.o.lines / 2) - 20,
+          row = (vim.go.lines / 2) - 20,
           col = 2,
         }
       end,

@@ -72,7 +72,7 @@ lualine.setup({
               end,
               vim.tbl_filter(function(client)
                 return client.name ~= "null-ls"
-              end, vim.lsp.get_active_clients({ bufnr = 0 }))
+              end, vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() }))
             )),
             unpack(vim.tbl_map(function(source)
               return source.name
