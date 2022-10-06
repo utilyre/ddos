@@ -198,3 +198,4 @@ packer.startup({
 vim.keymap.set("n", "<leader>pc", vim.fun_lambda(packer.clean))
 vim.keymap.set("n", "<leader>pi", vim.fun_lambda(packer.install))
 vim.keymap.set("n", "<leader>pu", vim.fun_lambda(packer.update))
+vim.keymap.set("n", "<leader>ps", vim.fun_lambda(packer.sync))
