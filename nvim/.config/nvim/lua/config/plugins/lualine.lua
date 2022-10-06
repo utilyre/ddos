@@ -1,9 +1,15 @@
 local lualine = require("lualine")
+local tokyonight = require("lualine.themes.tokyonight")
 local sources = require("null-ls.sources")
 
 lualine.setup({
   options = {
     globalstatus = true,
+    theme = vim.tbl_deep_extend("force", tokyonight, {
+      normal = {
+        c = { bg = "none" },
+      },
+    }),
     component_separators = _G.icons.ui.Separator,
     section_separators = {
       left = _G.icons.ui.SectionRight,

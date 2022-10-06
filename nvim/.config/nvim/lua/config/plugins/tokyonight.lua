@@ -2,9 +2,6 @@ local tokyonight = require("tokyonight")
 
 tokyonight.setup({
   style = "night",
-  on_colors = function(colors)
-    colors.bg_statusline = "none"
-  end,
   on_highlights = function(highlights, colors)
     highlights.TelescopeTitle = { background = colors.bg_float, foreground = colors.blue, bold = true }
     highlights.TelescopePromptPrefix = { foreground = colors.yellow }
@@ -12,6 +9,7 @@ tokyonight.setup({
     highlights.TelescopeMultiIcon = { foreground = colors.red }
     highlights.TelescopeMultiSelection = { bold = true, italic = true }
 
+    highlights.BarbecueMod = highlights.BufferVisibleMod
     highlights.NavicText = highlights.Normal
     highlights.NavicSeparator = highlights.Conceal
     highlights.NavicIconsFile = highlights.CmpItemKindFile
@@ -40,6 +38,8 @@ tokyonight.setup({
     highlights.NavicIconsKey = highlights.CmpItemKindValue
     highlights.NavicIconsArray = highlights.CmpItemKindValue
     highlights.NavicIconsObject = highlights.CmpItemKindValue
+
+    highlights.StatusLine = { background = "none" }
   end,
 })
 tokyonight.colorscheme()
