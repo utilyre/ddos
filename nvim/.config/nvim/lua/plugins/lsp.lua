@@ -1,8 +1,23 @@
 local lspconfig = require("lspconfig")
 local completion = require("cmp_nvim_lsp")
-local null = require("null-ls")
 local navic = require("nvim-navic")
 local illuminate = require("illuminate")
+
+local config = vim.json.decode(vim.fs.read(os.getenv("MASON_CONFIG")) or "{}")
+for server, options in pairs(config.servers or {}) do
+  options.capabilities = completion.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  lspconfig[server].setup(config)
+end
+
+illuminate.configure({
+  providers = {
+    "lsp",
+  },
+})
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
 
 vim.diagnostic.config({
   update_in_insert = true,
@@ -21,48 +36,6 @@ vim.diagnostic.config({
       vim.api.nvim_create_sign("DiagnosticSignError", _G.icons.diagnostic.Error),
     },
   },
-})
-
-local get_servers = function()
-  local config = vim.json.decode(vim.fs.read(os.getenv("MASON_CONFIG")) or "{}")
-  local servers = {}
-
-  for server, options in pairs(config.servers or {}) do
-    options.capabilities = completion.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    servers[server] = options
-  end
-
-  return servers
-end
-
-for server, config in pairs(get_servers()) do
-  lspconfig[server].setup(config)
-end
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
-
-local get_sources = function()
-  local config = vim.json.decode(vim.fs.read(os.getenv("MASON_CONFIG")) or "{}")
-  local sources = {}
-
-  for linter, options in pairs(config.linters or {}) do
-    table.insert(sources, null.builtins.diagnostics[linter].with(options))
-  end
-  for formatter, options in pairs(config.formatters or {}) do
-    table.insert(sources, null.builtins.formatting[formatter].with(options))
-  end
-
-  return sources
-end
-
-null.setup({
-  sources = get_sources(),
-})
-
-illuminate.configure({
-  providers = { "lsp" },
 })
 
 vim.api.nvim_create_augroup("lsp", {})
@@ -84,7 +57,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set({ "n", "v" }, "<leader>if", vim.fun_lambda(vim.lsp.buf.format, { async = true }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ic", vim.fun_lambda(vim.lsp.buf.rename), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ii", vim.fun_lambda(vim.lsp.buf.hover), { buffer = a.buf })
-    vim.keymap.set("n", "<leader>iw", vim.fun_lambda(vim.diagnostic.open_float, { scope = "cursor" }), { buffer = a.buf })
+    vim.keymap.set(
+      "n",
+      "<leader>iw",
+      vim.fun_lambda(vim.diagnostic.open_float, { scope = "cursor" }),
+      { buffer = a.buf }
+    )
     vim.keymap.set("n", "<leader>ik", vim.fun_lambda(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ij", vim.fun_lambda(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
   end,

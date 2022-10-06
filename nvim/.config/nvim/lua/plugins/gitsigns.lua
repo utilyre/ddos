@@ -1,8 +1,4 @@
 local gitsigns = require("gitsigns")
-local treesitter = require("nvim-treesitter.configs")
-local indentblankline = require("indent_blankline")
-local autopairs = require("nvim-autopairs")
-local comment = require("Comment")
 
 gitsigns.setup({
   preview_config = {
@@ -19,37 +15,4 @@ gitsigns.setup({
     vim.keymap.set("n", "<leader>gk", vim.fun_lambda(gitsigns.prev_hunk), { buffer = bufnr })
     vim.keymap.set("n", "<leader>gj", vim.fun_lambda(gitsigns.next_hunk), { buffer = bufnr })
   end,
-})
-
-treesitter.setup({
-  ensure_installed = "all",
-  highlight = {
-    enable = true,
-  },
-  rainbow = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-  autotag = {
-    enable = true,
-  },
-})
-
-indentblankline.setup({
-  show_current_context = true,
-  show_trailing_blankline_indent = false,
-})
-
-autopairs.setup({
-  check_ts = true,
-})
-
-comment.setup({
-  mappings = {
-    basic = true,
-    extra = true,
-    extended = true,
-  },
 })

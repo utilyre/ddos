@@ -5,5 +5,4 @@ luasnip.config.setup({
   update_events = "TextChanged,TextChangedI",
   region_check_events = "CursorMoved,CursorMovedI",
 })
-
 vscode.lazy_load()

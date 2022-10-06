@@ -1,39 +1,5 @@
-local mark = require("harpoon.mark")
-local barbecue = require("barbecue")
-local fidget = require("fidget")
 local lualine = require("lualine")
 local sources = require("null-ls.sources")
-
-barbecue.setup({
-  custom_section = function()
-    local bufnrs = vim.tbl_filter(function(bufnr)
-      return vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].buftype == ""
-    end, vim.api.nvim_list_bufs())
-
-    return mark.get_length() .. "/" .. #bufnrs
-  end,
-  symbols = {
-    modified = _G.icons.ui.Modified,
-  },
-  kinds = _G.icons.kind,
-})
-
-fidget.setup({
-  window = {
-    zindex = 1,
-  },
-  fmt = {
-    stack_upwards = false,
-    task = function(name, message, percent)
-      local progress = percent and percent .. "%" or message
-      return (name or "") .. " (" .. (progress or "") .. ")"
-    end,
-  },
-  text = {
-    spinner = "arc",
-    done = _G.icons.ui.Ready,
-  },
-})
 
 lualine.setup({
   options = {
