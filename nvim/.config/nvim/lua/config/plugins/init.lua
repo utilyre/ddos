@@ -5,7 +5,6 @@ packer.startup({
   {
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
-    "muniftanjim/nui.nvim",
 
     vim.pkg_use("wbthomason/packer.nvim"),
 
