@@ -12,34 +12,34 @@ tokyonight.setup({
     highlights.TelescopeMultiIcon = { foreground = colors.red }
     highlights.TelescopeMultiSelection = { bold = true, italic = true }
 
-    highlights.NavicText = { link = "Normal" }
-    highlights.NavicSeparator = { link = "Conceal" }
-    highlights.NavicIconsFile = { link = "CmpItemKindFile" }
-    highlights.NavicIconsPackage = { link = "CmpItemKindFolder" }
-    highlights.NavicIconsModule = { link = "CmpItemKindModule" }
-    highlights.NavicIconsNamespace = { link = "CmpItemKindModule" }
-    highlights.NavicIconsClass = { link = "CmpItemKindClass" }
-    highlights.NavicIconsConstructor = { link = "CmpItemKindConstructor" }
-    highlights.NavicIconsField = { link = "CmpItemKindField" }
-    highlights.NavicIconsProperty = { link = "CmpItemKindProperty" }
-    highlights.NavicIconsMethod = { link = "CmpItemKindMethod" }
-    highlights.NavicIconsStruct = { link = "CmpItemKindStruct" }
-    highlights.NavicIconsEvent = { link = "CmpItemKindEvent" }
-    highlights.NavicIconsInterface = { link = "CmpItemKindInterface" }
-    highlights.NavicIconsEnum = { link = "CmpItemKindEnum" }
-    highlights.NavicIconsEnumMember = { link = "CmpItemKindEnumMember" }
-    highlights.NavicIconsConstant = { link = "CmpItemKindConstant" }
-    highlights.NavicIconsFunction = { link = "CmpItemKindFunction" }
-    highlights.NavicIconsTypeParameter = { link = "CmpItemKindTypeParameter" }
-    highlights.NavicIconsVariable = { link = "CmpItemKindVariable" }
-    highlights.NavicIconsOperator = { link = "CmpItemKindOperator" }
-    highlights.NavicIconsNull = { link = "CmpItemKindValue" }
-    highlights.NavicIconsBoolean = { link = "CmpItemKindValue" }
-    highlights.NavicIconsNumber = { link = "CmpItemKindValue" }
-    highlights.NavicIconsString = { link = "CmpItemKindValue" }
-    highlights.NavicIconsKey = { link = "CmpItemKindValue" }
-    highlights.NavicIconsArray = { link = "CmpItemKindValue" }
-    highlights.NavicIconsObject = { link = "CmpItemKindValue" }
+    highlights.NavicText = highlights.Normal
+    highlights.NavicSeparator = highlights.Conceal
+    highlights.NavicIconsFile = highlights.CmpItemKindFile
+    highlights.NavicIconsPackage = highlights.CmpItemKindFolder
+    highlights.NavicIconsModule = highlights.CmpItemKindModule
+    highlights.NavicIconsNamespace = highlights.CmpItemKindModule
+    highlights.NavicIconsClass = highlights.CmpItemKindClass
+    highlights.NavicIconsConstructor = highlights.CmpItemKindConstructor
+    highlights.NavicIconsField = highlights.CmpItemKindField
+    highlights.NavicIconsProperty = highlights.CmpItemKindProperty
+    highlights.NavicIconsMethod = highlights.CmpItemKindMethod
+    highlights.NavicIconsStruct = highlights.CmpItemKindStruct
+    highlights.NavicIconsEvent = highlights.CmpItemKindEvent
+    highlights.NavicIconsInterface = highlights.CmpItemKindInterface
+    highlights.NavicIconsEnum = highlights.CmpItemKindEnum
+    highlights.NavicIconsEnumMember = highlights.CmpItemKindEnumMember
+    highlights.NavicIconsConstant = highlights.CmpItemKindConstant
+    highlights.NavicIconsFunction = highlights.CmpItemKindFunction
+    highlights.NavicIconsTypeParameter = highlights.CmpItemKindTypeParameter
+    highlights.NavicIconsVariable = highlights.CmpItemKindVariable
+    highlights.NavicIconsOperator = highlights.CmpItemKindOperator
+    highlights.NavicIconsNull = highlights.CmpItemKindValue
+    highlights.NavicIconsBoolean = highlights.CmpItemKindValue
+    highlights.NavicIconsNumber = highlights.CmpItemKindValue
+    highlights.NavicIconsString = highlights.CmpItemKindValue
+    highlights.NavicIconsKey = highlights.CmpItemKindValue
+    highlights.NavicIconsArray = highlights.CmpItemKindValue
+    highlights.NavicIconsObject = highlights.CmpItemKindValue
   end,
 })
 tokyonight.colorscheme()
