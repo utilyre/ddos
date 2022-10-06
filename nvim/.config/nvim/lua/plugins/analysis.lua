@@ -35,16 +35,6 @@ treesitter.setup({
   autotag = {
     enable = true,
   },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["if"] = "@function.inner",
-        ["af"] = "@function.outer",
-      },
-    },
-  },
 })
 
 indentblankline.setup({
