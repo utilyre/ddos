@@ -20,7 +20,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 })
 
 vim.diagnostic.config({
-  update_in_insert = true,
   virtual_text = false,
   float = {
     source = "always",

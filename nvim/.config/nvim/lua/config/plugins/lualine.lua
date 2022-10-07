@@ -35,7 +35,6 @@ lualine.setup({
       },
       {
         "diagnostics",
-        update_in_insert = true,
         symbols = {
           hint = _G.icons.diagnostic.Suggestion .. " ",
           info = _G.icons.diagnostic.Information .. " ",

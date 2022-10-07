@@ -11,6 +11,5 @@ for formatter, options in pairs(config.formatters or {}) do
 end
 
 null.setup({
-  update_in_insert = true,
   sources = sources,
 })
