@@ -1,187 +1,91 @@
+local packer_path = os.getenv("XDG_DATA_HOME") .. "/nvim/site/pack/packer/start/packer.nvim"
+if not vim.fs.exists(packer_path) then
+  os.execute("git clone --depth=\"1\" -- \"https://github.com/wbthomason/packer.nvim.git\" \"" .. packer_path .. "\"")
+end
+
 local packer = require("packer")
 local util = require("packer.util")
 
 packer.startup({
-  {
-    "nvim-lua/plenary.nvim",
-    "nvim-lua/popup.nvim",
-
-    vim.pkg_use("wbthomason/packer.nvim"),
-
-    {
-      "williamboman/mason.nvim",
-      config = function()
-        require("config.plugins.mason")
-      end,
-    },
-
-    {
-      "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("config.plugins.devicons")
-      end,
-    },
-
-    {
-      "folke/tokyonight.nvim",
-      config = function()
-        require("config.plugins.tokyonight")
-      end,
-    },
-
-    {
-      "rcarriga/nvim-notify",
-      config = function()
-        require("config.plugins.notify")
-      end,
-    },
-
-    {
-      "stevearc/dressing.nvim",
-      config = function()
-        require("config.plugins.dressing")
-      end,
-    },
-
-    {
-      "numtostr/fterm.nvim",
-      config = function()
-        require("config.plugins.fterm")
-      end,
-    },
-
-    {
-      "kyazdani42/nvim-tree.lua",
-      config = function()
-        require("config.plugins.tree")
-      end,
-    },
-
-    {
-      "nvim-telescope/telescope.nvim",
-      config = function()
-        require("config.plugins.telescope")
-      end,
-    },
-
-    {
-      "theprimeagen/harpoon",
-      config = function()
-        require("config.plugins.harpoon")
-      end,
-    },
-
-    {
-      "utilyre/barbecue.nvim",
+  function(use)
+    use({
+      "wbthomason/packer.nvim",
       requires = {
-        "smiteshp/nvim-navic",
-        "theprimeagen/harpoon",
-      },
-      config = function()
-        require("config.plugins.barbecue")
-      end,
-    },
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
 
-    {
-      "j-hui/fidget.nvim",
-      config = function()
-        require("config.plugins.fidget")
-      end,
-    },
-
-    {
-      "nvim-lualine/lualine.nvim",
-      requires = {
+        "kyazdani42/nvim-web-devicons",
         "folke/tokyonight.nvim",
-        "jose-elias-alvarez/null-ls.nvim",
-      },
-      config = function()
-        require("config.plugins.lualine")
-      end,
-    },
 
-    {
-      "lewis6991/gitsigns.nvim",
-      config = function()
-        require("config.plugins.gitsigns")
-      end,
-    },
+        "rcarriga/nvim-notify",
+        "stevearc/dressing.nvim",
 
-    {
-      "nvim-treesitter/nvim-treesitter",
-      requires = {
+        "lukas-reineke/indent-blankline.nvim",
+        "lewis6991/gitsigns.nvim",
+        "numtostr/comment.nvim",
+        "windwp/nvim-autopairs",
+
+        "numtostr/fterm.nvim",
+        "kyazdani42/nvim-tree.lua",
+        "nvim-telescope/telescope.nvim",
+        "theprimeagen/harpoon",
+
+        "utilyre/barbecue.nvim",
+        "j-hui/fidget.nvim",
+        "nvim-lualine/lualine.nvim",
+
+        "nvim-treesitter/nvim-treesitter",
         "p00f/nvim-ts-rainbow",
         "windwp/nvim-ts-autotag",
-      },
-      config = function()
-        require("config.plugins.treesitter")
-      end,
-    },
 
-    {
-      "lukas-reineke/indent-blankline.nvim",
-      config = function()
-        require("config.plugins.blankline")
-      end,
-    },
-
-    {
-      "windwp/nvim-autopairs",
-      config = function()
-        require("config.plugins.autopairs")
-      end,
-    },
-
-    {
-      "numtostr/comment.nvim",
-      config = function()
-        require("config.plugins.comment")
-      end,
-    },
-
-    {
-      "l3mon4d3/luasnip",
-      requires = {
+        "l3mon4d3/luasnip",
         "rafamadriz/friendly-snippets",
-      },
-      config = function()
-        require("config.plugins.luasnip")
-      end,
-    },
 
-    {
-      "neovim/nvim-lspconfig",
-      requires = {
-        "hrsh7th/cmp-nvim-lsp",
+        "williamboman/mason.nvim",
+        "neovim/nvim-lspconfig",
+        "jose-elias-alvarez/null-ls.nvim",
         "smiteshp/nvim-navic",
         "rrethy/vim-illuminate",
-      },
-      config = function()
-        require("config.plugins.lsp")
-      end,
-    },
 
-    {
-      "jose-elias-alvarez/null-ls.nvim",
-      config = function()
-        require("config.plugins.null")
-      end,
-    },
-
-    {
-      "hrsh7th/nvim-cmp",
-      requires = {
-        "windwp/nvim-autopairs",
+        "hrsh7th/nvim-cmp",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
         "petertriho/cmp-git",
         "hrsh7th/cmp-buffer",
       },
       config = function()
+        require("config.plugins.devicons")
+        require("config.plugins.tokyonight")
+
+        require("config.plugins.notify")
+        require("config.plugins.dressing")
+
+        require("config.plugins.blankline")
+        require("config.plugins.gitsigns")
+        require("config.plugins.comment")
+        require("config.plugins.autopairs")
+
+        require("config.plugins.fterm")
+        require("config.plugins.tree")
+        require("config.plugins.telescope")
+        require("config.plugins.harpoon")
+
+        require("config.plugins.barbecue")
+        require("config.plugins.fidget")
+        require("config.plugins.lualine")
+
+        require("config.plugins.treesitter")
+
+        require("config.plugins.luasnip")
+
+        require("config.plugins.mason")
+        require("config.plugins.lsp")
+        require("config.plugins.null")
+
         require("config.plugins.cmp")
       end,
-    },
-  },
+    })
+  end,
   config = {
     max_jobs = 4,
     display = {

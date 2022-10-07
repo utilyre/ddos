@@ -21,20 +21,6 @@ function vim.tbl_unique(tbl)
   return flat
 end
 
-function vim.pkg_use(pkg)
-  local repo = pkg
-  if type(pkg) == "table" then
-    repo = pkg[1]
-  end
-
-  local dest = os.getenv("XDG_DATA_HOME") .. "/nvim/site/pack/packer/start/" .. vim.fs.basename(repo)
-  if not vim.fs.exists(dest) then
-    os.execute("git clone --depth=\"1\" -- \"https://github.com/" .. repo .. ".git\" \"" .. dest .. "\"")
-  end
-
-  return pkg
-end
-
 function vim.fs.exists(name)
   local file, err = io.open(name, "r")
   if err ~= nil then
