@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set({ "n", "v" }, "<leader>if", vim.fun_lambda(vim.lsp.buf.format, { async = true }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ic", vim.fun_lambda(vim.lsp.buf.rename), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ii", vim.fun_lambda(vim.lsp.buf.hover), { buffer = a.buf })
-    vim.keymap.set( "n", "<leader>iw", vim.fun_lambda(vim.diagnostic.open_float, { scope = "cursor" }), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>iw", vim.fun_lambda(vim.diagnostic.open_float, { scope = "cursor" }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ik", vim.fun_lambda(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ij", vim.fun_lambda(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
   end,
