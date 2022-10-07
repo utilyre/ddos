@@ -1,7 +1,7 @@
 local cmp = require("cmp")
+local git = require("cmp_git")
 local autopairs = require("nvim-autopairs.completion.cmp")
 local luasnip = require("luasnip")
-local git = require("cmp_git")
 
 cmp.event:on("confirm_done", autopairs.on_confirm_done())
 

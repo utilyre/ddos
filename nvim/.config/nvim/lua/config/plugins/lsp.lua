@@ -1,7 +1,7 @@
 local lspconfig = require("lspconfig")
-local cmp = require("cmp_nvim_lsp")
 local navic = require("nvim-navic")
 local illuminate = require("illuminate")
+local cmp = require("cmp_nvim_lsp")
 
 local config = vim.json.decode(vim.fs.read(os.getenv("MASON_CONFIG")) or "{}")
 for server, options in pairs(config.servers or {}) do
