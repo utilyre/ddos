@@ -6,19 +6,32 @@ function vim.fun_lambda(fun, ...)
   end
 end
 
+function vim.tbl_clone(tbl)
+  if type(tbl) ~= "table" then
+    return tbl
+  end
+
+  local clone = {}
+  for key, value in pairs(tbl) do
+    clone[vim.tbl_clone(key)] = vim.tbl_clone(value)
+  end
+
+  return clone
+end
+
 function vim.tbl_unique(tbl)
-  local flat = vim.tbl_flatten(tbl)
+  local clone = vim.tbl_clone(tbl)
   local hash = {}
 
-  for i, value in ipairs(flat) do
+  for i, value in ipairs(clone) do
     if hash[value] then
-      table.remove(flat, i)
+      table.remove(clone, i)
     end
 
     hash[value] = true
   end
 
-  return flat
+  return clone
 end
 
 function vim.fs.exists(name)
