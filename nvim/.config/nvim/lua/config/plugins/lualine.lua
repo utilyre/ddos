@@ -47,9 +47,9 @@ lualine.setup({
     lualine_x = {
       {
         function()
-          local names = vim.tbl_filter(function(key)
+          local names = table.filter(vim.tbl_keys(_G.terminals), function(key)
             return key ~= _G.lastkey
-          end, vim.tbl_keys(_G.terminals))
+          end)
 
           return (_G.lastkey or "") .. "%#Conceal#(" .. table.concat(names) .. ")"
         end,
@@ -58,18 +58,20 @@ lualine.setup({
     lualine_y = {
       {
         function()
-          local names = vim.tbl_unique({
-            unpack(vim.tbl_map(
-              function(client)
-                return client.name
-              end,
-              vim.tbl_filter(function(client)
-                return client.name ~= "null-ls"
-              end, vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() }))
-            )),
-            unpack(vim.tbl_map(function(source)
+          local names = table.unique({
+            unpack(
+              table.map(
+                table.filter(vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() }), function(client)
+                  return client.name ~= "null-ls"
+                end),
+                function(client)
+                  return client.name
+                end
+              )
+            ),
+            unpack(table.map(sources.get_available(vim.bo.filetype), function(source)
               return source.name
-            end, sources.get_available(vim.bo.filetype))),
+            end)),
           })
 
           return table.concat(names, " ")

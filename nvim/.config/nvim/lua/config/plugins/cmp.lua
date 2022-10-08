@@ -44,9 +44,9 @@ cmp.setup({
       name = "buffer",
       option = {
         get_bufnrs = function()
-          local bufnrs = vim.tbl_filter(function(bufnr)
+          local bufnrs = table.filter(vim.api.nvim_list_bufs(), function(bufnr)
             return vim.api.nvim_buf_is_loaded(bufnr)
-          end, vim.api.nvim_list_bufs())
+          end)
 
           return bufnrs
         end,
