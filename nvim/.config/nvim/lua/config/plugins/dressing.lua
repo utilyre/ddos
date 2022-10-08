@@ -1,4 +1,5 @@
 local dressing = require("dressing")
+local themes = require("telescope.themes")
 
 dressing.setup({
   input = {
@@ -10,13 +11,7 @@ dressing.setup({
   },
   select = {
     enabled = true,
-    backend = { "builtin" },
-    builtin = {
-      winblend = 0,
-      mappings = {
-        ["q"] = "Close",
-        ["<cr>"] = "Confirm",
-      },
-    },
+    backend = { "telescope" },
+    telescope = themes.get_dropdown(),
   },
 })
