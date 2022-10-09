@@ -1,9 +1,5 @@
 vim.g.icons = {
   ui = {
-    Pending = "",
-    Uninstalled = "",
-    Installed = "",
-    Ready = "",
     Collapsed = "",
     Expanded = "",
     Search = "",
@@ -13,8 +9,14 @@ vim.g.icons = {
     Separator = "•",
     SectionLeft = "",
     SectionRight = "",
-    Space = "·",
     Tab = "",
+    Space = "·",
+  },
+  package = {
+    Pending = "",
+    Uninstalled = "",
+    Installed = "",
+    Ready = "",
   },
   document = {
     File = "",

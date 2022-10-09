@@ -13,6 +13,6 @@ fidget.setup({
   },
   text = {
     spinner = "arc",
-    done = vim.g.icons.ui.Ready,
+    done = vim.g.icons.package.Ready,
   },
 })

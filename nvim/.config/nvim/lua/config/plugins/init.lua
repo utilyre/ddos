@@ -89,10 +89,10 @@ packer.startup({
   config = {
     max_jobs = 4,
     display = {
-      error_sym = vim.g.icons.ui.Pending,
-      working_sym = vim.g.icons.ui.Pending,
-      removed_sym = vim.g.icons.ui.Uninstalled,
-      done_sym = vim.g.icons.ui.Installed,
+      error_sym = vim.g.icons.package.Pending,
+      working_sym = vim.g.icons.package.Pending,
+      removed_sym = vim.g.icons.package.Uninstalled,
+      done_sym = vim.g.icons.package.Installed,
       prompt_border = "rounded",
       open_fn = vim.fun_lambda(util.float, { border = "rounded" }),
     },
