@@ -10,7 +10,7 @@ barbecue.setup({
     return mark.get_length() .. "/" .. #bufnrs
   end,
   symbols = {
-    modified = _G.icons.ui.Modified,
+    modified = vim.g.icons.ui.Modified,
   },
-  kinds = _G.icons.kind,
+  kinds = vim.g.icons.kind,
 })

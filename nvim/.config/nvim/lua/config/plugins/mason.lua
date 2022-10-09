@@ -6,9 +6,9 @@ mason.setup({
   ui = {
     border = "rounded",
     icons = {
-      package_pending = _G.icons.ui.Pending,
-      package_uninstalled = _G.icons.ui.Uninstalled,
-      package_installed = _G.icons.ui.Installed,
+      package_pending = vim.g.icons.ui.Pending,
+      package_uninstalled = vim.g.icons.ui.Uninstalled,
+      package_installed = vim.g.icons.ui.Installed,
     },
   },
 })

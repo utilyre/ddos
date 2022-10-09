@@ -4,10 +4,10 @@ local sources = require("null-ls.sources")
 lualine.setup({
   options = {
     globalstatus = true,
-    component_separators = _G.icons.ui.Separator,
+    component_separators = vim.g.icons.ui.Separator,
     section_separators = {
-      left = _G.icons.ui.SectionRight,
-      right = _G.icons.ui.SectionLeft,
+      left = vim.g.icons.ui.SectionRight,
+      right = vim.g.icons.ui.SectionLeft,
     },
   },
   sections = {
@@ -15,8 +15,8 @@ lualine.setup({
       {
         "\"code\"",
         separator = {
-          left = _G.icons.ui.SectionLeft,
-          right = _G.icons.ui.SectionRight,
+          left = vim.g.icons.ui.SectionLeft,
+          right = vim.g.icons.ui.SectionRight,
         },
       },
     },
@@ -28,18 +28,18 @@ lualine.setup({
         "diff",
         colored = false,
         symbols = {
-          added = _G.icons.git.Added,
-          modified = _G.icons.git.Modified,
-          removed = _G.icons.git.Deleted,
+          added = vim.g.icons.git.Added,
+          modified = vim.g.icons.git.Modified,
+          removed = vim.g.icons.git.Deleted,
         },
       },
       {
         "diagnostics",
         symbols = {
-          hint = _G.icons.diagnostic.Suggestion .. " ",
-          info = _G.icons.diagnostic.Information .. " ",
-          warn = _G.icons.diagnostic.Warning .. " ",
-          error = _G.icons.diagnostic.Error .. " ",
+          hint = vim.g.icons.diagnostic.Suggestion .. " ",
+          info = vim.g.icons.diagnostic.Information .. " ",
+          warn = vim.g.icons.diagnostic.Warning .. " ",
+          error = vim.g.icons.diagnostic.Error .. " ",
         },
       },
     },
@@ -85,8 +85,8 @@ lualine.setup({
       {
         "location",
         separator = {
-          left = _G.icons.ui.SectionLeft,
-          right = _G.icons.ui.SectionRight,
+          left = vim.g.icons.ui.SectionLeft,
+          right = vim.g.icons.ui.SectionRight,
         },
       },
     },

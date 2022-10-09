@@ -16,7 +16,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.list = true
-vim.opt.listchars:append("tab:  " .. _G.icons.ui.Tab .. ",trail:" .. _G.icons.ui.Space)
+vim.opt.listchars:append("tab:  " .. vim.g.icons.ui.Tab .. ",trail:" .. vim.g.icons.ui.Space)
 vim.opt.fillchars:append("eob: ")
 
 vim.opt.showmode = false
@@ -37,6 +37,18 @@ vim.opt.spell = true
 vim.opt.spelloptions:append("camel")
 
 vim.api.nvim_create_augroup("options", {})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = "options",
+  callback = function()
+    vim.opt.timeout = false
+  end,
+})
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = "options",
+  callback = function()
+    vim.opt.timeout = true
+  end,
+})
 vim.api.nvim_create_autocmd("BufEnter", {
   group = "options",
   command = "set formatoptions-=cro",
@@ -47,16 +59,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     higroup = "Visual",
     on_visual = false,
   }),
-})
-vim.api.nvim_create_autocmd("InsertEnter", {
-  group = "options",
-  callback = function()
-    vim.opt.timeout = true
-  end,
-})
-vim.api.nvim_create_autocmd("InsertLeave", {
-  group = "options",
-  callback = function()
-    vim.opt.timeout = false
-  end,
 })

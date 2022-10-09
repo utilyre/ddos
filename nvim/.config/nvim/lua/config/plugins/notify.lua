@@ -5,9 +5,9 @@ notify.setup({
   top_down = false,
   background_colour = "NormalFloat",
   icons = {
-    INFO = _G.icons.diagnostic.Information,
-    WARN = _G.icons.diagnostic.Warning,
-    ERROR = _G.icons.diagnostic.Error,
+    INFO = vim.g.icons.diagnostic.Information,
+    WARN = vim.g.icons.diagnostic.Warning,
+    ERROR = vim.g.icons.diagnostic.Error,
   },
 })
 

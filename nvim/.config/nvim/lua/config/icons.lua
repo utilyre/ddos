@@ -1,4 +1,4 @@
-_G.icons = {
+vim.g.icons = {
   ui = {
     Pending = "",
     Uninstalled = "",

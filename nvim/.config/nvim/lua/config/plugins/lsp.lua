@@ -30,10 +30,10 @@ vim.diagnostic.config({
   },
   signs = {
     active = {
-      vim.api.nvim_create_sign("DiagnosticSignHint", _G.icons.diagnostic.Suggestion),
-      vim.api.nvim_create_sign("DiagnosticSignInfo", _G.icons.diagnostic.Information),
-      vim.api.nvim_create_sign("DiagnosticSignWarn", _G.icons.diagnostic.Warning),
-      vim.api.nvim_create_sign("DiagnosticSignError", _G.icons.diagnostic.Error),
+      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.icons.diagnostic.Suggestion),
+      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.icons.diagnostic.Information),
+      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.icons.diagnostic.Warning),
+      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.icons.diagnostic.Error),
     },
   },
 })

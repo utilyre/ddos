@@ -21,7 +21,7 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr" },
     format = function(entry, item)
-      item.kind = _G.icons.kind[item.kind]
+      item.kind = vim.g.icons.kind[item.kind]
       return item
     end,
   },
