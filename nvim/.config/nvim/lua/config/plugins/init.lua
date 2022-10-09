@@ -14,12 +14,14 @@ packer.startup({
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
+        "muniftanjim/nui.nvim",
 
         "kyazdani42/nvim-web-devicons",
         "folke/tokyonight.nvim",
 
         "rcarriga/nvim-notify",
         "stevearc/dressing.nvim",
+        "folke/noice.nvim",
 
         "lukas-reineke/indent-blankline.nvim",
         "lewis6991/gitsigns.nvim",
@@ -60,6 +62,7 @@ packer.startup({
 
         require("config.plugins.notify")
         require("config.plugins.dressing")
+        require("config.plugins.noice")
 
         require("config.plugins.blankline")
         require("config.plugins.gitsigns")

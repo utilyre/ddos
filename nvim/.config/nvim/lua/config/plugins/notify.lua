@@ -10,5 +10,3 @@ notify.setup({
     ERROR = vim.g.icons.diagnostic.Error,
   },
 })
-
-vim.notify = notify
