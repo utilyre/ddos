@@ -19,4 +19,4 @@ map p :paste
 map c :rename
 map x :delete
 map gw &wali "$f"
-map gp &printf "%s\n" "$fx" | tr -- "\n" "\0" | xargs --null -- dragon-drop --and-exit --on-top --all-compact
+map gp &printf "%s\n" "$fx" | xargs --delimiter="\n" -- dragon-drop --on-top
