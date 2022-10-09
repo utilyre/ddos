@@ -1,55 +1,34 @@
-function table.clone(tbl)
-  if type(tbl) ~= "table" then
-    return tbl
-  end
-
-  local clone = {}
-  for key, value in pairs(tbl) do
-    clone[table.clone(key)] = table.clone(value)
-  end
-
-  return clone
-end
-
 function table.unique(tbl)
-  local clone = table.clone(tbl)
-  local hash = {}
-
-  for i, value in ipairs(clone) do
-    if hash[value] then
-      table.remove(clone, i)
+  local ret, hash = {}, {}
+  for i, value in ipairs(tbl) do
+    if not hash[value] then
+      table.insert(ret, value)
     end
 
     hash[value] = true
   end
 
-  return clone
+  return ret
 end
 
 function table.filter(tbl, predicate)
-  local clone = table.clone(tbl)
-
+  local ret = {}
   for key, value in pairs(tbl) do
-    local keep = predicate(value, key, clone)
-    if not keep then
-      clone[key] = nil
-    end
+    local keep, k = predicate(value, key)
+    ret[k or #ret + 1] = keep and value or nil
   end
 
-  return clone
+  return ret
 end
 
 function table.map(tbl, predicate)
-  local clone = table.clone(tbl)
-
+  local ret = {}
   for key, value in pairs(tbl) do
-    local v, k = predicate(value, key, clone)
-
-    clone[key] = nil
-    clone[k or #clone + 1] = v
+    local v, k = predicate(value, key)
+    ret[k or #ret + 1] = v
   end
 
-  return clone
+  return ret
 end
 
 function vim.fun_lambda(fun, ...)
