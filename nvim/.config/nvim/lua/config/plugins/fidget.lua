@@ -4,6 +4,9 @@ fidget.setup({
   window = {
     zindex = 1,
   },
+  align = {
+    bottom = false,
+  },
   fmt = {
     stack_upwards = false,
     task = function(name, message, percent)
