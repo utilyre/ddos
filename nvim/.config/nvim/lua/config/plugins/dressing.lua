@@ -4,7 +4,6 @@ local themes = require("telescope.themes")
 dressing.setup({
   input = {
     enabled = true,
-    relative = "editor",
     border = "rounded",
     winblend = 0,
     insert_only = false,
