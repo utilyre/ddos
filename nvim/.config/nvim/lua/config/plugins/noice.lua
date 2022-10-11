@@ -7,9 +7,18 @@ noice.setup({
   cmdline = {
     enabled = true,
     icons = {
-      [":"] = { icon = ":", firstc = false },
-      ["/"] = { icon = "/", firstc = false },
-      ["?"] = { icon = "?", firstc = false },
+      [":"] = {
+        firstc = false,
+        icon = ":",
+      },
+      ["/"] = {
+        firstc = false,
+        icon = "/",
+      },
+      ["?"] = {
+        firstc = false,
+        icon = "?",
+      },
     },
   },
   popupmenu = {
