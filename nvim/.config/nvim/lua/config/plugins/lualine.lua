@@ -13,7 +13,7 @@ lualine.setup({
   sections = {
     lualine_a = {
       {
-        "\"code\"",
+        "%P",
         separator = {
           left = vim.g.icons.ui.SectionLeft,
           right = vim.g.icons.ui.SectionRight,
