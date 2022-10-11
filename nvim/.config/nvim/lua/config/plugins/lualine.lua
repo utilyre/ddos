@@ -26,7 +26,6 @@ lualine.setup({
       },
       {
         "diff",
-        colored = false,
         symbols = {
           added = vim.g.icons.git.Added,
           modified = vim.g.icons.git.Modified,
