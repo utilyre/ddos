@@ -49,10 +49,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     vim.opt.timeout = true
   end,
 })
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = "options",
-  command = "set formatoptions-=cro",
-})
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = "options",
   callback = vim.fun_lambda(vim.highlight.on_yank, {
