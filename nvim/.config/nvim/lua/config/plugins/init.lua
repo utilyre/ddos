@@ -13,7 +13,6 @@ packer.startup({
       "wbthomason/packer.nvim",
       requires = {
         "nvim-lua/plenary.nvim",
-        "nvim-lua/popup.nvim",
         "muniftanjim/nui.nvim",
 
         "kyazdani42/nvim-web-devicons",
