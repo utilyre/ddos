@@ -7,37 +7,39 @@ local config = vim.json.decode(vim.fs.read(os.getenv("MASON_CONFIG")) or "{}")
 
 for server, options in pairs(config.servers or {}) do
   options.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  options.handlers = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = "rounded",
+    }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+      border = "rounded",
+    }),
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = false,
+      float = {
+        scope = "cursor",
+        source = "always",
+        border = "rounded",
+        header = "",
+        prefix = "",
+      },
+      signs = {
+        active = {
+          vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.icons.diagnostic.Suggestion),
+          vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.icons.diagnostic.Information),
+          vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.icons.diagnostic.Warning),
+          vim.api.nvim_create_sign("DiagnosticSignError", vim.g.icons.diagnostic.Error),
+        },
+      },
+    }),
+  }
+
   lspconfig[server].setup(options)
 end
 
 illuminate.configure({
   providers = {
     "lsp",
-  },
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
-})
-
-vim.diagnostic.config({
-  virtual_text = false,
-  float = {
-    source = "always",
-    border = "rounded",
-    header = "",
-    prefix = "",
-  },
-  signs = {
-    active = {
-      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.icons.diagnostic.Suggestion),
-      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.icons.diagnostic.Information),
-      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.icons.diagnostic.Warning),
-      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.icons.diagnostic.Error),
-    },
   },
 })
 
@@ -63,7 +65,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>ic", vim.fun_lambda(vim.lsp.buf.rename), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ih", vim.fun_lambda(vim.lsp.buf.hover), { buffer = a.buf })
     vim.keymap.set("n", "<leader>is", vim.fun_lambda(vim.lsp.buf.signature_help), { buffer = a.buf })
-    vim.keymap.set("n", "<leader>io", vim.fun_lambda(vim.diagnostic.open_float, { scope = "cursor" }), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>io", vim.fun_lambda(vim.diagnostic.open_float), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ik", vim.fun_lambda(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ij", vim.fun_lambda(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
   end,
