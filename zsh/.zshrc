@@ -11,7 +11,7 @@ zuse() {
 
 lf() {
 	tmp="$(mktemp)"
-	cough --last-dir-path="$tmp" "$@"
+	tough --last-dir-path="$tmp" "$@"
 
 	cd -- "$(cat -- "$tmp")"
 	rm -- "$tmp"
