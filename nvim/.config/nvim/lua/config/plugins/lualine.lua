@@ -46,7 +46,7 @@ lualine.setup({
     lualine_c = {
       {
         function()
-          return "%#Conceal#@%*" .. noice.api.statusline.mode.get():sub(-1)
+          return noice.api.statusline.mode.get():sub(-2)
         end,
         cond = noice.api.statusline.mode.has,
       },
