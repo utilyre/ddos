@@ -1,4 +1,5 @@
 local lualine = require("lualine")
+local noice = require("noice")
 local sources = require("null-ls.sources")
 
 lualine.setup({
@@ -42,7 +43,14 @@ lualine.setup({
         },
       },
     },
-    lualine_c = {},
+    lualine_c = {
+      {
+        function()
+          return "%#Conceal#@%*" .. noice.api.statusline.mode.get():sub(-1)
+        end,
+        cond = noice.api.statusline.mode.has,
+      },
+    },
     lualine_x = {
       {
         function()
