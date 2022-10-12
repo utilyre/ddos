@@ -1,6 +1,6 @@
 function table.unique(tbl)
   local ret, hash = {}, {}
-  for i, value in ipairs(tbl) do
+  for _, value in ipairs(tbl) do
     if not hash[value] then
       table.insert(ret, value)
     end
