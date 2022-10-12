@@ -20,5 +20,7 @@ fidget.setup({
   text = {
     spinner = "arc",
     done = vim.g.icons.package.Ready,
+    commenced = "began",
+    completed = "done",
   },
 })
