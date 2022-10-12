@@ -46,7 +46,7 @@ lualine.setup({
     lualine_c = {
       {
         function()
-          return noice.api.statusline.mode.get():sub(-2)
+          return noice.api.statusline.mode.get()
         end,
         cond = noice.api.statusline.mode.has,
       },
