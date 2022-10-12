@@ -25,17 +25,17 @@ vim.opt.fillchars = {
   eob = " ",
 }
 
-vim.opt.wrap = false
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.pumheight = 16
 vim.opt.completeopt = {}
+
+vim.opt.wrap = false
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
 vim.opt.spell = true
 vim.opt.spelloptions = {
