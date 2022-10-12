@@ -19,6 +19,9 @@ illuminate.configure({
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
+})
 
 vim.diagnostic.config({
   virtual_text = false,
@@ -52,12 +55,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     vim.keymap.set("n", "<leader>id", vim.fun_lambda(vim.lsp.buf.definition, { reuse_win = true }), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>it", vim.fun_lambda(vim.lsp.buf.type_definition, { reuse_win = true }), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>ii", vim.fun_lambda(vim.lsp.buf.implementation), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ir", vim.fun_lambda(vim.lsp.buf.references), { buffer = a.buf })
     vim.keymap.set({ "n", "v" }, "<leader>ia", vim.fun_lambda(vim.lsp.buf.code_action), { buffer = a.buf })
     vim.keymap.set({ "n", "v" }, "<leader>if", vim.fun_lambda(vim.lsp.buf.format, { async = true }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ic", vim.fun_lambda(vim.lsp.buf.rename), { buffer = a.buf })
-    vim.keymap.set("n", "<leader>ii", vim.fun_lambda(vim.lsp.buf.hover), { buffer = a.buf })
-    vim.keymap.set("n", "<leader>iw", vim.fun_lambda(vim.diagnostic.open_float, { scope = "cursor" }), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>ih", vim.fun_lambda(vim.lsp.buf.hover), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>is", vim.fun_lambda(vim.lsp.buf.signature_help), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>io", vim.fun_lambda(vim.diagnostic.open_float, { scope = "cursor" }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ik", vim.fun_lambda(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ij", vim.fun_lambda(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
   end,
