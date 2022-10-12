@@ -17,8 +17,8 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = "  " .. vim.g.icons.ui.Tab,
-  trail = vim.g.icons.ui.Space,
+  tab = "  " .. vim.g.icons.space.Tab,
+  trail = vim.g.icons.space.Trail,
 }
 vim.opt.fillchars = {
   eob = " ",

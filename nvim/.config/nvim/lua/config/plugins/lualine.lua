@@ -85,6 +85,11 @@ lualine.setup({
         end,
       },
       {
+        function()
+          return vim.g.icons.space.Indent .. " " .. (vim.bo.expandtab and vim.bo.shiftwidth or vim.bo.tabstop)
+        end,
+      },
+      {
         "filetype",
       },
     },

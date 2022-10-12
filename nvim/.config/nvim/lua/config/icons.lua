@@ -9,8 +9,6 @@ vim.g.icons = {
     Separator = "•",
     SectionLeft = "",
     SectionRight = "",
-    Tab = "",
-    Space = "·",
   },
   package = {
     Pending = "",
@@ -34,6 +32,11 @@ vim.g.icons = {
     Deleted = "-",
     Unmerged = "=",
     Ignored = "#",
+  },
+  space = {
+    Indent = "",
+    Tab = "",
+    Trail = "·",
   },
   diagnostic = {
     Suggestion = "",
