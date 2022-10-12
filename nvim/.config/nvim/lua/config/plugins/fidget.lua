@@ -7,11 +7,14 @@ fidget.setup({
   align = {
     bottom = false,
   },
+  timer = {
+    spinner_rate = 60,
+  },
   fmt = {
     stack_upwards = false,
     task = function(name, message, percent)
-      local progress = percent and percent .. "%" or message
-      return (name or "") .. " (" .. (progress or "") .. ")"
+      local percentage = percent and percent .. "%" or message
+      return (name or "") .. " (" .. (percentage or "") .. ")"
     end,
   },
   text = {
