@@ -12,15 +12,15 @@ fidget.setup({
   },
   fmt = {
     stack_upwards = false,
-    task = function(name, message, percent)
-      local percentage = percent and percent .. "%" or message
-      return (name or "") .. " (" .. (percentage or "") .. ")"
+    task = function(name, percentage, percent)
+      local progress = percent and percent .. "%" or percentage
+      return (name or "") .. " (" .. progress .. ")"
     end,
   },
   text = {
     spinner = "arc",
     done = vim.g.icons.package.Ready,
-    commenced = "began",
+    commenced = "begun",
     completed = "done",
   },
 })
