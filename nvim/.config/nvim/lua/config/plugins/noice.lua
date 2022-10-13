@@ -44,5 +44,8 @@ noice.setup({
         },
       },
     },
+    virtualtext = {
+      format = {},
+    },
   },
 })
