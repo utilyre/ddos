@@ -19,7 +19,6 @@ packer.startup({
         "folke/tokyonight.nvim",
 
         "rcarriga/nvim-notify",
-        "stevearc/dressing.nvim",
         "folke/noice.nvim",
 
         "lukas-reineke/indent-blankline.nvim",
@@ -60,7 +59,6 @@ packer.startup({
         require("config.plugins.tokyonight")
 
         require("config.plugins.notify")
-        require("config.plugins.dressing")
         require("config.plugins.noice")
 
         require("config.plugins.blankline")
