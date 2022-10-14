@@ -82,4 +82,4 @@ tree.setup({
   },
 })
 
-vim.keymap.set("n", "<c-/>", vim.fun_lambda(tree.toggle))
+vim.keymap.set("n", "<c-_>", vim.fun_lambda(tree.toggle))
