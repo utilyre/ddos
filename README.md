@@ -30,9 +30,7 @@
 - starship
 - stow
 - sxhkd
-- ttf-cascadia-code
 - ttf-dejavu
-- ttf-nerd-fonts-symbols-2048-em
 - ueberzug
 - xorg-server
 - xorg-xinit
