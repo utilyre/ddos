@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Visual
-Exec=kitty -e rvim -- %F
+Exec=alacritty -e rvim -- %F
 NoDisplay=true
