@@ -1,7 +1,7 @@
 local packer_path = os.getenv("XDG_DATA_HOME") .. "/nvim/site/pack/packer/start/packer.nvim"
 if not vim.fs.exists(packer_path) then
   os.execute("git clone --depth=\"1\" -- \"https://github.com/wbthomason/packer.nvim.git\" \"" .. packer_path .. "\"")
-  return
+  vim.cmd.packadd("packer.nvim")
 end
 
 local packer = require("packer")

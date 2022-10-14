@@ -17,13 +17,13 @@ vim.opt.relativenumber = true
 vim.opt.showmode = false
 vim.opt.cursorline = true
 vim.opt.list = true
-vim.opt.listchars = {
+vim.opt.listchars:append({
   tab = "  " .. vim.g.icons.space.Tab,
   trail = vim.g.icons.space.Trail,
-}
-vim.opt.fillchars = {
+})
+vim.opt.fillchars:append({
   eob = " ",
-}
+})
 
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
@@ -38,10 +38,9 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
 vim.opt.spell = true
-vim.opt.spelloptions = {
+vim.opt.spelloptions:append({
   "camel",
-  "noplainbuffer",
-}
+})
 
 vim.api.nvim_create_augroup("options", {})
 vim.api.nvim_create_autocmd("InsertLeave", {
