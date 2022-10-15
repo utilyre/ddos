@@ -59,8 +59,8 @@ tree.setup({
         default = vim.g.icons.document.File,
         symlink = vim.g.icons.document.Link,
         folder = {
-          arrow_closed = vim.g.icons.ui.Collapsed,
-          arrow_open = vim.g.icons.ui.Expanded,
+          arrow_closed = vim.g.icons.widget.Collapsed,
+          arrow_open = vim.g.icons.widget.Expanded,
           symlink = vim.g.icons.document.Link,
           default = vim.g.icons.document.Folder,
           open = vim.g.icons.document.Open,

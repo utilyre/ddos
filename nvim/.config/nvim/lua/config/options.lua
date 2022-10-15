@@ -38,9 +38,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
 vim.opt.spell = true
-vim.opt.spelloptions:append({
-  "camel",
-})
+vim.opt.spelloptions:append({ "camel" })
 
 vim.api.nvim_create_augroup("options", {})
 vim.api.nvim_create_autocmd("InsertLeave", {

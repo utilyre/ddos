@@ -38,9 +38,7 @@ for server, options in pairs(config.servers or {}) do
 end
 
 illuminate.configure({
-  providers = {
-    "lsp",
-  },
+  providers = { "lsp" },
 })
 
 vim.api.nvim_create_augroup("lsp", {})
