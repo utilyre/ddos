@@ -8,13 +8,13 @@
 
 ### Official Repos
 
-- alacritty
 - arc-solid-gtk-theme
 - bspwm
 - dmenu
 - dunst
 - git
 - imv
+- kitty
 - lf
 - libnotify
 - lxsession-gtk3
