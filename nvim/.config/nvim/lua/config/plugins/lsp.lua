@@ -14,28 +14,29 @@ for server, options in pairs(config.servers or {}) do
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
       border = "rounded",
     }),
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = false,
-      float = {
-        scope = "cursor",
-        source = "always",
-        border = "rounded",
-        header = "",
-        prefix = "",
-      },
-      signs = {
-        active = {
-          vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.icons.diagnostic.Suggestion),
-          vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.icons.diagnostic.Information),
-          vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.icons.diagnostic.Warning),
-          vim.api.nvim_create_sign("DiagnosticSignError", vim.g.icons.diagnostic.Error),
-        },
-      },
-    }),
   }
 
   lspconfig[server].setup(options)
 end
+
+vim.diagnostic.config({
+  virtual_text = false,
+  float = {
+    scope = "cursor",
+    source = "always",
+    border = "rounded",
+    header = "",
+    prefix = "",
+  },
+  signs = {
+    active = {
+      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.icons.diagnostic.Suggestion),
+      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.icons.diagnostic.Information),
+      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.icons.diagnostic.Warning),
+      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.icons.diagnostic.Error),
+    },
+  },
+})
 
 illuminate.configure({
   providers = { "lsp" },
