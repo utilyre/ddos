@@ -1,13 +1,13 @@
-super + {_,shift} + q
-	bspc node {--close,--kill}
-super + {space,t,f}
-	bspc node --state "{floating,tiled,fullscreen}"
-super + {_,shift} + {k,j}
-	bspc node {--focus,--swap} '{prev,next}.local.!hidden.window'
-super + {_,shift} + {h,l}
-	bspc {desktop --focus,node --to-desktop} "{prev,next}"
 super + {_,shift} + {1-9}
 	bspc {desktop --focus,node --to-desktop} "^{1-9}"
+super + {_,shift} + {h,l}
+	bspc {desktop --focus,node --to-desktop} "{prev,next}"
+super + {_,shift} + {k,j}
+	bspc node {--focus,--swap} '{prev,next}.local.!hidden.window'
+super + {space,t,f}
+	bspc node --state "{floating,tiled,fullscreen}"
+super + {_,shift} + q
+	bspc node {--close,--kill}
 
 XF86AudioMute
 	pactl set-sink-mute "$(pactl get-default-sink)" toggle

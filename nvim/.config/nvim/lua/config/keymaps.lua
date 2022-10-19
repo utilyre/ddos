@@ -9,9 +9,9 @@ vim.keymap.set("i", "kj", "<esc>")
 vim.keymap.set("n", "<s-y>", "y$")
 
 vim.keymap.set("n", "<c-h>", vim.fun_lambda(vim.cmd.wincmd, "h"))
-vim.keymap.set("n", "<c-j>", vim.fun_lambda(vim.cmd.wincmd, "j"))
-vim.keymap.set("n", "<c-k>", vim.fun_lambda(vim.cmd.wincmd, "k"))
 vim.keymap.set("n", "<c-l>", vim.fun_lambda(vim.cmd.wincmd, "l"))
+vim.keymap.set("n", "<c-k>", vim.fun_lambda(vim.cmd.wincmd, "k"))
+vim.keymap.set("n", "<c-j>", vim.fun_lambda(vim.cmd.wincmd, "j"))
 
 vim.keymap.set("n", "<leader>w", vim.fun_lambda(vim.cmd.write))
 vim.keymap.set("n", "<leader>q", vim.fun_lambda(vim.cmd.quit))
