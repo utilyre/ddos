@@ -1,16 +1,16 @@
 vim.g.icons = {
-  widget = {
-    Collapsed = "",
-    Expanded = "",
-    Modified = "●",
+  fill = {
     Separator = "•",
     SectionLeft = "",
     SectionRight = "",
   },
-  ui = {
+  widget = {
+    Collapsed = "",
+    Expanded = "",
     Search = "",
     Caret = "",
     Tag = "",
+    Modified = "●",
     Indent = "",
   },
   package = {
@@ -37,7 +37,7 @@ vim.g.icons = {
     Ignored = "#",
   },
   space = {
-    Tab = "",
+    Tab = "→",
     Trail = "·",
   },
   diagnostic = {

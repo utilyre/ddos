@@ -4,9 +4,9 @@ local builtin = require("telescope.builtin")
 
 telescope.setup({
   defaults = vim.tbl_deep_extend("force", themes.get_dropdown(), {
-    prompt_prefix = vim.g.icons.ui.Search .. " ",
-    selection_caret = vim.g.icons.ui.Caret .. " ",
-    multi_icon = vim.g.icons.ui.Tag .. " ",
+    prompt_prefix = vim.g.icons.widget.Search .. " ",
+    selection_caret = vim.g.icons.widget.Caret .. " ",
+    multi_icon = vim.g.icons.widget.Tag .. " ",
   }),
 })
 
