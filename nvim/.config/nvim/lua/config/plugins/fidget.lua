@@ -1,9 +1,6 @@
 local fidget = require("fidget")
 
 fidget.setup({
-  window = {
-    zindex = 1,
-  },
   align = {
     bottom = false,
   },
