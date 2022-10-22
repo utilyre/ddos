@@ -1,5 +1,5 @@
 vim.g.icons = {
-  fill = {
+  layout = {
     Separator = "•",
     SectionLeft = "",
     SectionRight = "",

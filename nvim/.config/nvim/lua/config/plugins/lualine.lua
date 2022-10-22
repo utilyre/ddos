@@ -5,10 +5,10 @@ local sources = require("null-ls.sources")
 lualine.setup({
   options = {
     globalstatus = true,
-    component_separators = vim.g.icons.fill.Separator,
+    component_separators = vim.g.icons.layout.Separator,
     section_separators = {
-      left = vim.g.icons.fill.SectionRight,
-      right = vim.g.icons.fill.SectionLeft,
+      left = vim.g.icons.layout.SectionRight,
+      right = vim.g.icons.layout.SectionLeft,
     },
   },
   sections = {
@@ -16,8 +16,8 @@ lualine.setup({
       {
         "%P",
         separator = {
-          left = vim.g.icons.fill.SectionLeft,
-          right = vim.g.icons.fill.SectionRight,
+          left = vim.g.icons.layout.SectionLeft,
+          right = vim.g.icons.layout.SectionRight,
         },
       },
     },
@@ -96,8 +96,8 @@ lualine.setup({
       {
         "location",
         separator = {
-          left = vim.g.icons.fill.SectionLeft,
-          right = vim.g.icons.fill.SectionRight,
+          left = vim.g.icons.layout.SectionLeft,
+          right = vim.g.icons.layout.SectionRight,
         },
       },
     },
