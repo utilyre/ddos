@@ -1,8 +1,8 @@
-function table.unique(list)
+function table.unique(tbl)
   local ret, hash = {}, {}
-  for _, value in ipairs(list) do
+  for _, value in ipairs(tbl) do
     if not hash[value] then
-      table.insert(ret, value)
+      ret[#ret + 1] = value
     end
 
     hash[value] = true
@@ -13,27 +13,27 @@ end
 
 function table.merge(...)
   local ret = {}
-  for _, list in ipairs({ ... }) do
-    for _, value in ipairs(list) do
-      table.insert(ret, value)
+  for _, tbl in ipairs({ ... }) do
+    for key, value in pairs(tbl) do
+      ret[type(key) == "number" and #ret + 1 or key] = value
     end
   end
 
   return ret
 end
 
-function table.reduce(table, callback, initial)
-  local ret = initial
-  for key, value in pairs(table) do
+function table.reduce(tbl, callback, initial)
+  local ret = initial or tbl[1]
+  for key, value in pairs(tbl) do
     ret = callback(ret, value, key)
   end
 
   return ret
 end
 
-function table.filter(table, callback)
+function table.filter(tbl, callback)
   local ret = {}
-  for key, value in pairs(table) do
+  for key, value in pairs(tbl) do
     local keep, k = callback(value, key)
     ret[k or #ret + 1] = keep and value or nil
   end
@@ -41,9 +41,9 @@ function table.filter(table, callback)
   return ret
 end
 
-function table.map(table, callback)
+function table.map(tbl, callback)
   local ret = {}
-  for key, value in pairs(table) do
+  for key, value in pairs(tbl) do
     local v, k = callback(value, key)
     ret[k or #ret + 1] = v
   end
