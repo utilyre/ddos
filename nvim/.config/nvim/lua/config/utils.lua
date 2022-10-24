@@ -22,6 +22,15 @@ function table.merge(...)
   return ret
 end
 
+function table.reduce(table, callback, initial)
+  local ret = initial
+  for key, value in pairs(table) do
+    ret = callback(ret, value, key)
+  end
+
+  return ret
+end
+
 function table.filter(table, callback)
   local ret = {}
   for key, value in pairs(table) do
@@ -37,15 +46,6 @@ function table.map(table, callback)
   for key, value in pairs(table) do
     local v, k = callback(value, key)
     ret[k or #ret + 1] = v
-  end
-
-  return ret
-end
-
-function table.reduce(table, callback, initial)
-  local ret = initial
-  for key, value in pairs(table) do
-    ret = callback(ret, value, key)
   end
 
   return ret
@@ -67,19 +67,6 @@ function vim.fs.exists(name)
 
   io.close(file)
   return true
-end
-
-function vim.fs.read(name)
-  if not vim.fs.exists(name) then
-    return nil
-  end
-
-  local lines = {}
-  for line in io.lines(name) do
-    table.insert(lines, line)
-  end
-
-  return table.concat(lines, "\n")
 end
 
 function vim.api.nvim_create_sign(name, text)
