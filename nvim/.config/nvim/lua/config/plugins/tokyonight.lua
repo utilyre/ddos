@@ -37,13 +37,6 @@ tokyonight.setup({
     highlights.NavicIconsTypeParameter = highlights.CmpItemKindTypeParameter
     highlights.NavicIconsVariable = highlights.CmpItemKindVariable
     highlights.NavicIconsOperator = highlights.CmpItemKindOperator
-    highlights.NavicIconsNull = highlights.CmpItemKindValue
-    highlights.NavicIconsBoolean = highlights.CmpItemKindValue
-    highlights.NavicIconsNumber = highlights.CmpItemKindValue
-    highlights.NavicIconsString = highlights.CmpItemKindValue
-    highlights.NavicIconsKey = highlights.CmpItemKindValue
-    highlights.NavicIconsArray = highlights.CmpItemKindValue
-    highlights.NavicIconsObject = highlights.CmpItemKindValue
   end,
 })
 tokyonight.colorscheme()
