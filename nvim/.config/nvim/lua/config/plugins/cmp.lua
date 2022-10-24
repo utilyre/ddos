@@ -32,16 +32,16 @@ cmp.setup({
     },
     {
       group_index = 2,
-      name = "emoji",
-    },
-    {
-      group_index = 3,
       name = "luasnip",
       max_item_count = 2,
     },
     {
-      group_index = 3,
+      group_index = 2,
       name = "nvim_lsp",
+    },
+    {
+      group_index = 3,
+      name = "emoji",
     },
     {
       group_index = 4,
