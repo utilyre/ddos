@@ -64,8 +64,8 @@ lualine.setup({
     lualine_y = {
       {
         function()
-          local names = table.unique({
-            unpack(
+          local names = table.unique(
+            table.merge(
               table.map(
                 table.filter(vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() }), function(client)
                   return client.name ~= "null-ls"
@@ -73,12 +73,12 @@ lualine.setup({
                 function(client)
                   return client.name
                 end
-              )
-            ),
-            unpack(table.map(sources.get_available(vim.bo.filetype), function(source)
-              return source.name
-            end)),
-          })
+              ),
+              table.map(sources.get_available(vim.bo.filetype), function(source)
+                return source.name
+              end)
+            )
+          )
 
           return table.concat(names, " ")
         end,

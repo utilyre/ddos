@@ -3,9 +3,7 @@ local navic = require("nvim-navic")
 local illuminate = require("illuminate")
 local cmp = require("cmp_nvim_lsp")
 
-local config = vim.json.decode(vim.fs.read(os.getenv("MASON_CONFIG")) or "{}")
-
-for server, options in pairs(config.servers or {}) do
+for server, options in pairs(vim.g.servers or {}) do
   options.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
   options.handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

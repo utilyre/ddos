@@ -14,7 +14,6 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export XINIT_CONFIG="$XDG_CONFIG_HOME/x11/xinitrc"
 export XPROFILE_CONFIG="$XDG_CONFIG_HOME/x11/xprofile"
-export MASON_CONFIG="$XDG_CONFIG_HOME/mason/mason.json"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export TOUGH_CACHE="$XDG_CACHE_HOME/tough"
 export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
