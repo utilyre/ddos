@@ -51,11 +51,11 @@ function table.reduce(table, callback, initial)
   return ret
 end
 
-function vim.fun_lambda(fun, ...)
+function vim.callback(callback, ...)
   local params = { ... }
 
   return function()
-    return fun(unpack(params))
+    return callback(unpack(params))
   end
 end
 

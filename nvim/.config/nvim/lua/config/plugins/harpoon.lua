@@ -7,5 +7,5 @@ harpoon.setup({
   save_on_change = false,
 })
 
-vim.keymap.set("n", "<tab>", vim.fun_lambda(ui.toggle_quick_menu))
-vim.keymap.set("n", "<c-m>", vim.fun_lambda(mark.add_file))
+vim.keymap.set("n", "<tab>", vim.callback(ui.toggle_quick_menu))
+vim.keymap.set("n", "<c-m>", vim.callback(mark.add_file))

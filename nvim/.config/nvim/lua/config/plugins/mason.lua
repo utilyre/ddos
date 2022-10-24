@@ -13,4 +13,4 @@ mason.setup({
   },
 })
 
-vim.keymap.set("n", "<leader>m", vim.fun_lambda(ui.open))
+vim.keymap.set("n", "<leader>m", vim.callback(ui.open))

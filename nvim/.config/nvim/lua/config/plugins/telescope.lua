@@ -10,8 +10,8 @@ telescope.setup({
   }),
 })
 
-vim.keymap.set("n", "<leader>fh", vim.fun_lambda(builtin.help_tags))
-vim.keymap.set("n", "<leader>fr", vim.fun_lambda(builtin.oldfiles))
-vim.keymap.set("n", "<leader>ff", vim.fun_lambda(builtin.find_files))
-vim.keymap.set("n", "<leader>fa", vim.fun_lambda(builtin.filetypes))
-vim.keymap.set("n", "<leader>fw", vim.fun_lambda(builtin.live_grep))
+vim.keymap.set("n", "<leader>fh", vim.callback(builtin.help_tags))
+vim.keymap.set("n", "<leader>fr", vim.callback(builtin.oldfiles))
+vim.keymap.set("n", "<leader>ff", vim.callback(builtin.find_files))
+vim.keymap.set("n", "<leader>fa", vim.callback(builtin.filetypes))
+vim.keymap.set("n", "<leader>fw", vim.callback(builtin.live_grep))

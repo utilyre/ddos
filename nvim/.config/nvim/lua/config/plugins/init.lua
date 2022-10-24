@@ -95,12 +95,12 @@ packer.startup({
       removed_sym = vim.g.icons.package.Uninstalled,
       done_sym = vim.g.icons.package.Installed,
       prompt_border = "rounded",
-      open_fn = vim.fun_lambda(util.float, { border = "rounded" }),
+      open_fn = vim.callback(util.float, { border = "rounded" }),
     },
   },
 })
 
-vim.keymap.set("n", "<leader>pc", vim.fun_lambda(packer.clean))
-vim.keymap.set("n", "<leader>pi", vim.fun_lambda(packer.install))
-vim.keymap.set("n", "<leader>pu", vim.fun_lambda(packer.update))
-vim.keymap.set("n", "<leader>ps", vim.fun_lambda(packer.sync))
+vim.keymap.set("n", "<leader>pc", vim.callback(packer.clean))
+vim.keymap.set("n", "<leader>pi", vim.callback(packer.install))
+vim.keymap.set("n", "<leader>pu", vim.callback(packer.update))
+vim.keymap.set("n", "<leader>ps", vim.callback(packer.sync))
