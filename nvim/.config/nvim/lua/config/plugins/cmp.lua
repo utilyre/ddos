@@ -28,16 +28,16 @@ cmp.setup({
   sources = {
     {
       group_index = 1,
-      name = "git",
-    },
-    {
-      group_index = 2,
       name = "luasnip",
       max_item_count = 2,
     },
     {
-      group_index = 2,
+      group_index = 1,
       name = "nvim_lsp",
+    },
+    {
+      group_index = 2,
+      name = "git",
     },
     {
       group_index = 3,
