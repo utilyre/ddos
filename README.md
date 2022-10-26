@@ -6,7 +6,7 @@
 
 ## 📦 Dependencies
 
-### Official Repos
+### Official
 
 - arc-solid-gtk-theme
 - bspwm
@@ -21,7 +21,6 @@
 - mediainfo
 - mpv
 - neovim
-- noto-fonts-emoji
 - picom
 - playerctl
 - polybar
@@ -30,7 +29,6 @@
 - starship
 - stow
 - sxhkd
-- ttf-dejavu
 - ueberzug
 - xorg-server
 - xorg-xinit
