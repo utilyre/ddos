@@ -4,7 +4,7 @@ local illuminate = require("illuminate")
 local cmp = require("cmp_nvim_lsp")
 
 for server, options in pairs(vim.g.servers or {}) do
-  options.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  options.capabilities = cmp.default_capabilities()
   options.handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = "rounded",
