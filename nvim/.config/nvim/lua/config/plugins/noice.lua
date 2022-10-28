@@ -1,22 +1,26 @@
 local noice = require("noice")
 
 noice.setup({
+  presets = {
+    command_palette = true,
+    long_message_to_split = true,
+  },
   messages = {
     enabled = true,
   },
   cmdline = {
     enabled = true,
-    icons = {
-      [":"] = {
-        firstc = false,
+    format = {
+      filter = false,
+      help = false,
+      lua = false,
+      cmdline = {
         icon = ":",
       },
-      ["/"] = {
-        firstc = false,
+      search_down = {
         icon = "/",
       },
-      ["?"] = {
-        firstc = false,
+      search_up = {
         icon = "?",
       },
     },
@@ -24,28 +28,5 @@ noice.setup({
   popupmenu = {
     enabled = true,
     backend = "cmp",
-  },
-  views = {
-    cmdline_popup = {
-      position = {
-        row = "1",
-        col = "50%",
-      },
-      border = {
-        style = "rounded",
-        text = {
-          top = " Palette ",
-        },
-      },
-      win_options = {
-        winhighlight = {
-          Normal = "NoiceNormal",
-          FloatBorder = "NoiceBorder",
-        },
-      },
-    },
-    virtualtext = {
-      format = {},
-    },
   },
 })

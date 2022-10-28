@@ -32,7 +32,6 @@ packer.startup({
         "theprimeagen/harpoon",
 
         "utilyre/barbecue.nvim",
-        "j-hui/fidget.nvim",
         "nvim-lualine/lualine.nvim",
 
         "nvim-treesitter/nvim-treesitter",
@@ -73,7 +72,6 @@ packer.startup({
         require("config.plugins.harpoon")
 
         require("config.plugins.barbecue")
-        require("config.plugins.fidget")
         require("config.plugins.lualine")
 
         require("config.plugins.treesitter")
