@@ -5,9 +5,6 @@ noice.setup({
     command_palette = true,
     long_message_to_split = true,
   },
-  messages = {
-    enabled = true,
-  },
   cmdline = {
     enabled = true,
     format = {
