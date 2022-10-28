@@ -15,12 +15,15 @@ noice.setup({
       help = false,
       lua = false,
       cmdline = {
+        title = " Palette ",
         icon = ":",
       },
       search_down = {
+        title = " Look Up ",
         icon = "/",
       },
       search_up = {
+        title = " Look Up ",
         icon = "?",
       },
     },
