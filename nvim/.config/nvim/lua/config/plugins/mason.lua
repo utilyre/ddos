@@ -4,6 +4,7 @@ local ui = require("mason.ui")
 mason.setup({
   max_concurrent_installers = 4,
   ui = {
+    check_outdated_packages_on_open = false,
     border = "rounded",
     icons = {
       package_pending = vim.g.icons.package.Pending,
