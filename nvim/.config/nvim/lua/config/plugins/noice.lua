@@ -8,19 +8,16 @@ noice.setup({
   cmdline = {
     enabled = true,
     format = {
-      filter = false,
-      help = false,
-      lua = false,
       cmdline = {
         title = " Palette ",
         icon = ":",
       },
       search_down = {
-        title = " Look Up ",
+        title = " Find ",
         icon = "/",
       },
       search_up = {
-        title = " Look Up ",
+        title = " Find ",
         icon = "?",
       },
     },
