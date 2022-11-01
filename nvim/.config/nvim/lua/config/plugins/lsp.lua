@@ -5,17 +5,16 @@ local cmp = require("cmp_nvim_lsp")
 
 for server, options in pairs(vim.g.servers or {}) do
   options.capabilities = cmp.default_capabilities()
-  options.handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "rounded",
-    }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "rounded",
-    }),
-  }
-
   lspconfig[server].setup(options)
 end
+
+illuminate.configure({
+  providers = { "lsp" },
+})
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
 
 vim.diagnostic.config({
   virtual_text = false,
@@ -28,16 +27,29 @@ vim.diagnostic.config({
   },
   signs = {
     active = {
-      vim.api.nvim_create_sign("DiagnosticSignHint", vim.g.icons.diagnostic.Suggestion),
-      vim.api.nvim_create_sign("DiagnosticSignInfo", vim.g.icons.diagnostic.Information),
-      vim.api.nvim_create_sign("DiagnosticSignWarn", vim.g.icons.diagnostic.Warning),
-      vim.api.nvim_create_sign("DiagnosticSignError", vim.g.icons.diagnostic.Error),
+      "DiagnosticSignHint",
+      "DiagnosticSignInfo",
+      "DiagnosticSignWarn",
+      "DiagnosticSignError",
     },
   },
 })
 
-illuminate.configure({
-  providers = { "lsp" },
+vim.fn.sign_define("DiagnosticSignHint", {
+  texthl = "DiagnosticSignHint",
+  text = vim.g.icons.diagnostic.Suggestion,
+})
+vim.fn.sign_define("DiagnosticSignInfo", {
+  texthl = "DiagnosticSignHint",
+  text = vim.g.icons.diagnostic.Information,
+})
+vim.fn.sign_define("DiagnosticSignWarn", {
+  texthl = "DiagnosticSignHint",
+  text = vim.g.icons.diagnostic.Warning,
+})
+vim.fn.sign_define("DiagnosticSignError", {
+  texthl = "DiagnosticSignHint",
+  text = vim.g.icons.diagnostic.Error,
 })
 
 vim.api.nvim_create_augroup("lsp", {})

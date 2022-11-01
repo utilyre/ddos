@@ -68,8 +68,3 @@ function vim.fs.exists(name)
   io.close(file)
   return true
 end
-
-function vim.api.nvim_create_sign(name, text)
-  vim.fn.sign_define(name, { texthl = name, text = text })
-  return { name, text }
-end
