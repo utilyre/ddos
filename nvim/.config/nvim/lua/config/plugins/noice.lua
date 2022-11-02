@@ -3,7 +3,7 @@ local noice = require("noice")
 noice.setup({
   presets = {
     command_palette = true,
-    long_message_to_split = true,
+    lsp_doc_border = true,
   },
   cmdline = {
     enabled = true,
@@ -25,5 +25,21 @@ noice.setup({
   popupmenu = {
     enabled = true,
     backend = "cmp",
+  },
+  lsp = {
+    hover = {
+      enabled = false,
+    },
+    signature = {
+      enabled = true,
+    },
+    progress = {
+      enabled = true,
+    },
+  },
+  views = {
+    mini = {
+      zindex = 40,
+    },
   },
 })
