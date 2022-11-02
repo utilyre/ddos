@@ -40,15 +40,15 @@ vim.fn.sign_define("DiagnosticSignHint", {
   text = vim.g.icons.diagnostic.Suggestion,
 })
 vim.fn.sign_define("DiagnosticSignInfo", {
-  texthl = "DiagnosticSignHint",
+  texthl = "DiagnosticSignInfo",
   text = vim.g.icons.diagnostic.Information,
 })
 vim.fn.sign_define("DiagnosticSignWarn", {
-  texthl = "DiagnosticSignHint",
+  texthl = "DiagnosticSignWarn",
   text = vim.g.icons.diagnostic.Warning,
 })
 vim.fn.sign_define("DiagnosticSignError", {
-  texthl = "DiagnosticSignHint",
+  texthl = "DiagnosticSignError",
   text = vim.g.icons.diagnostic.Error,
 })
 
