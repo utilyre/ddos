@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     vim.opt.timeout = true
   end,
 })
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd("FileType", {
   group = "options",
   callback = function()
     vim.opt.formatoptions = {}
