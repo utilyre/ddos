@@ -1,10 +1,7 @@
 function table.unique(tbl)
   local ret, hash = {}, {}
   for _, value in ipairs(tbl) do
-    if not hash[value] then
-      ret[#ret + 1] = value
-    end
-
+    if not hash[value] then ret[#ret + 1] = value end
     hash[value] = true
   end
 
@@ -61,9 +58,7 @@ end
 
 function vim.fs.exists(name)
   local file, err = io.open(name, "r")
-  if err ~= nil then
-    return false
-  end
+  if err ~= nil then return false end
 
   io.close(file)
   return true

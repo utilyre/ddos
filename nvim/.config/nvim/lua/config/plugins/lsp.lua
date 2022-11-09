@@ -58,12 +58,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(a)
     local client = vim.lsp.get_client_by_id(a.data.client_id)
 
-    if client.server_capabilities["documentSymbolProvider"] then
-      navic.attach(client, a.buf)
-    end
-    if client.server_capabilities["documentHighlightProvider"] then
-      illuminate.on_attach(client, a.buf)
-    end
+    if client.server_capabilities["documentSymbolProvider"] then navic.attach(client, a.buf) end
+    if client.server_capabilities["documentHighlightProvider"] then illuminate.on_attach(client, a.buf) end
 
     vim.keymap.set("n", "<leader>id", vim.callback(vim.lsp.buf.definition, { reuse_win = true }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>it", vim.callback(vim.lsp.buf.type_definition, { reuse_win = true }), { buffer = a.buf })
