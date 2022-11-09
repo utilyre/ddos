@@ -28,7 +28,7 @@ noice.setup({
   },
   lsp = {
     hover = {
-      enabled = false,
+      enabled = true,
     },
     signature = {
       enabled = true,
