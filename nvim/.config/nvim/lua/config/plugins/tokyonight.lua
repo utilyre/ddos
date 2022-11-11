@@ -10,6 +10,9 @@ tokyonight.setup({
     highlights.TelescopeSelectionCaret = { background = colors.bg_visual, foreground = colors.teal }
     highlights.TelescopeMultiIcon = { foreground = colors.red }
     highlights.TelescopeMultiSelection = { bold = true, italic = true }
+
+    highlights.NavicText = { foreground = colors.fg_dark }
+    highlights.NavicSeparator = { foreground = colors.dark5 }
   end,
 })
 tokyonight.colorscheme()
