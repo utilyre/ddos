@@ -47,4 +47,15 @@ noice.setup({
       zindex = 40,
     },
   },
+  routes = {
+    {
+      filter = {
+        event = "msg_show",
+        kind = "",
+      },
+      opts = {
+        skip = true,
+      },
+    },
+  },
 })
