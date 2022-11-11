@@ -6,6 +6,7 @@ vim.opt.timeout = false
 vim.opt.timeoutlen = 50
 
 vim.opt.termguicolors = true
+vim.opt.confirm = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.scrolloff = 2
