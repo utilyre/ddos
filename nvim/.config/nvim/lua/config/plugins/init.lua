@@ -21,6 +21,7 @@ packer.startup({
         "rcarriga/nvim-notify",
         "folke/noice.nvim",
 
+        "rrethy/vim-illuminate",
         "lukas-reineke/indent-blankline.nvim",
         "lewis6991/gitsigns.nvim",
         "numtostr/comment.nvim",
@@ -31,6 +32,7 @@ packer.startup({
         "nvim-telescope/telescope.nvim",
         "theprimeagen/harpoon",
 
+        "smiteshp/nvim-navic",
         "utilyre/barbecue.nvim",
         "nvim-lualine/lualine.nvim",
 
@@ -44,8 +46,6 @@ packer.startup({
         "williamboman/mason.nvim",
         "neovim/nvim-lspconfig",
         "jose-elias-alvarez/null-ls.nvim",
-        "smiteshp/nvim-navic",
-        "rrethy/vim-illuminate",
 
         "hrsh7th/nvim-cmp",
         "saadparwaiz1/cmp_luasnip",
@@ -61,6 +61,7 @@ packer.startup({
         require("config.plugins.notify")
         require("config.plugins.noice")
 
+        require("config.plugins.illuminate")
         require("config.plugins.blankline")
         require("config.plugins.gitsigns")
         require("config.plugins.comment")
