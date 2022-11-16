@@ -88,7 +88,8 @@ lualine.setup({
       },
       {
         function()
-          return vim.g.icons.widget.Indent .. " " .. (vim.bo.expandtab and vim.bo.shiftwidth or vim.bo.tabstop)
+          if not vim.bo.expandtab then return "" end
+          return vim.g.icons.widget.Indent .. " " .. vim.bo.shiftwidth
         end,
       },
     },
