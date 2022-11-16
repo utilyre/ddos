@@ -40,6 +40,46 @@ noice.setup({
     },
     progress = {
       enabled = true,
+      format = {
+        {
+          "{progress}",
+          key = "progress.percentage",
+          contents = {
+            "{data.progress.message}",
+          },
+        },
+        " ",
+        {
+          "{spinner}",
+          hl_group = "NoiceLspProgressSpinner",
+        },
+        " ",
+        {
+          "{data.progress.client}",
+          hl_group = "NoiceLspProgressClient",
+        },
+        " ",
+        {
+          "{data.progress.title}",
+          hl_group = "NoiceLspProgressTitle",
+        },
+      },
+      format_done = {
+        {
+          vim.g.icons.package.Ready,
+          hl_group = "NoiceLspProgressSpinner",
+        },
+        " ",
+        {
+          "{data.progress.client}",
+          hl_group = "NoiceLspProgressClient",
+        },
+        " ",
+        {
+          "{data.progress.title}",
+          hl_group = "NoiceLspProgressTitle",
+        },
+      },
     },
   },
   views = {
