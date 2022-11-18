@@ -15,8 +15,13 @@ cmp.setup({
     ghost_text = true,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    completion = {
+      scrolloff = vim.go.scrolloff,
+      border = "rounded",
+    },
+    documentation = {
+      border = "rounded",
+    },
   },
   formatting = {
     fields = { "kind", "abbr" },
@@ -65,8 +70,8 @@ cmp.setup({
         cmp.complete()
       end
     end, { "i" }),
-    ["<c-u>"] = cmp.mapping(vim.callback(cmp.scroll_docs, -10), { "i", "s" }),
-    ["<c-d>"] = cmp.mapping(vim.callback(cmp.scroll_docs, 10), { "i", "s" }),
+    ["<c-u>"] = cmp.mapping(vim.callback(cmp.scroll_docs, -8), { "i", "s" }),
+    ["<c-d>"] = cmp.mapping(vim.callback(cmp.scroll_docs, 8), { "i", "s" }),
     ["<c-p>"] = cmp.mapping(vim.callback(cmp.select_prev_item), { "i", "s" }),
     ["<c-n>"] = cmp.mapping(vim.callback(cmp.select_next_item), { "i", "s" }),
     ["<s-tab>"] = cmp.mapping(vim.callback(luasnip.jump, -1), { "i", "s" }),
