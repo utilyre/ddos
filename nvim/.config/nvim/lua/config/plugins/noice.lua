@@ -20,11 +20,6 @@ noice.setup({
         title = " Find ",
         icon = "?",
       },
-      calculator = {
-        pattern = "^=",
-        title = " Pad ",
-        icon = "=",
-      },
     },
   },
   popupmenu = {
