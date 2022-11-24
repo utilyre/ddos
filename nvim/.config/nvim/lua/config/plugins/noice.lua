@@ -85,6 +85,10 @@ noice.setup({
   views = {
     mini = {
       zindex = 40,
+      position = {
+        row = 2,
+        col = -1,
+      },
     },
   },
   routes = {
