@@ -82,7 +82,7 @@ noice.setup({
       zindex = 40,
       position = {
         row = 2,
-        col = -1,
+        col = -2,
       },
     },
   },
