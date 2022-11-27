@@ -11,8 +11,9 @@ tokyonight.setup({
     highlights.TelescopeMultiIcon = { foreground = colors.red }
     highlights.TelescopeMultiSelection = { bold = true, italic = true }
 
-    highlights.NavicText = { foreground = colors.fg_dark }
-    highlights.NavicSeparator = { foreground = colors.dark5 }
+    highlights.BarbecueDirname = { foreground = colors.fg_dark }
+    highlights.BarbecueBasename = { foreground = colors.fg_dark }
+    highlights.BarbecueContext = { foreground = colors.fg_dark }
   end,
 })
 tokyonight.colorscheme()
