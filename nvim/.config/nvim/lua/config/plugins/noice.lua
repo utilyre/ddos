@@ -6,7 +6,6 @@ noice.setup({
     lsp_doc_border = true,
   },
   cmdline = {
-    enabled = true,
     format = {
       cmdline = {
         title = " Palette ",
@@ -22,19 +21,8 @@ noice.setup({
       },
     },
   },
-  popupmenu = {
-    enabled = true,
-    backend = "cmp",
-  },
   lsp = {
-    hover = {
-      enabled = true,
-    },
-    signature = {
-      enabled = true,
-    },
     progress = {
-      enabled = true,
       format = {
         {
           "{progress}",
