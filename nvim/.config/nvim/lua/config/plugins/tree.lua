@@ -17,12 +17,13 @@ tree.setup({
     vim.keymap.set("n", "a", vim.callback(api.fs.create), { buffer = bufnr })
   end,
   git = {
-    enable = true,
     ignore = false,
+    show_on_open_dirs = false,
   },
   diagnostics = {
     enable = true,
     show_on_dirs = true,
+    show_on_open_dirs = false,
     icons = {
       hint = vim.g.icons.diagnostic.Suggestion,
       info = vim.g.icons.diagnostic.Information,
