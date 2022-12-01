@@ -14,7 +14,9 @@ lualine.setup({
   sections = {
     lualine_a = {
       {
-        "%P",
+        function()
+          return vim.fn.fnamemodify(vim.loop.cwd(), ":t")
+        end,
         separator = {
           left = vim.g.icons.layout.SectionLeft,
           right = vim.g.icons.layout.SectionRight,
