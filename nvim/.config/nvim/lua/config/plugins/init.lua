@@ -1,5 +1,5 @@
 local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if not vim.fs.exists(packer_path) then
+if not vim.loop.fs_access(packer_path, "R") then
   os.execute("git clone --depth=\"1\" -- \"https://github.com/wbthomason/packer.nvim.git\" \"" .. packer_path .. "\"")
   vim.cmd.packadd("packer.nvim")
 end
