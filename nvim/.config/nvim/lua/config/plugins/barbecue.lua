@@ -9,8 +9,6 @@ barbecue.setup({
 
     return mark.get_length() .. "/" .. #bufnrs
   end,
-  symbols = {
-    modified = vim.g.icons.widget.Modified,
-  },
+  show_modified = true,
   kinds = vim.g.icons.kind,
 })
