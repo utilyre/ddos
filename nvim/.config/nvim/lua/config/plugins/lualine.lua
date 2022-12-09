@@ -48,18 +48,16 @@ lualine.setup({
     lualine_c = {
       {
         function()
-          return noice.api.statusline.mode.get() or ""
+          if not noice.api.statusline.mode.has() then return "" end
+          return noice.api.statusline.mode.get_hl() or ""
         end,
       },
     },
     lualine_x = {
       {
         function()
-          local names = table.filter(vim.tbl_keys(_G.terminals), function(key)
-            return key ~= _G.lastkey
-          end)
-
-          return (_G.lastkey or "") .. "%#Conceal#(" .. table.concat(names) .. ")"
+          if not noice.api.statusline.search.has() then return "" end
+          return noice.api.statusline.search.get_hl() or ""
         end,
       },
     },

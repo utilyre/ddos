@@ -1,9 +1,14 @@
 local noice = require("noice")
+local lsp = require("noice.lsp")
 
 noice.setup({
   presets = {
     command_palette = true,
     lsp_doc_border = true,
+  },
+  messages = {
+    view_history = "popup",
+    view_search = false,
   },
   cmdline = {
     format = {
@@ -75,3 +80,12 @@ noice.setup({
     },
   },
 })
+
+vim.keymap.set("n", "<c-y>", function()
+  if lsp.scroll(-1) then return end
+  return "<c-y>"
+end, { expr = true })
+vim.keymap.set("n", "<c-e>", function()
+  if lsp.scroll(1) then return end
+  return "<c-e>"
+end, { expr = true })
