@@ -6,10 +6,6 @@ for server, options in pairs(vim.g.servers or {}) do
   lspconfig[server].setup(options)
 end
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
-
 vim.diagnostic.config({
   virtual_text = false,
   float = {
