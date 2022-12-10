@@ -49,7 +49,7 @@ lualine.setup({
       {
         function()
           if not noice.api.statusline.mode.has() then return "" end
-          return noice.api.statusline.mode.get_hl() or ""
+          return noice.api.statusline.mode.get_hl()
         end,
       },
     },
@@ -57,7 +57,7 @@ lualine.setup({
       {
         function()
           if not noice.api.statusline.search.has() then return "" end
-          return noice.api.statusline.search.get_hl() or ""
+          return noice.api.statusline.search.get_hl()
         end,
       },
     },
