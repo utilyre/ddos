@@ -25,7 +25,6 @@ packer.startup({
         "lukas-reineke/indent-blankline.nvim",
         "lewis6991/gitsigns.nvim",
         "numtostr/comment.nvim",
-        "windwp/nvim-autopairs",
 
         "numtostr/fterm.nvim",
         "kyazdani42/nvim-tree.lua",
@@ -38,7 +37,6 @@ packer.startup({
 
         "nvim-treesitter/nvim-treesitter",
         "p00f/nvim-ts-rainbow",
-        "windwp/nvim-ts-autotag",
 
         "l3mon4d3/luasnip",
         "rafamadriz/friendly-snippets",
@@ -65,7 +63,6 @@ packer.startup({
         require("config.plugins.blankline")
         require("config.plugins.gitsigns")
         require("config.plugins.comment")
-        require("config.plugins.autopairs")
 
         require("config.plugins.fterm")
         require("config.plugins.tree")
