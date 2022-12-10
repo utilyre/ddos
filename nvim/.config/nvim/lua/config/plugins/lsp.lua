@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local lines = require("lsp_lines")
 local cmp = require("cmp_nvim_lsp")
 
 for server, options in pairs(vim.g.servers or {}) do
@@ -6,8 +7,11 @@ for server, options in pairs(vim.g.servers or {}) do
   lspconfig[server].setup(options)
 end
 
+lines.setup()
+
 vim.diagnostic.config({
   virtual_text = false,
+  virtual_lines = false,
   float = {
     scope = "cursor",
     source = "always",
@@ -68,5 +72,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>io", vim.callback(vim.diagnostic.open_float), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ik", vim.callback(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ij", vim.callback(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
+    vim.keymap.set("n", "<leader>il", vim.callback(lines.toggle), { buffer = a.buf })
   end,
 })

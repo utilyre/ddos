@@ -43,6 +43,7 @@ packer.startup({
 
         "williamboman/mason.nvim",
         "neovim/nvim-lspconfig",
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         "jose-elias-alvarez/null-ls.nvim",
 
         "hrsh7th/nvim-cmp",
