@@ -1,5 +1,3 @@
 local comment = require("Comment")
 
-comment.setup({
-  sticky = false,
-})
+comment.setup()
