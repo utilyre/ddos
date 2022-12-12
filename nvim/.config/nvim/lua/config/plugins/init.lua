@@ -42,8 +42,8 @@ packer.startup({
         "rafamadriz/friendly-snippets",
 
         "williamboman/mason.nvim",
-        "neovim/nvim-lspconfig",
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        "neovim/nvim-lspconfig",
         "jose-elias-alvarez/null-ls.nvim",
 
         "hrsh7th/nvim-cmp",
@@ -78,6 +78,7 @@ packer.startup({
         require("config.plugins.luasnip")
 
         require("config.plugins.mason")
+        require("config.plugins.diagnostic")
         require("config.plugins.lsp")
         require("config.plugins.null")
 

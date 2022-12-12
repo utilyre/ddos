@@ -1,50 +1,10 @@
 local lspconfig = require("lspconfig")
-local lines = require("lsp_lines")
 local cmp = require("cmp_nvim_lsp")
 
 for server, options in pairs(vim.g.servers or {}) do
   options.capabilities = cmp.default_capabilities()
   lspconfig[server].setup(options)
 end
-
-lines.setup()
-
-vim.diagnostic.config({
-  virtual_text = false,
-  virtual_lines = false,
-  float = {
-    scope = "cursor",
-    source = "always",
-    border = "rounded",
-    header = "",
-    prefix = "",
-  },
-  signs = {
-    active = {
-      "DiagnosticSignHint",
-      "DiagnosticSignInfo",
-      "DiagnosticSignWarn",
-      "DiagnosticSignError",
-    },
-  },
-})
-
-vim.fn.sign_define("DiagnosticSignHint", {
-  texthl = "DiagnosticSignHint",
-  text = vim.g.icons.diagnostic.Suggestion,
-})
-vim.fn.sign_define("DiagnosticSignInfo", {
-  texthl = "DiagnosticSignInfo",
-  text = vim.g.icons.diagnostic.Information,
-})
-vim.fn.sign_define("DiagnosticSignWarn", {
-  texthl = "DiagnosticSignWarn",
-  text = vim.g.icons.diagnostic.Warning,
-})
-vim.fn.sign_define("DiagnosticSignError", {
-  texthl = "DiagnosticSignError",
-  text = vim.g.icons.diagnostic.Error,
-})
 
 vim.api.nvim_create_augroup("lsp", {})
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -69,9 +29,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>if", vim.callback(vim.lsp.buf.format, { async = true }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ic", vim.callback(vim.lsp.buf.rename), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ih", vim.callback(vim.lsp.buf.hover), { buffer = a.buf })
-    vim.keymap.set("n", "<leader>io", vim.callback(vim.diagnostic.open_float), { buffer = a.buf })
-    vim.keymap.set("n", "<leader>ik", vim.callback(vim.diagnostic.goto_prev, { float = false }), { buffer = a.buf })
-    vim.keymap.set("n", "<leader>ij", vim.callback(vim.diagnostic.goto_next, { float = false }), { buffer = a.buf })
-    vim.keymap.set("n", "<leader>il", vim.callback(lines.toggle), { buffer = a.buf })
   end,
 })
