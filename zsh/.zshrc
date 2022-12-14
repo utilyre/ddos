@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-zuse() {
+use() {
 	mkdir --parents -- "$ZSH_DATA"
 	repo="${1%:*}"
 	dest="$ZSH_DATA/${repo##*/}"
@@ -36,7 +36,7 @@ SAVEHIST="4096"
 eval "$(starship init "zsh")"
 RPS1=""
 
-zuse "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
+use "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
 autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
@@ -45,11 +45,11 @@ zstyle ":completion:*" list-colors "$LS_COLORS"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
-zuse "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
+use "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=("main" "brackets")
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
-zuse "softmoth/zsh-vim-mode:zsh-vim-mode.plugin.zsh"
+use "softmoth/zsh-vim-mode:zsh-vim-mode.plugin.zsh"
 bindkey -M "viins" "jk" "vi-cmd-mode"
 bindkey -M "viins" "kj" "vi-cmd-mode"
 bindkey -M "viins" "^p" "reverse-menu-complete"
