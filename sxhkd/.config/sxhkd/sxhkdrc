@@ -1,5 +1,5 @@
 super + {_,shift} + {1-9}
-	bspc {desktop --focus,node --to-desktop} "^{1-9}"
+	bspc {desktop --focus,node --to-desktop} "{1-9}"
 super + {_,shift} + {k,j}
 	bspc node {--focus,--swap} '{prev,next}.local.!hidden.window'
 super + {space,t,f}
