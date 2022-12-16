@@ -21,11 +21,6 @@ packer.startup({
         "rcarriga/nvim-notify",
         "folke/noice.nvim",
 
-        "rrethy/vim-illuminate",
-        "lukas-reineke/indent-blankline.nvim",
-        "lewis6991/gitsigns.nvim",
-        "numtostr/comment.nvim",
-
         "numtostr/fterm.nvim",
         "kyazdani42/nvim-tree.lua",
         "nvim-telescope/telescope.nvim",
@@ -34,6 +29,12 @@ packer.startup({
         "smiteshp/nvim-navic",
         "utilyre/barbecue.nvim",
         "nvim-lualine/lualine.nvim",
+
+        "rrethy/vim-illuminate",
+        "lvimuser/lsp-inlayhints.nvim",
+        "lukas-reineke/indent-blankline.nvim",
+        "lewis6991/gitsigns.nvim",
+        "numtostr/comment.nvim",
 
         "nvim-treesitter/nvim-treesitter",
         "p00f/nvim-ts-rainbow",
@@ -59,11 +60,6 @@ packer.startup({
         require("config.plugins.notify")
         require("config.plugins.noice")
 
-        require("config.plugins.illuminate")
-        require("config.plugins.blankline")
-        require("config.plugins.gitsigns")
-        require("config.plugins.comment")
-
         require("config.plugins.fterm")
         require("config.plugins.tree")
         require("config.plugins.telescope")
@@ -71,6 +67,12 @@ packer.startup({
 
         require("config.plugins.barbecue")
         require("config.plugins.lualine")
+
+        require("config.plugins.illuminate")
+        require("config.plugins.inlayhints")
+        require("config.plugins.blankline")
+        require("config.plugins.gitsigns")
+        require("config.plugins.comment")
 
         require("config.plugins.treesitter")
 
