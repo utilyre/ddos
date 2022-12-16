@@ -45,19 +45,6 @@ cmp.setup({
       group_index = 3,
       name = "emoji",
     },
-    {
-      group_index = 4,
-      name = "buffer",
-      option = {
-        get_bufnrs = function()
-          local bufnrs = table.filter(vim.api.nvim_list_bufs(), function(bufnr)
-            return vim.api.nvim_buf_is_loaded(bufnr)
-          end)
-
-          return bufnrs
-        end,
-      },
-    },
   },
   mapping = {
     ["<c-space>"] = function()

@@ -51,7 +51,6 @@ packer.startup({
         "hrsh7th/cmp-nvim-lsp",
         "petertriho/cmp-git",
         "hrsh7th/cmp-emoji",
-        "hrsh7th/cmp-buffer",
       },
       config = function()
         require("config.plugins.devicons")
