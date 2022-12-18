@@ -28,6 +28,7 @@ packer.startup({
 
         "smiteshp/nvim-navic",
         "utilyre/barbecue.nvim",
+        "lewis6991/satellite.nvim",
         "nvim-lualine/lualine.nvim",
 
         "rrethy/vim-illuminate",
@@ -66,6 +67,7 @@ packer.startup({
         require("config.plugins.harpoon")
 
         require("config.plugins.barbecue")
+        require("config.plugins.satellite")
         require("config.plugins.lualine")
 
         require("config.plugins.illuminate")
