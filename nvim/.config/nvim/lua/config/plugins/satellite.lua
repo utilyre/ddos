@@ -1,3 +1,5 @@
 local satellite = require("satellite")
 
-satellite.setup()
+satellite.setup({
+  current_only = true,
+})
