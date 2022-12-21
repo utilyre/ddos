@@ -6,6 +6,9 @@ tokyonight.setup({
     colors.bg_statusline = "none"
   end,
   on_highlights = function(highlights, colors)
+    highlights.NoiceCmdlinePopup = { bold = true, foreground = colors.border_highlight, background = colors.bg_float }
+
+    highlights.TelescopeTitle = { bold = true, foreground = colors.border_highlight, background = colors.bg_float }
     highlights.TelescopePromptPrefix = { foreground = colors.yellow }
     highlights.TelescopeSelectionCaret = { background = colors.bg_visual, foreground = colors.teal }
     highlights.TelescopeMultiIcon = { foreground = colors.red }
