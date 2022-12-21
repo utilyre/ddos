@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+[ -n "$XINIT_CONFIG" ] && return
+
 export XDG_DOCUMENTS_HOME="$HOME/Documents"
 export XDG_DOWNLOADS_HOME="$HOME/Downloads"
 export XDG_MUSIC_HOME="$HOME/Music"
