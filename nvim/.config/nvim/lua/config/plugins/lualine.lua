@@ -37,6 +37,7 @@ lualine.setup({
       },
       {
         "diagnostics",
+        update_in_insert = true,
         symbols = {
           hint = vim.g.icons.diagnostic.Suggestion .. " ",
           info = vim.g.icons.diagnostic.Information .. " ",
