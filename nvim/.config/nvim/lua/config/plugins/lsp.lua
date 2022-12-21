@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
+    vim.keymap.set("n", "<leader>is", vim.callback(vim.lsp.buf.document_symbol), { buffer = a.buf })
     vim.keymap.set("n", "<leader>id", vim.callback(vim.lsp.buf.definition, { reuse_win = true }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>it", vim.callback(vim.lsp.buf.type_definition, { reuse_win = true }), { buffer = a.buf })
     vim.keymap.set("n", "<leader>ii", vim.callback(vim.lsp.buf.implementation), { buffer = a.buf })
