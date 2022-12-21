@@ -21,7 +21,6 @@ packer.startup({
         "rcarriga/nvim-notify",
         "folke/noice.nvim",
 
-        "numtostr/fterm.nvim",
         "kyazdani42/nvim-tree.lua",
         "nvim-telescope/telescope.nvim",
         "theprimeagen/harpoon",
@@ -61,7 +60,6 @@ packer.startup({
         require("config.plugins.notify")
         require("config.plugins.noice")
 
-        require("config.plugins.fterm")
         require("config.plugins.tree")
         require("config.plugins.telescope")
         require("config.plugins.harpoon")
