@@ -11,6 +11,14 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.scrolloff = 2
 vim.opt.sidescrolloff = 2
+vim.opt.shortmess = {
+  a = true,
+  s = true,
+  t = true,
+  T = true,
+  W = true,
+  F = true,
+}
 
 vim.opt.signcolumn = "yes:2"
 vim.opt.number = true
