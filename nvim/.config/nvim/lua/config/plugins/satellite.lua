@@ -1,5 +1,13 @@
-local satellite = require("satellite")
+local spec = {
+  "lewis6991/satellite.nvim",
+}
 
-satellite.setup({
-  current_only = true,
-})
+function spec.config()
+  local satellite = require("satellite")
+
+  satellite.setup({
+    current_only = true,
+  })
+end
+
+return spec

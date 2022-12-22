@@ -1,3 +1,14 @@
-local comment = require("Comment")
+local spec = {
+  "numtostr/comment.nvim",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+  },
+}
 
-comment.setup()
+function spec.config()
+  local comment = require("Comment")
+
+  comment.setup()
+end
+
+return spec

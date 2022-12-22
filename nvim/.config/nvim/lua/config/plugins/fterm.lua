@@ -1,8 +1,16 @@
-local fterm = require("FTerm")
+local spec = {
+  "numtostr/fterm.nvim",
+}
 
-fterm.setup({
-  hl = "NormalFloat",
-  border = "rounded",
-})
+function spec.config()
+  local fterm = require("FTerm")
 
-vim.keymap.set({ "n", "t" }, "<c-\\>", vim.callback(fterm.toggle))
+  fterm.setup({
+    hl = "NormalFloat",
+    border = "rounded",
+  })
+
+  vim.keymap.set({ "n", "t" }, "<c-\\>", vim.callback(fterm.toggle))
+end
+
+return spec

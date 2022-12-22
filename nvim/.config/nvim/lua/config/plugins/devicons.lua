@@ -1,5 +1,13 @@
-local devicons = require("nvim-web-devicons")
+local spec = {
+  "kyazdani42/nvim-web-devicons",
+}
 
-devicons.setup({
-  default = true,
-})
+function spec.config()
+  local devicons = require("nvim-web-devicons")
+
+  devicons.setup({
+    default = true,
+  })
+end
+
+return spec

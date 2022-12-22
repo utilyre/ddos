@@ -1,13 +1,24 @@
-local treesitter = require("nvim-treesitter.configs")
+local spec = {
+  "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    { "p00f/nvim-ts-rainbow" },
+  },
+}
 
-treesitter.setup({
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-  rainbow = {
-    enable = true,
-  },
-})
+function spec.config()
+  local treesitter = require("nvim-treesitter.configs")
+
+  treesitter.setup({
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = true,
+    },
+    rainbow = {
+      enable = true,
+    },
+  })
+end
+
+return spec
