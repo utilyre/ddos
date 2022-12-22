@@ -1,7 +1,7 @@
 local notify = require("notify")
 
 notify.setup({
-  stages = "slide",
+  stages = "fade",
   top_down = false,
   icons = {
     INFO = vim.g.icons.diagnostic.Information,
