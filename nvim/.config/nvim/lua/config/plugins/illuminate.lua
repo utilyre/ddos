@@ -2,7 +2,6 @@ local spec = {
   "rrethy/vim-illuminate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    "neovim/nvim-lspconfig",
   },
 }
 

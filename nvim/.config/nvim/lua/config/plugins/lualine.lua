@@ -1,7 +1,6 @@
 local spec = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "folke/tokyonight.nvim",
     "folke/noice.nvim",
     "jose-elias-alvarez/null-ls.nvim",
   },
@@ -15,7 +14,6 @@ function spec.config()
   lualine.setup({
     options = {
       globalstatus = true,
-      theme = "tokyonight",
       component_separators = vim.g.icons.layout.Separator,
       section_separators = {
         left = vim.g.icons.layout.SectionRight,

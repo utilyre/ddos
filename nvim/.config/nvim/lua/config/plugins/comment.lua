@@ -1,8 +1,5 @@
 local spec = {
   "numtostr/comment.nvim",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-  },
 }
 
 function spec.config()

@@ -1,8 +1,5 @@
 local spec = {
   "jose-elias-alvarez/null-ls.nvim",
-  dependencies = {
-    "neovim/nvim-lspconfig",
-  },
 }
 
 function spec.config()

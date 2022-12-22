@@ -6,8 +6,8 @@ function spec.config()
   local fterm = require("FTerm")
 
   fterm.setup({
-    hl = "NormalFloat",
     border = "rounded",
+    hl = "NormalFloat",
   })
 
   vim.keymap.set({ "n", "t" }, "<c-\\>", vim.callback(fterm.toggle))
