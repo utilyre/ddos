@@ -9,7 +9,7 @@ function spec.config()
   local null = require("null-ls")
 
   null.setup({
-    sources = table.reduce(vim.g.sources, function(accumulator, sources, method)
+    sources = table.reduce(vim.g.sources or {}, function(accumulator, sources, method)
       return table.merge(
         accumulator,
         table.map(sources, function(options, source)
