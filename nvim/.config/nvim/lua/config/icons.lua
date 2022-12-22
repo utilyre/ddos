@@ -10,6 +10,7 @@ vim.g.icons = {
     Search = "",
     Caret = "",
     Tag = "",
+    Brand = "",
     Indent = "",
   },
   package = {

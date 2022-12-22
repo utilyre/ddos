@@ -24,7 +24,7 @@ function spec.config()
       lualine_a = {
         {
           function()
-            return vim.fn.fnamemodify(vim.loop.cwd(), ":t")
+            return vim.g.icons.widget.Brand
           end,
           separator = {
             left = vim.g.icons.layout.SectionLeft,
