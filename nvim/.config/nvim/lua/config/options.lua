@@ -14,6 +14,7 @@ vim.opt.sidescrolloff = 2
 vim.opt.shortmess = {
   a = true,
   s = true,
+  c = true,
   t = true,
   T = true,
   W = true,
