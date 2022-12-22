@@ -11,7 +11,7 @@ vim.g.icons = {
     Caret = "",
     Tag = "",
     Brand = "",
-    Indent = "",
+    Indent = "",
   },
   package = {
     Pending = "",
