@@ -15,6 +15,7 @@ function spec.config()
   lualine.setup({
     options = {
       globalstatus = true,
+      theme = "tokyonight",
       component_separators = vim.g.icons.layout.Separator,
       section_separators = {
         left = vim.g.icons.layout.SectionRight,
