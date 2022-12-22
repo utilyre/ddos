@@ -1,10 +1,10 @@
 local spec = {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    { "saadparwaiz1/cmp_luasnip" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "petertriho/cmp-git" },
-    { "hrsh7th/cmp-emoji" },
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-nvim-lsp",
+    "petertriho/cmp-git",
+    "hrsh7th/cmp-emoji",
   },
 }
 

@@ -1,8 +1,8 @@
 local spec = {
   "folke/noice.nvim",
   dependencies = {
-    { "muniftanjim/nui.nvim" },
-    { "rcarriga/nvim-notify" },
+    "muniftanjim/nui.nvim",
+    "rcarriga/nvim-notify",
   },
 }
 

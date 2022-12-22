@@ -1,9 +1,9 @@
 local spec = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    { "folke/tokyonight.nvim" },
-    { "folke/noice.nvim" },
-    { "jose-elias-alvarez/null-ls.nvim" },
+    "folke/tokyonight.nvim",
+    "folke/noice.nvim",
+    "jose-elias-alvarez/null-ls.nvim",
   },
 }
 

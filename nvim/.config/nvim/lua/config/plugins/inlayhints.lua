@@ -1,7 +1,7 @@
 local spec = {
   "lvimuser/lsp-inlayhints.nvim",
   dependencies = {
-    { "neovim/nvim-lspconfig" },
+    "neovim/nvim-lspconfig",
   },
 }
 

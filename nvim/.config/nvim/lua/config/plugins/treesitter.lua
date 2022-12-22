@@ -1,7 +1,7 @@
 local spec = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    { "p00f/nvim-ts-rainbow" },
+    "p00f/nvim-ts-rainbow",
   },
 }
 

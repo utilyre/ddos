@@ -1,7 +1,7 @@
 local spec = {
   "utilyre/barbecue.nvim",
   dependencies = {
-    { "smiteshp/nvim-navic" },
+    "smiteshp/nvim-navic",
   },
 }
 
