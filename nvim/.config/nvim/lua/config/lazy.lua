@@ -30,8 +30,13 @@ lazy.setup("config.plugins", {
   },
 })
 
-vim.keymap.set("n", "<leader>pp", vim.callback(lazy.home))
+vim.keymap.set("n", "<leader>ph", vim.callback(lazy.home))
 vim.keymap.set("n", "<leader>pi", vim.callback(lazy.install))
 vim.keymap.set("n", "<leader>pu", vim.callback(lazy.update))
 vim.keymap.set("n", "<leader>ps", vim.callback(lazy.sync))
-vim.keymap.set("n", "<leader>pc", vim.callback(lazy.clean))
+vim.keymap.set("n", "<leader>px", vim.callback(lazy.clean))
+vim.keymap.set("n", "<leader>pc", vim.callback(lazy.check))
+vim.keymap.set("n", "<leader>pl", vim.callback(lazy.log))
+vim.keymap.set("n", "<leader>pr", vim.callback(lazy.restore))
+vim.keymap.set("n", "<leader>pp", vim.callback(lazy.profile))
+vim.keymap.set("n", "<leader>pd", vim.callback(lazy.debug))
