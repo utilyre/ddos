@@ -3,6 +3,7 @@ local spec = {
   dependencies = {
     "folke/noice.nvim",
     "jose-elias-alvarez/null-ls.nvim",
+    "kyazdani42/nvim-web-devicons",
   },
 }
 
