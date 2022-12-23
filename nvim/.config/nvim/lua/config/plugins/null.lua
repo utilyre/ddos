@@ -5,8 +5,9 @@ local spec = {
 function spec.config()
   local null = require("null-ls")
 
+  local sources_ok, sources = pcall(dofile, vim.fn.stdpath("config") .. "/sources.lua")
   null.setup({
-    sources = table.reduce(vim.g.sources or {}, function(accumulator, sources, method)
+    sources = table.reduce(sources_ok and sources or {}, function(accumulator, sources, method)
       return table.merge(
         accumulator,
         table.map(sources, function(options, source)
