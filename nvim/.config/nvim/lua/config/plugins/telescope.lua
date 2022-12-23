@@ -12,8 +12,8 @@ function spec.config()
 
   telescope.setup({
     defaults = vim.tbl_deep_extend("force", themes.get_dropdown(), {
-      prompt_prefix = vim.g.icons.widget.Search .. " ",
-      selection_caret = vim.g.icons.widget.Caret .. " ",
+      prompt_prefix = vim.g.icons.widget.Comment .. " ",
+      selection_caret = vim.g.icons.widget.ArrowRight .. " ",
       multi_icon = vim.g.icons.widget.Tag .. " ",
     }),
   })

@@ -24,7 +24,7 @@ function spec.config()
       lualine_a = {
         {
           function()
-            return vim.g.icons.widget.Brand
+            return vim.g.icons.widget.Moon
           end,
           separator = {
             left = vim.g.icons.layout.SectionLeft,
@@ -99,7 +99,7 @@ function spec.config()
         {
           function()
             if not vim.bo.expandtab then return "" end
-            return vim.g.icons.widget.Indent .. " " .. vim.bo.shiftwidth
+            return vim.g.icons.widget.Paragraph .. " " .. vim.bo.shiftwidth
           end,
         },
       },

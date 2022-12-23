@@ -15,13 +15,13 @@ lazy.setup("config.plugins", {
   ui = {
     border = "rounded",
     icons = {
-      task = vim.g.icons.widget.Task,
+      task = vim.g.icons.widget.Check,
       source = vim.g.icons.widget.Fire,
       start = vim.g.icons.widget.Play,
-      plugin = vim.g.icons.widget.Box,
+      plugin = vim.g.icons.widget.Archive,
       event = vim.g.icons.widget.Bolt,
       keys = vim.g.icons.widget.Keyboard,
-      cmd = vim.g.icons.widget.Dollar,
+      cmd = vim.g.icons.widget.Usd,
       ft = vim.g.icons.widget.Code,
       init = vim.g.icons.widget.Flask,
       runtime = vim.g.icons.widget.Vim,
