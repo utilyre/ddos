@@ -5,16 +5,14 @@ local spec = {
 function spec.config()
   local null = require("null-ls")
 
-  local sources_ok, sources = pcall(dofile, vim.fn.stdpath("config") .. "/sources.lua")
+  local sources = {}
+  local sources_path = vim.fn.stdpath("config") .. "/sources.lua"
+  if vim.loop.fs_stat(sources_path) then sources = dofile(sources_path) end
+
   null.setup({
-    sources = table.reduce(sources_ok and sources or {}, function(accumulator, sources, method)
-      return table.merge(
-        accumulator,
-        table.map(sources, function(options, source)
-          return null.builtins[method][source].with(options)
-        end)
-      )
-    end, {}),
+    update_in_insert = true,
+    sources = sources,
+    border = "rounded",
   })
 end
 
