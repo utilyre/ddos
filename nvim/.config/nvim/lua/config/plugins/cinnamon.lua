@@ -10,6 +10,7 @@ function spec.config()
     extra_keymaps = true,
     extended_keymaps = true,
     always_scroll = true,
+    scroll_limit = 64,
   })
 end
 
