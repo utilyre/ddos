@@ -12,6 +12,12 @@ local lazy = require("lazy")
 
 lazy.setup("config.plugins", {
   concurrency = 4,
+  install = {
+    colorscheme = { "tokyonight", "habamax" },
+  },
+  dev = {
+    path = vim.fs.normalize("$XDG_DOCUMENTS_HOME"),
+  },
   ui = {
     border = "rounded",
     icons = {
