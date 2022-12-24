@@ -17,7 +17,7 @@ function spec.config()
       colors.bg_statusline = "none"
     end,
     on_highlights = function(highlights, colors)
-      highlights.TelescopePromptPrefix = { foreground = colors.yellow }
+      highlights.TelescopePromptPrefix = { foreground = colors.blue }
       highlights.TelescopeSelectionCaret = { background = colors.bg_visual, foreground = colors.teal }
       highlights.TelescopeMultiIcon = { foreground = colors.red }
       highlights.TelescopeMultiSelection = { bold = true, italic = true }
