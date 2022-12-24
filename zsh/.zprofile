@@ -30,7 +30,6 @@ export XAUTHORITY="$XDG_RUNTIME_DIR/xauth.cookie"
 export BSPWM_SOCKET="$XDG_RUNTIME_DIR/bspwm.sock"
 export TOUGH_RUNTIME="$XDG_RUNTIME_DIR/tough"
 export RVIM_RUNTIME="$XDG_RUNTIME_DIR/rvim"
-export TRADIFF_RUNTIME="$XDG_RUNTIME_DIR/tradiff"
 
 export PAGER="less --raw-control-chars --use-color --color=\"P+kg\" --color=\"S+ky\" --color=\"d+b\" --color=\"u+m\""
 export EDITOR="rvim"
