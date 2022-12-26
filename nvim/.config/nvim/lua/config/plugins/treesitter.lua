@@ -5,10 +5,6 @@ local spec = {
   },
 }
 
-function spec.init()
-  vim.cmd.syntax("off")
-end
-
 function spec.config()
   local treesitter = require("nvim-treesitter.configs")
 

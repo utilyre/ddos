@@ -10,7 +10,6 @@ function spec.config()
   if vim.loop.fs_stat(sources_path) then sources = dofile(sources_path) end
 
   null.setup({
-    update_in_insert = true,
     sources = sources,
     border = "rounded",
   })
