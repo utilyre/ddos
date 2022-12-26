@@ -16,6 +16,7 @@ function spec.config()
     },
     style = {
       hide_buffer_id = true,
+      path = "tail",
       border = "rounded",
     },
     behavior = {
