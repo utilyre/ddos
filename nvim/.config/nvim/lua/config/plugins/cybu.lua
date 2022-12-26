@@ -19,16 +19,14 @@ function spec.config()
       border = "rounded",
     },
     behavior = {
+      show_on_autocmd = "BufLeave",
       mode = {
-        default = {
+        auto = {
           view = "paging",
         },
       },
     },
   })
-
-  vim.keymap.set("n", "<s-tab>", vim.callback(cybu.cycle, "prev"))
-  vim.keymap.set("n", "<tab>", vim.callback(cybu.cycle, "next"))
 end
 
 return spec

@@ -13,6 +13,9 @@ vim.keymap.set("n", "<c-l>", vim.callback(vim.cmd.wincmd, "l"))
 vim.keymap.set("n", "<c-k>", vim.callback(vim.cmd.wincmd, "k"))
 vim.keymap.set("n", "<c-j>", vim.callback(vim.cmd.wincmd, "j"))
 
+vim.keymap.set("n", "<s-tab>", vim.callback(vim.cmd.bprevious))
+vim.keymap.set("n", "<tab>", vim.callback(vim.cmd.bnext))
+
 vim.keymap.set("n", "<leader>w", vim.callback(vim.cmd.write))
 vim.keymap.set("n", "<leader>q", vim.callback(vim.cmd.quit))
 vim.keymap.set("n", "<leader>c", vim.callback(vim.cmd.bdelete))
