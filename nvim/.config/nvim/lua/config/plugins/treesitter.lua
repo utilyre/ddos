@@ -1,8 +1,5 @@
 local spec = {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = {
-    "p00f/nvim-ts-rainbow",
-  },
 }
 
 function spec.config()
@@ -13,9 +10,6 @@ function spec.config()
       enable = true,
     },
     indent = {
-      enable = true,
-    },
-    rainbow = {
       enable = true,
     },
   })
