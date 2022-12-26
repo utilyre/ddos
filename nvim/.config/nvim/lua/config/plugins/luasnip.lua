@@ -8,7 +8,7 @@ local spec = {
 function spec.init()
   local vscode = require("luasnip.loaders.from_vscode")
 
-  vscode.load()
+  vscode.lazy_load()
 end
 
 function spec.config()
