@@ -21,11 +21,6 @@ function spec.config()
       highlights.TelescopeSelectionCaret = { background = colors.bg_visual, foreground = colors.teal }
       highlights.TelescopeMultiIcon = { foreground = colors.red }
       highlights.TelescopeMultiSelection = { bold = true, italic = true }
-
-      highlights.BarbecueNormal = { foreground = colors.fg_dark }
-      highlights.BarbecueDirname = { foreground = colors.fg_dark }
-      highlights.BarbecueBasename = { foreground = colors.fg_dark }
-      highlights.BarbecueContext = { foreground = colors.fg_dark }
     end,
   })
 end
