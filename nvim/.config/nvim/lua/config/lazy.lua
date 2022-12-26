@@ -21,7 +21,7 @@ lazy.setup("config.plugins", {
   ui = {
     border = "rounded",
     icons = {
-      task = vim.g.icons.widget.Check,
+      task = vim.g.icons.widget.Clipboard,
       source = vim.g.icons.widget.Fire,
       start = vim.g.icons.widget.Play,
       plugin = vim.g.icons.widget.Archive,
