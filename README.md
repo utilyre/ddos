@@ -33,7 +33,6 @@
 - xorg-server
 - xorg-xinit
 - xorg-xrandr
-- xorg-xset
 - xorg-xsetroot
 - xsel
 - xwallpaper
