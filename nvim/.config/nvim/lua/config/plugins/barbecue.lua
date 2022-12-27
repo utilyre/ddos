@@ -2,7 +2,7 @@ local spec = {
   "utilyre/barbecue.nvim",
   dependencies = {
     "smiteshp/nvim-navic",
-    "kyazdani42/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
   },
 }
 
