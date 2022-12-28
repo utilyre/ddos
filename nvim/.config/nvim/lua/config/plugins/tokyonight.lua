@@ -1,12 +1,7 @@
 local spec = {
   "folke/tokyonight.nvim",
+  priority = 100,
 }
-
-function spec.init()
-  local tokyonight = require("tokyonight")
-
-  tokyonight.load()
-end
 
 function spec.config()
   local tokyonight = require("tokyonight")
@@ -23,6 +18,8 @@ function spec.config()
       highlights.TelescopeMultiSelection = { bold = true, italic = true }
     end,
   })
+
+  tokyonight.load()
 end
 
 return spec
