@@ -13,9 +13,8 @@ function spec.config()
     hl = "NormalFloat",
   })
 
-  vim.api.nvim_create_augroup("fterm", {})
   vim.api.nvim_create_autocmd("User", {
-    group = "fterm",
+    group = vim.api.nvim_create_augroup("fterm", {}),
     pattern = "UnceptionEditRequestReceived",
     callback = vim.callback(fterm.toggle),
   })

@@ -22,17 +22,15 @@ function spec.config()
 
   inlayhints.setup()
 
-  vim.api.nvim_create_augroup("lsp", {})
   vim.api.nvim_create_autocmd("LspAttach", {
-    group = "lsp",
+    group = vim.api.nvim_create_augroup("lsp", {}),
     callback = function(a)
       local client = vim.lsp.get_client_by_id(a.data.client_id)
 
       if client.server_capabilities["inlayHintProvider"] then inlayhints.on_attach(client, a.buf) end
       if client.server_capabilities["codeLensProvider"] then
-        vim.api.nvim_create_augroup("codelens", { clear = false })
         vim.api.nvim_create_autocmd({ "CursorHold", "TextChanged", "InsertLeave" }, {
-          group = "codelens",
+          group = vim.api.nvim_create_augroup("codelens", { clear = false }),
           buffer = a.buf,
           callback = vim.callback(vim.lsp.codelens.refresh),
         })
