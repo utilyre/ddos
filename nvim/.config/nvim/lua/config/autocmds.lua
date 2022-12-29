@@ -14,10 +14,19 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("BufWinEnter", {
   group = autocmds,
   callback = function()
-    vim.opt.formatoptions = {}
+    vim.opt.tw = 50
+    vim.opt.formatoptions = {
+      t = true,
+      c = true,
+      r = true,
+      q = true,
+      n = true,
+      m = true,
+      j = true,
+    }
   end,
 })
 
