@@ -22,12 +22,3 @@ vim.keymap.set("n", "<leader>c", vim.callback(vim.cmd.bdelete))
 vim.keymap.set("n", "<leader>s", vim.callback(vim.cmd.split))
 vim.keymap.set("n", "<leader>v", vim.callback(vim.cmd.vsplit))
 vim.keymap.set("n", "<leader>u", vim.callback(vim.cmd.nohlsearch))
-
-vim.api.nvim_create_augroup("keymaps", {})
-vim.api.nvim_create_autocmd("FileType", {
-  group = "keymaps",
-  pattern = "qf",
-  callback = function(a)
-    vim.keymap.set("n", "q", vim.callback(vim.cmd.cclose), { buffer = a.buf })
-  end,
-})
