@@ -17,7 +17,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = autocmds,
   callback = function()
-    vim.opt.tw = 50
     vim.opt.formatoptions = {
       t = true,
       c = true,
