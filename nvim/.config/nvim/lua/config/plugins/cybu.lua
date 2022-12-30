@@ -20,13 +20,20 @@ function spec.config()
       border = "rounded",
     },
     behavior = {
-      show_on_autocmd = "BufLeave",
       mode = {
         auto = {
           view = "paging",
         },
       },
     },
+  })
+
+  vim.api.nvim_create_autocmd("BufLeave", {
+    group = vim.api.nvim_create_augroup("cybu", {}),
+    callback = function(a)
+      if vim.bo[a.buf].buftype ~= "" then return end
+      cybu.autocmd()
+    end,
   })
 end
 
