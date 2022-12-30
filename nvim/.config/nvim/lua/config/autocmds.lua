@@ -17,15 +17,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = augroup,
   callback = function()
-    vim.opt.formatoptions = {
-      t = true,
-      c = true,
-      r = true,
-      q = true,
-      n = true,
-      m = true,
-      j = true,
-    }
+    vim.opt.formatoptions:remove({ "o" })
   end,
 })
 
