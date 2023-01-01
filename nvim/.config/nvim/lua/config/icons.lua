@@ -20,7 +20,6 @@ vim.g.icons = {
     Moon = "",
     Paragraph = "",
     Play = "",
-    Tag = "",
     Telescope = "",
     Usd = "",
     Vim = "",

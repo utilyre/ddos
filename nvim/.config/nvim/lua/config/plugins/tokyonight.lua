@@ -13,8 +13,6 @@ function spec.config()
     end,
     on_highlights = function(highlights, colors)
       highlights.TelescopeSelectionCaret = { background = colors.bg_visual, foreground = colors.teal }
-      highlights.TelescopeMultiIcon = { foreground = colors.red }
-      highlights.TelescopeMultiSelection = { bold = true, italic = true }
     end,
   })
 
