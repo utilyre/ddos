@@ -15,9 +15,6 @@ function spec.config()
       highlights.TelescopeSelectionCaret = { background = colors.bg_visual, foreground = colors.teal }
       highlights.TelescopeMultiIcon = { foreground = colors.green }
       highlights.TelescopeMultiSelection = { bold = true }
-
-      highlights.BookmarkSign = { foreground = colors.blue }
-      highlights.BookmarkAnnotationSign = { foreground = colors.yellow }
     end,
   })
 
