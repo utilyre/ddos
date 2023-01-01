@@ -13,6 +13,9 @@ function spec.config()
     end,
     on_highlights = function(highlights, colors)
       highlights.TelescopeSelectionCaret = { background = colors.bg_visual, foreground = colors.teal }
+
+      highlights.BookmarkSign = { foreground = colors.blue }
+      highlights.BookmarkAnnotationSign = { foreground = colors.yellow }
     end,
   })
 
