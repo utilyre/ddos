@@ -15,16 +15,7 @@ function spec.config()
     defaults = vim.tbl_deep_extend("force", themes.get_dropdown(), {
       prompt_prefix = vim.g.icons.widget.Telescope .. " ",
       selection_caret = vim.g.icons.widget.ArrowRight .. " ",
-      mappings = {
-        n = {
-          ["<s-tab>"] = false,
-          ["<tab>"] = false,
-        },
-        i = {
-          ["<s-tab>"] = false,
-          ["<tab>"] = false,
-        },
-      },
+      multi_icon = vim.g.icons.widget.Check .. " ",
     }),
   })
 

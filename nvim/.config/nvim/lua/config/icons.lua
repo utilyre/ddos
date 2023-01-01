@@ -11,6 +11,7 @@ vim.g.icons = {
     Bookmark = "",
     CaretDown = "",
     CaretRight = "",
+    Check = "",
     Clipboard = "",
     Code = "",
     Download = "",
