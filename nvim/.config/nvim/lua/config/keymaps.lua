@@ -8,9 +8,6 @@ vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "kj", "<esc>")
 vim.keymap.set("n", "<s-y>", "y$")
 
-vim.keymap.set("n", "<s-h>", vim.callback(vim.cmd.bprevious))
-vim.keymap.set("n", "<s-l>", vim.callback(vim.cmd.bnext))
-
 vim.keymap.set("n", "<c-h>", vim.callback(vim.cmd.wincmd, "h"))
 vim.keymap.set("n", "<c-l>", vim.callback(vim.cmd.wincmd, "l"))
 vim.keymap.set("n", "<c-k>", vim.callback(vim.cmd.wincmd, "k"))

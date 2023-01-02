@@ -16,6 +16,9 @@ function spec.config()
       right_trunc_marker = vim.g.icons.layout.Ellipsis,
     },
   })
+
+  vim.keymap.set("n", "<s-h>", vim.callback(bufferline.cycle, -1))
+  vim.keymap.set("n", "<s-l>", vim.callback(bufferline.cycle, 1))
 end
 
 return spec
