@@ -11,6 +11,10 @@ function spec.config()
 
   barbecue.setup({
     kinds = vim.g.icons.kind,
+    symbols = {
+      ellipsis = vim.g.icons.layout.Ellipsis,
+      separator = vim.g.icons.layout.Chevron,
+    }
   })
 end
 

@@ -12,6 +12,8 @@ function spec.config()
     options = {
       show_close_icon = false,
       show_buffer_close_icons = false,
+      left_trunc_marker = vim.g.icons.layout.Ellipsis,
+      right_trunc_marker = vim.g.icons.layout.Ellipsis,
     },
   })
 end
