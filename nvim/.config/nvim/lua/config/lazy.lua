@@ -19,6 +19,8 @@ lazy.setup("config.plugins", {
   ui = {
     border = "rounded",
     icons = {
+      loaded = vim.g.icons.widget.Circle,
+      not_loaded = vim.g.icons.widget.CircleO,
       task = vim.g.icons.widget.Clipboard,
       source = vim.g.icons.widget.Fire,
       start = vim.g.icons.widget.Play,
@@ -29,6 +31,7 @@ lazy.setup("config.plugins", {
       ft = vim.g.icons.widget.Code,
       init = vim.g.icons.widget.Flask,
       runtime = vim.g.icons.widget.Vim,
+      import = vim.g.icons.widget.PaperClip,
       config = vim.g.icons.widget.Gear,
     },
   },
