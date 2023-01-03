@@ -14,7 +14,7 @@ function spec.config()
     symbols = {
       ellipsis = vim.g.icons.layout.Ellipsis,
       separator = vim.g.icons.layout.Chevron,
-    }
+    },
   })
 end
 
