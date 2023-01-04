@@ -1,0 +1,10 @@
+#!/bin/sh
+
+playerctl metadata --follow --format="{{ mpris:trackid }}" |
+	while read -r _; do
+		title="$(playerctl metadata --format="{{ xesam:title }}")"
+		artist="$(playerctl metadata --format="{{ xesam:artist }}")"
+		[ -z "$title" ] || [ -z "$artist" ] && continue
+
+		notify-send -- "$title" "$artist"
+	done
