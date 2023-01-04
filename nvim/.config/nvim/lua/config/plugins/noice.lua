@@ -90,11 +90,11 @@ function spec.config()
     },
   })
 
-  vim.keymap.set("n", "<c-y>", function()
+  vim.keymap.set({ "n", "i" }, "<c-y>", function()
     if lsp.scroll(-1) then return end
     return "<c-y>"
   end, { expr = true })
-  vim.keymap.set("n", "<c-e>", function()
+  vim.keymap.set({ "n", "i" }, "<c-e>", function()
     if lsp.scroll(1) then return end
     return "<c-e>"
   end, { expr = true })
