@@ -7,8 +7,8 @@ function spec.config()
 
   gitsigns.setup({
     current_line_blame = true,
-    current_line_blame_formatter = "    <author> <author_time:%R> - [<abbrev_sha>] <summary>",
-    current_line_blame_formatter_nc = "    <author>",
+    current_line_blame_formatter = "<author> <author_time:%R> - [<abbrev_sha>] <summary>",
+    current_line_blame_formatter_nc = "<author>",
     current_line_blame_opts = {
       virt_text_priority = 10000,
     },
