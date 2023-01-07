@@ -8,7 +8,7 @@ function spec.config()
   lines.setup()
 
   vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = true,
     virtual_lines = false,
     update_in_insert = true,
     float = {
@@ -45,8 +45,13 @@ function spec.config()
     text = vim.g.icons.diagnostic.Error,
   })
 
+  vim.keymap.set("n", "<leader>dd", function()
+    vim.diagnostic.config({
+      virtual_text = not vim.diagnostic.config().virtual_text,
+      virtual_lines = not vim.diagnostic.config().virtual_lines,
+    })
+  end)
   vim.keymap.set("n", "<leader>dh", vim.callback(vim.diagnostic.open_float))
-  vim.keymap.set("n", "<leader>dl", vim.callback(lines.toggle))
   vim.keymap.set("n", "<leader>dk", vim.callback(vim.diagnostic.goto_prev, { float = false }))
   vim.keymap.set("n", "<leader>dj", vim.callback(vim.diagnostic.goto_next, { float = false }))
 end
