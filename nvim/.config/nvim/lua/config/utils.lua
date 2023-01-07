@@ -19,15 +19,6 @@ function table.merge(...)
   return ret
 end
 
-function table.reduce(tbl, callback, initial)
-  local ret = initial or tbl[1]
-  for key, value in pairs(tbl) do
-    ret = callback(ret, value, key)
-  end
-
-  return ret
-end
-
 function table.filter(tbl, callback)
   local ret = {}
   for key, value in pairs(tbl) do
