@@ -10,6 +10,7 @@ function spec.config()
     buftypes = { "" },
     user_default_options = {
       mode = "virtualtext",
+      names = false,
       css = true,
     },
   })
