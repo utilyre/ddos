@@ -11,7 +11,7 @@ function spec.config()
     user_default_options = {
       mode = "virtualtext",
       names = false,
-      css = true,
+      css_fn = true,
     },
   })
 end
