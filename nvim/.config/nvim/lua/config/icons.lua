@@ -52,9 +52,9 @@ vim.g.icons = {
     Trail = "·",
   },
   diagnostic = {
-    Suggestion = "",
-    Information = "",
-    Warning = "",
+    Hint = "",
+    Info = "",
+    Warn = "",
     Error = "",
   },
   kind = {

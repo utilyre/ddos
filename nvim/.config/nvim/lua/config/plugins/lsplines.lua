@@ -30,15 +30,15 @@ function spec.config()
 
   vim.fn.sign_define("DiagnosticSignHint", {
     texthl = "DiagnosticSignHint",
-    text = vim.g.icons.diagnostic.Suggestion,
+    text = vim.g.icons.diagnostic.Hint,
   })
   vim.fn.sign_define("DiagnosticSignInfo", {
     texthl = "DiagnosticSignInfo",
-    text = vim.g.icons.diagnostic.Information,
+    text = vim.g.icons.diagnostic.Info,
   })
   vim.fn.sign_define("DiagnosticSignWarn", {
     texthl = "DiagnosticSignWarn",
-    text = vim.g.icons.diagnostic.Warning,
+    text = vim.g.icons.diagnostic.Warn,
   })
   vim.fn.sign_define("DiagnosticSignError", {
     texthl = "DiagnosticSignError",

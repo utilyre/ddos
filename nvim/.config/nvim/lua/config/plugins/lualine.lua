@@ -49,9 +49,9 @@ function spec.config()
           "diagnostics",
           update_in_insert = true,
           symbols = {
-            hint = vim.g.icons.diagnostic.Suggestion .. " ",
-            info = vim.g.icons.diagnostic.Information .. " ",
-            warn = vim.g.icons.diagnostic.Warning .. " ",
+            hint = vim.g.icons.diagnostic.Hint .. " ",
+            info = vim.g.icons.diagnostic.Info .. " ",
+            warn = vim.g.icons.diagnostic.Warn .. " ",
             error = vim.g.icons.diagnostic.Error .. " ",
           },
         },

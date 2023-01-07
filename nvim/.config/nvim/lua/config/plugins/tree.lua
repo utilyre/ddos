@@ -33,9 +33,9 @@ function spec.config()
       show_on_dirs = true,
       show_on_open_dirs = false,
       icons = {
-        hint = vim.g.icons.diagnostic.Suggestion,
-        info = vim.g.icons.diagnostic.Information,
-        warning = vim.g.icons.diagnostic.Warning,
+        hint = vim.g.icons.diagnostic.Hint,
+        info = vim.g.icons.diagnostic.Info,
+        warning = vim.g.icons.diagnostic.Warn,
         error = vim.g.icons.diagnostic.Error,
       },
     },
