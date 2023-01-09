@@ -9,7 +9,8 @@ function spec.config()
   local illuminate = require("illuminate")
 
   illuminate.configure({
-    modes_allowlist = { "n", "i" },
+    delay = vim.go.updatetime,
+    modes_allowlist = { "n" },
     providers = { "lsp", "treesitter" },
   })
 end
