@@ -53,10 +53,10 @@ vim.g.icons = {
     Trail = "·",
   },
   diagnostic = {
-    Hint = "",
-    Info = "",
-    Warn = "",
-    Error = "",
+    Hint = "",
+    Info = "",
+    Warn = "",
+    Error = "",
   },
   kind = {
     Text = "",
