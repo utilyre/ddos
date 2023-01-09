@@ -39,10 +39,10 @@ function table.map(tbl, callback)
   return ret
 end
 
-function vim.callback(callback, ...)
+function vim.callback(fn, ...)
   local params = { ... }
 
   return function()
-    return callback(unpack(params))
+    return fn(unpack(params))
   end
 end
