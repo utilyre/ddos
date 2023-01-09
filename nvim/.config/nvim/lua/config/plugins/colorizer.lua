@@ -9,7 +9,6 @@ function spec.config()
     filetypes = {},
     buftypes = { "" },
     user_default_options = {
-      mode = "virtualtext",
       names = false,
       css_fn = true,
     },
