@@ -28,22 +28,10 @@ function spec.config()
     },
   })
 
-  vim.fn.sign_define("DiagnosticSignHint", {
-    texthl = "DiagnosticSignHint",
-    text = vim.g.icons.diagnostic.Hint,
-  })
-  vim.fn.sign_define("DiagnosticSignInfo", {
-    texthl = "DiagnosticSignInfo",
-    text = vim.g.icons.diagnostic.Info,
-  })
-  vim.fn.sign_define("DiagnosticSignWarn", {
-    texthl = "DiagnosticSignWarn",
-    text = vim.g.icons.diagnostic.Warn,
-  })
-  vim.fn.sign_define("DiagnosticSignError", {
-    texthl = "DiagnosticSignError",
-    text = vim.g.icons.diagnostic.Error,
-  })
+  vim.fn.sign_define("DiagnosticSignHint", { numhl = "DiagnosticSignHint" })
+  vim.fn.sign_define("DiagnosticSignInfo", { numhl = "DiagnosticSignInfo" })
+  vim.fn.sign_define("DiagnosticSignWarn", { numhl = "DiagnosticSignWarn" })
+  vim.fn.sign_define("DiagnosticSignError", { numhl = "DiagnosticSignError" })
 
   vim.keymap.set("n", "<leader>dd", function()
     vim.diagnostic.config({
