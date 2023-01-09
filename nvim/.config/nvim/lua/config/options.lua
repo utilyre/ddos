@@ -27,6 +27,7 @@ vim.opt.signcolumn = "yes:2"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
+vim.opt.cursorline = true
 vim.opt.list = true
 vim.opt.listchars:append({
   tab = "  " .. vim.g.icons.space.Tab,
