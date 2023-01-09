@@ -46,3 +46,11 @@ function vim.callback(fn, ...)
     return fn(unpack(params))
   end
 end
+
+function vim.fs.exists(name)
+  local file, err = io.open(name, "r")
+  if err ~= nil then return false end
+
+  io.close(file)
+  return true
+end

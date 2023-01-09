@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.fs.exists(lazypath) then
   os.execute("git clone --depth=\"1\" -- \"https://github.com/folke/lazy.nvim.git\" \"" .. lazypath .. "\"")
 end
 vim.opt.runtimepath:prepend(lazypath)
