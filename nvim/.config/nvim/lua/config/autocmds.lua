@@ -14,13 +14,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = augroup,
-  callback = function()
-    vim.opt.formatoptions:remove({ "o" })
-  end,
-})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup,
   callback = vim.callback(vim.highlight.on_yank, {
