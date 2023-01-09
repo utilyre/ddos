@@ -18,11 +18,14 @@ vim.g.icons = {
     Clipboard = "",
     Code = "",
     Download = "",
+    Error = "",
     Filter = "",
     Fire = "",
     Flask = "",
     Gear = "",
+    Hint = "",
     Hourglass = "",
+    Info = "",
     Keyboard = "",
     Lock = "",
     Moon = "",
@@ -33,6 +36,7 @@ vim.g.icons = {
     Telescope = "",
     Usd = "",
     Vim = "",
+    Warn = "",
   },
   document = {
     File = "",
@@ -54,12 +58,6 @@ vim.g.icons = {
   space = {
     Tab = "→",
     Trail = "·",
-  },
-  diagnostic = {
-    Hint = "",
-    Info = "",
-    Warn = "",
-    Error = "",
   },
   kind = {
     Text = "",

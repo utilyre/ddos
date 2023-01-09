@@ -29,10 +29,10 @@ function spec.config()
         icon = vim.g.icons.widget.Fire,
       },
       WARN = {
-        icon = vim.g.icons.diagnostic.Warn,
+        icon = vim.g.icons.widget.Warn,
       },
       FIX = {
-        icon = vim.g.icons.diagnostic.Error,
+        icon = vim.g.icons.widget.Error,
       },
       TEST = {
         icon = vim.g.icons.widget.Filter,

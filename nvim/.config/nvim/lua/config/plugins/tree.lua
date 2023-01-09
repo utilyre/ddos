@@ -33,10 +33,10 @@ function spec.config()
       show_on_dirs = true,
       show_on_open_dirs = false,
       icons = {
-        hint = vim.g.icons.diagnostic.Hint,
-        info = vim.g.icons.diagnostic.Info,
-        warning = vim.g.icons.diagnostic.Warn,
-        error = vim.g.icons.diagnostic.Error,
+        hint = vim.g.icons.widget.Hint,
+        info = vim.g.icons.widget.Info,
+        warning = vim.g.icons.widget.Warn,
+        error = vim.g.icons.widget.Error,
       },
     },
     view = {
