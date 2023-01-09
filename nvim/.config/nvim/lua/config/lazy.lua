@@ -11,9 +11,6 @@ lazy.setup("config.plugins", {
   install = {
     colorscheme = { "tokyonight", "habamax" },
   },
-  defaults = {
-    version = "*",
-  },
   dev = {
     path = vim.fs.normalize("$XDG_DOCUMENTS_HOME"),
   },
