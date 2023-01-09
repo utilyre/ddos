@@ -22,6 +22,7 @@ vim.g.icons = {
     Flask = "",
     Gear = "",
     Keyboard = "",
+    Lock = "",
     Moon = "",
     PaperClip = "",
     Paragraph = "",
