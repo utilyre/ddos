@@ -21,25 +21,25 @@ function spec.config()
     },
     keywords = {
       NOTE = {
-        icon = vim.g.icons.widget.Info,
+        icon = vim.g.icons.widget.inline.Info,
       },
       TODO = {
-        icon = vim.g.icons.widget.Clipboard,
+        icon = vim.g.icons.widget.inline.Clipboard,
       },
       HACK = {
-        icon = vim.g.icons.widget.Fire,
+        icon = vim.g.icons.widget.inline.Fire,
       },
       WARN = {
-        icon = vim.g.icons.widget.Warn,
+        icon = vim.g.icons.widget.inline.Warn,
       },
       FIX = {
-        icon = vim.g.icons.widget.Error,
+        icon = vim.g.icons.widget.inline.Error,
       },
       TEST = {
-        icon = vim.g.icons.widget.Filter,
+        icon = vim.g.icons.widget.inline.Filter,
       },
       PERF = {
-        icon = vim.g.icons.widget.Hourglass,
+        icon = vim.g.icons.widget.inline.Hourglass,
       },
     },
   })

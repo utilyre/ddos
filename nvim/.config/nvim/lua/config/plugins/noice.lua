@@ -63,7 +63,7 @@ function spec.config()
         },
         format_done = {
           {
-            vim.g.icons.widget.Play,
+            vim.g.icons.widget.inline.Play,
             hl_group = "NoiceLspProgressSpinner",
           },
           " ",

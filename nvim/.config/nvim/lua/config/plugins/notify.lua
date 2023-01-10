@@ -9,9 +9,9 @@ function spec.config()
     stages = "fade",
     top_down = false,
     icons = {
-      INFO = vim.g.icons.widget.Info,
-      WARN = vim.g.icons.widget.Warn,
-      ERROR = vim.g.icons.widget.Error,
+      INFO = vim.g.icons.widget.inline.Info,
+      WARN = vim.g.icons.widget.inline.Warn,
+      ERROR = vim.g.icons.widget.inline.Error,
     },
   })
 end

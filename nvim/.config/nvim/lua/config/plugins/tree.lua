@@ -33,10 +33,10 @@ function spec.config()
       show_on_dirs = true,
       show_on_open_dirs = false,
       icons = {
-        hint = vim.g.icons.widget.Hint,
-        info = vim.g.icons.widget.Info,
-        warning = vim.g.icons.widget.Warn,
-        error = vim.g.icons.widget.Error,
+        hint = vim.g.icons.widget.inline.Hint,
+        info = vim.g.icons.widget.inline.Info,
+        warning = vim.g.icons.widget.inline.Warn,
+        error = vim.g.icons.widget.inline.Error,
       },
     },
     view = {
@@ -68,8 +68,8 @@ function spec.config()
           default = vim.g.icons.document.File,
           symlink = vim.g.icons.document.Link,
           folder = {
-            arrow_closed = vim.g.icons.widget.CaretRight,
-            arrow_open = vim.g.icons.widget.CaretDown,
+            arrow_closed = vim.g.icons.widget.inline.CaretRight,
+            arrow_open = vim.g.icons.widget.inline.CaretDown,
             symlink = vim.g.icons.document.Link,
             default = vim.g.icons.document.Folder,
             open = vim.g.icons.document.Open,

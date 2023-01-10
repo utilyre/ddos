@@ -25,7 +25,7 @@ function spec.config()
       lualine_a = {
         {
           function()
-            return vim.g.icons.widget.Moon
+            return vim.g.icons.widget.outline.Moon
           end,
           separator = {
             left = vim.g.icons.layout.SectionLeft,
@@ -49,10 +49,10 @@ function spec.config()
           "diagnostics",
           update_in_insert = true,
           symbols = {
-            hint = vim.g.icons.widget.Hint .. " ",
-            info = vim.g.icons.widget.Info .. " ",
-            warn = vim.g.icons.widget.Warn .. " ",
-            error = vim.g.icons.widget.Error .. " ",
+            hint = vim.g.icons.widget.inline.Hint .. " ",
+            info = vim.g.icons.widget.inline.Info .. " ",
+            warn = vim.g.icons.widget.inline.Warn .. " ",
+            error = vim.g.icons.widget.inline.Error .. " ",
           },
         },
       },
@@ -100,7 +100,7 @@ function spec.config()
         {
           function()
             if not vim.bo.expandtab then return "" end
-            return vim.g.icons.widget.AlignLeft .. " " .. vim.bo.shiftwidth
+            return vim.g.icons.widget.inline.AlignLeft .. " " .. vim.bo.shiftwidth
           end,
         },
       },
