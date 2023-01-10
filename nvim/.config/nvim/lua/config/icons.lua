@@ -2,6 +2,8 @@ vim.g.icons = {
   layout = {
     Truncation = "…",
     Nesting = "",
+    Tab = "→",
+    Space = "·",
     Separator = "•",
     SectionLeft = "",
     SectionRight = "",
@@ -57,10 +59,6 @@ vim.g.icons = {
     Deleted = "-",
     Unmerged = "=",
     Ignored = "#",
-  },
-  space = {
-    Tab = "→",
-    Trail = "·",
   },
   kind = {
     Text = "",

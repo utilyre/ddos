@@ -30,8 +30,8 @@ vim.opt.showmode = false
 vim.opt.cursorline = true
 vim.opt.list = true
 vim.opt.listchars:append({
-  tab = "  " .. vim.g.icons.space.Tab,
-  trail = vim.g.icons.space.Trail,
+  tab = "  " .. vim.g.icons.layout.Tab,
+  trail = vim.g.icons.layout.Space,
 })
 vim.opt.fillchars:append({
   eob = " ",
