@@ -1,5 +1,5 @@
 local spec = {
-  url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 }
 
 function spec.config()
