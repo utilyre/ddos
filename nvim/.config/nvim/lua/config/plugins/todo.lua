@@ -21,10 +21,10 @@ function spec.config()
     },
     keywords = {
       NOTE = {
-        icon = vim.g.icons.widget.Note,
+        icon = vim.g.icons.widget.Info,
       },
       TODO = {
-        icon = vim.g.icons.widget.Check,
+        icon = vim.g.icons.widget.Clipboard,
       },
       HACK = {
         icon = vim.g.icons.widget.Fire,

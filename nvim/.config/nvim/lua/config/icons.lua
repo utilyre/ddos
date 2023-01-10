@@ -7,6 +7,7 @@ vim.g.icons = {
     SectionRight = "",
   },
   widget = {
+    AlignLeft = "",
     Archive = "",
     ArrowRight = "",
     Bolt = "",
@@ -29,9 +30,7 @@ vim.g.icons = {
     Keyboard = "",
     Lock = "",
     Moon = "",
-    Note = "",
     PaperClip = "",
-    Paragraph = "",
     Play = "",
     Telescope = "",
     Usd = "",

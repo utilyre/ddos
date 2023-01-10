@@ -100,7 +100,7 @@ function spec.config()
         {
           function()
             if not vim.bo.expandtab then return "" end
-            return vim.g.icons.widget.Paragraph .. " " .. vim.bo.shiftwidth
+            return vim.g.icons.widget.AlignLeft .. " " .. vim.bo.shiftwidth
           end,
         },
       },
