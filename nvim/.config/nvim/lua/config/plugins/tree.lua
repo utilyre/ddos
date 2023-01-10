@@ -65,17 +65,17 @@ function spec.config()
       icons = {
         git_placement = "after",
         glyphs = {
-          default = vim.g.icons.document.File,
-          symlink = vim.g.icons.document.Link,
+          default = vim.g.icons.widget.inline.File,
+          symlink = vim.g.icons.widget.inline.Link,
           folder = {
             arrow_closed = vim.g.icons.widget.inline.CaretRight,
             arrow_open = vim.g.icons.widget.inline.CaretDown,
-            symlink = vim.g.icons.document.Link,
-            default = vim.g.icons.document.Folder,
-            open = vim.g.icons.document.Open,
-            symlink_open = vim.g.icons.document.Open,
-            empty = vim.g.icons.document.Empty,
-            empty_open = vim.g.icons.document.EmptyOpen,
+            symlink = vim.g.icons.widget.inline.Link,
+            default = vim.g.icons.widget.inline.Folder,
+            open = vim.g.icons.widget.inline.FolderOpen,
+            symlink_open = vim.g.icons.widget.inline.Link,
+            empty = vim.g.icons.widget.outline.Folder,
+            empty_open = vim.g.icons.widget.outline.FolderOpen,
           },
           git = {
             untracked = vim.g.icons.git.Untracked,
