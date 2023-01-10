@@ -17,8 +17,8 @@ function spec.config()
     end,
     kinds = vim.g.icons.kind,
     symbols = {
-      ellipsis = vim.g.icons.layout.Ellipsis,
-      separator = vim.g.icons.layout.Chevron,
+      ellipsis = vim.g.icons.layout.Truncation,
+      separator = vim.g.icons.layout.Nesting,
     },
   })
 

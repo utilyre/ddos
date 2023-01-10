@@ -1,7 +1,7 @@
 vim.g.icons = {
   layout = {
-    Ellipsis = "…",
-    Chevron = "",
+    Truncation = "…",
+    Nesting = "",
     Separator = "•",
     SectionLeft = "",
     SectionRight = "",
