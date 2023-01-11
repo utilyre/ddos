@@ -13,16 +13,20 @@ function spec.config()
     hijack_cursor = true,
     remove_keymaps = true,
     on_attach = function(bufnr)
-      vim.keymap.set("n", "h", vim.callback(api.node.navigate.parent_close), { buffer = bufnr })
-      vim.keymap.set("n", "l", vim.callback(api.node.open.edit), { buffer = bufnr })
-      vim.keymap.set("n", "q", vim.callback(api.tree.close), { buffer = bufnr })
-      vim.keymap.set("n", "r", vim.callback(api.tree.reload), { buffer = bufnr })
-      vim.keymap.set("n", "d", vim.callback(api.fs.cut), { buffer = bufnr })
-      vim.keymap.set("n", "y", vim.callback(api.fs.copy.node), { buffer = bufnr })
-      vim.keymap.set("n", "p", vim.callback(api.fs.paste), { buffer = bufnr })
-      vim.keymap.set("n", "c", vim.callback(api.fs.rename), { buffer = bufnr })
-      vim.keymap.set("n", "x", vim.callback(api.fs.remove), { buffer = bufnr })
-      vim.keymap.set("n", "a", vim.callback(api.fs.create), { buffer = bufnr })
+      local function map(left, right)
+        vim.keymap.set("n", left, right, { buffer = bufnr })
+      end
+
+      map("h", vim.callback(api.node.navigate.parent_close))
+      map("l", vim.callback(api.node.open.edit))
+      map("q", vim.callback(api.tree.close))
+      map("r", vim.callback(api.tree.reload))
+      map("d", vim.callback(api.fs.cut))
+      map("y", vim.callback(api.fs.copy.node))
+      map("p", vim.callback(api.fs.paste))
+      map("c", vim.callback(api.fs.rename))
+      map("x", vim.callback(api.fs.remove))
+      map("a", vim.callback(api.fs.create))
     end,
     git = {
       ignore = false,

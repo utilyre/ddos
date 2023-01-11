@@ -90,14 +90,15 @@ function spec.config()
     },
   })
 
-  vim.keymap.set({ "n", "i", "s" }, "<c-y>", function()
-    if not lsp.scroll(-1) then return "<c-y>" end
-    return "<ignore>"
-  end, { expr = true })
-  vim.keymap.set({ "n", "i", "s" }, "<c-e>", function()
-    if not lsp.scroll(1) then return "<c-e>" end
-    return "<ignore>"
-  end, { expr = true })
+  local function map(left, right)
+    vim.keymap.set({ "n", "i", "s" }, left, function()
+      if not right() then return left end
+      return "<ignore>"
+    end, { expr = true })
+  end
+
+  map("<c-y>", vim.callback(lsp.scroll, -1))
+  map("<c-y>", vim.callback(lsp.scroll, 1))
 end
 
 return spec

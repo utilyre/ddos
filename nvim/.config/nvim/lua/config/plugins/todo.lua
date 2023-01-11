@@ -44,10 +44,13 @@ function spec.config()
     },
   })
 
-  vim.keymap.set("n", "<leader>tk", vim.callback(todo.jump_prev))
-  vim.keymap.set("n", "<leader>tj", vim.callback(todo.jump_next))
+  local function map(left, right)
+    vim.keymap.set("n", "<leader>t" .. left, right)
+  end
 
-  vim.keymap.set("n", "<leader>ft", vim.callback(telescope.extensions["todo-comments"].todo))
+  map("k", vim.callback(todo.jump_prev))
+  map("j", vim.callback(todo.jump_next))
+  map("f", vim.callback(telescope.extensions["todo-comments"].todo))
 end
 
 return spec

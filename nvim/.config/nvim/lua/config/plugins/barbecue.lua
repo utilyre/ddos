@@ -12,8 +12,12 @@ function spec.config()
 
   barbecue.setup({
     create_autocmd = false,
-    custom_section = function (bufnr)
-      return (vim.bo[bufnr].readonly and "%#Error#" .. vim.g.icons.widget.inline.Lock or "") .. " "
+    custom_section = function(bufnr)
+      return (
+        vim.bo[bufnr].readonly
+          and "%#Error#" .. vim.g.icons.widget.inline.Lock
+        or ""
+      ) .. " "
     end,
     kinds = vim.g.icons.kind,
     symbols = {
@@ -22,7 +26,12 @@ function spec.config()
     },
   })
 
-  vim.api.nvim_create_autocmd({ "WinScrolled", "BufWinEnter", "CursorHold", "InsertLeave" }, {
+  vim.api.nvim_create_autocmd({
+    "WinScrolled",
+    "BufWinEnter",
+    "CursorHold",
+    "InsertLeave",
+  }, {
     group = vim.api.nvim_create_augroup("barbecue", {}),
     callback = vim.callback(ui.update),
   })

@@ -41,10 +41,7 @@ end
 
 function vim.callback(fn, ...)
   local params = { ... }
-
-  return function()
-    return fn(unpack(params))
-  end
+  return function() return fn(unpack(params)) end
 end
 
 function vim.fs.exists(name)

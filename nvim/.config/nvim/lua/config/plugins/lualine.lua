@@ -24,9 +24,7 @@ function spec.config()
     sections = {
       lualine_a = {
         {
-          function()
-            return vim.g.icons.widget.outline.Moon
-          end,
+          function() return vim.g.icons.widget.outline.Moon end,
           separator = {
             left = vim.g.icons.layout.SectionLeft,
             right = vim.g.icons.layout.SectionRight,
@@ -78,16 +76,18 @@ function spec.config()
             local names = table.unique(
               table.merge(
                 table.map(
-                  table.filter(vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() }), function(client)
-                    return client.name ~= "null-ls"
-                  end),
-                  function(client)
-                    return client.name
-                  end
+                  table.filter(
+                    vim.lsp.get_active_clients({
+                      bufnr = vim.api.nvim_get_current_buf(),
+                    }),
+                    function(client) return client.name ~= "null-ls" end
+                  ),
+                  function(client) return client.name end
                 ),
-                table.map(sources.get_available(vim.bo.filetype), function(source)
-                  return source.name
-                end)
+                table.map(
+                  sources.get_available(vim.bo.filetype),
+                  function(source) return source.name end
+                )
               )
             )
 
@@ -100,7 +100,9 @@ function spec.config()
         {
           function()
             if not vim.bo.expandtab then return "" end
-            return vim.g.icons.widget.inline.AlignLeft .. " " .. vim.bo.shiftwidth
+            return vim.g.icons.widget.inline.AlignLeft
+              .. " "
+              .. vim.bo.shiftwidth
           end,
         },
       },
