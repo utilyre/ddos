@@ -91,12 +91,12 @@ function spec.config()
   })
 
   vim.keymap.set({ "n", "i", "s" }, "<c-y>", function()
-    if lsp.scroll(-1) then return end
-    return "<c-y>"
+    if not lsp.scroll(-1) then return "<c-y>" end
+    return "<ignore>"
   end, { expr = true })
   vim.keymap.set({ "n", "i", "s" }, "<c-e>", function()
-    if lsp.scroll(1) then return end
-    return "<c-e>"
+    if not lsp.scroll(1) then return "<c-e>" end
+    return "<ignore>"
   end, { expr = true })
 end
 
