@@ -42,13 +42,15 @@ lazy.setup("config.plugins", {
   },
 })
 
-vim.keymap.set("n", "<leader>ph", vim.callback(lazy.home))
-vim.keymap.set("n", "<leader>pi", vim.callback(lazy.install))
-vim.keymap.set("n", "<leader>pu", vim.callback(lazy.update))
-vim.keymap.set("n", "<leader>ps", vim.callback(lazy.sync))
-vim.keymap.set("n", "<leader>px", vim.callback(lazy.clean))
-vim.keymap.set("n", "<leader>pc", vim.callback(lazy.check))
-vim.keymap.set("n", "<leader>pl", vim.callback(lazy.log))
-vim.keymap.set("n", "<leader>pr", vim.callback(lazy.restore))
-vim.keymap.set("n", "<leader>pp", vim.callback(lazy.profile))
-vim.keymap.set("n", "<leader>pd", vim.callback(lazy.debug))
+local function map(left, right) vim.keymap.set("n", "<leader>p" .. left, right) end
+
+map("h", vim.callback(lazy.home))
+map("i", vim.callback(lazy.install))
+map("u", vim.callback(lazy.update))
+map("s", vim.callback(lazy.sync))
+map("x", vim.callback(lazy.clean))
+map("c", vim.callback(lazy.check))
+map("l", vim.callback(lazy.log))
+map("r", vim.callback(lazy.restore))
+map("p", vim.callback(lazy.profile))
+map("d", vim.callback(lazy.debug))

@@ -46,7 +46,7 @@ function spec.config()
         vim.keymap.set("n", "<leader>i" .. left, right, { buffer = a.buf })
       end
 
-      map("s", vim.callback(vim.lsp.buf.document_symbol))
+      map("D", vim.callback(vim.lsp.buf.declaration, { reuse_win = true }))
       map("d", vim.callback(vim.lsp.buf.definition, { reuse_win = true }))
       map("t", vim.callback(vim.lsp.buf.type_definition, { reuse_win = true }))
       map("i", vim.callback(vim.lsp.buf.implementation))

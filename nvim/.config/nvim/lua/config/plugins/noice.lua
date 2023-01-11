@@ -98,7 +98,7 @@ function spec.config()
   end
 
   map("<c-y>", vim.callback(lsp.scroll, -1))
-  map("<c-y>", vim.callback(lsp.scroll, 1))
+  map("<c-e>", vim.callback(lsp.scroll, 1))
 end
 
 return spec

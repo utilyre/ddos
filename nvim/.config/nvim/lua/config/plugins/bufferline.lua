@@ -17,8 +17,10 @@ function spec.config()
     },
   })
 
-  vim.keymap.set("n", "<s-h>", vim.callback(bufferline.cycle, -1))
-  vim.keymap.set("n", "<s-l>", vim.callback(bufferline.cycle, 1))
+  local function map(left, right) vim.keymap.set("n", left, right) end
+
+  map("<s-h>", vim.callback(bufferline.cycle, -1))
+  map("<s-l>", vim.callback(bufferline.cycle, 1))
 end
 
 return spec
