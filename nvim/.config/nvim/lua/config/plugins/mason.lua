@@ -19,7 +19,16 @@ function spec.config()
     },
   })
 
-  vim.keymap.set("n", "<leader>m", vim.callback(ui.open))
+  local function map(left, right, ...)
+    local parameters = { ... }
+    vim.keymap.set(
+      "n",
+      "<leader>m" .. left,
+      function() right(unpack(parameters)) end
+    )
+  end
+
+  map("h", ui.open)
 end
 
 return spec

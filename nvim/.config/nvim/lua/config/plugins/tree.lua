@@ -13,20 +13,26 @@ function spec.config()
     hijack_cursor = true,
     remove_keymaps = true,
     on_attach = function(bufnr)
-      local function map(left, right)
-        vim.keymap.set("n", left, right, { buffer = bufnr })
+      local function map(left, right, ...)
+        local parameters = { ... }
+        vim.keymap.set(
+          "n",
+          left,
+          function() right(unpack(parameters)) end,
+          { buffer = bufnr }
+        )
       end
 
-      map("h", vim.callback(api.node.navigate.parent_close))
-      map("l", vim.callback(api.node.open.edit))
-      map("q", vim.callback(api.tree.close))
-      map("r", vim.callback(api.tree.reload))
-      map("d", vim.callback(api.fs.cut))
-      map("y", vim.callback(api.fs.copy.node))
-      map("p", vim.callback(api.fs.paste))
-      map("c", vim.callback(api.fs.rename))
-      map("x", vim.callback(api.fs.remove))
-      map("a", vim.callback(api.fs.create))
+      map("h", api.node.navigate.parent_close)
+      map("l", api.node.open.edit)
+      map("q", api.tree.close)
+      map("r", api.tree.reload)
+      map("d", api.fs.cut)
+      map("y", api.fs.copy.node)
+      map("p", api.fs.paste)
+      map("c", api.fs.rename)
+      map("x", api.fs.remove)
+      map("a", api.fs.create)
     end,
     git = {
       ignore = false,
@@ -95,7 +101,12 @@ function spec.config()
     },
   })
 
-  vim.keymap.set("n", "<c-/>", vim.callback(tree.toggle))
+  local function map(left, right, ...)
+    local parameters = { ... }
+    vim.keymap.set("n", left, function() right(unpack(parameters)) end)
+  end
+
+  map("<c-/>", tree.toggle)
 end
 
 return spec

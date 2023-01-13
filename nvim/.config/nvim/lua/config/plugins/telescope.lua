@@ -19,15 +19,20 @@ function spec.config()
     }),
   })
 
-  local function map(left, right)
-    vim.keymap.set("n", "<leader>f" .. left, right)
+  local function map(left, right, ...)
+    local parameters = { ... }
+    vim.keymap.set(
+      "n",
+      "<leader>f" .. left,
+      function() right(unpack(parameters)) end
+    )
   end
 
-  map("h", vim.callback(builtin.help_tags))
-  map("r", vim.callback(builtin.oldfiles))
-  map("f", vim.callback(builtin.find_files))
-  map("a", vim.callback(builtin.filetypes))
-  map("w", vim.callback(builtin.live_grep))
+  map("h", builtin.help_tags)
+  map("r", builtin.oldfiles)
+  map("f", builtin.find_files)
+  map("a", builtin.filetypes)
+  map("w", builtin.live_grep)
 end
 
 return spec

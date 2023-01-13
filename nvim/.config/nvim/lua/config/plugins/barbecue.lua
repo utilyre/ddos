@@ -33,7 +33,7 @@ function spec.config()
     "InsertLeave",
   }, {
     group = vim.api.nvim_create_augroup("barbecue", {}),
-    callback = vim.callback(ui.update),
+    callback = function() ui.update() end,
   })
 end
 

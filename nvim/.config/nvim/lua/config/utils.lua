@@ -39,11 +39,6 @@ function table.map(tbl, callback)
   return ret
 end
 
-function vim.callback(fn, ...)
-  local params = { ... }
-  return function() return fn(unpack(params)) end
-end
-
 function vim.fs.exists(name)
   local file, err = io.open(name, "r")
   if err ~= nil then return false end

@@ -33,8 +33,13 @@ function spec.config()
   vim.fn.sign_define("DiagnosticSignWarn", { numhl = "DiagnosticSignWarn" })
   vim.fn.sign_define("DiagnosticSignError", { numhl = "DiagnosticSignError" })
 
-  local function map(left, right)
-    vim.keymap.set("n", "<leader>d" .. left, right)
+  local function map(left, right, ...)
+    local parameters = { ... }
+    vim.keymap.set(
+      "n",
+      "<leader>d" .. left,
+      function() right(unpack(parameters)) end
+    )
   end
 
   map(
@@ -46,9 +51,9 @@ function spec.config()
       })
     end
   )
-  map("h", vim.callback(vim.diagnostic.open_float))
-  map("k", vim.callback(vim.diagnostic.goto_prev, { float = false }))
-  map("j", vim.callback(vim.diagnostic.goto_next, { float = false }))
+  map("h", vim.diagnostic.open_float)
+  map("k", vim.diagnostic.goto_prev, { float = false })
+  map("j", vim.diagnostic.goto_next, { float = false })
 end
 
 return spec

@@ -38,23 +38,29 @@ function spec.config()
         }, {
           group = vim.api.nvim_create_augroup("codelens", { clear = false }),
           buffer = a.buf,
-          callback = vim.callback(vim.lsp.codelens.refresh),
+          callback = function() vim.lsp.codelens.refresh() end,
         })
       end
 
-      local function map(left, right)
-        vim.keymap.set("n", "<leader>i" .. left, right, { buffer = a.buf })
+      local function map(left, right, ...)
+        local parameters = { ... }
+        vim.keymap.set(
+          "n",
+          "<leader>i" .. left,
+          function() right(unpack(parameters)) end,
+          { buffer = a.buf }
+        )
       end
 
-      map("D", vim.callback(vim.lsp.buf.declaration, { reuse_win = true }))
-      map("d", vim.callback(vim.lsp.buf.definition, { reuse_win = true }))
-      map("t", vim.callback(vim.lsp.buf.type_definition, { reuse_win = true }))
-      map("i", vim.callback(vim.lsp.buf.implementation))
-      map("r", vim.callback(vim.lsp.buf.references))
-      map("a", vim.callback(vim.lsp.buf.code_action))
-      map("f", vim.callback(vim.lsp.buf.format, { async = true }))
-      map("c", vim.callback(vim.lsp.buf.rename))
-      map("h", vim.callback(vim.lsp.buf.hover))
+      map("D", vim.lsp.buf.declaration, { reuse_win = true })
+      map("d", vim.lsp.buf.definition, { reuse_win = true })
+      map("t", vim.lsp.buf.type_definition, { reuse_win = true })
+      map("i", vim.lsp.buf.implementation)
+      map("r", vim.lsp.buf.references)
+      map("a", vim.lsp.buf.code_action)
+      map("f", vim.lsp.buf.format, { async = true })
+      map("c", vim.lsp.buf.rename)
+      map("h", vim.lsp.buf.hover)
     end,
   })
 end

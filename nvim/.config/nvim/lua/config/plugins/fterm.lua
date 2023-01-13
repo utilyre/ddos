@@ -46,25 +46,36 @@ function spec.config()
         terminal:open()
       end
 
-      local function map(left, right)
-        vim.keymap.set("t", "<c-w>" .. left, right, { buffer = bufnr })
+      local function map(left, right, ...)
+        local parameters = { ... }
+        vim.keymap.set(
+          "t",
+          "<c-w>" .. left,
+          function() right(unpack(parameters)) end,
+          { buffer = bufnr }
+        )
       end
 
-      map("=", vim.callback(snap, "center"))
-      map("H", vim.callback(snap, "left"))
-      map("L", vim.callback(snap, "right"))
-      map("K", vim.callback(snap, "top"))
-      map("J", vim.callback(snap, "bottom"))
+      map("=", snap, "center")
+      map("H", snap, "left")
+      map("L", snap, "right")
+      map("K", snap, "top")
+      map("J", snap, "bottom")
     end,
   }
 
   vim.api.nvim_create_autocmd("User", {
     group = vim.api.nvim_create_augroup("fterm", {}),
     pattern = "UnceptionEditRequestReceived",
-    callback = vim.callback(fterm.toggle),
+    callback = function() instance:close() end,
   })
 
-  vim.keymap.set({ "n", "t" }, "<c-\\>", function()
+  local function map(left, right, ...)
+    local parameters = { ... }
+    vim.keymap.set({ "n", "t" }, left, function() right(unpack(parameters)) end)
+  end
+
+  map("<c-\\>", function()
     instance = instance or fterm:new(options)
     instance:toggle()
   end)

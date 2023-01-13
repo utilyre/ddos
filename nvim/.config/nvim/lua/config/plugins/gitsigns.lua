@@ -18,19 +18,25 @@ function spec.config()
       border = "rounded",
     },
     on_attach = function(bufnr)
-      local function map(left, right)
-        vim.keymap.set("n", "<leader>g" .. left, right, { buffer = bufnr })
+      local function map(left, right, ...)
+        local parameters = { ... }
+        vim.keymap.set(
+          "n",
+          "<leader>g" .. left,
+          function() right(unpack(parameters)) end,
+          { buffer = bufnr }
+        )
       end
 
-      map("d", vim.callback(gitsigns.diffthis))
-      map("p", vim.callback(gitsigns.preview_hunk))
-      map("R", vim.callback(gitsigns.reset_buffer))
-      map("r", vim.callback(gitsigns.reset_hunk))
-      map("A", vim.callback(gitsigns.stage_buffer))
-      map("a", vim.callback(gitsigns.stage_hunk))
-      map("u", vim.callback(gitsigns.undo_stage_hunk))
-      map("k", vim.callback(gitsigns.prev_hunk, { navigation_message = false }))
-      map("j", vim.callback(gitsigns.next_hunk, { navigation_message = false }))
+      map("d", gitsigns.diffthis)
+      map("p", gitsigns.preview_hunk)
+      map("R", gitsigns.reset_buffer)
+      map("r", gitsigns.reset_hunk)
+      map("A", gitsigns.stage_buffer)
+      map("a", gitsigns.stage_hunk)
+      map("u", gitsigns.undo_stage_hunk)
+      map("k", gitsigns.prev_hunk, { navigation_message = false })
+      map("j", gitsigns.next_hunk, { navigation_message = false })
     end,
   })
 end

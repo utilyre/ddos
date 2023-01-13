@@ -12,8 +12,10 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup,
-  callback = vim.callback(vim.highlight.on_yank, {
-    higroup = "Visual",
-    on_visual = false,
-  }),
+  callback = function()
+    vim.highlight.on_yank({
+      on_visual = false,
+      higroup = "Visual",
+    })
+  end,
 })
