@@ -1,5 +1,5 @@
 local spec = {
-  "rrethy/vim-illuminate",
+  "RRethy/vim-illuminate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },

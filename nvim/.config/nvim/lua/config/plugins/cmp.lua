@@ -5,7 +5,7 @@ local spec = {
     "hrsh7th/cmp-nvim-lsp",
     "petertriho/cmp-git",
     "hrsh7th/cmp-emoji",
-    "l3mon4d3/luasnip",
+    "L3MON4D3/LuaSnip",
   },
 }
 

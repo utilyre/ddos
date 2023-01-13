@@ -1,5 +1,5 @@
 local spec = {
-  "nvchad/nvim-colorizer.lua",
+  "NvChad/nvim-colorizer.lua",
 }
 
 function spec.config()

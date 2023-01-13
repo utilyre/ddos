@@ -1,5 +1,5 @@
 local spec = {
-  "numtostr/comment.nvim",
+  "numToStr/Comment.nvim",
 }
 
 function spec.config()

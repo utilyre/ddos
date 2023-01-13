@@ -1,5 +1,5 @@
 local spec = {
-  "l3mon4d3/luasnip",
+  "L3MON4D3/LuaSnip",
   dependencies = {
     "rafamadriz/friendly-snippets",
   },
