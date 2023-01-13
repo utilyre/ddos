@@ -8,9 +8,11 @@ local spec = {
 function spec.config()
   local fterm = require("FTerm")
 
-  fterm.setup({
+  local instance
+  local options = {
     border = "rounded",
     hl = "NormalFloat",
+    on_exit = function() instance = nil end,
     on_attach = function(terminal, bufnr)
       local function snap(direction)
         local width = 0.8
@@ -54,7 +56,7 @@ function spec.config()
       map("K", vim.callback(snap, "top"))
       map("J", vim.callback(snap, "bottom"))
     end,
-  })
+  }
 
   vim.api.nvim_create_autocmd("User", {
     group = vim.api.nvim_create_augroup("fterm", {}),
@@ -62,7 +64,10 @@ function spec.config()
     callback = vim.callback(fterm.toggle),
   })
 
-  vim.keymap.set({ "n", "t" }, "<c-\\>", vim.callback(fterm.toggle))
+  vim.keymap.set({ "n", "t" }, "<c-\\>", function()
+    instance = instance or fterm:new(options)
+    instance:toggle()
+  end)
 end
 
 return spec
