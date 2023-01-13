@@ -1,6 +1,5 @@
 local spec = {
   "numToStr/FTerm.nvim",
-  dev = true,
   dependencies = {
     "samjwill/nvim-unception",
   },
