@@ -5,7 +5,11 @@ use() {
 	repo="${1%:*}"
 	dest="$ZSH_DATA/${repo##*/}"
 
-	[ ! -d "$dest" ] && git clone --depth="1" -- "https://github.com/$repo.git" "$dest"
+	[ ! -d "$dest" ] && {
+		printf -- "\e[33m\e[m \e[1m%s\e[m" "$repo"
+		git clone --single-branch --filter="blob:none" -- "https://github.com/$repo.git" "$dest" 2> "/dev/null"
+		printf -- "\r\e[32m\e[m %s\n" "$repo"
+	}
 	. -- "$dest/${1##*:}"
 }
 
