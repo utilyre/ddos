@@ -30,18 +30,16 @@ alias al="ls --format=\"long\" --almost-all"
 
 setopt appendhistory
 setopt histignorealldups
+HISTSIZE="4096"
+SAVEHIST="4096"
+
 setopt globcomplete
 setopt nolisttypes
-setopt interactivecomments
-
 autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
 zmodload "zsh/complist"
 zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "$LS_COLORS"
-
-HISTSIZE="4096"
-SAVEHIST="4096"
 
 use "zap-zsh/atmachine-prompt:atmachine-prompt.zsh-theme"
 RPS1=""
@@ -50,6 +48,7 @@ use "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
+setopt interactivecomments
 use "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
