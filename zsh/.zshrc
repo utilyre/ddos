@@ -33,7 +33,7 @@ setopt interactivecomments
 HISTSIZE="4096"
 SAVEHIST="4096"
 
-eval "$(starship init "zsh")"
+use "zap-zsh/zap-prompt:zap-prompt.zsh-theme"
 RPS1=""
 
 use "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
