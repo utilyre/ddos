@@ -34,6 +34,12 @@ setopt promptsubst
 setopt nolisttypes
 setopt interactivecomments
 
+autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
+zmodload "zsh/complist"
+zstyle ":completion:*" menu "select"
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
+zstyle ":completion:*" list-colors "$LS_COLORS"
+
 HISTSIZE="4096"
 SAVEHIST="4096"
 
@@ -41,11 +47,6 @@ use "zap-zsh/atmachine-prompt:atmachine-prompt.zsh-theme"
 RPS1=""
 
 use "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
-autoload "compinit" && compinit -d "$ZSH_CACHE/zcompdump"
-zmodload "zsh/complist"
-zstyle ":completion:*" menu "select"
-zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
-zstyle ":completion:*" list-colors "$LS_COLORS"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
