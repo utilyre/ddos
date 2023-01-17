@@ -30,7 +30,7 @@ alias al="ls --format=\"long\" --almost-all"
 
 setopt appendhistory
 setopt histignorealldups
-setopt promptsubst
+setopt globcomplete
 setopt nolisttypes
 setopt interactivecomments
 
