@@ -24,7 +24,6 @@
 - playerctl
 - polybar
 - pulseaudio
-- starship
 - stow
 - sxhkd
 - ueberzug
