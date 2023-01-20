@@ -33,5 +33,3 @@ super + y
 	yank
 super + g
 	guard menu
-super + i
-	imagine
