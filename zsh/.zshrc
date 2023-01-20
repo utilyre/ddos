@@ -46,7 +46,7 @@ zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "$LS_COLORS"
 
-use "zap-zsh/atmachine-prompt:atmachine-prompt.zsh-theme"
+use "utilyre/atmachine-prompt:atmachine-prompt.zsh-theme"
 RPS1=""
 
 use "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
