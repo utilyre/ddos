@@ -13,6 +13,7 @@
 - dmenu
 - dunst
 - git
+- imagemagick
 - imv
 - kitty
 - lf
@@ -26,7 +27,6 @@
 - pulseaudio
 - stow
 - sxhkd
-- ueberzug
 - xorg-server
 - xorg-xinit
 - xorg-xrandr

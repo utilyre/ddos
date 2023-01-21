@@ -18,9 +18,9 @@ use() {
 	. -- "$dest/${1##*:}"
 }
 
-lf() {
+lf_autocd() {
 	tmp="$(mktemp)"
-	tough --last-dir-path="$tmp" "$@"
+	lf --last-dir-path="$tmp" "$@"
 
 	cd -- "$(cat -- "$tmp")"
 	rm -- "$tmp"
@@ -32,6 +32,7 @@ alias ls="ls --color=\"auto\" --hyperlink=\"auto\" --group-directories-first --h
 alias ll="ls --format=\"long\""
 alias la="ls --almost-all"
 alias al="ls --format=\"long\" --almost-all"
+alias lf="lf_autocd"
 
 setopt appendhistory
 setopt histignorealldups
