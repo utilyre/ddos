@@ -8,7 +8,6 @@ xsetroot -cursor_name "left_ptr"
 lxsession &
 sxhkd &
 playerctld &
-davinci &
 wali &
 picom --experimental-backends &
 polybar lemonade &
