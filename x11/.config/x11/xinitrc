@@ -9,7 +9,7 @@ lxsession &
 sxhkd &
 playerctld &
 wali &
-picom --experimental-backends &
+picom &
 polybar lemonade &
 dunst &
 
