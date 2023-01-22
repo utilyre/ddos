@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Visual
-Exec=kitty -e nvim -- %F
-NoDisplay=true

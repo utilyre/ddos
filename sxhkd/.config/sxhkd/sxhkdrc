@@ -15,18 +15,14 @@ XF86Audio{Play,Prev,Next}
 	playerctl {play-pause,previous,next}
 
 super + Return
-	gtk-launch terminal
+	kitty
 super + r
-	gtk-launch launcher
-super + v
-	gtk-launch visual
+	dmenu_run
 super + b
-	gtk-launch browser
+	brave
 super + e
-	gtk-launch explorer
+	kitty -e lf
 
-super + x
-	xenon
 super + m
 	monty
 super + y

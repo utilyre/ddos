@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Explorer
-Exec=kitty -e lf -- %f
-NoDisplay=true

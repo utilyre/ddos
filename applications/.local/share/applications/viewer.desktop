@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Viewer
-Exec=imv -- %F
-NoDisplay=true
