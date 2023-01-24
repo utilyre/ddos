@@ -54,8 +54,8 @@ use "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
-setopt interactivecomments
 use "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
+setopt interactivecomments
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
 use "softmoth/zsh-vim-mode:zsh-vim-mode.plugin.zsh"
