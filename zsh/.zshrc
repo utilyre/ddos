@@ -12,7 +12,9 @@ use() {
 			{
 				printf -- "\r\e[31m\e[m %s\n" "$repo"
 				printf -- "\e[31m%s\e[m\n\n" "$(printf -- "%s\n" "$error" | sed -- "s/^/> /")"
-				return
+
+				read -sk "?[Press any key to exit]"
+				exit "1"
 			}
 	}
 	. -- "$dest/${1##*:}"
