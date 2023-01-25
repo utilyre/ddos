@@ -2,22 +2,28 @@
 
 use() {
 	mkdir --parents -- "$ZSH_DATA"
-	repo="${1%:*}"
-	dest="$ZSH_DATA/${repo##*/}"
+	name="${1##*/}"
+	dest="$ZSH_DATA/$name"
 
 	[ ! -d "$dest" ] && {
-		printf -- "\e[33m\e[m \e[1m%s\e[m" "$repo"
-		error="$(git clone --single-branch --filter="blob:none" -- "https://github.com/$repo.git" "$dest" 2>&1)" &&
-			printf -- "\r\e[32m\e[m %s\n" "$repo" ||
+		printf -- "\e[33m\e[m \e[1m%s\e[m" "$1"
+		error="$(git clone --single-branch --filter="blob:none" -- "https://github.com/$1.git" "$dest" 2>&1)" &&
+			printf -- "\r\e[32m\e[m %s\n" "$1" ||
 			{
-				printf -- "\r\e[31m\e[m %s\n" "$repo"
+				printf -- "\r\e[31m\e[m %s\n" "$1"
 				printf -- "\e[31m%s\e[m\n\n" "$(printf -- "%s\n" "$error" | sed -- "s/^/> /")"
 
 				read -sk "?[Press any key to exit]"
 				exit "1"
 			}
 	}
-	. -- "$dest/${1##*:}"
+
+	for plugin in "$dest/$name".{plugin.zsh,zsh,zsh-theme}; do
+		[ ! -f "$plugin" ] && continue
+
+		. -- "$plugin"
+		break
+	done
 }
 
 lf_autocd() {
@@ -49,18 +55,18 @@ zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "$LS_COLORS"
 
-use "utilyre/atmachine-prompt:atmachine-prompt.zsh-theme"
+use "utilyre/atmachine-prompt"
 RPS1=""
 
-use "zsh-users/zsh-autosuggestions:zsh-autosuggestions.zsh"
+use "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
-use "zsh-users/zsh-syntax-highlighting:zsh-syntax-highlighting.zsh"
+use "zsh-users/zsh-syntax-highlighting"
 setopt interactivecomments
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
-use "softmoth/zsh-vim-mode:zsh-vim-mode.plugin.zsh"
+use "softmoth/zsh-vim-mode"
 bindkey -M "viins" "jk" "vi-cmd-mode"
 bindkey -M "viins" "kj" "vi-cmd-mode"
 bindkey -M "viins" "^p" "reverse-menu-complete"
