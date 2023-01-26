@@ -1,12 +1,13 @@
-set mouse true
-set drawbox true
-set scrolloff 2
-set icons true
+set mouse
+set drawbox
+set scrolloff "2"
+set promptfmt "%w"
+set icons
 set dircounts
-set info size
-set incsearch true
-set previewer fewer
-set cleaner wiper
+set info "size"
+set incsearch
+set previewer "fewer"
+set cleaner "wiper"
 
 map q :quit
 map r :reload
