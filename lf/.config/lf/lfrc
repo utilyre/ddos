@@ -1,7 +1,7 @@
 set mouse
 set drawbox
 set scrolloff "2"
-set promptfmt "%w"
+set promptfmt "\033[34;1m%w\033[m"
 set icons
 set dircounts
 set info "size"
