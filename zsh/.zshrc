@@ -8,8 +8,7 @@ use() {
 	[ ! -d "$dest" ] && {
 		printf -- "\e[33m\e[m \e[1m%s\e[m" "$1"
 		error="$(git clone --single-branch --filter="blob:none" -- "https://github.com/$1.git" "$dest" 2>&1)" &&
-			printf -- "\r\e[32m\e[m %s\n" "$1" ||
-			{
+			printf -- "\r\e[32m\e[m %s\n" "$1" || {
 				printf -- "\r\e[31m\e[m %s\n" "$1"
 				printf -- "\e[31m%s\e[m\n\n" "$(printf -- "%s\n" "$error" | sed -- "s/^/> /")"
 
