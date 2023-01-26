@@ -2,6 +2,7 @@ set mouse true
 set drawbox true
 set scrolloff 2
 set icons true
+set dircounts
 set info size
 set incsearch true
 set previewer fewer
@@ -14,5 +15,17 @@ map y :copy
 map p :paste
 map c :rename
 map x :delete
+map a push :create<space>
 map gw &wali "$f"
 map gp &printf -- "%s\n" "$fx" | xargs --delimiter="\n" -- dragon-drop --on-top --all --and-exit
+
+cmd create %{{
+		file="$(realpath --canonicalize-missing -- "$1")"
+		[ "$(printf -- "%s" "$1" | tail --bytes="1")" = "/" ] && {
+				mkdir --parents -- "$file"
+				exit
+		}
+
+		mkdir --parents -- "$(dirname -- "$file")"
+		touch -- "$file"
+}}
