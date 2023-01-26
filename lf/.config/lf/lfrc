@@ -7,10 +7,6 @@ set incsearch true
 set previewer fewer
 set cleaner wiper
 
-map <m-1> :updir
-map <m-2> :open
-map <m-down> :down
-map <m-up> :up
 map q :quit
 map r :reload
 map d :cut
