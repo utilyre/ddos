@@ -2,8 +2,7 @@
 
 use() {
 	mkdir --parents -- "$ZSH_DATA"
-	name="${1##*/}"
-	dest="$ZSH_DATA/$name"
+	dest="$ZSH_DATA/${1##*/}"
 
 	[ ! -d "$dest" ] && {
 		printf -- "\e[33m\e[m \e[1m%s\e[m" "$1"
@@ -17,12 +16,7 @@ use() {
 			}
 	}
 
-	for plugin in "$dest/$name".{plugin.zsh,zsh,zsh-theme}; do
-		[ ! -f "$plugin" ] && continue
-
-		. -- "$plugin"
-		break
-	done
+	. -- "$dest/$2"
 }
 
 lf_autocd() {
@@ -54,18 +48,18 @@ zstyle ":completion:*" menu "select"
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "$LS_COLORS"
 
-use "utilyre/atmachine-prompt"
+use "utilyre/atmachine-prompt" "atmachine-prompt.zsh-theme"
 RPS1=""
 
-use "zsh-users/zsh-autosuggestions"
+use "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.plugin.zsh"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
-use "zsh-users/zsh-syntax-highlighting"
+use "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.plugin.zsh"
 setopt interactivecomments
 ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
-use "softmoth/zsh-vim-mode"
+use "softmoth/zsh-vim-mode" "zsh-vim-mode.plugin.zsh"
 bindkey -M "viins" "jk" "vi-cmd-mode"
 bindkey -M "viins" "kj" "vi-cmd-mode"
 bindkey -M "viins" "^p" "reverse-menu-complete"
