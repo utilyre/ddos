@@ -49,7 +49,7 @@ zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "$LS_COLORS"
 
 use "woefe/git-prompt.zsh" "git-prompt.plugin.zsh"
-PS1="%B%F{blue}[%f%n%F{red}@%f%m%F{blue}]%b%f %F{%(?:green:red)}➜%f %B%F{cyan}%c%b%f \$(gitprompt)"
+PS1="%F{%(?:green:red)}➜%f %B%F{cyan}%c%b%f \$(gitprompt)"
 RPS1=""
 ZSH_GIT_PROMPT_SHOW_STASH="true"
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{blue}(%f"
