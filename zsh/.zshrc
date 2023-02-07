@@ -49,6 +49,7 @@ zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "$LS_COLORS"
 
 use "woefe/git-prompt.zsh" "git-prompt.plugin.zsh"
+setopt promptsubst
 PS1="%F{%(?:green:red)}➜%f %B%F{cyan}%c%b%f \$(gitprompt)"
 RPS1=""
 ZSH_GIT_PROMPT_SHOW_STASH="true"
@@ -68,11 +69,8 @@ ZSH_THEME_GIT_PROMPT_UNMERGED="%F{yellow}="
 
 use "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.plugin.zsh"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
 use "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.plugin.zsh"
-setopt interactivecomments
-ZSH_HIGHLIGHT_STYLES[comment]="fg=241"
 
 use "softmoth/zsh-vim-mode" "zsh-vim-mode.plugin.zsh"
 bindkey -M "viins" "jk" "vi-cmd-mode"
