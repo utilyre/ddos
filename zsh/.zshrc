@@ -71,18 +71,3 @@ use "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.plugin.zsh"
 ZSH_AUTOSUGGEST_STRATEGY=("history" "completion")
 
 use "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.plugin.zsh"
-
-use "softmoth/zsh-vim-mode" "zsh-vim-mode.plugin.zsh"
-bindkey -M "viins" "jk" "vi-cmd-mode"
-bindkey -M "viins" "kj" "vi-cmd-mode"
-bindkey -M "viins" "^p" "reverse-menu-complete"
-bindkey -M "viins" "^n" "menu-complete"
-bindkey -M "viins" "^i" "menu-complete"
-bindkey -M "menuselect" "^i" "accept-line"
-KEYTIMEOUT="5"
-MODE_CURSOR_VICMD="block"
-MODE_CURSOR_VIINS="bar"
-MODE_CURSOR_VISUAL="block"
-MODE_CURSOR_VLINE="block"
-MODE_CURSOR_REPLACE="underline"
-MODE_CURSOR_SEARCH="underline"
