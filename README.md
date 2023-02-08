@@ -24,22 +24,18 @@
 - picom
 - playerctl
 - polybar
-- pulseaudio
 - stow
 - sxhkd
 - xorg-server
 - xorg-xinit
-- xorg-xrandr
 - xorg-xset
 - xorg-xsetroot
 - xsel
 - xwallpaper
-- youtube-dl
 - zsh
 
 ### AUR
 
-- brave-bin
 - dragon-drop
 
 ## 🚦 Installation
